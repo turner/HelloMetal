@@ -126,7 +126,7 @@ class EISArcball {
     func locationInBallCoordinates(screenLocation:CGPoint) -> CGPoint {
         
         // -1 to +1
-        var screenLocationInBallCoordinates: CGPoint!
+        var screenLocationInBallCoordinates: CGPoint
         
         // ball radius is half the size of the maximum dimension of screen bounds
         // NOTE: This is less pleasing. Weirdness happens when we go outside the bounds of the sphere.
@@ -136,19 +136,22 @@ class EISArcball {
         // NOTE: This gives more pleasing U/X
         let ballBBoxSizeScreenCoordinates = max(viewBounds.width, viewBounds.height)
         
-        screenLocationInBallCoordinates.x = (2.0 * (screenLocation.x - viewBounds.minX)/viewBounds.width) - 1.0
-        screenLocationInBallCoordinates.y = (2.0 * (screenLocation.y - viewBounds.minY)/viewBounds.height) - 1.0
+        let numerX = screenLocation.x - viewBounds.origin.x
+        let denomX = viewBounds.size.width
+        let numerY = screenLocation.y - viewBounds.origin.y
+        let denomY = viewBounds.size.height
         
-        screenLocationInBallCoordinates.x *= (viewBounds.width/ballBBoxSizeScreenCoordinates)
-        screenLocationInBallCoordinates.y *= (viewBounds.height/ballBBoxSizeScreenCoordinates)
+        screenLocationInBallCoordinates = CGPoint(x:(2.0 * numerX/denomX) - 1.0, y:(2.0 * numerY/denomY) - 1.0);
         
+        screenLocationInBallCoordinates = CGPoint(x:screenLocationInBallCoordinates.x * (viewBounds.width/ballBBoxSizeScreenCoordinates), y:screenLocationInBallCoordinates.y * (viewBounds.height/ballBBoxSizeScreenCoordinates));
+
         // flip y
-        screenLocationInBallCoordinates.y *= -1.0;
+        screenLocationInBallCoordinates = CGPoint(x:screenLocationInBallCoordinates.x, y:-screenLocationInBallCoordinates.y);
         
         return screenLocationInBallCoordinates;
     }
 
-    func arcBallPanHandler(panGester:UIPanGestureRecognizer) {
+    @objc func arcBallPanHandler(panGester:UIPanGestureRecognizer) {
         
         switch (panGester.state) {
             

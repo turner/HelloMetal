@@ -15,9 +15,9 @@ public class MetalViewIOS: MTKView {
         
         arcBall = EISArcball.init(viewBounds: self.bounds)
         
-//        self.addGestureRecognizer(NSPanGestureRecognizer.init(
-//            target: arcBall,
-//            action: #selector(arcBallPanHandler:)))
+        self.addGestureRecognizer(UIPanGestureRecognizer.init(
+            target: arcBall,
+            action: #selector(EISArcball.arcBallPanHandler)))
         
     }
 
@@ -25,7 +25,7 @@ public class MetalViewIOS: MTKView {
 
         super.draw(dirtyRect)
 
-        renderer.update(drawableSize: drawableSize)
+        renderer.update(view:self, drawableSize: drawableSize)
 
         renderer.draw(view:self)
 
