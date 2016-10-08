@@ -9,7 +9,7 @@
 import MetalKit
 import GLKit
 
-struct RendererIOS {
+struct Renderer {
 
     var metallicTransform: MetallicTransform!
 //    var metallicModel: MetallicBoxModel!
@@ -67,7 +67,7 @@ struct RendererIOS {
 
     }
 
-    mutating func update(view:MetalViewIOS, drawableSize:CGSize) {
+    mutating func update(view: MetalView, drawableSize:CGSize) {
 
         metallicTransform.transforms.modelMatrix =
             GLKMatrix4MakeTranslation(0, 0, 0) * GLKMatrix4MakeScale(3, 2, 1)

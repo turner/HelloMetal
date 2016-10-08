@@ -1,9 +1,9 @@
 
 import MetalKit
 
-public class MetalViewIOS: MTKView {
+public class MetalView: MTKView {
     
-    var renderer: RendererIOS!
+    var renderer: Renderer!
     var arcBall: EISArcball!
 
     required public init(coder: NSCoder) {
@@ -11,7 +11,7 @@ public class MetalViewIOS: MTKView {
         super.init(coder: coder)
 
         self.device = MTLCreateSystemDefaultDevice()!
-        self.renderer = RendererIOS(device: self.device!)
+        self.renderer = Renderer(device: self.device!)
         
         arcBall = EISArcball.init(viewBounds: self.bounds)
         
