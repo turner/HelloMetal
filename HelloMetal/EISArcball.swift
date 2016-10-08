@@ -35,7 +35,11 @@ class EISArcball {
     init(viewBounds: CGRect) {
         self.viewBounds = viewBounds
     }
-    
+
+    func reshape (viewBounds: CGRect) {
+        self.viewBounds = viewBounds
+    }
+
     func beginDrag(screenLocation: CGPoint) {
         
         if (nil != rotationTimer) {
@@ -157,6 +161,8 @@ class EISArcball {
     }
 
     func locationInBallCoordinates(screenLocation:CGPoint) -> CGPoint {
+        
+        viewBounds.description(blurb:"view")
 
         let ballBBoxSizeScreenCoordinates = max(viewBounds.width, viewBounds.height)
 

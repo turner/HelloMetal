@@ -115,17 +115,17 @@
 		4F7ABE121DA83A9F0054AFA9 /* HelloMetal */ = {
 			isa = PBXGroup;
 			children = (
-				4F7ABE511DA83CED0054AFA9 /* HelloMetalShader.metal */,
-				4F7ABE521DA83CED0054AFA9 /* HelloTexture.metal */,
-				4F7ABE531DA83CED0054AFA9 /* ShowST.metal */,
 				4F7ABE421DA83C100054AFA9 /* EISArcball.swift */,
-				4F7ABE431DA83C100054AFA9 /* EISCamera.swift */,
+				4F7ABE481DA83C100054AFA9 /* Renderer.swift */,
+				4F7ABE471DA83C100054AFA9 /* MetalView.swift */,
 				4F7ABE441DA83C100054AFA9 /* Math.swift */,
 				4F7ABE451DA83C100054AFA9 /* MetallicModel.swift */,
 				4F7ABE461DA83C100054AFA9 /* MetallicTransform.swift */,
-				4F7ABE471DA83C100054AFA9 /* MetalView.swift */,
-				4F7ABE481DA83C100054AFA9 /* Renderer.swift */,
 				4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */,
+				4F7ABE511DA83CED0054AFA9 /* HelloMetalShader.metal */,
+				4F7ABE521DA83CED0054AFA9 /* HelloTexture.metal */,
+				4F7ABE531DA83CED0054AFA9 /* ShowST.metal */,
+				4F7ABE431DA83C100054AFA9 /* EISCamera.swift */,
 				4F7ABE171DA83A9F0054AFA9 /* Main.storyboard */,
 				4F7ABE1A1DA83A9F0054AFA9 /* Assets.xcassets */,
 				4F7ABE1C1DA83A9F0054AFA9 /* LaunchScreen.storyboard */,
@@ -550,6 +550,7 @@
 				4F7ABE3A1DA83A9F0054AFA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F7ABE3B1DA83A9F0054AFA9 /* Build configuration list for PBXNativeTarget "HelloMetalTests" */ = {
 			isa = XCConfigurationList;
@@ -558,6 +559,7 @@
 				4F7ABE3D1DA83A9F0054AFA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F7ABE3E1DA83A9F0054AFA9 /* Build configuration list for PBXNativeTarget "HelloMetalUITests" */ = {
 			isa = XCConfigurationList;
@@ -566,6 +568,7 @@
 				4F7ABE401DA83A9F0054AFA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

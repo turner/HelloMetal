@@ -23,15 +23,14 @@ class Renderer: NSObject, MTKViewDelegate {
 
     init(device: MTLDevice) {
 
-        self.metallicTransform = MetallicTransform(device: device)
-//        self.metallicModel = MetallicBoxModel(device: device)
-        self.metallicModel = MetallicQuadModel(device: device)
+        metallicTransform = MetallicTransform(device: device)
+        metallicModel = MetallicQuadModel(device: device)
 
-        self.camera = EISCamera()
+        camera = EISCamera()
         // viewing frustrum - eye looks along z-axis towards -z direction
         //                    +y up
         //                    +x to the right
-        self.camera.setTransform(location:GLKVector3(v:(0, 0, 2.5*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+        camera.setTransform(location:GLKVector3(v:(0, 0, 2.5*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         guard let image = UIImage(named:"compass") else {
             fatalError("Error: Can not create image")
@@ -40,7 +39,7 @@ class Renderer: NSObject, MTKViewDelegate {
         let textureLoader = MTKTextureLoader(device: device)
         
         do {
-            self.texture = try textureLoader.newTexture(with: image.cgImage!, options: nil)
+            texture = try textureLoader.newTexture(with: image.cgImage!, options: nil)
         } catch {
             fatalError("Error: Can not load texture")
         }
@@ -70,7 +69,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
         metallicTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(3, 2, 1)
 
-        self.camera.setProjection(fovYDegrees:Float(45), aspectRatioWidthOverHeight:Float(drawableSize.width / drawableSize.height), near: 0, far: 10)
+        camera.setProjection(fovYDegrees:Float(45), aspectRatioWidthOverHeight:Float(drawableSize.width / drawableSize.height), near: 0, far: 10)
         
         metallicTransform.transforms.modelViewProjectionMatrix =
             camera.projectionTransform * camera.transform * metallicTransform.transforms.modelMatrix
@@ -79,8 +78,13 @@ class Renderer: NSObject, MTKViewDelegate {
 
     }
 
+    func reshape (view: MetalView) {
+        view.arcBall.reshape(viewBounds: view.bounds)
+        camera.setProjection(fovYDegrees:Float(45), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 0, far: 10)
+    }
+
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        update(view:view as! MetalView, drawableSize: size)
+        reshape(view:view as! MetalView)
     }
     
     public func draw(in view: MTKView) {

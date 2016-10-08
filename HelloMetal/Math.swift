@@ -12,6 +12,16 @@ struct Vertex {
     }
 }
 
+extension CGRect {
+    
+    func description (blurb: String?=nil) {
+        
+        let str = blurb ?? "---"
+        
+        print("\(str) \(origin.x) \(origin.y) \(size.width) \(size.height)")
+    }
+}
+
 extension GLKVector3 {
     
     func description (blurb: String?=nil) {
