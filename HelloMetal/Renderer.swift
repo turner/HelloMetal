@@ -31,8 +31,9 @@ struct Renderer {
         // viewing frustrum - eye looks along z-axis towards -z direction
         //                    +y up
         //                    +x to the right
-        self.camera.setTransform(location:GLKVector3(v:(0, 0, 3*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
-        
+//        self.camera.setTransform(location:GLKVector3(v:(0, 0, 3*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+        self.camera.setTransform(location:GLKVector3(v:(0, -2*8, 0)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 0, 1)))
+
         guard let image = UIImage(named:"diagnostic") else {
             fatalError("Error: Can not create image")
         }
@@ -55,7 +56,6 @@ struct Renderer {
 //        renderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "showSTFragmentShader")!
         
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-//        renderPipelineDescriptor.colorAttachments[0].pixelFormat = .rgba8Unorm
         
         do {
             renderPipelineState = try device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
@@ -69,8 +69,7 @@ struct Renderer {
 
     mutating func update(view: MetalView, drawableSize:CGSize) {
 
-        metallicTransform.transforms.modelMatrix =
-            GLKMatrix4MakeTranslation(0, 0, 0) * GLKMatrix4MakeScale(3, 2, 1)
+        metallicTransform.transforms.modelMatrix = GLKMatrix4MakeXRotation(GLKMathDegreesToRadians(90)) * GLKMatrix4MakeScale(3, 2, 1)
 
         self.camera.setProjection(fovYDegrees:Float(45), aspectRatioWidthOverHeight:Float(drawableSize.width / drawableSize.height), near: 0, far: 10)
         

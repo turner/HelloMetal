@@ -21,7 +21,7 @@ class EISArcball {
     var rotationTimer: Timer?
     
     var ballCenter = CGPoint(x:0.0, y:0.0)
-    var ballRadius = Float(1.0)
+    var ballRadius = CGFloat(1.0)
     
     var quaternion = GLKQuaternionIdentity
     var rotationMatrix = GLKMatrix4Identity
@@ -44,11 +44,15 @@ class EISArcball {
         }
         
         fromVector = ballLocation(screenLocation: screenLocation)
+//        fromVector.description(blurb:"from")
         
     }
 
     func updateDrag (screenLocation: CGPoint) {
+
         toVector = ballLocation(screenLocation: screenLocation)
+//        toVector.description(blurb:"  to")
+
         rotationAngle = acos(GLKVector3DotProduct(fromVector, toVector))
         rotationAxis = GLKVector3CrossProduct(fromVector, toVector)
         
@@ -109,46 +113,43 @@ class EISArcball {
     func ballLocation(screenLocation:CGPoint) -> GLKVector3 {
         
         let locationInBallCoordinates = self.locationInBallCoordinates(screenLocation:screenLocation)
-        var ballLocation = GLKVector3(v:(Float(locationInBallCoordinates.x - ballCenter.x)/ballRadius, 0, Float(locationInBallCoordinates.y - ballCenter.y)/ballRadius))
-        
-        let magnitude = ballLocation.x * ballLocation.x + ballLocation.z * ballLocation.z
-        
+
+        var ballLocation_x: CGFloat
+        ballLocation_x = (locationInBallCoordinates.x - ballCenter.x) / ballRadius;
+
+        var ballLocation_z: CGFloat
+        ballLocation_z = (locationInBallCoordinates.y - ballCenter.y) / ballRadius;
+
+        let magnitude = ballLocation_x * ballLocation_x + ballLocation_z * ballLocation_z
+
         if (magnitude > 1.0) {
-            ballLocation = GLKVector3MultiplyScalar(ballLocation, 1.0/sqrt(magnitude))
+            let scale = 1.0/sqrt(magnitude)
+            ballLocation_x *= scale;
+            ballLocation_z *= scale;
+            return GLKVector3(v:(Float(ballLocation_x), Float(0), Float(ballLocation_z)))
         } else {
-            ballLocation = GLKVector3(v:(ballLocation.x, -sqrt(1 - magnitude), ballLocation.z))
+            return GLKVector3(v:(Float(ballLocation_x), Float(-sqrt(1 - magnitude)), Float(ballLocation_z)))
         }
-        
-        return ballLocation
-        
+
     }
     
     func locationInBallCoordinates(screenLocation:CGPoint) -> CGPoint {
-        
-        // -1 to +1
-        var screenLocationInBallCoordinates: CGPoint
-        
-        // ball radius is half the size of the maximum dimension of screen bounds
-        // NOTE: This is less pleasing. Weirdness happens when we go outside the bounds of the sphere.
-        //    CGFloat ballBBoxSizeScreenCoordinates = MIN(CGRectGetWidth(_viewBounds), CGRectGetHeight(_viewBounds));
-        
-        // ball radius is half the size of the maximum dimension of screen bounds.
-        // NOTE: This gives more pleasing U/X
+
         let ballBBoxSizeScreenCoordinates = max(viewBounds.width, viewBounds.height)
-        
-        let numerX = screenLocation.x - viewBounds.origin.x
-        let denomX = viewBounds.size.width
-        let numerY = screenLocation.y - viewBounds.origin.y
-        let denomY = viewBounds.size.height
-        
-        screenLocationInBallCoordinates = CGPoint(x:(2.0 * numerX/denomX) - 1.0, y:(2.0 * numerY/denomY) - 1.0);
-        
-        screenLocationInBallCoordinates = CGPoint(x:screenLocationInBallCoordinates.x * (viewBounds.width/ballBBoxSizeScreenCoordinates), y:screenLocationInBallCoordinates.y * (viewBounds.height/ballBBoxSizeScreenCoordinates));
+
+        // -1 to +1
+        var screenLocationInBallCoordinates_x: CGFloat
+        screenLocationInBallCoordinates_x = (2.0 * (screenLocation.x - viewBounds.origin.x) / viewBounds.size.width) - 1.0
+        screenLocationInBallCoordinates_x *= (viewBounds.size.width / ballBBoxSizeScreenCoordinates);
+
+        var screenLocationInBallCoordinates_y: CGFloat
+        screenLocationInBallCoordinates_y = (2.0 * (screenLocation.y - viewBounds.origin.y) / viewBounds.size.height) - 1.0
+        screenLocationInBallCoordinates_y *= (viewBounds.size.height / ballBBoxSizeScreenCoordinates);
 
         // flip y
-        screenLocationInBallCoordinates = CGPoint(x:screenLocationInBallCoordinates.x, y:-screenLocationInBallCoordinates.y);
-        
-        return screenLocationInBallCoordinates;
+        screenLocationInBallCoordinates_y *= -1.0;
+
+        return CGPoint(x:screenLocationInBallCoordinates_x, y:screenLocationInBallCoordinates_y);
     }
 
     @objc func arcBallPanHandler(panGester:UIPanGestureRecognizer) {

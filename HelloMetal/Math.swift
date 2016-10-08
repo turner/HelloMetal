@@ -18,8 +18,7 @@ extension GLKVector3 {
         
         let str = blurb ?? "---"
         
-        print("\(str)\n")
-        print("\(self.x)\n\(self.y)\n\(self.z)\n")
+        print("\(str) \(self.x) \(self.y) \(self.z)")
     }
 }
 
