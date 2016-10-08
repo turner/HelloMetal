@@ -9,7 +9,7 @@
 import MetalKit
 import GLKit
 
-struct Renderer {
+class Renderer: NSObject, MTKViewDelegate {
 
     var metallicTransform: MetallicTransform!
 //    var metallicModel: MetallicBoxModel!
@@ -66,7 +66,7 @@ struct Renderer {
 
     }
 
-    mutating func update(view: MetalView, drawableSize:CGSize) {
+    func update(view: MetalView, drawableSize:CGSize) {
 
         metallicTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(3, 2, 1)
 
@@ -79,7 +79,13 @@ struct Renderer {
 
     }
 
-    func draw(view:MTKView) {
+    public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        update(view:view as! MetalView, drawableSize: size)
+    }
+    
+    public func draw(in view: MTKView) {
+        
+        update(view: view as! MetalView, drawableSize: view.bounds.size)
 
         if let renderPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 

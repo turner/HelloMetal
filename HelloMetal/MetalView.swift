@@ -12,6 +12,7 @@ public class MetalView: MTKView {
 
         self.device = MTLCreateSystemDefaultDevice()!
         self.renderer = Renderer(device: self.device!)
+        self.delegate = self.renderer
         
         arcBall = EISArcball.init(viewBounds: self.bounds)
         
@@ -21,13 +22,14 @@ public class MetalView: MTKView {
         
     }
 
-    override public func draw(_ dirtyRect: CGRect) {
+//    override public func draw(_ dirtyRect: CGRect) {
+//
+//        super.draw(dirtyRect)
+//
+//        renderer.update(view:self, drawableSize: drawableSize)
+//
+//        renderer.draw(view:self)
+//
+//    }
 
-        super.draw(dirtyRect)
-
-        renderer.update(view:self, drawableSize: drawableSize)
-
-        renderer.draw(view:self)
-
-    }
 }
