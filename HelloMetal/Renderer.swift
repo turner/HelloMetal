@@ -31,8 +31,7 @@ struct Renderer {
         // viewing frustrum - eye looks along z-axis towards -z direction
         //                    +y up
         //                    +x to the right
-        self.camera.setTransform(location:GLKVector3(v:(0, 0, 1.5*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
-//        self.camera.setTransform(location:GLKVector3(v:(0, -2*8, 0)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 0, 1)))
+        self.camera.setTransform(location:GLKVector3(v:(0, 0, 2.5*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         guard let image = UIImage(named:"compass") else {
             fatalError("Error: Can not create image")
@@ -69,13 +68,12 @@ struct Renderer {
 
     mutating func update(view: MetalView, drawableSize:CGSize) {
 
-//        metallicTransform.transforms.modelMatrix = GLKMatrix4MakeXRotation(GLKMathDegreesToRadians(90)) * GLKMatrix4MakeScale(3, 2, 1)
-        metallicTransform.transforms.modelMatrix = GLKMatrix4MakeScale(3, 2, 1)
+        metallicTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(3, 2, 1)
 
         self.camera.setProjection(fovYDegrees:Float(45), aspectRatioWidthOverHeight:Float(drawableSize.width / drawableSize.height), near: 0, far: 10)
         
         metallicTransform.transforms.modelViewProjectionMatrix =
-            camera.projectionTransform * camera.transform * view.arcBall.rotationMatrix * metallicTransform.transforms.modelMatrix
+            camera.projectionTransform * camera.transform * metallicTransform.transforms.modelMatrix
 
         metallicTransform.update()
 
