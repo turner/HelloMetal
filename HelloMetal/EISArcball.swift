@@ -162,7 +162,7 @@ class EISArcball {
 
     func locationInBallCoordinates(screenLocation:CGPoint) -> CGPoint {
         
-        viewBounds.description(blurb:"view")
+//        viewBounds.description(blurb:"view")
 
         let ballBBoxSizeScreenCoordinates = max(viewBounds.width, viewBounds.height)
 

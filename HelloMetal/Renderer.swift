@@ -103,7 +103,8 @@ class Renderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setRenderPipelineState(self.renderPipelineState)
 
             renderCommandEncoder.setFrontFacing(.counterClockwise)
-            renderCommandEncoder.setCullMode(.back)
+//            renderCommandEncoder.setCullMode(.back)
+            renderCommandEncoder.setCullMode(.none)
 
             renderCommandEncoder.setVertexBuffer(self.metallicModel.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(self.metallicTransform.metalBuffer, offset: 0, at: 1)
