@@ -103,6 +103,10 @@ class Renderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setRenderPipelineState(self.renderPipelineState)
 
             renderCommandEncoder.setFrontFacing(.counterClockwise)
+
+            renderCommandEncoder.setTriangleFillMode(.fill)
+//            renderCommandEncoder.setTriangleFillMode(.lines)
+
 //            renderCommandEncoder.setCullMode(.back)
             renderCommandEncoder.setCullMode(.none)
 
