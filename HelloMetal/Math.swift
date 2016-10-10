@@ -58,43 +58,6 @@ func * (_ left: GLKMatrix4, _ right: GLKMatrix4) -> GLKMatrix4 {
     return GLKMatrix4Multiply(left, right)
 }
 
-func EISMatrix4MakeLookAt(eye:GLKVector3, target:GLKVector3, approximateUp:GLKVector3) -> GLKMatrix4 {
-
-    let n = GLKVector3Normalize(GLKVector3Add(eye, GLKVector3Negate(target)))
-
-    var crossed:GLKVector3!
-    
-    crossed = GLKVector3CrossProduct(approximateUp, n)
-    var u:GLKVector3!
-    if (GLKVector3Length(crossed) > 0.0001) {
-        u = GLKVector3Normalize(crossed)
-    } else {
-        u = crossed
-    }
-    
-    crossed = GLKVector3CrossProduct(n, u)
-    var v:GLKVector3!
-    if (GLKVector3Length(crossed) > 0.0001) {
-        v = GLKVector3Normalize(crossed)
-    } else {
-        v = crossed
-    }
-    
-//    n.description()
-//    u.description()
-//    v.description()
-    
-    let m = GLKMatrix4(m: (
-            u.x, v.x, n.x, Float(0),
-            u.y, v.y, n.y, Float(0),
-            u.z, v.z, n.z, Float(0),
-            GLKVector3DotProduct(GLKVector3Negate(u), eye), GLKVector3DotProduct(GLKVector3Negate(v), eye), GLKVector3DotProduct(GLKVector3Negate(n), eye), Float(1)))
-
-//    m.description()
-
-    return m;
-}
-
 func smoothStep(value:Float, lower:Float, upper:Float) -> Float {
     
     //	// This implementation from:

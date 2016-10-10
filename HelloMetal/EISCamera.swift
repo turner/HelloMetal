@@ -26,10 +26,7 @@ struct EISCamera {
         self.location = location
         self.target = target
 
-        self.transform = EISMatrix4MakeLookAt(eye:location, target: target, approximateUp: approximateUp)
-//        let _blurb = "camera.transform"
-//        self.transform.description(blurb:_blurb)
-
+        self.transform = makeLookAt(eye:location, target: target, approximateUp: approximateUp)
     }
 
     mutating func setProjection (fovYDegrees:Float, aspectRatioWidthOverHeight:Float, near:Float, far:Float) {
@@ -40,8 +37,39 @@ struct EISCamera {
         self.aspectRatioWidthOverHeight = aspectRatioWidthOverHeight;
 
         self.projectionTransform = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(self.fovYDegrees), self.aspectRatioWidthOverHeight, self.near, self.far);
-//        self.projectionTransform.description()
 
     }
+
+    func makeLookAt(eye:GLKVector3, target:GLKVector3, approximateUp:GLKVector3) -> GLKMatrix4 {
+
+        let n = GLKVector3Normalize(GLKVector3Add(eye, GLKVector3Negate(target)))
+
+        var crossed:GLKVector3!
+
+        crossed = GLKVector3CrossProduct(approximateUp, n)
+        var u:GLKVector3!
+        if (GLKVector3Length(crossed) > 0.0001) {
+            u = GLKVector3Normalize(crossed)
+        } else {
+            u = crossed
+        }
+
+        crossed = GLKVector3CrossProduct(n, u)
+        var v:GLKVector3!
+        if (GLKVector3Length(crossed) > 0.0001) {
+            v = GLKVector3Normalize(crossed)
+        } else {
+            v = crossed
+        }
+
+        let m = GLKMatrix4(m: (
+                u.x, v.x, n.x, Float(0),
+                u.y, v.y, n.y, Float(0),
+                u.z, v.z, n.z, Float(0),
+                GLKVector3DotProduct(GLKVector3Negate(u), eye), GLKVector3DotProduct(GLKVector3Negate(v), eye), GLKVector3DotProduct(GLKVector3Negate(n), eye), Float(1)))
+
+        return m;
+    }
+
 
 }

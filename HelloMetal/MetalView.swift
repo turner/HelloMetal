@@ -22,14 +22,4 @@ public class MetalView: MTKView {
         
     }
 
-//    override public func draw(_ dirtyRect: CGRect) {
-//
-//        super.draw(dirtyRect)
-//
-//        renderer.update(view:self, drawableSize: drawableSize)
-//
-//        renderer.draw(view:self)
-//
-//    }
-
 }
