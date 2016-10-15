@@ -71,5 +71,26 @@ struct EISCamera {
         return m;
     }
 
+    func renderPlaneTransform (distanceFromCamera: Float) -> GLKMatrix4 {
+
+        var unused: Bool = true
+        let _A_ = GLKMatrix4Invert(self.transform, &unused);
+        let A = GLKMatrix4MakeWithRows(GLKMatrix4GetRow(_A_, 0), GLKMatrix4GetRow(_A_, 1), GLKMatrix4GetRow(_A_, 2), GLKMatrix4GetRow(GLKMatrix4Identity, 3))
+
+        // Translate rotated camera plane to camera origin.
+        let B = GLKMatrix4MakeTranslation(self.location.x, self.location.y, self.location.z);
+
+        // Position camera plane by translating the distance "cameraNear" along camera look-at vector.
+        let direction = GLKVector3Normalize(GLKVector3Subtract(self.target, self.location));
+        let translation = GLKVector3MultiplyScalar(direction, distanceFromCamera);
+
+        let C = GLKMatrix4MakeTranslation(translation.x, translation.y, translation.z);
+
+        // Concatenate.
+        let transform = GLKMatrix4Multiply(C, GLKMatrix4Multiply(B, A));
+
+        return transform
+
+    }
 
 }

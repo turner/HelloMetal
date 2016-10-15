@@ -67,6 +67,14 @@ class Renderer: NSObject, MTKViewDelegate {
 
     func update(view: MetalView, drawableSize:CGSize) {
 
+        let dimension = 2 * camera.far * tan(GLKMathDegreesToRadians(camera.fovYDegrees/2.0))
+        let sc = GLKMatrix4MakeScale(dimension * camera.aspectRatioWidthOverHeight, dimension, 1)
+
+
+
+
+
+
         metallicTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(3, 2, 1)
 
         camera.setProjection(fovYDegrees:Float(45), aspectRatioWidthOverHeight:Float(drawableSize.width / drawableSize.height), near: 0, far: 10)
