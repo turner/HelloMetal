@@ -11,9 +11,12 @@ import GLKit
 
 class Renderer: NSObject, MTKViewDelegate {
 
-    var metallicTransform: MetallicTransform!
-//    var metallicModel: MetallicBoxModel!
-    var metallicModel: MetallicQuadModel!
+    var renderPlaneTransform: MetallicTransform!
+    var renderPlane: MetallicQuadModel!
+
+    var heroModelTransform: MetallicTransform!
+    var heroModel: MetallicQuadModel!
+
     var camera: EISCamera!
 
     var renderPipelineState: MTLRenderPipelineState!
@@ -23,17 +26,24 @@ class Renderer: NSObject, MTKViewDelegate {
 
     init(device: MTLDevice) {
 
-        metallicTransform = MetallicTransform(device: device)
-        metallicModel = MetallicQuadModel(device: device)
+        renderPlaneTransform = MetallicTransform(device: device)
+        renderPlane = MetallicQuadModel(device: device)
+
+        heroModelTransform = MetallicTransform(device: device)
+        heroModel = MetallicQuadModel(device: device)
 
         camera = EISCamera()
         // viewing frustrum - eye looks along z-axis towards -z direction
         //                    +y up
         //                    +x to the right
 //        camera.setTransform(location:GLKVector3(v:(0, 0, 2.5*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
-        camera.setTransform(location:GLKVector3(v:(-100, 0, 1000)), target:GLKVector3(v:(100, -100, 0)), approximateUp:GLKVector3(v:(1, 1, 0)))
 
-        guard let image = UIImage(named:"compass") else {
+        camera.setTransform(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+
+//        To test render plane placement in camera frustrum
+//        camera.setTransform(location:GLKVector3(v:(-100, 0, 1000)), target:GLKVector3(v:(100, -100, 0)), approximateUp:GLKVector3(v:(1, 1, 0)))
+
+        guard let image = UIImage(named:"diagnostic") else {
             fatalError("Error: Can not create image")
         }
         
@@ -68,27 +78,35 @@ class Renderer: NSObject, MTKViewDelegate {
 
     func update(view: MetalView, drawableSize:CGSize) {
 
-        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(drawableSize.width / drawableSize.height), near: 600, far: 1400)
+        let degrees = camera.fovYDegrees/2
+        let radians = GLKMathDegreesToRadians(degrees)
+        let tanRadians = tan(radians)
+        
+        let fudge = 0.9 * camera.far
+        let dimension = fudge * tanRadians
+        
+        let xform = camera.renderPlaneTransform(distanceFromCamera: fudge)
+        let xScale = dimension*camera.aspectRatioWidthOverHeight
+        let yScale = dimension
+        let scale = GLKMatrix4MakeScale(xScale, yScale, 1)
+        
+        // render plane
+        renderPlaneTransform.transforms.modelMatrix = xform * scale
+        renderPlaneTransform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * renderPlaneTransform.transforms.modelMatrix
+        renderPlaneTransform.update()
 
-//        metallicTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(3, 2, 1)
 
-        let dimension = camera.far * tan(GLKMathDegreesToRadians(camera.fovYDegrees/2.0))
-        let scale = GLKMatrix4MakeScale(dimension * camera.aspectRatioWidthOverHeight, dimension, 1)
-
-        let xform = camera.renderPlaneTransform(distanceFromCamera: (camera.near + camera.far)/2)
-
-        metallicTransform.transforms.modelMatrix = xform * scale
-
-        metallicTransform.transforms.modelViewProjectionMatrix =
-            camera.projectionTransform * camera.transform * metallicTransform.transforms.modelMatrix
-
-        metallicTransform.update()
+        // hero model
+        heroModelTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(100, 200, 1)
+        heroModelTransform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModelTransform.transforms.modelMatrix
+        heroModelTransform.update()
 
     }
 
     func reshape (view: MetalView) {
         view.arcBall.reshape(viewBounds: view.bounds)
-        camera.setProjection(fovYDegrees:Float(45), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 0, far: 10)
+//        camera.setProjection(fovYDegrees:Float(45), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 0, far: 10)
+        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 2000)
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
@@ -118,16 +136,33 @@ class Renderer: NSObject, MTKViewDelegate {
 //            renderCommandEncoder.setCullMode(.back)
             renderCommandEncoder.setCullMode(.none)
 
-            renderCommandEncoder.setVertexBuffer(self.metallicModel.vertexMetalBuffer, offset: 0, at: 0)
-            renderCommandEncoder.setVertexBuffer(self.metallicTransform.metalBuffer, offset: 0, at: 1)
+
+
+            //
+            renderCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
+            renderCommandEncoder.setVertexBuffer(renderPlaneTransform.metalBuffer, offset: 0, at: 1)
 
             renderCommandEncoder.drawIndexedPrimitives(
-                type: .triangle,
-                indexCount: self.metallicModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
-                indexType: MTLIndexType.uint16,
-                indexBuffer: self.metallicModel.vertexIndexMetalBuffer,
-                indexBufferOffset: 0)
-            
+                    type: .triangle,
+                    indexCount: renderPlane.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
+                    indexType: MTLIndexType.uint16,
+                    indexBuffer: renderPlane.vertexIndexMetalBuffer,
+                    indexBufferOffset: 0)
+
+            //
+//            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
+//            renderCommandEncoder.setVertexBuffer(heroModelTransform.metalBuffer, offset: 0, at: 1)
+//
+//            renderCommandEncoder.drawIndexedPrimitives(
+//                    type: .triangle,
+//                    indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
+//                    indexType: MTLIndexType.uint16,
+//                    indexBuffer: heroModel.vertexIndexMetalBuffer,
+//                    indexBufferOffset: 0)
+
+
+
+
             renderCommandEncoder.endEncoding()
 
             commandBuffer.present(drawable)
