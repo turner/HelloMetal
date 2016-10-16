@@ -75,7 +75,7 @@ struct EISCamera {
 
         var unused: Bool = true
         let _A_ = GLKMatrix4Invert(self.transform, &unused);
-        let A = GLKMatrix4MakeWithRows(GLKMatrix4GetColumn(_A_, 0), GLKMatrix4GetColumn(_A_, 1), GLKMatrix4GetColumn(_A_, 2), GLKMatrix4GetColumn(GLKMatrix4Identity, 3));
+        let A = GLKMatrix4MakeWithColumns(GLKMatrix4GetColumn(_A_, 0), GLKMatrix4GetColumn(_A_, 1), GLKMatrix4GetColumn(_A_, 2), GLKMatrix4GetColumn(GLKMatrix4Identity, 3));
 
         // Translate rotated camera plane to camera origin.
         let B = GLKMatrix4MakeTranslation(self.location.x, self.location.y, self.location.z);

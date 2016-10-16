@@ -31,7 +31,7 @@ class Renderer: NSObject, MTKViewDelegate {
         //                    +y up
         //                    +x to the right
 //        camera.setTransform(location:GLKVector3(v:(0, 0, 2.5*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
-        camera.setTransform(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+        camera.setTransform(location:GLKVector3(v:(-100, 0, 1000)), target:GLKVector3(v:(100, -100, 0)), approximateUp:GLKVector3(v:(1, 1, 0)))
 
         guard let image = UIImage(named:"compass") else {
             fatalError("Error: Can not create image")
@@ -70,11 +70,13 @@ class Renderer: NSObject, MTKViewDelegate {
 
         camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(drawableSize.width / drawableSize.height), near: 600, far: 1400)
 
+//        metallicTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(3, 2, 1)
+
         let dimension = camera.far * tan(GLKMathDegreesToRadians(camera.fovYDegrees/2.0))
         let scale = GLKMatrix4MakeScale(dimension * camera.aspectRatioWidthOverHeight, dimension, 1)
-        let xform = camera.renderPlaneTransform(distanceFromCamera: camera.far)
 
-//        metallicTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(3, 2, 1)
+        let xform = camera.renderPlaneTransform(distanceFromCamera: (camera.near + camera.far)/2)
+
         metallicTransform.transforms.modelMatrix = xform * scale
 
         metallicTransform.transforms.modelViewProjectionMatrix =
@@ -110,8 +112,8 @@ class Renderer: NSObject, MTKViewDelegate {
 
             renderCommandEncoder.setFrontFacing(.counterClockwise)
 
-//            renderCommandEncoder.setTriangleFillMode(.fill)
-            renderCommandEncoder.setTriangleFillMode(.lines)
+            renderCommandEncoder.setTriangleFillMode(.fill)
+//            renderCommandEncoder.setTriangleFillMode(.lines)
 
 //            renderCommandEncoder.setCullMode(.back)
             renderCommandEncoder.setCullMode(.none)
