@@ -71,7 +71,7 @@ struct EISCamera {
         return m;
     }
 
-    func renderPlaneTransform (distanceFromCamera: Float) -> GLKMatrix4 {
+    func createRenderPlaneTransform(distanceFromCamera: Float) -> GLKMatrix4 {
 
         var unused: Bool = true
         let _A_ = GLKMatrix4Invert(self.transform, &unused);

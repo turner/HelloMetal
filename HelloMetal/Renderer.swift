@@ -78,20 +78,13 @@ class Renderer: NSObject, MTKViewDelegate {
 
     func update(view: MetalView, drawableSize:CGSize) {
 
-        let degrees = camera.fovYDegrees/2
-        let radians = GLKMathDegreesToRadians(degrees)
-        let tanRadians = tan(radians)
-        
         let fudge = 0.9 * camera.far
-        let dimension = fudge * tanRadians
+        let dimension = fudge * tan( GLKMathDegreesToRadians( camera.fovYDegrees/2 ) )
         
-        let xform = camera.renderPlaneTransform(distanceFromCamera: fudge)
-        let xScale = dimension*camera.aspectRatioWidthOverHeight
-        let yScale = dimension
-        let scale = GLKMatrix4MakeScale(xScale, yScale, 1)
+        let scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
         
         // render plane
-        renderPlaneTransform.transforms.modelMatrix = xform * scale
+        renderPlaneTransform.transforms.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
         renderPlaneTransform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * renderPlaneTransform.transforms.modelMatrix
         renderPlaneTransform.update()
 
@@ -121,12 +114,12 @@ class Renderer: NSObject, MTKViewDelegate {
 
             renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.3, 0.5, 0.5, 1.0)
 
-            let commandBuffer = self.commandQueue.makeCommandBuffer()
+            let commandBuffer = commandQueue.makeCommandBuffer()
             let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
 
-            renderCommandEncoder.setFragmentTexture(self.texture, at: 0)
+            renderCommandEncoder.setFragmentTexture(texture, at: 0)
             
-            renderCommandEncoder.setRenderPipelineState(self.renderPipelineState)
+            renderCommandEncoder.setRenderPipelineState(renderPipelineState)
 
             renderCommandEncoder.setFrontFacing(.counterClockwise)
 
@@ -138,7 +131,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
 
 
-            //
+            // render plane
             renderCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(renderPlaneTransform.metalBuffer, offset: 0, at: 1)
 
@@ -149,16 +142,16 @@ class Renderer: NSObject, MTKViewDelegate {
                     indexBuffer: renderPlane.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)
 
-            //
-//            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
-//            renderCommandEncoder.setVertexBuffer(heroModelTransform.metalBuffer, offset: 0, at: 1)
-//
-//            renderCommandEncoder.drawIndexedPrimitives(
-//                    type: .triangle,
-//                    indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
-//                    indexType: MTLIndexType.uint16,
-//                    indexBuffer: heroModel.vertexIndexMetalBuffer,
-//                    indexBufferOffset: 0)
+            // hero
+            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
+            renderCommandEncoder.setVertexBuffer(heroModelTransform.metalBuffer, offset: 0, at: 1)
+
+            renderCommandEncoder.drawIndexedPrimitives(
+                    type: .triangle,
+                    indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
+                    indexType: MTLIndexType.uint16,
+                    indexBuffer: heroModel.vertexIndexMetalBuffer,
+                    indexBufferOffset: 0)
 
 
 
