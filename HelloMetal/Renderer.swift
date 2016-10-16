@@ -30,7 +30,8 @@ class Renderer: NSObject, MTKViewDelegate {
         // viewing frustrum - eye looks along z-axis towards -z direction
         //                    +y up
         //                    +x to the right
-        camera.setTransform(location:GLKVector3(v:(0, 0, 2.5*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+//        camera.setTransform(location:GLKVector3(v:(0, 0, 2.5*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+        camera.setTransform(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         guard let image = UIImage(named:"compass") else {
             fatalError("Error: Can not create image")
@@ -47,11 +48,11 @@ class Renderer: NSObject, MTKViewDelegate {
         let library = device.newDefaultLibrary()
         let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
         
-        renderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "helloTextureVertexShader")!
-        renderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "helloTextureFragmentShader")!
+//        renderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "helloTextureVertexShader")!
+//        renderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "helloTextureFragmentShader")!
         
-//        renderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "showSTVertexShader")!
-//        renderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "showSTFragmentShader")!
+        renderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "showSTVertexShader")!
+        renderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "showSTFragmentShader")!
         
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
         
@@ -67,18 +68,15 @@ class Renderer: NSObject, MTKViewDelegate {
 
     func update(view: MetalView, drawableSize:CGSize) {
 
-        let dimension = 2 * camera.far * tan(GLKMathDegreesToRadians(camera.fovYDegrees/2.0))
-        let sc = GLKMatrix4MakeScale(dimension * camera.aspectRatioWidthOverHeight, dimension, 1)
+        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(drawableSize.width / drawableSize.height), near: 600, far: 1400)
 
+        let dimension = camera.far * tan(GLKMathDegreesToRadians(camera.fovYDegrees/2.0))
+        let scale = GLKMatrix4MakeScale(dimension * camera.aspectRatioWidthOverHeight, dimension, 1)
+        let xform = camera.renderPlaneTransform(distanceFromCamera: camera.far)
 
+//        metallicTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(3, 2, 1)
+        metallicTransform.transforms.modelMatrix = xform * scale
 
-
-
-
-        metallicTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(3, 2, 1)
-
-        camera.setProjection(fovYDegrees:Float(45), aspectRatioWidthOverHeight:Float(drawableSize.width / drawableSize.height), near: 0, far: 10)
-        
         metallicTransform.transforms.modelViewProjectionMatrix =
             camera.projectionTransform * camera.transform * metallicTransform.transforms.modelMatrix
 
@@ -112,8 +110,8 @@ class Renderer: NSObject, MTKViewDelegate {
 
             renderCommandEncoder.setFrontFacing(.counterClockwise)
 
-            renderCommandEncoder.setTriangleFillMode(.fill)
-//            renderCommandEncoder.setTriangleFillMode(.lines)
+//            renderCommandEncoder.setTriangleFillMode(.fill)
+            renderCommandEncoder.setTriangleFillMode(.lines)
 
 //            renderCommandEncoder.setCullMode(.back)
             renderCommandEncoder.setCullMode(.none)
