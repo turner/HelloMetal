@@ -19,7 +19,9 @@ class Renderer: NSObject, MTKViewDelegate {
 
     var camera: EISCamera!
 
-    var renderPipelineState: MTLRenderPipelineState!
+    var renderPlaneRenderPipelineState: MTLRenderPipelineState!
+    var heroRenderPipelineState: MTLRenderPipelineState!
+
     var depthStencilState: MTLDepthStencilState!
     var commandQueue: MTLCommandQueue!
     var texture: MTLTexture!
@@ -56,18 +58,29 @@ class Renderer: NSObject, MTKViewDelegate {
         }
         
         let library = device.newDefaultLibrary()
-        let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
-        
-//        renderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "helloTextureVertexShader")!
-//        renderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "helloTextureFragmentShader")!
-        
-        renderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "showSTVertexShader")!
-        renderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "showSTFragmentShader")!
-        
-        renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-        
+
+        let renderPlaneRenderPipelineDescriptor = MTLRenderPipelineDescriptor()
+
+        renderPlaneRenderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "showSTVertexShader")!
+        renderPlaneRenderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "showSTFragmentShader")!
+
+        renderPlaneRenderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+
         do {
-            renderPipelineState = try device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
+            renderPlaneRenderPipelineState = try device.makeRenderPipelineState(descriptor: renderPlaneRenderPipelineDescriptor)
+        } catch let e {
+            Swift.print("\(e)")
+        }
+
+        let heroRenderPipelineDescriptor = MTLRenderPipelineDescriptor()
+
+        heroRenderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "helloTextureVertexShader")!
+        heroRenderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "helloTextureFragmentShader")!
+
+        heroRenderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+
+        do {
+            heroRenderPipelineState = try device.makeRenderPipelineState(descriptor: heroRenderPipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
         }
@@ -115,26 +128,19 @@ class Renderer: NSObject, MTKViewDelegate {
             renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.3, 0.5, 0.5, 1.0)
 
             let commandBuffer = commandQueue.makeCommandBuffer()
+
             let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
 
-            renderCommandEncoder.setFragmentTexture(texture, at: 0)
-            
-            renderCommandEncoder.setRenderPipelineState(renderPipelineState)
-
             renderCommandEncoder.setFrontFacing(.counterClockwise)
-
             renderCommandEncoder.setTriangleFillMode(.fill)
-//            renderCommandEncoder.setTriangleFillMode(.lines)
-
-//            renderCommandEncoder.setCullMode(.back)
             renderCommandEncoder.setCullMode(.none)
 
 
 
             // render plane
+            renderCommandEncoder.setRenderPipelineState(renderPlaneRenderPipelineState)
             renderCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(renderPlaneTransform.metalBuffer, offset: 0, at: 1)
-
             renderCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
                     indexCount: renderPlane.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
@@ -142,10 +148,13 @@ class Renderer: NSObject, MTKViewDelegate {
                     indexBuffer: renderPlane.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)
 
-            // hero
+
+
+//            // hero
+            renderCommandEncoder.setRenderPipelineState(heroRenderPipelineState)
+            renderCommandEncoder.setFragmentTexture(texture, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModelTransform.metalBuffer, offset: 0, at: 1)
-
             renderCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
                     indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
