@@ -11,10 +11,7 @@ import GLKit
 
 class Renderer: NSObject, MTKViewDelegate {
 
-    var renderPlaneTransform: MetallicTransform!
     var renderPlane: MetallicQuadModel!
-
-    var heroModelTransform: MetallicTransform!
     var heroModel: MetallicQuadModel!
 
     var camera: EISCamera!
@@ -28,10 +25,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
     init(device: MTLDevice) {
 
-        renderPlaneTransform = MetallicTransform(device: device)
         renderPlane = MetallicQuadModel(device: device)
-
-        heroModelTransform = MetallicTransform(device: device)
         heroModel = MetallicQuadModel(device: device)
 
         camera = EISCamera()
@@ -97,15 +91,15 @@ class Renderer: NSObject, MTKViewDelegate {
         let scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
         
         // render plane
-        renderPlaneTransform.transforms.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
-        renderPlaneTransform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * renderPlaneTransform.transforms.modelMatrix
-        renderPlaneTransform.update()
+        renderPlane.transform.transforms.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
+        renderPlane.transform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * renderPlane.transform.transforms.modelMatrix
+        renderPlane.transform.update()
 
 
         // hero model
-        heroModelTransform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(100, 200, 1)
-        heroModelTransform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModelTransform.transforms.modelMatrix
-        heroModelTransform.update()
+        heroModel.transform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(100, 200, 1)
+        heroModel.transform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModel.transform.transforms.modelMatrix
+        heroModel.transform.update()
 
     }
 
@@ -140,7 +134,7 @@ class Renderer: NSObject, MTKViewDelegate {
             // render plane
             renderCommandEncoder.setRenderPipelineState(renderPlaneRenderPipelineState)
             renderCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
-            renderCommandEncoder.setVertexBuffer(renderPlaneTransform.metalBuffer, offset: 0, at: 1)
+            renderCommandEncoder.setVertexBuffer(renderPlane.transform.metalBuffer, offset: 0, at: 1)
             renderCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
                     indexCount: renderPlane.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
@@ -154,7 +148,7 @@ class Renderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setRenderPipelineState(heroRenderPipelineState)
             renderCommandEncoder.setFragmentTexture(texture, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
-            renderCommandEncoder.setVertexBuffer(heroModelTransform.metalBuffer, offset: 0, at: 1)
+            renderCommandEncoder.setVertexBuffer(heroModel.transform.metalBuffer, offset: 0, at: 1)
             renderCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
                     indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
