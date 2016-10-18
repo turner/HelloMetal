@@ -16,14 +16,16 @@ class Renderer: NSObject, MTKViewDelegate {
 
     var camera: EISCamera!
 
-    var renderPlaneRenderPipelineState: MTLRenderPipelineState!
-    var heroRenderPipelineState: MTLRenderPipelineState!
+    var renderToTexturePassDescriptor: MTLRenderPassDescriptor!
+    var renderToTexturePipelineState: MTLRenderPipelineState!
+
+    var finalPassPipelineState: MTLRenderPipelineState!
 
     var depthStencilState: MTLDepthStencilState!
     var commandQueue: MTLCommandQueue!
-    var texture: MTLTexture!
+    var heroTexture: MTLTexture!
 
-    init(device: MTLDevice) {
+    init(view: MTKView, device: MTLDevice) {
 
         renderPlane = MetallicQuadModel(device: device)
         heroModel = MetallicQuadModel(device: device)
@@ -32,12 +34,8 @@ class Renderer: NSObject, MTKViewDelegate {
         // viewing frustrum - eye looks along z-axis towards -z direction
         //                    +y up
         //                    +x to the right
-//        camera.setTransform(location:GLKVector3(v:(0, 0, 2.5*8)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         camera.setTransform(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
-
-//        To test render plane placement in camera frustrum
-//        camera.setTransform(location:GLKVector3(v:(-100, 0, 1000)), target:GLKVector3(v:(100, -100, 0)), approximateUp:GLKVector3(v:(1, 1, 0)))
 
         guard let image = UIImage(named:"diagnostic") else {
             fatalError("Error: Can not create image")
@@ -46,38 +44,61 @@ class Renderer: NSObject, MTKViewDelegate {
         let textureLoader = MTKTextureLoader(device: device)
         
         do {
-            texture = try textureLoader.newTexture(with: image.cgImage!, options: nil)
+            heroTexture = try textureLoader.newTexture(with: image.cgImage!, options: nil)
         } catch {
             fatalError("Error: Can not load texture")
         }
         
         let library = device.newDefaultLibrary()
 
-        let renderPlaneRenderPipelineDescriptor = MTLRenderPipelineDescriptor()
-
-        renderPlaneRenderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "showSTVertexShader")!
-        renderPlaneRenderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "showSTFragmentShader")!
-
-        renderPlaneRenderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        let renderToTexturePipelineDescriptor = MTLRenderPipelineDescriptor()
+        renderToTexturePipelineDescriptor.vertexFunction = library?.makeFunction(name: "helloTextureVertexShader")!
+        renderToTexturePipelineDescriptor.fragmentFunction = library?.makeFunction(name: "helloTextureFragmentShader")!
+        renderToTexturePipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
+        renderToTexturePipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
 
         do {
-            renderPlaneRenderPipelineState = try device.makeRenderPipelineState(descriptor: renderPlaneRenderPipelineDescriptor)
+            renderToTexturePipelineState = try device.makeRenderPipelineState(descriptor: renderToTexturePipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
         }
 
-        let heroRenderPipelineDescriptor = MTLRenderPipelineDescriptor()
+        renderToTexturePassDescriptor = MTLRenderPassDescriptor()
 
-        heroRenderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "helloTextureVertexShader")!
-        heroRenderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "helloTextureFragmentShader")!
+        // color
+        renderToTexturePassDescriptor.colorAttachments[ 0 ] = MTLRenderPassColorAttachmentDescriptor()
+        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: view.colorPixelFormat, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
+        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = device.makeTexture(descriptor: rgbaTextureDescriptor)
 
-        heroRenderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        renderToTexturePassDescriptor.colorAttachments[ 0 ].storeAction = .store
+        renderToTexturePassDescriptor.colorAttachments[ 0 ].loadAction = .clear
+        renderToTexturePassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.3, 0.5, 0.5, 1.0)
+
+        // depth
+        renderToTexturePassDescriptor.depthAttachment = MTLRenderPassDepthAttachmentDescriptor()
+        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
+        renderToTexturePassDescriptor.depthAttachment.texture = device.makeTexture(descriptor: depthTextureDescriptor)
+        renderToTexturePassDescriptor.depthAttachment.storeAction = .store
+        renderToTexturePassDescriptor.depthAttachment.loadAction = .clear
+        renderToTexturePassDescriptor.depthAttachment.clearDepth = 1.0;
+
+
+
+        let finalPassPipelineDescriptor = MTLRenderPipelineDescriptor()
+        finalPassPipelineDescriptor.vertexFunction = library?.makeFunction(name: "finalPassVertexShader")!
+        finalPassPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "finalPassFragmentShader")!
+        finalPassPipelineDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat
 
         do {
-            heroRenderPipelineState = try device.makeRenderPipelineState(descriptor: heroRenderPipelineDescriptor)
+            finalPassPipelineState = try device.makeRenderPipelineState(descriptor: finalPassPipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
         }
+
+
+
+
+
 
         commandQueue = device.makeCommandQueue()
 
@@ -105,7 +126,6 @@ class Renderer: NSObject, MTKViewDelegate {
 
     func reshape (view: MetalView) {
         view.arcBall.reshape(viewBounds: view.bounds)
-//        camera.setProjection(fovYDegrees:Float(45), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 0, far: 10)
         camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 2000)
     }
 
@@ -117,49 +137,57 @@ class Renderer: NSObject, MTKViewDelegate {
         
         update(view: view as! MetalView, drawableSize: view.bounds.size)
 
-        if let renderPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
-
-            renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.3, 0.5, 0.5, 1.0)
-
-            let commandBuffer = commandQueue.makeCommandBuffer()
-
-            let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
-
-            renderCommandEncoder.setFrontFacing(.counterClockwise)
-            renderCommandEncoder.setTriangleFillMode(.fill)
-            renderCommandEncoder.setCullMode(.none)
+        let commandBuffer = commandQueue.makeCommandBuffer()
 
 
+        // render to texture
+        let renderToTextureCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderToTexturePassDescriptor)
 
-            // render plane
-            renderCommandEncoder.setRenderPipelineState(renderPlaneRenderPipelineState)
-            renderCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
-            renderCommandEncoder.setVertexBuffer(renderPlane.transform.metalBuffer, offset: 0, at: 1)
-            renderCommandEncoder.drawIndexedPrimitives(
+        renderToTextureCommandEncoder.setRenderPipelineState(renderToTexturePipelineState)
+
+        renderToTextureCommandEncoder.setFrontFacing(.counterClockwise)
+        renderToTextureCommandEncoder.setTriangleFillMode(.fill)
+        renderToTextureCommandEncoder.setCullMode(.none)
+
+        renderToTextureCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
+        renderToTextureCommandEncoder.setVertexBuffer(heroModel.transform.metalBuffer, offset: 0, at: 1)
+
+        renderToTextureCommandEncoder.setFragmentTexture(heroTexture, at: 0)
+
+        renderToTextureCommandEncoder.drawIndexedPrimitives(
+                type: .triangle,
+                indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
+                indexType: MTLIndexType.uint16,
+                indexBuffer: heroModel.vertexIndexMetalBuffer,
+                indexBufferOffset: 0)
+
+        renderToTextureCommandEncoder.endEncoding()
+
+        // final pass
+        if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
+
+            let finalPassCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
+
+            finalPassCommandEncoder.setRenderPipelineState(finalPassPipelineState)
+
+            finalPassCommandEncoder.setFrontFacing(.counterClockwise)
+            finalPassCommandEncoder.setTriangleFillMode(.fill)
+            finalPassCommandEncoder.setCullMode(.none)
+
+            finalPassCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
+            finalPassCommandEncoder.setVertexBuffer(renderPlane.transform.metalBuffer, offset: 0, at: 1)
+
+            finalPassCommandEncoder.setFragmentTexture(renderToTexturePassDescriptor.colorAttachments[ 0 ].texture, at: 0)
+
+            finalPassCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
                     indexCount: renderPlane.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
                     indexType: MTLIndexType.uint16,
                     indexBuffer: renderPlane.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)
 
+            finalPassCommandEncoder.endEncoding()
 
-
-//            // hero
-            renderCommandEncoder.setRenderPipelineState(heroRenderPipelineState)
-            renderCommandEncoder.setFragmentTexture(texture, at: 0)
-            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
-            renderCommandEncoder.setVertexBuffer(heroModel.transform.metalBuffer, offset: 0, at: 1)
-            renderCommandEncoder.drawIndexedPrimitives(
-                    type: .triangle,
-                    indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
-                    indexType: MTLIndexType.uint16,
-                    indexBuffer: heroModel.vertexIndexMetalBuffer,
-                    indexBufferOffset: 0)
-
-
-
-
-            renderCommandEncoder.endEncoding()
 
             commandBuffer.present(drawable)
             commandBuffer.commit()

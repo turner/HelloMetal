@@ -11,7 +11,7 @@ public class MetalView: MTKView {
         super.init(coder: coder)
 
         self.device = MTLCreateSystemDefaultDevice()!
-        self.renderer = Renderer(device: self.device!)
+        self.renderer = Renderer(view: self, device: self.device!)
         self.delegate = self.renderer
         
         arcBall = EISArcball.init(viewBounds: self.bounds)

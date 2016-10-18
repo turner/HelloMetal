@@ -23,6 +23,7 @@
 		4F7ABE541DA83CED0054AFA9 /* HelloMetalShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE511DA83CED0054AFA9 /* HelloMetalShader.metal */; };
 		4F7ABE551DA83CED0054AFA9 /* HelloTexture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE521DA83CED0054AFA9 /* HelloTexture.metal */; };
 		4F7ABE561DA83CED0054AFA9 /* ShowST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE531DA83CED0054AFA9 /* ShowST.metal */; };
+		4FA687151DB58EBC00826A4D /* passFinalShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FA687141DB58EBC00826A4D /* passFinalShader.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		4F7ABE511DA83CED0054AFA9 /* HelloMetalShader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = HelloMetalShader.metal; sourceTree = "<group>"; };
 		4F7ABE521DA83CED0054AFA9 /* HelloTexture.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = HelloTexture.metal; sourceTree = "<group>"; };
 		4F7ABE531DA83CED0054AFA9 /* ShowST.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = ShowST.metal; sourceTree = "<group>"; };
+		4FA687141DB58EBC00826A4D /* passFinalShader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = passFinalShader.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		4F7ABE121DA83A9F0054AFA9 /* HelloMetal */ = {
 			isa = PBXGroup;
 			children = (
+				4FA687141DB58EBC00826A4D /* passFinalShader.metal */,
 				4F7ABE421DA83C100054AFA9 /* EISArcball.swift */,
 				4F7ABE481DA83C100054AFA9 /* Renderer.swift */,
 				4F7ABE471DA83C100054AFA9 /* MetalView.swift */,
@@ -291,6 +294,7 @@
 			files = (
 				4F7ABE551DA83CED0054AFA9 /* HelloTexture.metal in Sources */,
 				4F7ABE141DA83A9F0054AFA9 /* AppDelegate.swift in Sources */,
+				4FA687151DB58EBC00826A4D /* passFinalShader.metal in Sources */,
 				4F7ABE4E1DA83C100054AFA9 /* MetallicTransform.swift in Sources */,
 				4F7ABE4B1DA83C100054AFA9 /* EISCamera.swift in Sources */,
 				4F7ABE4F1DA83C100054AFA9 /* MetalView.swift in Sources */,
