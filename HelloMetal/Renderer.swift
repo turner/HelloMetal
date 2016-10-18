@@ -11,50 +11,45 @@ import GLKit
 
 class Renderer: NSObject, MTKViewDelegate {
 
-    var finalPassRenderSurface: MetallicQuadModel!
-    
+    var camera: EISCamera!
+
     var heroModel: MetallicQuadModel!
     var heroTexture: MTLTexture!
-
-    var camera: EISCamera!
 
     var renderToTexturePassDescriptor: MTLRenderPassDescriptor!
     var renderToTexturePipelineState: MTLRenderPipelineState!
 
+    var finalPassRenderSurface: MetallicQuadModel!
     var finalPassPipelineState: MTLRenderPipelineState!
 
     var commandQueue: MTLCommandQueue!
 
     init(view: MTKView, device: MTLDevice) {
 
+        camera = EISCamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+
         finalPassRenderSurface = MetallicQuadModel(device: device)
+
         heroModel = MetallicQuadModel(device: device)
 
-        camera = EISCamera()
-        // viewing frustrum - eye looks along z-axis towards -z direction
-        //                    +y up
-        //                    +x to the right
-
-        camera.setTransform(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+        let textureLoader = MTKTextureLoader(device: device)
 
         guard let image = UIImage(named:"diagnostic") else {
-            fatalError("Error: Can not create image")
+            fatalError("Error: Can not create UIImage")
         }
-        
-        let textureLoader = MTKTextureLoader(device: device)
-        
+
         do {
             heroTexture = try textureLoader.newTexture(with: image.cgImage!, options: nil)
         } catch {
             fatalError("Error: Can not load texture")
         }
-        
+
         let library = device.newDefaultLibrary()
 
         // render to texture
         let renderToTexturePipelineDescriptor = MTLRenderPipelineDescriptor()
-        renderToTexturePipelineDescriptor.vertexFunction = library?.makeFunction(name: "helloTextureVertexShader")!
-        renderToTexturePipelineDescriptor.fragmentFunction = library?.makeFunction(name: "helloTextureFragmentShader")!
+        renderToTexturePipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
+        renderToTexturePipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
 
         renderToTexturePipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
 
@@ -117,9 +112,9 @@ class Renderer: NSObject, MTKViewDelegate {
 
         let fudge = 0.9 * camera.far
         let dimension = fudge * tan( GLKMathDegreesToRadians( camera.fovYDegrees/2 ) )
-        
+
         let scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
-        
+
         // render plane
         finalPassRenderSurface.transform.transforms.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
         finalPassRenderSurface.transform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * finalPassRenderSurface.transform.transforms.modelMatrix
@@ -141,9 +136,9 @@ class Renderer: NSObject, MTKViewDelegate {
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         reshape(view:view as! MetalView)
     }
-    
+
     public func draw(in view: MTKView) {
-        
+
         update(view: view as! MetalView, drawableSize: view.bounds.size)
 
         let commandBuffer = commandQueue.makeCommandBuffer()

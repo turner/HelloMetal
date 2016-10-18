@@ -8,6 +8,10 @@
 
 import GLKit
 
+// viewing frustrum - eye looks along z-axis towards -z direction
+//                    +y-axis up
+//                    +x-axis to the right
+
 struct EISCamera {
 
     var location: GLKVector3!
@@ -20,6 +24,10 @@ struct EISCamera {
 
     var fovYDegrees: Float!
     var aspectRatioWidthOverHeight: Float!
+
+    init(location:GLKVector3, target:GLKVector3, approximateUp:GLKVector3) {
+        self.setTransform(location:location, target:target, approximateUp:approximateUp)
+    }
 
     mutating func setTransform (location:GLKVector3, target:GLKVector3, approximateUp:GLKVector3) {
 
