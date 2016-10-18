@@ -26,6 +26,8 @@ class Renderer: NSObject, MTKViewDelegate {
 
     init(view: MTKView, device: MTLDevice) {
 
+//        view.sampleCount = 4
+
         camera = EISCamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         finalPassRenderSurface = MetallicQuadModel(device: device)
@@ -68,22 +70,12 @@ class Renderer: NSObject, MTKViewDelegate {
         renderToTexturePassDescriptor.colorAttachments[ 0 ].storeAction = .store
         renderToTexturePassDescriptor.colorAttachments[ 0 ].loadAction = .clear
         renderToTexturePassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.3, 0.5, 0.5, 1.0)
-        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: view.colorPixelFormat, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
-        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = device.makeTexture(descriptor: rgbaTextureDescriptor)
 
         // depth
         renderToTexturePassDescriptor.depthAttachment = MTLRenderPassDepthAttachmentDescriptor()
         renderToTexturePassDescriptor.depthAttachment.storeAction = .dontCare
         renderToTexturePassDescriptor.depthAttachment.loadAction = .clear
         renderToTexturePassDescriptor.depthAttachment.clearDepth = 1.0;
-        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
-        renderToTexturePassDescriptor.depthAttachment.texture = device.makeTexture(descriptor: depthTextureDescriptor)
-
-
-
-
-
-
 
 
         // final pass
@@ -100,17 +92,13 @@ class Renderer: NSObject, MTKViewDelegate {
         }
 
 
-
-
-
-
         commandQueue = device.makeCommandQueue()
 
     }
 
     func update(view: MetalView, drawableSize:CGSize) {
 
-        let fudge = 0.9 * camera.far
+        let fudge = 0.35 * camera.far
         let dimension = fudge * tan( GLKMathDegreesToRadians( camera.fovYDegrees/2 ) )
 
         let scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
@@ -122,15 +110,26 @@ class Renderer: NSObject, MTKViewDelegate {
 
 
         // hero model
-        heroModel.transform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(100, 200, 1)
+        heroModel.transform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 300, 1)
         heroModel.transform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModel.transform.transforms.modelMatrix
         heroModel.transform.update()
 
     }
 
     func reshape (view: MetalView) {
+
         view.arcBall.reshape(viewBounds: view.bounds)
-        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 2000)
+
+        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 8000)
+
+        // color
+        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: view.colorPixelFormat, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: true)
+        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = view.device?.makeTexture(descriptor: rgbaTextureDescriptor)
+
+        // depth
+        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
+        renderToTexturePassDescriptor.depthAttachment.texture = view.device?.makeTexture(descriptor: depthTextureDescriptor)
+
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
