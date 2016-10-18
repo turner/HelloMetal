@@ -28,5 +28,15 @@ fragment float4 finalPassFragmentShader(_Vertex_ vert [[ stage_in ]], texture2d<
     constexpr sampler defaultSampler;
     
     float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
-    return rgba;
+    
+    // hack
+    if (vert.st[0] < 0.5) {
+        return rgba;
+    } else {
+        float4 cooked = 1 - rgba;
+        return cooked;
+        
+    }
+    
+//    return rgba;
 }
