@@ -32,18 +32,6 @@ fragment float4 helloTextureFragmentShader(
                                            ) {
     
     constexpr sampler defaultSampler;
-    
-//    float2 st_flipped = float2(vert.st[ 0 ], 1 - vert.st[ 1 ]);
-//    float4 rgba = texas.sample(defaultSampler, st_flipped).rgba;
-    
     float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
     return rgba;
-    
-//    float4 s = float4(vert.st[0], 0, 0, 1);
-//    float4 t = float4(0, vert.st[1], 0, 1)
-//    float4 st = s + t;
-//    return st;
-    
-//    float percent = 0.125;
-//    return percent * rgba + (1 - percent) * st;
 }

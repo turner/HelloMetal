@@ -78,7 +78,7 @@ class Renderer: NSObject, MTKViewDelegate {
         renderToTexturePassDescriptor.depthAttachment = MTLRenderPassDepthAttachmentDescriptor()
         let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
         renderToTexturePassDescriptor.depthAttachment.texture = device.makeTexture(descriptor: depthTextureDescriptor)
-        renderToTexturePassDescriptor.depthAttachment.storeAction = .store
+        renderToTexturePassDescriptor.depthAttachment.storeAction = .dontCare
         renderToTexturePassDescriptor.depthAttachment.loadAction = .clear
         renderToTexturePassDescriptor.depthAttachment.clearDepth = 1.0;
 
