@@ -11,8 +11,10 @@ import GLKit
 
 class Renderer: NSObject, MTKViewDelegate {
 
-    var renderPlane: MetallicQuadModel!
+    var finalPassRenderSurface: MetallicQuadModel!
+    
     var heroModel: MetallicQuadModel!
+    var heroTexture: MTLTexture!
 
     var camera: EISCamera!
 
@@ -21,13 +23,11 @@ class Renderer: NSObject, MTKViewDelegate {
 
     var finalPassPipelineState: MTLRenderPipelineState!
 
-    var depthStencilState: MTLDepthStencilState!
     var commandQueue: MTLCommandQueue!
-    var heroTexture: MTLTexture!
 
     init(view: MTKView, device: MTLDevice) {
 
-        renderPlane = MetallicQuadModel(device: device)
+        finalPassRenderSurface = MetallicQuadModel(device: device)
         heroModel = MetallicQuadModel(device: device)
 
         camera = EISCamera()
@@ -51,10 +51,13 @@ class Renderer: NSObject, MTKViewDelegate {
         
         let library = device.newDefaultLibrary()
 
+        // render to texture
         let renderToTexturePipelineDescriptor = MTLRenderPipelineDescriptor()
         renderToTexturePipelineDescriptor.vertexFunction = library?.makeFunction(name: "helloTextureVertexShader")!
         renderToTexturePipelineDescriptor.fragmentFunction = library?.makeFunction(name: "helloTextureFragmentShader")!
+
         renderToTexturePipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
+
         renderToTexturePipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
 
         do {
@@ -67,26 +70,32 @@ class Renderer: NSObject, MTKViewDelegate {
 
         // color
         renderToTexturePassDescriptor.colorAttachments[ 0 ] = MTLRenderPassColorAttachmentDescriptor()
-        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: view.colorPixelFormat, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
-        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = device.makeTexture(descriptor: rgbaTextureDescriptor)
-
         renderToTexturePassDescriptor.colorAttachments[ 0 ].storeAction = .store
         renderToTexturePassDescriptor.colorAttachments[ 0 ].loadAction = .clear
         renderToTexturePassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.3, 0.5, 0.5, 1.0)
+        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: view.colorPixelFormat, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
+        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = device.makeTexture(descriptor: rgbaTextureDescriptor)
 
         // depth
         renderToTexturePassDescriptor.depthAttachment = MTLRenderPassDepthAttachmentDescriptor()
-        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
-        renderToTexturePassDescriptor.depthAttachment.texture = device.makeTexture(descriptor: depthTextureDescriptor)
         renderToTexturePassDescriptor.depthAttachment.storeAction = .dontCare
         renderToTexturePassDescriptor.depthAttachment.loadAction = .clear
         renderToTexturePassDescriptor.depthAttachment.clearDepth = 1.0;
+        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
+        renderToTexturePassDescriptor.depthAttachment.texture = device.makeTexture(descriptor: depthTextureDescriptor)
 
 
 
+
+
+
+
+
+        // final pass
         let finalPassPipelineDescriptor = MTLRenderPipelineDescriptor()
         finalPassPipelineDescriptor.vertexFunction = library?.makeFunction(name: "finalPassVertexShader")!
         finalPassPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "finalPassFragmentShader")!
+
         finalPassPipelineDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat
 
         do {
@@ -112,9 +121,9 @@ class Renderer: NSObject, MTKViewDelegate {
         let scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
         
         // render plane
-        renderPlane.transform.transforms.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
-        renderPlane.transform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * renderPlane.transform.transforms.modelMatrix
-        renderPlane.transform.update()
+        finalPassRenderSurface.transform.transforms.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
+        finalPassRenderSurface.transform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * finalPassRenderSurface.transform.transforms.modelMatrix
+        finalPassRenderSurface.transform.update()
 
 
         // hero model
@@ -142,7 +151,6 @@ class Renderer: NSObject, MTKViewDelegate {
 
         // render to texture
         let renderToTextureCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderToTexturePassDescriptor)
-
         renderToTextureCommandEncoder.setRenderPipelineState(renderToTexturePipelineState)
 
         renderToTextureCommandEncoder.setFrontFacing(.counterClockwise)
@@ -167,23 +175,22 @@ class Renderer: NSObject, MTKViewDelegate {
         if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
             let finalPassCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
-
             finalPassCommandEncoder.setRenderPipelineState(finalPassPipelineState)
 
             finalPassCommandEncoder.setFrontFacing(.counterClockwise)
             finalPassCommandEncoder.setTriangleFillMode(.fill)
             finalPassCommandEncoder.setCullMode(.none)
 
-            finalPassCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
-            finalPassCommandEncoder.setVertexBuffer(renderPlane.transform.metalBuffer, offset: 0, at: 1)
+            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.vertexMetalBuffer, offset: 0, at: 0)
+            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.transform.metalBuffer, offset: 0, at: 1)
 
             finalPassCommandEncoder.setFragmentTexture(renderToTexturePassDescriptor.colorAttachments[ 0 ].texture, at: 0)
 
             finalPassCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
-                    indexCount: renderPlane.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
+                    indexCount: finalPassRenderSurface.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
                     indexType: MTLIndexType.uint16,
-                    indexBuffer: renderPlane.vertexIndexMetalBuffer,
+                    indexBuffer: finalPassRenderSurface.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)
 
             finalPassCommandEncoder.endEncoding()
