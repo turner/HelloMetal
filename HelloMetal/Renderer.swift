@@ -30,17 +30,17 @@ class Renderer: NSObject, MTKViewDelegate {
 
         camera = EISCamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        finalPassRenderSurface = MetallicQuadModel(device: device)
-
         heroModel = MetallicQuadModel(device: device)
 
-        let textureLoader = MTKTextureLoader(device: device)
-
-        guard let image = UIImage(named:"diagnostic") else {
-            fatalError("Error: Can not create UIImage")
-        }
-
+        // load hero texture
         do {
+
+            let textureLoader = MTKTextureLoader(device: device)
+
+            guard let image = UIImage(named:"mobile") else {
+                fatalError("Error: Can not create UIImage")
+            }
+
             heroTexture = try textureLoader.newTexture(with: image.cgImage!, options: nil)
         } catch {
             fatalError("Error: Can not load texture")
@@ -49,15 +49,16 @@ class Renderer: NSObject, MTKViewDelegate {
         let library = device.newDefaultLibrary()
 
         // render to texture
-        let renderToTexturePipelineDescriptor = MTLRenderPipelineDescriptor()
-        renderToTexturePipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
-        renderToTexturePipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
-
-        renderToTexturePipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
-
-        renderToTexturePipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
-
         do {
+
+            let renderToTexturePipelineDescriptor = MTLRenderPipelineDescriptor()
+            renderToTexturePipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
+            renderToTexturePipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
+
+            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
+
+            renderToTexturePipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
+
             renderToTexturePipelineState = try device.makeRenderPipelineState(descriptor: renderToTexturePipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
@@ -79,20 +80,42 @@ class Renderer: NSObject, MTKViewDelegate {
 
 
         // final pass
-        let finalPassPipelineDescriptor = MTLRenderPipelineDescriptor()
-        finalPassPipelineDescriptor.vertexFunction = library?.makeFunction(name: "finalPassVertexShader")!
-        finalPassPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "finalPassFragmentShader")!
 
-        finalPassPipelineDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat
+        finalPassRenderSurface = MetallicQuadModel(device: device)
 
         do {
+
+            let finalPassPipelineDescriptor = MTLRenderPipelineDescriptor()
+            finalPassPipelineDescriptor.vertexFunction = library?.makeFunction(name: "finalPassVertexShader")!
+            finalPassPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "finalPassFragmentShader")!
+            finalPassPipelineDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat
+
             finalPassPipelineState = try device.makeRenderPipelineState(descriptor: finalPassPipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
         }
 
-
         commandQueue = device.makeCommandQueue()
+
+    }
+
+    public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        reshape(view:view as! MetalView)
+    }
+
+    func reshape (view: MetalView) {
+
+        view.arcBall.reshape(viewBounds: view.bounds)
+
+        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 8000)
+
+        // color
+        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: view.colorPixelFormat, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: true)
+        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = view.device?.makeTexture(descriptor: rgbaTextureDescriptor)
+
+        // depth
+        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
+        renderToTexturePassDescriptor.depthAttachment.texture = view.device?.makeTexture(descriptor: depthTextureDescriptor)
 
     }
 
@@ -114,26 +137,6 @@ class Renderer: NSObject, MTKViewDelegate {
         heroModel.transform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModel.transform.transforms.modelMatrix
         heroModel.transform.update()
 
-    }
-
-    func reshape (view: MetalView) {
-
-        view.arcBall.reshape(viewBounds: view.bounds)
-
-        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 8000)
-
-        // color
-        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: view.colorPixelFormat, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: true)
-        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = view.device?.makeTexture(descriptor: rgbaTextureDescriptor)
-
-        // depth
-        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
-        renderToTexturePassDescriptor.depthAttachment.texture = view.device?.makeTexture(descriptor: depthTextureDescriptor)
-
-    }
-
-    public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        reshape(view:view as! MetalView)
     }
 
     public func draw(in view: MTKView) {
