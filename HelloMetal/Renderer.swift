@@ -13,12 +13,20 @@ class Renderer: NSObject, MTKViewDelegate {
 
     var camera: EISCamera!
 
+    // hero model
     var heroModel: MetallicQuadModel!
-    var heroTexture: MTLTexture!
+    var heroModelTexture: MTLTexture!
+    var heroModelPipelineState: MTLRenderPipelineState!
 
+    // hero backdrop
+    var heroBackdrop: MetallicQuadModel!
+    var heroBackdropTexture: MTLTexture!
+    var heroBackdropPipelineState: MTLRenderPipelineState!
+
+    // render to texture
     var renderToTexturePassDescriptor: MTLRenderPassDescriptor!
-    var renderToTexturePipelineState: MTLRenderPipelineState!
 
+    // final pass
     var finalPassRenderSurface: MetallicQuadModel!
     var finalPassPipelineState: MTLRenderPipelineState!
 
@@ -26,61 +34,124 @@ class Renderer: NSObject, MTKViewDelegate {
 
     init(view: MTKView, device: MTLDevice) {
 
+        let library = device.newDefaultLibrary()
+
+
 //        view.sampleCount = 4
 
         camera = EISCamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
+        // hero model
         heroModel = MetallicQuadModel(device: device)
 
-        // load hero texture
         do {
 
             let textureLoader = MTKTextureLoader(device: device)
 
-            guard let image = UIImage(named:"red_translucent") else {
+            guard let image = UIImage(named:"diagnostic_translucent") else {
                 fatalError("Error: Can not create UIImage")
             }
-  
+
             if (image.cgImage?.alphaInfo == .premultipliedLast) {
                 print("texture uses premultiplied alpha. Rock.")
             }
-            
+
             let textureLoaderOptions:[String:NSNumber] = [ MTKTextureLoaderOptionSRGB:false ]
-            
-            heroTexture = try textureLoader.newTexture(with: image.cgImage!, options: textureLoaderOptions)
+
+            heroModelTexture = try textureLoader.newTexture(with: image.cgImage!, options: textureLoaderOptions)
         } catch {
             fatalError("Error: Can not load texture")
         }
 
-        let library = device.newDefaultLibrary()
-
-        // render to texture
         do {
 
-            let renderToTexturePipelineDescriptor = MTLRenderPipelineDescriptor()
+            let heroModelPipelineDescriptor = MTLRenderPipelineDescriptor()
 
-            renderToTexturePipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
-            renderToTexturePipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
+            heroModelPipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
+            heroModelPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
 
-            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
+            heroModelPipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
             
-            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].isBlendingEnabled = true
+            heroModelPipelineDescriptor.colorAttachments[ 0 ].isBlendingEnabled = true
             
-            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].rgbBlendOperation = .add
-            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].alphaBlendOperation = .add
+            heroModelPipelineDescriptor.colorAttachments[ 0 ].rgbBlendOperation = .add
+            heroModelPipelineDescriptor.colorAttachments[ 0 ].alphaBlendOperation = .add
             
-            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
-            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
+            heroModelPipelineDescriptor.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
+            heroModelPipelineDescriptor.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
 
-            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
-            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
+            heroModelPipelineDescriptor.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
+            heroModelPipelineDescriptor.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
 
-            renderToTexturePipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
+            heroModelPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
 
-            renderToTexturePipelineState = try device.makeRenderPipelineState(descriptor: renderToTexturePipelineDescriptor)
+            heroModelPipelineState = try device.makeRenderPipelineState(descriptor: heroModelPipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
         }
+
+
+
+
+
+
+        // hero backdrop
+        heroBackdrop = MetallicQuadModel(device: device)
+
+        do {
+
+            let textureLoader = MTKTextureLoader(device: device)
+
+            guard let image = UIImage(named:"mobile") else {
+                fatalError("Error: Can not create UIImage")
+            }
+
+            if (image.cgImage?.alphaInfo == .premultipliedLast) {
+                print("texture uses premultiplied alpha. Rock.")
+            }
+
+            let textureLoaderOptions:[String:NSNumber] = [ MTKTextureLoaderOptionSRGB:false ]
+
+            heroBackdropTexture = try textureLoader.newTexture(with: image.cgImage!, options: textureLoaderOptions)
+        } catch {
+            fatalError("Error: Can not load texture")
+        }
+
+        do {
+
+            let heroBackdropPipelineDescriptor = MTLRenderPipelineDescriptor()
+
+            heroBackdropPipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
+            heroBackdropPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
+
+            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
+
+            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].isBlendingEnabled = true
+
+            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].rgbBlendOperation = .add
+            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].alphaBlendOperation = .add
+
+            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
+            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
+
+            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
+            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
+
+            heroBackdropPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
+
+            heroBackdropPipelineState = try device.makeRenderPipelineState(descriptor: heroBackdropPipelineDescriptor)
+        } catch let e {
+            Swift.print("\(e)")
+        }
+
+
+
+
+
+
+
+
+
 
         renderToTexturePassDescriptor = MTLRenderPassDescriptor()
 
@@ -95,6 +166,7 @@ class Renderer: NSObject, MTKViewDelegate {
         renderToTexturePassDescriptor.depthAttachment.storeAction = .dontCare
         renderToTexturePassDescriptor.depthAttachment.loadAction = .clear
         renderToTexturePassDescriptor.depthAttachment.clearDepth = 1.0;
+
 
 
         // final pass
@@ -152,21 +224,31 @@ class Renderer: NSObject, MTKViewDelegate {
 
     func update(view: MetalView, drawableSize:CGSize) {
 
-        let fudge = 0.35 * camera.far
-        let dimension = fudge * tan( GLKMathDegreesToRadians( camera.fovYDegrees/2 ) )
+        var fudge: Float
+        var dimension: Float
+        var scale: GLKMatrix4
 
-        let scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
 
         // render plane
+        fudge = 0.75 * camera.far
+        dimension = fudge * tan( GLKMathDegreesToRadians( camera.fovYDegrees/2 ) )
+        scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
         finalPassRenderSurface.metallicTransform.transform.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
         finalPassRenderSurface.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * finalPassRenderSurface.metallicTransform.transform.modelMatrix
         finalPassRenderSurface.metallicTransform.update()
-
 
         // hero model
         heroModel.metallicTransform.transform.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(120, 240, 1)
         heroModel.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModel.metallicTransform.transform.modelMatrix
         heroModel.metallicTransform.update()
+
+        // hero backdrop
+        fudge = 0.35 * camera.far
+        dimension = fudge * tan( GLKMathDegreesToRadians( camera.fovYDegrees/2 ) )
+        scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
+        heroBackdrop.metallicTransform.transform.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
+        heroBackdrop.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroBackdrop.metallicTransform.transform.modelMatrix
+        heroBackdrop.metallicTransform.update()
 
     }
 
@@ -179,17 +261,27 @@ class Renderer: NSObject, MTKViewDelegate {
 
         // render to texture
         let renderToTextureCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderToTexturePassDescriptor)
-        renderToTextureCommandEncoder.setRenderPipelineState(renderToTexturePipelineState)
-
         renderToTextureCommandEncoder.setFrontFacing(.counterClockwise)
         renderToTextureCommandEncoder.setTriangleFillMode(.fill)
         renderToTextureCommandEncoder.setCullMode(.none)
 
+        // hero backdrop
+        renderToTextureCommandEncoder.setRenderPipelineState(heroBackdropPipelineState)
+        renderToTextureCommandEncoder.setVertexBuffer(heroBackdrop.vertexMetalBuffer, offset: 0, at: 0)
+        renderToTextureCommandEncoder.setVertexBuffer(heroBackdrop.metallicTransform.metalBuffer, offset: 0, at: 1)
+        renderToTextureCommandEncoder.setFragmentTexture(heroBackdropTexture, at: 0)
+        renderToTextureCommandEncoder.drawIndexedPrimitives(
+                type: .triangle,
+                indexCount: heroBackdrop.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
+                indexType: MTLIndexType.uint16,
+                indexBuffer: heroBackdrop.vertexIndexMetalBuffer,
+                indexBufferOffset: 0)
+
+        // hero model
+        renderToTextureCommandEncoder.setRenderPipelineState(heroModelPipelineState)
         renderToTextureCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
         renderToTextureCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
-
-        renderToTextureCommandEncoder.setFragmentTexture(heroTexture, at: 0)
-
+        renderToTextureCommandEncoder.setFragmentTexture(heroModelTexture, at: 0)
         renderToTextureCommandEncoder.drawIndexedPrimitives(
                 type: .triangle,
                 indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
