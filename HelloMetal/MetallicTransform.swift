@@ -9,7 +9,7 @@
 import Metal
 import GLKit
 
-struct Transforms {
+struct Transform {
 
     var modelMatrix: GLKMatrix4
     var viewMatrix: GLKMatrix4
@@ -32,23 +32,23 @@ struct Transforms {
 }
 
 struct MetallicTransform {
-    var transforms: Transforms!
+    var transform: Transform!
     var metalBuffer: MTLBuffer!
 
     init(device: MTLDevice) {
-        self.transforms = Transforms()
-        self.metalBuffer = device.makeBuffer(length: MemoryLayout<Transforms>.size, options: [])
+        self.transform = Transform()
+        self.metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])
     }
     
     init(mvp: GLKMatrix4, device: MTLDevice) {
-        self.transforms = Transforms(mvp: mvp)
-        self.metalBuffer = device.makeBuffer(length: MemoryLayout<Transforms>.size, options: [])
+        self.transform = Transform(mvp: mvp)
+        self.metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])
     }
 
     mutating func update () {
 
         let bufferPointer = self.metalBuffer.contents()
-        memcpy(bufferPointer, &self.transforms, MemoryLayout<Transforms>.size)
+        memcpy(bufferPointer, &self.transform, MemoryLayout<Transform>.size)
 
     }
 }

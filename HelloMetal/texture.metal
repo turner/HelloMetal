@@ -24,7 +24,17 @@ vertex _Vertex_ textureVertexShader(constant _Vertex_ *vertices [[ buffer(0) ]],
 }
 
 fragment float4 textureFragmentShader(_Vertex_ vert [[ stage_in ]], texture2d<float> texas [[ texture(0) ]]) {
+    
     constexpr sampler defaultSampler;
+    
     float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
     return rgba;
+    
+//    float4 destination = float4(1,1,1,1);
+//    float4 result = float4(rgba.r/rgba.a, rgba.g/rgba.a, rgba.b/rgba.a, rgba.a) + rgba.a * destination;
+    
+//    return result;
+    
+//    float4 parts = float4(rgba.r, rgba.r, rgba.r, 1);
+//    return parts;
 }

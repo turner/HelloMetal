@@ -26,7 +26,7 @@ struct MetallicQuadModel {
 
     var vertexMetalBuffer: MTLBuffer!
     var vertexIndexMetalBuffer: MTLBuffer!
-    var transform: MetallicTransform!
+    var metallicTransform: MetallicTransform!
 
     init(device: MTLDevice) {
         let vertexSize = MemoryLayout<Vertex>.size
@@ -35,7 +35,7 @@ struct MetallicQuadModel {
         self.vertexMetalBuffer      = device.makeBuffer(bytes: self.vertices,      length: vertexSize * vertexCount,       options: [])
         self.vertexIndexMetalBuffer = device.makeBuffer(bytes: self.vertexIndices, length: MemoryLayout<UInt16>.size * self.vertexIndices.count , options: [])
 
-        self.transform = MetallicTransform(device: device)
+        self.metallicTransform = MetallicTransform(device: device)
 
     }
 

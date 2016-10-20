@@ -37,10 +37,14 @@ class Renderer: NSObject, MTKViewDelegate {
 
             let textureLoader = MTKTextureLoader(device: device)
 
-            guard let image = UIImage(named:"mobile") else {
+            guard let image = UIImage(named:"red_translucent") else {
                 fatalError("Error: Can not create UIImage")
             }
 
+            if (image.cgImage?.alphaInfo == .premultipliedLast) {
+                print("texture uses premultiplied alpha. Rock.")
+            }
+            
             heroTexture = try textureLoader.newTexture(with: image.cgImage!, options: nil)
         } catch {
             fatalError("Error: Can not load texture")
@@ -52,10 +56,22 @@ class Renderer: NSObject, MTKViewDelegate {
         do {
 
             let renderToTexturePipelineDescriptor = MTLRenderPipelineDescriptor()
+
             renderToTexturePipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
             renderToTexturePipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
 
             renderToTexturePipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
+            
+            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].isBlendingEnabled = true
+            
+            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].rgbBlendOperation = .add
+            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].alphaBlendOperation = .add
+            
+            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
+            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
+
+            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
+            renderToTexturePipelineDescriptor.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
 
             renderToTexturePipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
 
@@ -70,7 +86,7 @@ class Renderer: NSObject, MTKViewDelegate {
         renderToTexturePassDescriptor.colorAttachments[ 0 ] = MTLRenderPassColorAttachmentDescriptor()
         renderToTexturePassDescriptor.colorAttachments[ 0 ].storeAction = .store
         renderToTexturePassDescriptor.colorAttachments[ 0 ].loadAction = .clear
-        renderToTexturePassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.3, 0.5, 0.5, 1.0)
+        renderToTexturePassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
 
         // depth
         renderToTexturePassDescriptor.depthAttachment = MTLRenderPassDepthAttachmentDescriptor()
@@ -86,9 +102,22 @@ class Renderer: NSObject, MTKViewDelegate {
         do {
 
             let finalPassPipelineDescriptor = MTLRenderPipelineDescriptor()
+
             finalPassPipelineDescriptor.vertexFunction = library?.makeFunction(name: "finalPassVertexShader")!
             finalPassPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "finalPassFragmentShader")!
+
             finalPassPipelineDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat
+
+            finalPassPipelineDescriptor.colorAttachments[ 0 ].isBlendingEnabled = true
+
+            finalPassPipelineDescriptor.colorAttachments[ 0 ].rgbBlendOperation = .add
+            finalPassPipelineDescriptor.colorAttachments[ 0 ].alphaBlendOperation = .add
+
+            finalPassPipelineDescriptor.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
+            finalPassPipelineDescriptor.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
+
+            finalPassPipelineDescriptor.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
+            finalPassPipelineDescriptor.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
 
             finalPassPipelineState = try device.makeRenderPipelineState(descriptor: finalPassPipelineDescriptor)
         } catch let e {
@@ -127,15 +156,15 @@ class Renderer: NSObject, MTKViewDelegate {
         let scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
 
         // render plane
-        finalPassRenderSurface.transform.transforms.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
-        finalPassRenderSurface.transform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * finalPassRenderSurface.transform.transforms.modelMatrix
-        finalPassRenderSurface.transform.update()
+        finalPassRenderSurface.metallicTransform.transform.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
+        finalPassRenderSurface.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * finalPassRenderSurface.metallicTransform.transform.modelMatrix
+        finalPassRenderSurface.metallicTransform.update()
 
 
         // hero model
-        heroModel.transform.transforms.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 300, 1)
-        heroModel.transform.transforms.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModel.transform.transforms.modelMatrix
-        heroModel.transform.update()
+        heroModel.metallicTransform.transform.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(120, 240, 1)
+        heroModel.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModel.metallicTransform.transform.modelMatrix
+        heroModel.metallicTransform.update()
 
     }
 
@@ -155,7 +184,7 @@ class Renderer: NSObject, MTKViewDelegate {
         renderToTextureCommandEncoder.setCullMode(.none)
 
         renderToTextureCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
-        renderToTextureCommandEncoder.setVertexBuffer(heroModel.transform.metalBuffer, offset: 0, at: 1)
+        renderToTextureCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
 
         renderToTextureCommandEncoder.setFragmentTexture(heroTexture, at: 0)
 
@@ -171,6 +200,8 @@ class Renderer: NSObject, MTKViewDelegate {
         // final pass
         if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
+            finalPassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
+
             let finalPassCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
             finalPassCommandEncoder.setRenderPipelineState(finalPassPipelineState)
 
@@ -179,7 +210,7 @@ class Renderer: NSObject, MTKViewDelegate {
             finalPassCommandEncoder.setCullMode(.none)
 
             finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.vertexMetalBuffer, offset: 0, at: 0)
-            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.transform.metalBuffer, offset: 0, at: 1)
+            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.metallicTransform.metalBuffer, offset: 0, at: 1)
 
             finalPassCommandEncoder.setFragmentTexture(renderToTexturePassDescriptor.colorAttachments[ 0 ].texture, at: 0)
 
