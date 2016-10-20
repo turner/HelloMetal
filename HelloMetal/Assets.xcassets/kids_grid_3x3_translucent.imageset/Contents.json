@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "red_translucent.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "kids_grid_3x3_translucent@2x.png",
       "scale" : "2x"
     },
     {

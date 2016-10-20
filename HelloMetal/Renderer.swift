@@ -48,7 +48,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
             let textureLoader = MTKTextureLoader(device: device)
 
-            guard let image = UIImage(named:"diagnostic_translucent") else {
+            guard let image = UIImage(named:"kids_grid_3x3_translucent") else {
                 fatalError("Error: Can not create UIImage")
             }
 
@@ -238,7 +238,7 @@ class Renderer: NSObject, MTKViewDelegate {
         finalPassRenderSurface.metallicTransform.update()
 
         // hero model
-        heroModel.metallicTransform.transform.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(120, 240, 1)
+        heroModel.metallicTransform.transform.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
         heroModel.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModel.metallicTransform.transform.modelMatrix
         heroModel.metallicTransform.update()
 
