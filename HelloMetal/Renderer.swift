@@ -40,12 +40,14 @@ class Renderer: NSObject, MTKViewDelegate {
             guard let image = UIImage(named:"red_translucent") else {
                 fatalError("Error: Can not create UIImage")
             }
-
+  
             if (image.cgImage?.alphaInfo == .premultipliedLast) {
                 print("texture uses premultiplied alpha. Rock.")
             }
             
-            heroTexture = try textureLoader.newTexture(with: image.cgImage!, options: nil)
+            let textureLoaderOptions:[String:NSNumber] = [ MTKTextureLoaderOptionSRGB:false ]
+            
+            heroTexture = try textureLoader.newTexture(with: image.cgImage!, options: textureLoaderOptions)
         } catch {
             fatalError("Error: Can not load texture")
         }
