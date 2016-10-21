@@ -1,5 +1,5 @@
 //
-//  Renderer.swift
+//  MultiPassRenderer.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 9/11/16.
@@ -9,7 +9,7 @@
 import MetalKit
 import GLKit
 
-class Renderer: NSObject, MTKViewDelegate {
+class MultiPassRenderer: NSObject, MTKViewDelegate {
 
     var camera: EISCamera!
 
@@ -203,10 +203,10 @@ class Renderer: NSObject, MTKViewDelegate {
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        reshape(view:view as! MetalView)
+        reshape(view:view as! MultipassMetalView)
     }
 
-    func reshape (view: MetalView) {
+    func reshape (view: MultipassMetalView) {
 
         view.arcBall.reshape(viewBounds: view.bounds)
 
@@ -222,7 +222,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
     }
 
-    func update(view: MetalView, drawableSize:CGSize) {
+    func update(view: MultipassMetalView, drawableSize:CGSize) {
 
         var fudge: Float
         var dimension: Float
@@ -254,7 +254,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
     public func draw(in view: MTKView) {
 
-        update(view: view as! MetalView, drawableSize: view.bounds.size)
+        update(view: view as! MultipassMetalView, drawableSize: view.bounds.size)
 
         let commandBuffer = commandQueue.makeCommandBuffer()
 

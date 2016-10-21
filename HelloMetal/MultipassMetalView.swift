@@ -1,9 +1,9 @@
 
 import MetalKit
 
-public class MetalView: MTKView {
+public class MultipassMetalView: MTKView {
     
-    var renderer: Renderer!
+    var renderer: MultiPassRenderer!
     var arcBall: EISArcball!
 
     required public init(coder: NSCoder) {
@@ -11,7 +11,7 @@ public class MetalView: MTKView {
         super.init(coder: coder)
 
         self.device = MTLCreateSystemDefaultDevice()!
-        self.renderer = Renderer(view: self, device: self.device!)
+        self.renderer = MultiPassRenderer(view: self, device: self.device!)
         self.delegate = self.renderer
         
         arcBall = EISArcball.init(viewBounds: self.bounds)
