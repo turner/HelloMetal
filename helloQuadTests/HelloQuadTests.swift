@@ -1,15 +1,15 @@
 //
-//  helloQuadTests.swift
-//  helloQuadTests
+//  HelloQuadTests.swift
+//  HelloQuadTests
 //
 //  Created by Douglass Turner on 10/21/16.
 //  Copyright © 2016 Elastic Image Software. All rights reserved.
 //
 
 import XCTest
-@testable import helloQuad
+@testable import HelloQuad
 
-class helloQuadTests: XCTestCase {
+class HelloQuadTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

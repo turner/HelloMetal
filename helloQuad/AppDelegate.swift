@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  helloQuad
+//  HelloMetal
 //
-//  Created by Douglass Turner on 10/21/16.
+//  Created by Douglass Turner on 10/7/16.
 //  Copyright © 2016 Elastic Image Software. All rights reserved.
 //
 
