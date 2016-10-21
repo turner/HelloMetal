@@ -100,7 +100,7 @@
 		4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetallicTransform.swift; path = Shared/MetallicTransform.swift; sourceTree = "<group>"; };
 		4F2F1F921DBA599900B80FE4 /* showST.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = showST.metal; path = Shared/showST.metal; sourceTree = "<group>"; };
 		4F2F1F931DBA599900B80FE4 /* texture.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = texture.metal; path = Shared/texture.metal; sourceTree = "<group>"; };
-		4F7ABE101DA83A9F0054AFA9 /* HelloMetal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMetal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F7ABE101DA83A9F0054AFA9 /* HelloMultiPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMultiPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F7ABE181DA83A9F0054AFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F7ABE1A1DA83A9F0054AFA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HelloMetal/Assets.xcassets; sourceTree = "<group>"; };
@@ -224,10 +224,10 @@
 			isa = PBXGroup;
 			children = (
 				4F2F1F461DBA510800B80FE4 /* Shared */,
-				4F7ABE121DA83A9F0054AFA9 /* HelloMetal */,
+				4F7ABE121DA83A9F0054AFA9 /* HelloMultipass */,
 				4F2F1F4C1DBA538200B80FE4 /* HelloQuad */,
-				4F7ABE271DA83A9F0054AFA9 /* HelloMetalTests */,
-				4F7ABE321DA83A9F0054AFA9 /* HelloMetalUITests */,
+				4F7ABE271DA83A9F0054AFA9 /* HelloMultipassTests */,
+				4F7ABE321DA83A9F0054AFA9 /* HelloMultipassUITests */,
 				4F2F1F611DBA538300B80FE4 /* HelloQuadTests */,
 				4F2F1F6C1DBA538300B80FE4 /* HelloQuadUITests */,
 				4F2F1F101DBA50FA00B80FE4 /* Frameworks */,
@@ -238,7 +238,7 @@
 		4F7ABE111DA83A9F0054AFA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F7ABE101DA83A9F0054AFA9 /* HelloMetal.app */,
+				4F7ABE101DA83A9F0054AFA9 /* HelloMultiPass.app */,
 				4F7ABE241DA83A9F0054AFA9 /* HelloMetalTests.xctest */,
 				4F7ABE2F1DA83A9F0054AFA9 /* HelloMetalUITests.xctest */,
 				4F2F1F4B1DBA538200B80FE4 /* HelloQuad.app */,
@@ -248,7 +248,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4F7ABE121DA83A9F0054AFA9 /* HelloMetal */ = {
+		4F7ABE121DA83A9F0054AFA9 /* HelloMultipass */ = {
 			isa = PBXGroup;
 			children = (
 				4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */,
@@ -258,24 +258,27 @@
 				4F7ABE1C1DA83A9F0054AFA9 /* LaunchScreen.storyboard */,
 				4F7ABE1F1DA83A9F0054AFA9 /* Info.plist */,
 			);
+			name = HelloMultipass;
 			path = HelloMetal;
 			sourceTree = "<group>";
 		};
-		4F7ABE271DA83A9F0054AFA9 /* HelloMetalTests */ = {
+		4F7ABE271DA83A9F0054AFA9 /* HelloMultipassTests */ = {
 			isa = PBXGroup;
 			children = (
 				4F7ABE281DA83A9F0054AFA9 /* HelloMetalTests.swift */,
 				4F7ABE2A1DA83A9F0054AFA9 /* Info.plist */,
 			);
+			name = HelloMultipassTests;
 			path = HelloMetalTests;
 			sourceTree = "<group>";
 		};
-		4F7ABE321DA83A9F0054AFA9 /* HelloMetalUITests */ = {
+		4F7ABE321DA83A9F0054AFA9 /* HelloMultipassUITests */ = {
 			isa = PBXGroup;
 			children = (
 				4F7ABE331DA83A9F0054AFA9 /* HelloMetalUITests.swift */,
 				4F7ABE351DA83A9F0054AFA9 /* Info.plist */,
 			);
+			name = HelloMultipassUITests;
 			path = HelloMetalUITests;
 			sourceTree = "<group>";
 		};
@@ -335,9 +338,9 @@
 			productReference = 4F2F1F691DBA538300B80FE4 /* HelloQuadUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		4F7ABE0F1DA83A9F0054AFA9 /* HelloMetal */ = {
+		4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4F7ABE381DA83A9F0054AFA9 /* Build configuration list for PBXNativeTarget "HelloMetal" */;
+			buildConfigurationList = 4F7ABE381DA83A9F0054AFA9 /* Build configuration list for PBXNativeTarget "HelloMultiPass" */;
 			buildPhases = (
 				4F7ABE0C1DA83A9F0054AFA9 /* Sources */,
 				4F7ABE0D1DA83A9F0054AFA9 /* Frameworks */,
@@ -347,9 +350,9 @@
 			);
 			dependencies = (
 			);
-			name = HelloMetal;
+			name = HelloMultiPass;
 			productName = HelloMetal;
-			productReference = 4F7ABE101DA83A9F0054AFA9 /* HelloMetal.app */;
+			productReference = 4F7ABE101DA83A9F0054AFA9 /* HelloMultiPass.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4F7ABE231DA83A9F0054AFA9 /* HelloMetalTests */ = {
@@ -448,10 +451,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4F7ABE0F1DA83A9F0054AFA9 /* HelloMetal */,
+				4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */,
+				4F2F1F4A1DBA538200B80FE4 /* HelloQuad */,
 				4F7ABE231DA83A9F0054AFA9 /* HelloMetalTests */,
 				4F7ABE2E1DA83A9F0054AFA9 /* HelloMetalUITests */,
-				4F2F1F4A1DBA538200B80FE4 /* HelloQuad */,
 				4F2F1F5D1DBA538300B80FE4 /* HelloQuadTests */,
 				4F2F1F681DBA538300B80FE4 /* HelloQuadUITests */,
 			);
@@ -595,12 +598,12 @@
 		};
 		4F7ABE261DA83A9F0054AFA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4F7ABE0F1DA83A9F0054AFA9 /* HelloMetal */;
+			target = 4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */;
 			targetProxy = 4F7ABE251DA83A9F0054AFA9 /* PBXContainerItemProxy */;
 		};
 		4F7ABE311DA83A9F0054AFA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4F7ABE0F1DA83A9F0054AFA9 /* HelloMetal */;
+			target = 4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */;
 			targetProxy = 4F7ABE301DA83A9F0054AFA9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -915,6 +918,7 @@
 				4F2F1F721DBA538300B80FE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F2F1F731DBA538300B80FE4 /* Build configuration list for PBXNativeTarget "HelloQuadTests" */ = {
 			isa = XCConfigurationList;
@@ -923,6 +927,7 @@
 				4F2F1F751DBA538300B80FE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F2F1F761DBA538300B80FE4 /* Build configuration list for PBXNativeTarget "HelloQuadUITests" */ = {
 			isa = XCConfigurationList;
@@ -931,6 +936,7 @@
 				4F2F1F781DBA538300B80FE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F7ABE0B1DA83A9F0054AFA9 /* Build configuration list for PBXProject "HelloMetal" */ = {
 			isa = XCConfigurationList;
@@ -941,7 +947,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4F7ABE381DA83A9F0054AFA9 /* Build configuration list for PBXNativeTarget "HelloMetal" */ = {
+		4F7ABE381DA83A9F0054AFA9 /* Build configuration list for PBXNativeTarget "HelloMultiPass" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4F7ABE391DA83A9F0054AFA9 /* Debug */,
