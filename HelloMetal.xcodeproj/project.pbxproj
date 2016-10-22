@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F2353881DBAB5F10095DF5F /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
+		4F2353891DBAE30B0095DF5F /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
 		4F2F1F531DBA538300B80FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2F1F511DBA538300B80FE4 /* Main.storyboard */; };
 		4F2F1F581DBA538300B80FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2F1F561DBA538300B80FE4 /* LaunchScreen.storyboard */; };
 		4F2F1F631DBA538300B80FE4 /* HelloQuadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F621DBA538300B80FE4 /* HelloQuadTests.swift */; };
@@ -75,6 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererExtensions.swift; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
@@ -175,6 +178,7 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */,
 				4F2F1F8B1DBA599900B80FE4 /* EISArcball.swift */,
 				4F2F1F8C1DBA599900B80FE4 /* EISCamera.swift */,
 				4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */,
@@ -517,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2353891DBAE30B0095DF5F /* RendererExtensions.swift in Sources */,
 				4F2F1F891DBA585E00B80FE4 /* AppDelegate.swift in Sources */,
 				4F2F1F971DBA599900B80FE4 /* hello.metal in Sources */,
 				4F2F1F941DBA599900B80FE4 /* EISArcball.swift in Sources */,
@@ -559,6 +564,7 @@
 				4F2F1FA11DBA59C500B80FE4 /* Math.swift in Sources */,
 				4F2F1FA21DBA59C500B80FE4 /* MetallicModel.swift in Sources */,
 				4F2F1FA31DBA59C500B80FE4 /* MetallicTransform.swift in Sources */,
+				4F2353881DBAB5F10095DF5F /* RendererExtensions.swift in Sources */,
 				4F2F1FA41DBA59C500B80FE4 /* showST.metal in Sources */,
 				4F2F1FA51DBA59C500B80FE4 /* texture.metal in Sources */,
 				4F2F1F8A1DBA587000B80FE4 /* AppDelegate.swift in Sources */,

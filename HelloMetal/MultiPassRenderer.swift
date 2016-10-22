@@ -36,9 +36,6 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
 
         let library = device.newDefaultLibrary()
 
-
-//        view.sampleCount = 4
-
         camera = EISCamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         // hero model
@@ -64,36 +61,17 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-
-            let heroModelPipelineDescriptor = MTLRenderPipelineDescriptor()
-
-            heroModelPipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
-            heroModelPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
-
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
             
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].isBlendingEnabled = true
-            
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].rgbBlendOperation = .add
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].alphaBlendOperation = .add
-            
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
+            heroModelPipelineState = try device.makeRenderPipelineState(descriptor:
+                MTLRenderPipelineDescriptor(view:view,
+                                            library:library!,
+                                            vertexShaderName:"textureVertexShader",
+                                            fragmentShaderName:"textureFragmentShader",
+                                            doIncludeDepthAttachment: true))
 
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
-
-            heroModelPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
-
-            heroModelPipelineState = try device.makeRenderPipelineState(descriptor: heroModelPipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
         }
-
-
-
-
-
 
         // hero backdrop
         heroBackdrop = MetallicQuadModel(device: device)
@@ -118,82 +96,32 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-
-            let heroBackdropPipelineDescriptor = MTLRenderPipelineDescriptor()
-
-            heroBackdropPipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
-            heroBackdropPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
-
-            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
-
-            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].isBlendingEnabled = true
-
-            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].rgbBlendOperation = .add
-            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].alphaBlendOperation = .add
-
-            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
-            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
-
-            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
-            heroBackdropPipelineDescriptor.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
-
-            heroBackdropPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
-
-            heroBackdropPipelineState = try device.makeRenderPipelineState(descriptor: heroBackdropPipelineDescriptor)
+            
+            heroBackdropPipelineState = try device.makeRenderPipelineState(descriptor:
+                MTLRenderPipelineDescriptor(view:view,
+                                            library:library!,
+                                            vertexShaderName:"textureVertexShader",
+                                            fragmentShaderName:"textureFragmentShader",
+                                            doIncludeDepthAttachment: true))
+            
         } catch let e {
             Swift.print("\(e)")
         }
 
-
-
-
-
-
-
-
-
-
-        renderToTexturePassDescriptor = MTLRenderPassDescriptor()
-
-        // color
-        renderToTexturePassDescriptor.colorAttachments[ 0 ] = MTLRenderPassColorAttachmentDescriptor()
-        renderToTexturePassDescriptor.colorAttachments[ 0 ].storeAction = .store
-        renderToTexturePassDescriptor.colorAttachments[ 0 ].loadAction = .clear
-        renderToTexturePassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
-
-        // depth
-        renderToTexturePassDescriptor.depthAttachment = MTLRenderPassDepthAttachmentDescriptor()
-        renderToTexturePassDescriptor.depthAttachment.storeAction = .dontCare
-        renderToTexturePassDescriptor.depthAttachment.loadAction = .clear
-        renderToTexturePassDescriptor.depthAttachment.clearDepth = 1.0;
-
-
+        renderToTexturePassDescriptor = MTLRenderPassDescriptor(clearColor:MTLClearColorMake(1, 1, 1, 1), clearDepth:1)
 
         // final pass
-
         finalPassRenderSurface = MetallicQuadModel(device: device)
 
         do {
-
-            let finalPassPipelineDescriptor = MTLRenderPipelineDescriptor()
-
-            finalPassPipelineDescriptor.vertexFunction = library?.makeFunction(name: "finalPassVertexShader")!
-            finalPassPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "finalPassFragmentShader")!
-
-            finalPassPipelineDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat
-
-            finalPassPipelineDescriptor.colorAttachments[ 0 ].isBlendingEnabled = true
-
-            finalPassPipelineDescriptor.colorAttachments[ 0 ].rgbBlendOperation = .add
-            finalPassPipelineDescriptor.colorAttachments[ 0 ].alphaBlendOperation = .add
-
-            finalPassPipelineDescriptor.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
-            finalPassPipelineDescriptor.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
-
-            finalPassPipelineDescriptor.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
-            finalPassPipelineDescriptor.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
-
-            finalPassPipelineState = try device.makeRenderPipelineState(descriptor: finalPassPipelineDescriptor)
+            
+            finalPassPipelineState = try device.makeRenderPipelineState(descriptor:
+                MTLRenderPipelineDescriptor(view:view,
+                                            library:library!,
+                                            vertexShaderName:"finalPassVertexShader",
+                                            fragmentShaderName:"finalPassFragmentShader",
+                                            doIncludeDepthAttachment: false))
+            
         } catch let e {
             Swift.print("\(e)")
         }
@@ -210,15 +138,26 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
 
         view.arcBall.reshape(viewBounds: view.bounds)
 
-        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 8000)
+        camera.setProjection(fovYDegrees:Float(35),
+                             aspectRatioWidthOverHeight:Float(view.bounds.size.width/view.bounds.size.height),
+                             near:200,
+                             far: 8000)
 
         // color
-        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: view.colorPixelFormat, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: true)
-        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = view.device?.makeTexture(descriptor: rgbaTextureDescriptor)
+        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat,
+                                                                             width:Int(view.bounds.size.width),
+                                                                             height:Int(view.bounds.size.height),
+                                                                             mipmapped:true)
+        
+        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = view.device?.makeTexture(descriptor:rgbaTextureDescriptor)
 
         // depth
-        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(view.bounds.size.width), height: Int(view.bounds.size.height), mipmapped: false)
-        renderToTexturePassDescriptor.depthAttachment.texture = view.device?.makeTexture(descriptor: depthTextureDescriptor)
+        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float,
+                                                                              width:Int(view.bounds.size.width),
+                                                                              height:Int(view.bounds.size.height),
+                                                                              mipmapped:false)
+        
+        renderToTexturePassDescriptor.depthAttachment.texture = view.device?.makeTexture(descriptor:depthTextureDescriptor)
 
     }
 

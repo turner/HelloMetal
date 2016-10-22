@@ -54,26 +54,14 @@ class HelloQuadRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-
-            let heroModelPipelineDescriptor = MTLRenderPipelineDescriptor()
-
-            heroModelPipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
-            heroModelPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
-
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
             
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].isBlendingEnabled = true
-            
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].rgbBlendOperation = .add
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].alphaBlendOperation = .add
-            
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
-
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
-            heroModelPipelineDescriptor.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
-
-            heroModelPipelineState = try device.makeRenderPipelineState(descriptor: heroModelPipelineDescriptor)
+            heroModelPipelineState =
+                try device.makeRenderPipelineState(descriptor:
+                    MTLRenderPipelineDescriptor(view:view,
+                                                library:library!,
+                                                vertexShaderName:"textureVertexShader",
+                                                fragmentShaderName:"textureFragmentShader",
+                                                doIncludeDepthAttachment: false))
         } catch let e {
             Swift.print("\(e)")
         }
@@ -102,26 +90,15 @@ class HelloQuadRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-
-            let renderPlanePipelineDescriptor = MTLRenderPipelineDescriptor()
-
-            renderPlanePipelineDescriptor.vertexFunction = library?.makeFunction(name: "textureVertexShader")!
-            renderPlanePipelineDescriptor.fragmentFunction = library?.makeFunction(name: "textureFragmentShader")!
-
-            renderPlanePipelineDescriptor.colorAttachments[ 0 ].pixelFormat = view.colorPixelFormat
-
-            renderPlanePipelineDescriptor.colorAttachments[ 0 ].isBlendingEnabled = true
-
-            renderPlanePipelineDescriptor.colorAttachments[ 0 ].rgbBlendOperation = .add
-            renderPlanePipelineDescriptor.colorAttachments[ 0 ].alphaBlendOperation = .add
-
-            renderPlanePipelineDescriptor.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
-            renderPlanePipelineDescriptor.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
-
-            renderPlanePipelineDescriptor.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
-            renderPlanePipelineDescriptor.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
-
-            renderPlanePipelineState = try device.makeRenderPipelineState(descriptor: renderPlanePipelineDescriptor)
+            
+            renderPlanePipelineState =
+                try device.makeRenderPipelineState(descriptor:
+                    MTLRenderPipelineDescriptor(view:view,
+                                                library:library!,
+                                                vertexShaderName:"textureVertexShader",
+                                                fragmentShaderName:"textureFragmentShader",
+                                                doIncludeDepthAttachment: false))
+            
         } catch let e {
             Swift.print("\(e)")
         }
