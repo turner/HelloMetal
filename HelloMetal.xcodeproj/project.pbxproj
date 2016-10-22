@@ -37,6 +37,12 @@
 		4F2F1FA51DBA59C500B80FE4 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4F2F1FA71DBA5B0900B80FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Assets.xcassets */; };
 		4F2F1FA81DBA5B1500B80FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Assets.xcassets */; };
+		4F56AF891DBAF08E00E396E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F56AF881DBAF08E00E396E7 /* AppDelegate.swift */; };
+		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
+		4F56AF901DBAF08E00E396E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Assets.xcassets */; };
+		4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF911DBAF08E00E396E7 /* LaunchScreen.storyboard */; };
+		4F56AF9E1DBAF08E00E396E7 /* HelloModel_IOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F56AF9D1DBAF08E00E396E7 /* HelloModel_IOTests.swift */; };
+		4F56AFA91DBAF08E00E396E7 /* HelloModel_IOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F56AFA81DBAF08E00E396E7 /* HelloModel_IOUITests.swift */; };
 		4F7ABE191DA83A9F0054AFA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE171DA83A9F0054AFA9 /* Main.storyboard */; };
 		4F7ABE1E1DA83A9F0054AFA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1C1DA83A9F0054AFA9 /* LaunchScreen.storyboard */; };
 		4F7ABE291DA83A9F0054AFA9 /* HelloMetalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE281DA83A9F0054AFA9 /* HelloMetalTests.swift */; };
@@ -59,6 +65,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4F2F1F4A1DBA538200B80FE4;
 			remoteInfo = HelloQuad;
+		};
+		4F56AF9A1DBAF08E00E396E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F7ABE081DA83A9F0054AFA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F56AF851DBAF08E00E396E7;
+			remoteInfo = HelloModel_IO;
+		};
+		4F56AFA51DBAF08E00E396E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F7ABE081DA83A9F0054AFA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F56AF851DBAF08E00E396E7;
+			remoteInfo = HelloModel_IO;
 		};
 		4F7ABE251DA83A9F0054AFA9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -103,6 +123,18 @@
 		4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetallicTransform.swift; path = Shared/MetallicTransform.swift; sourceTree = "<group>"; };
 		4F2F1F921DBA599900B80FE4 /* showST.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = showST.metal; path = Shared/showST.metal; sourceTree = "<group>"; };
 		4F2F1F931DBA599900B80FE4 /* texture.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = texture.metal; path = Shared/texture.metal; sourceTree = "<group>"; };
+		4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloModel_IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F56AF881DBAF08E00E396E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4F56AF8D1DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4F56AF8F1DBAF08E00E396E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4F56AF921DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F56AF941DBAF08E00E396E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F56AF991DBAF08E00E396E7 /* HelloModel_IOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloModel_IOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F56AF9D1DBAF08E00E396E7 /* HelloModel_IOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloModel_IOTests.swift; sourceTree = "<group>"; };
+		4F56AF9F1DBAF08E00E396E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F56AFA41DBAF08E00E396E7 /* HelloModel_IOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloModel_IOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F56AFA81DBAF08E00E396E7 /* HelloModel_IOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloModel_IOUITests.swift; sourceTree = "<group>"; };
+		4F56AFAA1DBAF08E00E396E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7ABE101DA83A9F0054AFA9 /* HelloMultiPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMultiPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F7ABE181DA83A9F0054AFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +167,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4F2F1F661DBA538300B80FE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F56AF831DBAF08E00E396E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F56AF961DBAF08E00E396E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F56AFA11DBAF08E00E396E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -224,6 +277,36 @@
 			path = HelloQuadUITests;
 			sourceTree = "<group>";
 		};
+		4F56AF871DBAF08E00E396E7 /* HelloModel_IO */ = {
+			isa = PBXGroup;
+			children = (
+				4F56AF881DBAF08E00E396E7 /* AppDelegate.swift */,
+				4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */,
+				4F56AF911DBAF08E00E396E7 /* LaunchScreen.storyboard */,
+				4F56AF8F1DBAF08E00E396E7 /* Assets.xcassets */,
+				4F56AF941DBAF08E00E396E7 /* Info.plist */,
+			);
+			path = HelloModel_IO;
+			sourceTree = "<group>";
+		};
+		4F56AF9C1DBAF08E00E396E7 /* HelloModel_IOTests */ = {
+			isa = PBXGroup;
+			children = (
+				4F56AF9D1DBAF08E00E396E7 /* HelloModel_IOTests.swift */,
+				4F56AF9F1DBAF08E00E396E7 /* Info.plist */,
+			);
+			path = HelloModel_IOTests;
+			sourceTree = "<group>";
+		};
+		4F56AFA71DBAF08E00E396E7 /* HelloModel_IOUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4F56AFA81DBAF08E00E396E7 /* HelloModel_IOUITests.swift */,
+				4F56AFAA1DBAF08E00E396E7 /* Info.plist */,
+			);
+			path = HelloModel_IOUITests;
+			sourceTree = "<group>";
+		};
 		4F7ABE071DA83A9F0054AFA9 = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +317,9 @@
 				4F7ABE321DA83A9F0054AFA9 /* HelloMultipassUITests */,
 				4F2F1F611DBA538300B80FE4 /* HelloQuadTests */,
 				4F2F1F6C1DBA538300B80FE4 /* HelloQuadUITests */,
+				4F56AF871DBAF08E00E396E7 /* HelloModel_IO */,
+				4F56AF9C1DBAF08E00E396E7 /* HelloModel_IOTests */,
+				4F56AFA71DBAF08E00E396E7 /* HelloModel_IOUITests */,
 				4F2F1F101DBA50FA00B80FE4 /* Frameworks */,
 				4F7ABE111DA83A9F0054AFA9 /* Products */,
 			);
@@ -248,6 +334,9 @@
 				4F2F1F4B1DBA538200B80FE4 /* HelloQuad.app */,
 				4F2F1F5E1DBA538300B80FE4 /* HelloQuadTests.xctest */,
 				4F2F1F691DBA538300B80FE4 /* HelloQuadUITests.xctest */,
+				4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */,
+				4F56AF991DBAF08E00E396E7 /* HelloModel_IOTests.xctest */,
+				4F56AFA41DBAF08E00E396E7 /* HelloModel_IOUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -342,6 +431,59 @@
 			productReference = 4F2F1F691DBA538300B80FE4 /* HelloQuadUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		4F56AF851DBAF08E00E396E7 /* HelloModel_IO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F56AFB11DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IO" */;
+			buildPhases = (
+				4F56AF821DBAF08E00E396E7 /* Sources */,
+				4F56AF831DBAF08E00E396E7 /* Frameworks */,
+				4F56AF841DBAF08E00E396E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloModel_IO;
+			productName = HelloModel_IO;
+			productReference = 4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4F56AF981DBAF08E00E396E7 /* HelloModel_IOTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F56AFB21DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IOTests" */;
+			buildPhases = (
+				4F56AF951DBAF08E00E396E7 /* Sources */,
+				4F56AF961DBAF08E00E396E7 /* Frameworks */,
+				4F56AF971DBAF08E00E396E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F56AF9B1DBAF08E00E396E7 /* PBXTargetDependency */,
+			);
+			name = HelloModel_IOTests;
+			productName = HelloModel_IOTests;
+			productReference = 4F56AF991DBAF08E00E396E7 /* HelloModel_IOTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4F56AFA31DBAF08E00E396E7 /* HelloModel_IOUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F56AFB31DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IOUITests" */;
+			buildPhases = (
+				4F56AFA01DBAF08E00E396E7 /* Sources */,
+				4F56AFA11DBAF08E00E396E7 /* Frameworks */,
+				4F56AFA21DBAF08E00E396E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F56AFA61DBAF08E00E396E7 /* PBXTargetDependency */,
+			);
+			name = HelloModel_IOUITests;
+			productName = HelloModel_IOUITests;
+			productReference = 4F56AFA41DBAF08E00E396E7 /* HelloModel_IOUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F7ABE381DA83A9F0054AFA9 /* Build configuration list for PBXNativeTarget "HelloMultiPass" */;
@@ -423,6 +565,23 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 4F2F1F4A1DBA538200B80FE4;
 					};
+					4F56AF851DBAF08E00E396E7 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = NCTVS5F8E2;
+						ProvisioningStyle = Automatic;
+					};
+					4F56AF981DBAF08E00E396E7 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = NCTVS5F8E2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4F56AF851DBAF08E00E396E7;
+					};
+					4F56AFA31DBAF08E00E396E7 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = NCTVS5F8E2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4F56AF851DBAF08E00E396E7;
+					};
 					4F7ABE0F1DA83A9F0054AFA9 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NCTVS5F8E2;
@@ -461,6 +620,9 @@
 				4F7ABE2E1DA83A9F0054AFA9 /* HelloMetalUITests */,
 				4F2F1F5D1DBA538300B80FE4 /* HelloQuadTests */,
 				4F2F1F681DBA538300B80FE4 /* HelloQuadUITests */,
+				4F56AF851DBAF08E00E396E7 /* HelloModel_IO */,
+				4F56AF981DBAF08E00E396E7 /* HelloModel_IOTests */,
+				4F56AFA31DBAF08E00E396E7 /* HelloModel_IOUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -484,6 +646,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4F2F1F671DBA538300B80FE4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F56AF841DBAF08E00E396E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */,
+				4F56AF901DBAF08E00E396E7 /* Assets.xcassets in Resources */,
+				4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F56AF971DBAF08E00E396E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F56AFA21DBAF08E00E396E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -553,6 +739,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4F56AF821DBAF08E00E396E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F56AF891DBAF08E00E396E7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F56AF951DBAF08E00E396E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F56AF9E1DBAF08E00E396E7 /* HelloModel_IOTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F56AFA01DBAF08E00E396E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F56AFA91DBAF08E00E396E7 /* HelloModel_IOUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4F7ABE0C1DA83A9F0054AFA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -602,6 +812,16 @@
 			target = 4F2F1F4A1DBA538200B80FE4 /* HelloQuad */;
 			targetProxy = 4F2F1F6A1DBA538300B80FE4 /* PBXContainerItemProxy */;
 		};
+		4F56AF9B1DBAF08E00E396E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F56AF851DBAF08E00E396E7 /* HelloModel_IO */;
+			targetProxy = 4F56AF9A1DBAF08E00E396E7 /* PBXContainerItemProxy */;
+		};
+		4F56AFA61DBAF08E00E396E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F56AF851DBAF08E00E396E7 /* HelloModel_IO */;
+			targetProxy = 4F56AFA51DBAF08E00E396E7 /* PBXContainerItemProxy */;
+		};
 		4F7ABE261DA83A9F0054AFA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */;
@@ -627,6 +847,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				4F2F1F571DBA538300B80FE4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F56AF8D1DBAF08E00E396E7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4F56AF911DBAF08E00E396E7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F56AF921DBAF08E00E396E7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -734,6 +970,90 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = HelloQuad;
+			};
+			name = Release;
+		};
+		4F56AFAB1DBAF08E00E396E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloModel_IO/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IO";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4F56AFAC1DBAF08E00E396E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloModel_IO/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IO";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4F56AFAD1DBAF08E00E396E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloModel_IOTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IOTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloModel_IO.app/HelloModel_IO";
+			};
+			name = Debug;
+		};
+		4F56AFAE1DBAF08E00E396E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloModel_IOTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IOTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloModel_IO.app/HelloModel_IO";
+			};
+			name = Release;
+		};
+		4F56AFAF1DBAF08E00E396E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloModel_IOUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IOUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = HelloModel_IO;
+			};
+			name = Debug;
+		};
+		4F56AFB01DBAF08E00E396E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloModel_IOUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IOUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = HelloModel_IO;
 			};
 			name = Release;
 		};
@@ -943,6 +1263,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4F56AFB11DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F56AFAB1DBAF08E00E396E7 /* Debug */,
+				4F56AFAC1DBAF08E00E396E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4F56AFB21DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IOTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F56AFAD1DBAF08E00E396E7 /* Debug */,
+				4F56AFAE1DBAF08E00E396E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4F56AFB31DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IOUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F56AFAF1DBAF08E00E396E7 /* Debug */,
+				4F56AFB01DBAF08E00E396E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		4F7ABE0B1DA83A9F0054AFA9 /* Build configuration list for PBXProject "HelloMetal" */ = {
 			isa = XCConfigurationList;
