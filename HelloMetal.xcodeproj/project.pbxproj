@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0911761DBBFA4000D252BF /* Multipass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0911751DBBFA4000D252BF /* Multipass.xcassets */; };
+		4F0911781DBBFA7400D252BF /* Quad.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0911771DBBFA7400D252BF /* Quad.xcassets */; };
+		4F0911791DBBFAB900D252BF /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
+		4F09117A1DBBFB1400D252BF /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
 		4F2353881DBAB5F10095DF5F /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
 		4F2353891DBAE30B0095DF5F /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
 		4F2F1F531DBA538300B80FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2F1F511DBA538300B80FE4 /* Main.storyboard */; };
@@ -35,8 +39,7 @@
 		4F2F1FA31DBA59C500B80FE4 /* MetallicTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */; };
 		4F2F1FA41DBA59C500B80FE4 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F2F1FA51DBA59C500B80FE4 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
-		4F2F1FA71DBA5B0900B80FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Assets.xcassets */; };
-		4F2F1FA81DBA5B1500B80FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Assets.xcassets */; };
+		4F2F1FA81DBA5B1500B80FE4 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
 		4F56AF891DBAF08E00E396E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F56AF881DBAF08E00E396E7 /* AppDelegate.swift */; };
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Assets.xcassets */; };
@@ -97,6 +100,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F0911751DBBFA4000D252BF /* Multipass.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Multipass.xcassets; sourceTree = "<group>"; };
+		4F0911771DBBFA7400D252BF /* Quad.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Quad.xcassets; path = helloQuad/Quad.xcassets; sourceTree = SOURCE_ROOT; };
 		4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererExtensions.swift; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -138,7 +143,7 @@
 		4F7ABE101DA83A9F0054AFA9 /* HelloMultiPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMultiPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F7ABE181DA83A9F0054AFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4F7ABE1A1DA83A9F0054AFA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HelloMetal/Assets.xcassets; sourceTree = "<group>"; };
+		4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Textures.xcassets; path = HelloMetal/Textures.xcassets; sourceTree = "<group>"; };
 		4F7ABE1D1DA83A9F0054AFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F7ABE1F1DA83A9F0054AFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7ABE241DA83A9F0054AFA9 /* HelloMetalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloMetalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +236,7 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */,
 				4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */,
 				4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */,
 				4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */,
@@ -241,7 +247,6 @@
 				4F2F1F8E1DBA599900B80FE4 /* hello.metal */,
 				4F2F1F921DBA599900B80FE4 /* showST.metal */,
 				4F2F1F931DBA599900B80FE4 /* texture.metal */,
-				4F7ABE1A1DA83A9F0054AFA9 /* Assets.xcassets */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 		4F2F1F4C1DBA538200B80FE4 /* HelloQuad */ = {
 			isa = PBXGroup;
 			children = (
+				4F0911771DBBFA7400D252BF /* Quad.xcassets */,
 				4F2F1F871DBA583A00B80FE4 /* AppDelegate.swift */,
 				4F2F1F791DBA55B400B80FE4 /* HelloQuadMetalView.swift */,
 				4F2F1F7A1DBA55B400B80FE4 /* HelloQuadRenderer.swift */,
@@ -280,10 +286,10 @@
 		4F56AF871DBAF08E00E396E7 /* HelloModel_IO */ = {
 			isa = PBXGroup;
 			children = (
+				4F56AF8F1DBAF08E00E396E7 /* Assets.xcassets */,
 				4F56AF881DBAF08E00E396E7 /* AppDelegate.swift */,
 				4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */,
 				4F56AF911DBAF08E00E396E7 /* LaunchScreen.storyboard */,
-				4F56AF8F1DBAF08E00E396E7 /* Assets.xcassets */,
 				4F56AF941DBAF08E00E396E7 /* Info.plist */,
 			);
 			path = HelloModel_IO;
@@ -311,13 +317,13 @@
 			isa = PBXGroup;
 			children = (
 				4F2F1F461DBA510800B80FE4 /* Shared */,
-				4F7ABE121DA83A9F0054AFA9 /* HelloMultipass */,
 				4F2F1F4C1DBA538200B80FE4 /* HelloQuad */,
+				4F7ABE121DA83A9F0054AFA9 /* HelloMultipass */,
+				4F56AF871DBAF08E00E396E7 /* HelloModel_IO */,
 				4F7ABE271DA83A9F0054AFA9 /* HelloMultipassTests */,
 				4F7ABE321DA83A9F0054AFA9 /* HelloMultipassUITests */,
 				4F2F1F611DBA538300B80FE4 /* HelloQuadTests */,
 				4F2F1F6C1DBA538300B80FE4 /* HelloQuadUITests */,
-				4F56AF871DBAF08E00E396E7 /* HelloModel_IO */,
 				4F56AF9C1DBAF08E00E396E7 /* HelloModel_IOTests */,
 				4F56AFA71DBAF08E00E396E7 /* HelloModel_IOUITests */,
 				4F2F1F101DBA50FA00B80FE4 /* Frameworks */,
@@ -344,6 +350,7 @@
 		4F7ABE121DA83A9F0054AFA9 /* HelloMultipass */ = {
 			isa = PBXGroup;
 			children = (
+				4F0911751DBBFA4000D252BF /* Multipass.xcassets */,
 				4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */,
 				4F7ABE471DA83C100054AFA9 /* MultipassMetalView.swift */,
 				4F7ABE481DA83C100054AFA9 /* MultiPassRenderer.swift */,
@@ -614,13 +621,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */,
 				4F2F1F4A1DBA538200B80FE4 /* HelloQuad */,
+				4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */,
+				4F56AF851DBAF08E00E396E7 /* HelloModel_IO */,
 				4F7ABE231DA83A9F0054AFA9 /* HelloMetalTests */,
 				4F7ABE2E1DA83A9F0054AFA9 /* HelloMetalUITests */,
 				4F2F1F5D1DBA538300B80FE4 /* HelloQuadTests */,
 				4F2F1F681DBA538300B80FE4 /* HelloQuadUITests */,
-				4F56AF851DBAF08E00E396E7 /* HelloModel_IO */,
 				4F56AF981DBAF08E00E396E7 /* HelloModel_IOTests */,
 				4F56AFA31DBAF08E00E396E7 /* HelloModel_IOUITests */,
 			);
@@ -632,7 +639,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F2F1FA71DBA5B0900B80FE4 /* Assets.xcassets in Resources */,
+				4F0911791DBBFAB900D252BF /* Textures.xcassets in Resources */,
+				4F0911781DBBFA7400D252BF /* Quad.xcassets in Resources */,
 				4F2F1F581DBA538300B80FE4 /* LaunchScreen.storyboard in Resources */,
 				4F2F1F531DBA538300B80FE4 /* Main.storyboard in Resources */,
 			);
@@ -656,8 +664,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */,
+				4F09117A1DBBFB1400D252BF /* Textures.xcassets in Resources */,
 				4F56AF901DBAF08E00E396E7 /* Assets.xcassets in Resources */,
+				4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */,
 				4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -680,7 +689,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F2F1FA81DBA5B1500B80FE4 /* Assets.xcassets in Resources */,
+				4F0911761DBBFA4000D252BF /* Multipass.xcassets in Resources */,
+				4F2F1FA81DBA5B1500B80FE4 /* Textures.xcassets in Resources */,
 				4F7ABE1E1DA83A9F0054AFA9 /* LaunchScreen.storyboard in Resources */,
 				4F7ABE191DA83A9F0054AFA9 /* Main.storyboard in Resources */,
 			);
@@ -1271,6 +1281,7 @@
 				4F56AFAC1DBAF08E00E396E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F56AFB21DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IOTests" */ = {
 			isa = XCConfigurationList;
@@ -1279,6 +1290,7 @@
 				4F56AFAE1DBAF08E00E396E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F56AFB31DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IOUITests" */ = {
 			isa = XCConfigurationList;
@@ -1287,6 +1299,7 @@
 				4F56AFB01DBAF08E00E396E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F7ABE0B1DA83A9F0054AFA9 /* Build configuration list for PBXProject "HelloMetal" */ = {
 			isa = XCConfigurationList;
