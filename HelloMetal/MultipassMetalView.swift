@@ -4,7 +4,7 @@ import MetalKit
 public class MultipassMetalView: MTKView {
     
     var renderer: MultiPassRenderer!
-    var arcBall: EISArcball!
+    var arcBall: EIArcball!
 
     required public init(coder: NSCoder) {
         
@@ -14,11 +14,11 @@ public class MultipassMetalView: MTKView {
         self.renderer = MultiPassRenderer(view: self, device: self.device!)
         self.delegate = self.renderer
         
-        arcBall = EISArcball.init(viewBounds: self.bounds)
+        arcBall = EIArcball.init(viewBounds: self.bounds)
         
         self.addGestureRecognizer(UIPanGestureRecognizer.init(
             target: arcBall,
-            action: #selector(EISArcball.arcBallPanHandler)))
+            action: #selector(EIArcball.arcBallPanHandler)))
         
     }
 

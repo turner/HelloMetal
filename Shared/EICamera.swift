@@ -1,5 +1,5 @@
 //
-//  EISCamera.swift
+//  EICamera.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 9/16/16.
@@ -12,7 +12,7 @@ import GLKit
 //                    +y-axis up
 //                    +x-axis to the right
 
-struct EISCamera {
+struct EICamera {
 
     var location: GLKVector3!
     var target: GLKVector3!

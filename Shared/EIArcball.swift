@@ -1,5 +1,5 @@
 //
-//  EISArcball.swift
+//  EIArcball.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 9/28/16.
@@ -8,7 +8,7 @@
 
 import GLKit
 
-class EISArcball {
+class EIArcball {
  
     let kRotationRate = CGFloat(1.0/30.0);
     let kRotationDecelerationRate = CGFloat(1.0/60.0);
@@ -84,7 +84,7 @@ class EISArcball {
             Timer.scheduledTimer(
                 timeInterval: TimeInterval(kRotationRate),
                 target: self,
-                selector: #selector(EISArcball.rotationTimerHandler),
+                selector: #selector(EIArcball.rotationTimerHandler),
                 userInfo: [ "radiansBegin":radians, "radians":radians, "radiansEnd":0, "counter":0 ],
                 repeats: true)
         

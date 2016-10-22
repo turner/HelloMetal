@@ -11,7 +11,7 @@ import GLKit
 
 class HelloQuadRenderer: NSObject, MTKViewDelegate {
 
-    var camera: EISCamera!
+    var camera: EICamera!
 
     // hero model
     var heroModel: MetallicQuadModel!
@@ -28,7 +28,7 @@ class HelloQuadRenderer: NSObject, MTKViewDelegate {
 
         let library = device.newDefaultLibrary()
         
-        camera = EISCamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+        camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         
         // hero model

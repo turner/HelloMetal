@@ -17,8 +17,8 @@
 		4F2F1F7C1DBA55B400B80FE4 /* HelloQuadRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F7A1DBA55B400B80FE4 /* HelloQuadRenderer.swift */; };
 		4F2F1F891DBA585E00B80FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F871DBA583A00B80FE4 /* AppDelegate.swift */; };
 		4F2F1F8A1DBA587000B80FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */; };
-		4F2F1F941DBA599900B80FE4 /* EISArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EISArcball.swift */; };
-		4F2F1F951DBA599900B80FE4 /* EISCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EISCamera.swift */; };
+		4F2F1F941DBA599900B80FE4 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
+		4F2F1F951DBA599900B80FE4 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4F2F1F961DBA599900B80FE4 /* finalPass.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */; };
 		4F2F1F971DBA599900B80FE4 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4F2F1F981DBA599900B80FE4 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
@@ -26,8 +26,8 @@
 		4F2F1F9A1DBA599900B80FE4 /* MetallicTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */; };
 		4F2F1F9B1DBA599900B80FE4 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F2F1F9C1DBA599900B80FE4 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
-		4F2F1F9D1DBA59C500B80FE4 /* EISArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EISArcball.swift */; };
-		4F2F1F9E1DBA59C500B80FE4 /* EISCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EISCamera.swift */; };
+		4F2F1F9D1DBA59C500B80FE4 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
+		4F2F1F9E1DBA59C500B80FE4 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4F2F1F9F1DBA59C500B80FE4 /* finalPass.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */; };
 		4F2F1FA01DBA59C500B80FE4 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4F2F1FA11DBA59C500B80FE4 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
@@ -94,8 +94,8 @@
 		4F2F1F791DBA55B400B80FE4 /* HelloQuadMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelloQuadMetalView.swift; path = helloQuad/HelloQuadMetalView.swift; sourceTree = SOURCE_ROOT; };
 		4F2F1F7A1DBA55B400B80FE4 /* HelloQuadRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelloQuadRenderer.swift; path = helloQuad/HelloQuadRenderer.swift; sourceTree = SOURCE_ROOT; };
 		4F2F1F871DBA583A00B80FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = helloQuad/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		4F2F1F8B1DBA599900B80FE4 /* EISArcball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EISArcball.swift; path = Shared/EISArcball.swift; sourceTree = "<group>"; };
-		4F2F1F8C1DBA599900B80FE4 /* EISCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EISCamera.swift; path = Shared/EISCamera.swift; sourceTree = "<group>"; };
+		4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIArcball.swift; path = Shared/EIArcball.swift; sourceTree = "<group>"; };
+		4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EICamera.swift; path = Shared/EICamera.swift; sourceTree = "<group>"; };
 		4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = finalPass.metal; path = Shared/finalPass.metal; sourceTree = "<group>"; };
 		4F2F1F8E1DBA599900B80FE4 /* hello.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = hello.metal; path = Shared/hello.metal; sourceTree = "<group>"; };
 		4F2F1F8F1DBA599900B80FE4 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Math.swift; path = Shared/Math.swift; sourceTree = "<group>"; };
@@ -179,13 +179,13 @@
 			isa = PBXGroup;
 			children = (
 				4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */,
-				4F2F1F8B1DBA599900B80FE4 /* EISArcball.swift */,
-				4F2F1F8C1DBA599900B80FE4 /* EISCamera.swift */,
-				4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */,
-				4F2F1F8E1DBA599900B80FE4 /* hello.metal */,
+				4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */,
+				4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */,
 				4F2F1F8F1DBA599900B80FE4 /* Math.swift */,
 				4F2F1F901DBA599900B80FE4 /* MetallicModel.swift */,
 				4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */,
+				4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */,
+				4F2F1F8E1DBA599900B80FE4 /* hello.metal */,
 				4F2F1F921DBA599900B80FE4 /* showST.metal */,
 				4F2F1F931DBA599900B80FE4 /* texture.metal */,
 				4F7ABE1A1DA83A9F0054AFA9 /* Assets.xcassets */,
@@ -524,13 +524,13 @@
 				4F2353891DBAE30B0095DF5F /* RendererExtensions.swift in Sources */,
 				4F2F1F891DBA585E00B80FE4 /* AppDelegate.swift in Sources */,
 				4F2F1F971DBA599900B80FE4 /* hello.metal in Sources */,
-				4F2F1F941DBA599900B80FE4 /* EISArcball.swift in Sources */,
+				4F2F1F941DBA599900B80FE4 /* EIArcball.swift in Sources */,
 				4F2F1F991DBA599900B80FE4 /* MetallicModel.swift in Sources */,
 				4F2F1F9B1DBA599900B80FE4 /* showST.metal in Sources */,
 				4F2F1F7C1DBA55B400B80FE4 /* HelloQuadRenderer.swift in Sources */,
 				4F2F1F9A1DBA599900B80FE4 /* MetallicTransform.swift in Sources */,
 				4F2F1F961DBA599900B80FE4 /* finalPass.metal in Sources */,
-				4F2F1F951DBA599900B80FE4 /* EISCamera.swift in Sources */,
+				4F2F1F951DBA599900B80FE4 /* EICamera.swift in Sources */,
 				4F2F1F7B1DBA55B400B80FE4 /* HelloQuadMetalView.swift in Sources */,
 				4F2F1F981DBA599900B80FE4 /* Math.swift in Sources */,
 				4F2F1F9C1DBA599900B80FE4 /* texture.metal in Sources */,
@@ -557,8 +557,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F2F1F9D1DBA59C500B80FE4 /* EISArcball.swift in Sources */,
-				4F2F1F9E1DBA59C500B80FE4 /* EISCamera.swift in Sources */,
+				4F2F1F9D1DBA59C500B80FE4 /* EIArcball.swift in Sources */,
+				4F2F1F9E1DBA59C500B80FE4 /* EICamera.swift in Sources */,
 				4F2F1F9F1DBA59C500B80FE4 /* finalPass.metal in Sources */,
 				4F2F1FA01DBA59C500B80FE4 /* hello.metal in Sources */,
 				4F2F1FA11DBA59C500B80FE4 /* Math.swift in Sources */,
