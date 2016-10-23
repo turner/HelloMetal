@@ -64,6 +64,7 @@
 		4FDB167F1DBD66BA0025465A /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4FDB16801DBD66BA0025465A /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4FDB16811DBD66BA0025465A /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
+		4FDB16831DBD67860025465A /* MeshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16821DBD67860025465A /* MeshModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,7 @@
 		4F7ABE481DA83C100054AFA9 /* MultiPassRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPassRenderer.swift; sourceTree = "<group>"; };
 		4FDB16741DBD658C0025465A /* HelloModel_IOMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloModel_IOMetalView.swift; sourceTree = "<group>"; };
 		4FDB16751DBD658C0025465A /* HelloModel_IORenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloModel_IORenderer.swift; sourceTree = "<group>"; };
+		4FDB16821DBD67860025465A /* MeshModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */,
+				4FDB16821DBD67860025465A /* MeshModel.swift */,
 				4FDB16741DBD658C0025465A /* HelloModel_IOMetalView.swift */,
 				4FDB16751DBD658C0025465A /* HelloModel_IORenderer.swift */,
 				4F56AF881DBAF08E00E396E7 /* AppDelegate.swift */,
@@ -779,6 +782,7 @@
 				4FDB167F1DBD66BA0025465A /* hello.metal in Sources */,
 				4FDB16801DBD66BA0025465A /* showST.metal in Sources */,
 				4FDB16811DBD66BA0025465A /* texture.metal in Sources */,
+				4FDB16831DBD67860025465A /* MeshModel.swift in Sources */,
 				4FDB16771DBD658C0025465A /* HelloModel_IORenderer.swift in Sources */,
 				4FDB16761DBD658C0025465A /* HelloModel_IOMetalView.swift in Sources */,
 				4F56AF891DBAF08E00E396E7 /* AppDelegate.swift in Sources */,
