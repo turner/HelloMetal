@@ -163,31 +163,20 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
 
     func update(view: MultipassMetalView, drawableSize:CGSize) {
 
-        var fudge: Float
-        var dimension: Float
-        var scale: GLKMatrix4
-
-
         // render plane
-        fudge = 0.75 * camera.far
-        dimension = fudge * tan( GLKMathDegreesToRadians( camera.fovYDegrees/2 ) )
-        scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
-        finalPassRenderSurface.metallicTransform.transform.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
-        finalPassRenderSurface.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * finalPassRenderSurface.metallicTransform.transform.modelMatrix
-        finalPassRenderSurface.metallicTransform.update()
+        finalPassRenderSurface.metallicTransform.update(camera: camera, transformer: {
+            return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far)
+        })
 
         // hero model
-        heroModel.metallicTransform.transform.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
-        heroModel.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModel.metallicTransform.transform.modelMatrix
-        heroModel.metallicTransform.update()
+        heroModel.metallicTransform.update(camera: camera, transformer: {
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
+        })
 
         // hero backdrop
-        fudge = 0.35 * camera.far
-        dimension = fudge * tan( GLKMathDegreesToRadians( camera.fovYDegrees/2 ) )
-        scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
-        heroBackdrop.metallicTransform.transform.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
-        heroBackdrop.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroBackdrop.metallicTransform.transform.modelMatrix
-        heroBackdrop.metallicTransform.update()
+        heroBackdrop.metallicTransform.update(camera: camera, transformer: {
+            return camera.createRenderPlaneTransform(distanceFromCamera: 0.35 * camera.far)
+        })
 
     }
 

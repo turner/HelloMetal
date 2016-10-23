@@ -98,7 +98,8 @@ struct EICamera {
         // Concatenate.
         let transform = GLKMatrix4Multiply(C, GLKMatrix4Multiply(B, A));
 
-        return transform
+        let dimension = distanceFromCamera * tan( GLKMathDegreesToRadians( self.fovYDegrees/2 ) )
+        return transform * GLKMatrix4MakeScale(self.aspectRatioWidthOverHeight * dimension, dimension, 1)
 
     }
 

@@ -118,23 +118,16 @@ class HelloQuadRenderer: NSObject, MTKViewDelegate {
 
     func update(view: HelloQuadMetalView, drawableSize:CGSize) {
 
-        var fudge: Float
-        var dimension: Float
-        var scale: GLKMatrix4
-        
         // render plane
-        fudge = 0.75 * camera.far
-        dimension = fudge * tan( GLKMathDegreesToRadians( camera.fovYDegrees/2 ) )
-        scale = GLKMatrix4MakeScale(camera.aspectRatioWidthOverHeight * dimension, dimension, 1)
-        renderPlane.metallicTransform.transform.modelMatrix = camera.createRenderPlaneTransform(distanceFromCamera: fudge) * scale
-        renderPlane.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * renderPlane.metallicTransform.transform.modelMatrix
-        renderPlane.metallicTransform.update()
+        renderPlane.metallicTransform.update(camera: camera, transformer: {
+            return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far)
+        })
 
         // hero model
-        heroModel.metallicTransform.transform.modelMatrix = view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
-        heroModel.metallicTransform.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * heroModel.metallicTransform.transform.modelMatrix
-        heroModel.metallicTransform.update()
-
+        heroModel.metallicTransform.update(camera: camera, transformer: {
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
+        })
+        
     }
 
     public func draw(in view: MTKView) {

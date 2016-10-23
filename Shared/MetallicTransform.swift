@@ -51,4 +51,12 @@ struct MetallicTransform {
         memcpy(bufferPointer, &self.transform, MemoryLayout<Transform>.size)
 
     }
+
+    mutating func update (camera: EICamera, transformer:() -> GLKMatrix4) {
+
+        self.transform.modelMatrix = transformer()
+        self.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * self.transform.modelMatrix
+
+        self.update()
+    }
 }
