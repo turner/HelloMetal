@@ -14,7 +14,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
     var camera: EICamera!
 
     // hero model
-    var heroModel: MetallicQuadModel!
+    var heroModel: EICube!
     var heroModelTexture: MTLTexture!
     var heroModelPipelineState: MTLRenderPipelineState!
 
@@ -32,13 +32,13 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
         
         // hero model
-        heroModel = MetallicQuadModel(device: device)
+        heroModel = EICube(device: device, xExtent: 50, yExtent: 50, zExtent: 50, xTesselation: 32, yTesselation: 32, zTesselation: 32)
 
         do {
 
             let textureLoader = MTKTextureLoader(device: device)
 
-            guard let image = UIImage(named:"kids_grid_3x3") else {
+            guard let image = UIImage(named:"mandrill") else {
                 fatalError("Error: Can not create UIImage")
             }
 
@@ -59,9 +59,10 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
                 try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
                                                 library:library!,
-                                                vertexShaderName:"textureVertexShader",
-                                                fragmentShaderName:"textureFragmentShader",
-                                                doIncludeDepthAttachment: false))
+                                                vertexShaderName:"modelIOVertexShader",
+                                                fragmentShaderName:"modelIOFragmentShader",
+                                                doIncludeDepthAttachment: false,
+                                                vertexDescriptor:heroModel.metalVertexDescriptor))
         } catch let e {
             Swift.print("\(e)")
         }
@@ -97,7 +98,8 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
                                                 library:library!,
                                                 vertexShaderName:"textureVertexShader",
                                                 fragmentShaderName:"textureFragmentShader",
-                                                doIncludeDepthAttachment: false))
+                                                doIncludeDepthAttachment: false,
+                                                vertexDescriptor: nil))
             
         } catch let e {
             Swift.print("\(e)")
@@ -125,7 +127,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
         // hero model
         heroModel.metallicTransform.update(camera: camera, transformer: {
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
+            return view.arcBall.rotationMatrix
         })
         
     }
@@ -162,15 +164,13 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
             renderCommandEncoder.setFragmentTexture(heroModelTexture, at: 0)
             renderCommandEncoder.drawIndexedPrimitives(
-                    type: .triangle,
-                    indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
-                    indexType: MTLIndexType.uint16,
+                    type: heroModel.primitiveType,
+                    indexCount: Int(heroModel.indexCount),
+                    indexType: heroModel.indexType,
                     indexBuffer: heroModel.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)
 
             renderCommandEncoder.endEncoding()
-
-
 
             commandBuffer.present(drawable)
             commandBuffer.commit()

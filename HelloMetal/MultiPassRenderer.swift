@@ -67,7 +67,8 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
                                             library:library!,
                                             vertexShaderName:"textureVertexShader",
                                             fragmentShaderName:"textureFragmentShader",
-                                            doIncludeDepthAttachment: true))
+                                            doIncludeDepthAttachment: true,
+                                            vertexDescriptor: nil))
 
         } catch let e {
             Swift.print("\(e)")
@@ -102,7 +103,8 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
                                             library:library!,
                                             vertexShaderName:"textureVertexShader",
                                             fragmentShaderName:"textureFragmentShader",
-                                            doIncludeDepthAttachment: true))
+                                            doIncludeDepthAttachment: true,
+                                            vertexDescriptor: nil))
             
         } catch let e {
             Swift.print("\(e)")
@@ -120,7 +122,8 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
                                             library:library!,
                                             vertexShaderName:"finalPassVertexShader",
                                             fragmentShaderName:"finalPassFragmentShader",
-                                            doIncludeDepthAttachment: false))
+                                            doIncludeDepthAttachment: false,
+                                            vertexDescriptor: nil))
             
         } catch let e {
             Swift.print("\(e)")

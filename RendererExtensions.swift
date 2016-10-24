@@ -10,7 +10,12 @@ import MetalKit
 
 extension MTLRenderPipelineDescriptor {
     
-    convenience init(view: MTKView, library: MTLLibrary, vertexShaderName:String, fragmentShaderName:String, doIncludeDepthAttachment:Bool) {
+    convenience init(view: MTKView,
+                     library: MTLLibrary,
+                     vertexShaderName:String,
+                     fragmentShaderName:String,
+                     doIncludeDepthAttachment:Bool,
+                     vertexDescriptor:MTLVertexDescriptor?) {
         
         self.init()
         
@@ -31,9 +36,13 @@ extension MTLRenderPipelineDescriptor {
         colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
         
         if (doIncludeDepthAttachment == true) {
-         depthAttachmentPixelFormat = .depth32Float
+            depthAttachmentPixelFormat = .depth32Float
         }
         
+        if (vertexDescriptor != nil) {
+            self.vertexDescriptor = vertexDescriptor
+        }
+
     }
 
 }

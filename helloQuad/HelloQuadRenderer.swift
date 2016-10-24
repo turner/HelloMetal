@@ -61,7 +61,8 @@ class HelloQuadRenderer: NSObject, MTKViewDelegate {
                                                 library:library!,
                                                 vertexShaderName:"textureVertexShader",
                                                 fragmentShaderName:"textureFragmentShader",
-                                                doIncludeDepthAttachment: false))
+                                                doIncludeDepthAttachment: false,
+                                                vertexDescriptor: nil))
         } catch let e {
             Swift.print("\(e)")
         }
@@ -97,7 +98,8 @@ class HelloQuadRenderer: NSObject, MTKViewDelegate {
                                                 library:library!,
                                                 vertexShaderName:"textureVertexShader",
                                                 fragmentShaderName:"textureFragmentShader",
-                                                doIncludeDepthAttachment: false))
+                                                doIncludeDepthAttachment: false,
+                                                vertexDescriptor: nil))
             
         } catch let e {
             Swift.print("\(e)")
