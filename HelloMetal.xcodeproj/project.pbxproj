@@ -11,6 +11,8 @@
 		4F0911781DBBFA7400D252BF /* Quad.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0911771DBBFA7400D252BF /* Quad.xcassets */; };
 		4F0911791DBBFAB900D252BF /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
 		4F09117A1DBBFB1400D252BF /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
+		4F0C7E5A1DBE8431005F42C3 /* MeshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* MeshModel.swift */; };
+		4F0C7E5B1DBE8518005F42C3 /* MeshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* MeshModel.swift */; };
 		4F2353881DBAB5F10095DF5F /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
 		4F2353891DBAE30B0095DF5F /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
 		4F2F1F531DBA538300B80FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2F1F511DBA538300B80FE4 /* Main.storyboard */; };
@@ -64,7 +66,6 @@
 		4FDB167F1DBD66BA0025465A /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4FDB16801DBD66BA0025465A /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4FDB16811DBD66BA0025465A /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
-		4FDB16831DBD67860025465A /* MeshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16821DBD67860025465A /* MeshModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 /* Begin PBXFileReference section */
 		4F0911751DBBFA4000D252BF /* Multipass.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Multipass.xcassets; sourceTree = "<group>"; };
 		4F0911771DBBFA7400D252BF /* Quad.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Quad.xcassets; path = helloQuad/Quad.xcassets; sourceTree = SOURCE_ROOT; };
+		4F0C7E591DBE8431005F42C3 /* MeshModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeshModel.swift; path = Shared/MeshModel.swift; sourceTree = "<group>"; };
 		4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererExtensions.swift; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -169,7 +171,6 @@
 		4F7ABE481DA83C100054AFA9 /* MultiPassRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPassRenderer.swift; sourceTree = "<group>"; };
 		4FDB16741DBD658C0025465A /* HelloModel_IOMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloModel_IOMetalView.swift; sourceTree = "<group>"; };
 		4FDB16751DBD658C0025465A /* HelloModel_IORenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloModel_IORenderer.swift; sourceTree = "<group>"; };
-		4FDB16821DBD67860025465A /* MeshModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */,
+				4F0C7E591DBE8431005F42C3 /* MeshModel.swift */,
 				4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */,
 				4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */,
 				4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */,
@@ -303,7 +305,6 @@
 			isa = PBXGroup;
 			children = (
 				4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */,
-				4FDB16821DBD67860025465A /* MeshModel.swift */,
 				4FDB16741DBD658C0025465A /* HelloModel_IOMetalView.swift */,
 				4FDB16751DBD658C0025465A /* HelloModel_IORenderer.swift */,
 				4F56AF881DBAF08E00E396E7 /* AppDelegate.swift */,
@@ -746,6 +747,7 @@
 				4F2F1F9A1DBA599900B80FE4 /* MetallicTransform.swift in Sources */,
 				4F2F1F961DBA599900B80FE4 /* finalPass.metal in Sources */,
 				4F2F1F951DBA599900B80FE4 /* EICamera.swift in Sources */,
+				4F0C7E5A1DBE8431005F42C3 /* MeshModel.swift in Sources */,
 				4F2F1F7B1DBA55B400B80FE4 /* HelloQuadMetalView.swift in Sources */,
 				4F2F1F981DBA599900B80FE4 /* Math.swift in Sources */,
 				4F2F1F9C1DBA599900B80FE4 /* texture.metal in Sources */,
@@ -772,6 +774,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0C7E5B1DBE8518005F42C3 /* MeshModel.swift in Sources */,
 				4FDB16781DBD66BA0025465A /* RendererExtensions.swift in Sources */,
 				4FDB16791DBD66BA0025465A /* EIArcball.swift in Sources */,
 				4FDB167A1DBD66BA0025465A /* EICamera.swift in Sources */,
@@ -782,7 +785,6 @@
 				4FDB167F1DBD66BA0025465A /* hello.metal in Sources */,
 				4FDB16801DBD66BA0025465A /* showST.metal in Sources */,
 				4FDB16811DBD66BA0025465A /* texture.metal in Sources */,
-				4FDB16831DBD67860025465A /* MeshModel.swift in Sources */,
 				4FDB16771DBD658C0025465A /* HelloModel_IORenderer.swift in Sources */,
 				4FDB16761DBD658C0025465A /* HelloModel_IOMetalView.swift in Sources */,
 				4F56AF891DBAF08E00E396E7 /* AppDelegate.swift in Sources */,
