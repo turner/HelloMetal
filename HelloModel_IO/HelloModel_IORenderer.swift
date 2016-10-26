@@ -32,23 +32,10 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
 
         // hero model
-        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 16, yTesselation: 16, zTesselation: 16)
 
         do {
-
-            let textureLoader = MTKTextureLoader(device: device)
-
-            guard let image = UIImage(named:"mandrill") else {
-                fatalError("Error: Can not create UIImage")
-            }
-
-            if (image.cgImage?.alphaInfo == .premultipliedLast) {
-                print("texture uses premultiplied alpha. Rock.")
-            }
-
-            let textureLoaderOptions:[String:NSNumber] = [ MTKTextureLoaderOptionSRGB:false ]
-
-            heroModelTexture = try textureLoader.newTexture(with: image.cgImage!, options: textureLoaderOptions)
+            heroModelTexture = try makeTexture(device: device, name: "candycane_disk")
         } catch {
             fatalError("Error: Can not load texture")
         }
@@ -59,8 +46,8 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
                     try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
                             library:library!,
-                            vertexShaderName:"modelIOVertexShader",
-                            fragmentShaderName:"modelIOFragmentShader",
+                            vertexShaderName:"textureMIOVertexShader",
+                            fragmentShaderName:"textureMIOFragmentShader",
 //                            vertexShaderName:"showMIOVertexShader",
 //                            fragmentShaderName:"showMIOFragmentShader",
                             doIncludeDepthAttachment: false,
@@ -144,12 +131,13 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
             let commandBuffer = commandQueue.makeCommandBuffer()
 
             let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
+
             renderCommandEncoder.setFrontFacing(.counterClockwise)
-            renderCommandEncoder.setTriangleFillMode(.fill)
-            //renderCommandEncoder.setCullMode(.none)
-            renderCommandEncoder.setCullMode(.back)
-            
+            renderCommandEncoder.setCullMode(.none)
+
             // render plane
+            renderCommandEncoder.setTriangleFillMode(.fill)
+
             renderCommandEncoder.setRenderPipelineState(renderPlanePipelineState)
             renderCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(renderPlane.metallicTransform.metalBuffer, offset: 0, at: 1)
@@ -162,6 +150,8 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
                     indexBufferOffset: 0)
 
             // hero model
+            renderCommandEncoder.setTriangleFillMode(.fill)
+
             renderCommandEncoder.setRenderPipelineState(heroModelPipelineState)
             renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
