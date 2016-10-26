@@ -24,6 +24,8 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
     var renderPlane: MetallicQuadModel!
     var renderPlaneTexture: MTLTexture!
     var renderPlanePipelineState: MTLRenderPipelineState!
+    
+    var depthStencilState: MTLDepthStencilState!
 
     var commandQueue: MTLCommandQueue!
 
@@ -33,22 +35,22 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 16, yTesselation: 16, zTesselation: 16)
+        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 100, xTesselation: 32, yTesselation: 32, zTesselation: 32)
 
         do {
-            heroModelTexture = try makeTexture(device: device, name: "candycane_disk")
+            heroModelTexture = try makeTexture(device: device, name: "mandrill")
         } catch {
             fatalError("Error: Can not load texture")
         }
 
         do {
-            frontTexture = try makeTexture(device: device, name: "mandrill")
+            frontTexture = try makeTexture(device: device, name: "candycane")
         } catch {
             fatalError("Error: Can not load texture")
         }
 
         do {
-            backTexture = try makeTexture(device: device, name: "diagnostic")
+            backTexture = try makeTexture(device: device, name: "enacydnac")
         } catch {
             fatalError("Error: Can not load texture")
         }
@@ -88,6 +90,12 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
             Swift.print("\(e)")
         }
 
+        let depthStencilDescriptor = MTLDepthStencilDescriptor()
+        depthStencilDescriptor.depthCompareFunction = .less
+        depthStencilDescriptor.isDepthWriteEnabled = true
+        
+        depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
+        
         commandQueue = device.makeCommandQueue()
 
     }
@@ -125,9 +133,11 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
             let commandBuffer = commandQueue.makeCommandBuffer()
 
             let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
-
+            
+            renderCommandEncoder.setDepthStencilState(depthStencilState)
+            
             renderCommandEncoder.setFrontFacing(.counterClockwise)
-            renderCommandEncoder.setCullMode(.back)
+            renderCommandEncoder.setCullMode(.none)
 
             // render plane
             renderCommandEncoder.setTriangleFillMode(.fill)
