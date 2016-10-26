@@ -44,7 +44,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            frontTexture = try makeTexture(device: device, name: "lena")
+            frontTexture = try makeTexture(device: device, name: "mandrill")
         } catch {
             fatalError("Error: Can not load texture")
         }
@@ -76,20 +76,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         renderPlane = MetallicQuadModel(device: device)
 
         do {
-
-            let textureLoader = MTKTextureLoader(device: device)
-
-            guard let image = UIImage(named:"diagnostic") else {
-                fatalError("Error: Can not create UIImage")
-            }
-
-            if (image.cgImage?.alphaInfo == .premultipliedLast) {
-                print("texture uses premultiplied alpha. Rock.")
-            }
-
-            let textureLoaderOptions:[String:NSNumber] = [ MTKTextureLoaderOptionSRGB:false ]
-
-            renderPlaneTexture = try textureLoader.newTexture(with: image.cgImage!, options: textureLoaderOptions)
+            renderPlaneTexture = try makeTexture(device: device, name: "mobile")
         } catch {
             fatalError("Error: Can not load texture")
         }
