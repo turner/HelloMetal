@@ -33,8 +33,6 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-
-        // hero model
         heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 16, yTesselation: 16, zTesselation: 16)
 
         do {
@@ -56,21 +54,16 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-
             heroModelPipelineState =
-                    try device.makeRenderPipelineState(descriptor:
-                    MTLRenderPipelineDescriptor(view:view,
+                    try device.makeRenderPipelineState(descriptor:MTLRenderPipelineDescriptor(view:view,
                             library:library!,
                             vertexShaderName:"textureTwoSidedMIOVertexShader",
                             fragmentShaderName:"textureTwoSidedMIOFragmentShader",
-//                            vertexShaderName:"showMIOVertexShader",
-//                            fragmentShaderName:"showMIOFragmentShader",
                             doIncludeDepthAttachment: false,
                             vertexDescriptor:heroModel.metalVertexDescriptor))
         } catch let e {
             Swift.print("\(e)")
         }
-
 
         // render plane
         renderPlane = MetallicQuadModel(device: device)
@@ -82,7 +75,6 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-
             renderPlanePipelineState =
                     try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
