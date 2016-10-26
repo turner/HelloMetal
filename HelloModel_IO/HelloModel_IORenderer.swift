@@ -18,6 +18,9 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
     var heroModelTexture: MTLTexture!
     var heroModelPipelineState: MTLRenderPipelineState!
 
+    var frontTexture: MTLTexture!
+    var backTexture: MTLTexture!
+
     var renderPlane: MetallicQuadModel!
     var renderPlaneTexture: MTLTexture!
     var renderPlanePipelineState: MTLRenderPipelineState!
@@ -41,13 +44,25 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         }
 
         do {
+            frontTexture = try makeTexture(device: device, name: "lena")
+        } catch {
+            fatalError("Error: Can not load texture")
+        }
+
+        do {
+            backTexture = try makeTexture(device: device, name: "diagnostic")
+        } catch {
+            fatalError("Error: Can not load texture")
+        }
+
+        do {
 
             heroModelPipelineState =
                     try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
                             library:library!,
-                            vertexShaderName:"textureMIOVertexShader",
-                            fragmentShaderName:"textureMIOFragmentShader",
+                            vertexShaderName:"textureTwoSidedMIOVertexShader",
+                            fragmentShaderName:"textureTwoSidedMIOFragmentShader",
 //                            vertexShaderName:"showMIOVertexShader",
 //                            fragmentShaderName:"showMIOFragmentShader",
                             doIncludeDepthAttachment: false,
@@ -133,7 +148,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
             let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
 
             renderCommandEncoder.setFrontFacing(.counterClockwise)
-            renderCommandEncoder.setCullMode(.none)
+            renderCommandEncoder.setCullMode(.back)
 
             // render plane
             renderCommandEncoder.setTriangleFillMode(.fill)
@@ -153,9 +168,13 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setTriangleFillMode(.fill)
 
             renderCommandEncoder.setRenderPipelineState(heroModelPipelineState)
+            
             renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
-            renderCommandEncoder.setFragmentTexture(heroModelTexture, at: 0)
+            
+            renderCommandEncoder.setFragmentTexture(frontTexture, at: 0)
+            renderCommandEncoder.setFragmentTexture(backTexture, at: 1)
+            
             renderCommandEncoder.drawIndexedPrimitives(
                     type: heroModel.primitiveType,
                     indexCount: Int(heroModel.indexCount),
