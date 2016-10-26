@@ -27,12 +27,12 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
     init(view: MTKView, device: MTLDevice) {
 
         let library = device.newDefaultLibrary()
-        
+
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        
+
         // hero model
-        heroModel = EICube(device: device, xExtent: 50, yExtent: 50, zExtent: 50, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
 
         do {
 
@@ -54,15 +54,17 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            
+
             heroModelPipelineState =
-                try device.makeRenderPipelineState(descriptor:
+                    try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
-                                                library:library!,
-                                                vertexShaderName:"modelIOVertexShader",
-                                                fragmentShaderName:"modelIOFragmentShader",
-                                                doIncludeDepthAttachment: false,
-                                                vertexDescriptor:heroModel.metalVertexDescriptor))
+                            library:library!,
+                            vertexShaderName:"modelIOVertexShader",
+                            fragmentShaderName:"modelIOFragmentShader",
+//                            vertexShaderName:"showMIOVertexShader",
+//                            fragmentShaderName:"showMIOFragmentShader",
+                            doIncludeDepthAttachment: false,
+                            vertexDescriptor:heroModel.metalVertexDescriptor))
         } catch let e {
             Swift.print("\(e)")
         }
@@ -91,20 +93,20 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            
+
             renderPlanePipelineState =
-                try device.makeRenderPipelineState(descriptor:
+                    try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
-                                                library:library!,
-                                                vertexShaderName:"textureVertexShader",
-                                                fragmentShaderName:"textureFragmentShader",
-                                                doIncludeDepthAttachment: false,
-                                                vertexDescriptor: nil))
-            
+                            library:library!,
+                            vertexShaderName:"textureVertexShader",
+                            fragmentShaderName:"textureFragmentShader",
+                            doIncludeDepthAttachment: false,
+                            vertexDescriptor: nil))
+
         } catch let e {
             Swift.print("\(e)")
         }
-        
+
         commandQueue = device.makeCommandQueue()
 
     }
@@ -129,7 +131,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         heroModel.metallicTransform.update(camera: camera, transformer: {
             return view.arcBall.rotationMatrix
         })
-        
+
     }
 
     public func draw(in view: MTKView) {
@@ -140,12 +142,13 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
             let commandBuffer = commandQueue.makeCommandBuffer()
-            
+
             let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
             renderCommandEncoder.setFrontFacing(.counterClockwise)
             renderCommandEncoder.setTriangleFillMode(.fill)
-            renderCommandEncoder.setCullMode(.none)
-
+            //renderCommandEncoder.setCullMode(.none)
+            renderCommandEncoder.setCullMode(.back)
+            
             // render plane
             renderCommandEncoder.setRenderPipelineState(renderPlanePipelineState)
             renderCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
