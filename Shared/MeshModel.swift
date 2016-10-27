@@ -81,7 +81,7 @@ struct EIQuad {
                 segments: vector_uint2(xTesselation, yTesselation),
                 geometryType: .triangles,
                 allocator: MTKMeshBufferAllocator(device: device))
-
+        
         mdlMesh.vertexDescriptor = modelIOVertexDescriptor
 
         do {

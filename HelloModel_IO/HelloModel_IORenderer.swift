@@ -139,6 +139,10 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setFrontFacing(.counterClockwise)
             renderCommandEncoder.setCullMode(.none)
 
+            
+            
+            
+            
             // render plane
             renderCommandEncoder.setTriangleFillMode(.fill)
 
@@ -159,6 +163,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
 
 
+            
 
             // hero model
             renderCommandEncoder.setTriangleFillMode(.fill)
@@ -178,6 +183,10 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
                     indexBuffer: heroModel.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)
 
+            
+            
+            
+            
             renderCommandEncoder.endEncoding()
 
             commandBuffer.present(drawable)
