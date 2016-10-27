@@ -14,14 +14,14 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
     var camera: EICamera!
 
     // hero model
-    var heroModel: EICube!
+    var heroModel: EISphere!
     var heroModelTexture: MTLTexture!
     var heroModelPipelineState: MTLRenderPipelineState!
 
     var frontTexture: MTLTexture!
     var backTexture: MTLTexture!
 
-    var renderPlane: EIQuad!
+    var renderPlane: EIPlane!
     var renderPlaneTexture: MTLTexture!
     var renderPlanePipelineState: MTLRenderPipelineState!
     
@@ -35,8 +35,8 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
-//        heroModel = EIQuad(device: device, xExtent: 200, yExtent: 200, xTesselation: 32, yTesselation: 32)
+//        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+        heroModel = EISphere(device: device, xExtent: 50, yExtent: 150, zExtent: 50, uTesselation: 64, vTesselation: 64)
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
@@ -69,7 +69,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         }
 
         // render plane
-        renderPlane = EIQuad(device: device, xExtent: 2, yExtent: 2, xTesselation: 4, yTesselation: 4)
+        renderPlane = EIPlane(device: device, xExtent: 2, yExtent: 2, xTesselation: 4, yTesselation: 4)
 
         do {
             renderPlaneTexture = try makeTexture(device: device, name: "mobile")
