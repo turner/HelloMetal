@@ -35,7 +35,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 100, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
@@ -44,13 +44,13 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            frontTexture = try makeTexture(device: device, name: "candycane")
+            frontTexture = try makeTexture(device: device, name: "mandrill")
         } catch {
             fatalError("Error: Can not load texture")
         }
 
         do {
-            backTexture = try makeTexture(device: device, name: "enacydnac")
+            backTexture = try makeTexture(device: device, name: "lena")
         } catch {
             fatalError("Error: Can not load texture")
         }

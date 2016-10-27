@@ -78,11 +78,14 @@ struct EICube {
         (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
 
-        let mdlMesh = MDLMesh(boxWithExtent: vector_float3(xExtent, yExtent, zExtent),
-                segments: vector_uint3(xTesselation, yTesselation, zTesselation),
-                inwardNormals: false,
-                geometryType: .triangles,
-                allocator: MTKMeshBufferAllocator(device: device))
+        
+        let mdlMesh = MDLMesh.newBox(withDimensions: vector_float3(xExtent, yExtent, zExtent), segments: vector_uint3(xTesselation, yTesselation, zTesselation), geometryType: .triangles, inwardNormals: false, allocator: MTKMeshBufferAllocator(device: device))
+        
+//        let mdlMesh = MDLMesh(boxWithExtent: vector_float3(xExtent, yExtent, zExtent),
+//                segments: vector_uint3(xTesselation, yTesselation, zTesselation),
+//                inwardNormals: false,
+//                geometryType: .triangles,
+//                allocator: MTKMeshBufferAllocator(device: device))
 
         mdlMesh.vertexDescriptor = modelIOVertexDescriptor
 
