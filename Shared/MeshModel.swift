@@ -91,11 +91,10 @@ extension EIPlane {
         
         do {
             
-            let mdlMesh = MDLMesh.newPlane(
-                withDimensions: vector_float2(xExtent, yExtent),
-                segments: vector_uint2(xTesselation, yTesselation),
-                geometryType: .triangles,
-                allocator: MTKMeshBufferAllocator(device: device))
+            let mdlMesh = MDLMesh.newPlane(withDimensions: vector_float2(xExtent, yExtent),
+                                           segments: vector_uint2(xTesselation, yTesselation),
+                                           geometryType: .triangles,
+                                           allocator: MTKMeshBufferAllocator(device: device))
             
             mdlMesh.vertexDescriptor = initializationHelper(device: device)
             

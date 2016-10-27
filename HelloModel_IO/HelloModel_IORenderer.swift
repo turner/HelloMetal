@@ -14,7 +14,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
     var camera: EICamera!
 
     // hero model
-    var heroModel: EISphere!
+    var heroModel: EICube!
     var heroModelTexture: MTLTexture!
     var heroModelPipelineState: MTLRenderPipelineState!
 
@@ -35,8 +35,8 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-//        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
-        heroModel = EISphere(device: device, xExtent: 50, yExtent: 150, zExtent: 50, uTesselation: 64, vTesselation: 64)
+        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+//        heroModel = EISphere(device: device, xExtent: 50, yExtent: 150, zExtent: 50, uTesselation: 64, vTesselation: 64)
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
