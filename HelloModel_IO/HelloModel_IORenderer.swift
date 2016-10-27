@@ -21,7 +21,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
     var frontTexture: MTLTexture!
     var backTexture: MTLTexture!
 
-    var renderPlane: MetallicQuadModel!
+    var renderPlane: EIQuad!
     var renderPlaneTexture: MTLTexture!
     var renderPlanePipelineState: MTLRenderPipelineState!
     
@@ -68,7 +68,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         }
 
         // render plane
-        renderPlane = MetallicQuadModel(device: device)
+        renderPlane = EIQuad(device: device, xExtent: 1, yExtent: 1, xTesselation: 4, yTesselation: 4)
 
         do {
             renderPlaneTexture = try makeTexture(device: device, name: "mobile")
@@ -81,10 +81,10 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
                     try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
                             library:library!,
-                            vertexShaderName:"textureVertexShader",
-                            fragmentShaderName:"textureFragmentShader",
+                            vertexShaderName:"textureTwoSidedMIOVertexShader",
+                            fragmentShaderName:"textureTwoSidedMIOFragmentShader",
                             doIncludeDepthAttachment: false,
-                            vertexDescriptor: nil))
+                            vertexDescriptor: renderPlane.metalVertexDescriptor))
 
         } catch let e {
             Swift.print("\(e)")
@@ -143,27 +143,34 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setTriangleFillMode(.fill)
 
             renderCommandEncoder.setRenderPipelineState(renderPlanePipelineState)
+
             renderCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(renderPlane.metallicTransform.metalBuffer, offset: 0, at: 1)
+
             renderCommandEncoder.setFragmentTexture(renderPlaneTexture, at: 0)
+            renderCommandEncoder.setFragmentTexture(renderPlaneTexture, at: 1)
+
             renderCommandEncoder.drawIndexedPrimitives(
-                    type: .triangle,
-                    indexCount: renderPlane.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
-                    indexType: MTLIndexType.uint16,
+                    type: renderPlane.primitiveType,
+                    indexCount: Int(renderPlane.indexCount),
+                    indexType: renderPlane.indexType,
                     indexBuffer: renderPlane.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)
+
+
+
 
             // hero model
             renderCommandEncoder.setTriangleFillMode(.fill)
 
             renderCommandEncoder.setRenderPipelineState(heroModelPipelineState)
-            
+
             renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
-            
+
             renderCommandEncoder.setFragmentTexture(frontTexture, at: 0)
             renderCommandEncoder.setFragmentTexture(backTexture, at: 1)
-            
+
             renderCommandEncoder.drawIndexedPrimitives(
                     type: heroModel.primitiveType,
                     indexCount: Int(heroModel.indexCount),
