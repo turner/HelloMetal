@@ -36,6 +36,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+//        heroModel = EIQuad(device: device, xExtent: 200, yExtent: 200, xTesselation: 32, yTesselation: 32)
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
@@ -68,7 +69,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
         }
 
         // render plane
-        renderPlane = EIQuad(device: device, xExtent: 1, yExtent: 1, xTesselation: 4, yTesselation: 4)
+        renderPlane = EIQuad(device: device, xExtent: 2, yExtent: 2, xTesselation: 4, yTesselation: 4)
 
         do {
             renderPlaneTexture = try makeTexture(device: device, name: "mobile")
@@ -113,7 +114,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
         // render plane
         renderPlane.metallicTransform.update(camera: camera, transformer: {
-            return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far)
+            return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
 
         // hero model

@@ -62,12 +62,7 @@
 		4FDB16791DBD66BA0025465A /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4FDB167A1DBD66BA0025465A /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4FDB167B1DBD66BA0025465A /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
-		4FDB167C1DBD66BA0025465A /* MetallicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* MetallicModel.swift */; };
 		4FDB167D1DBD66BA0025465A /* MetallicTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */; };
-		4FDB167E1DBD66BA0025465A /* finalPass.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */; };
-		4FDB167F1DBD66BA0025465A /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
-		4FDB16801DBD66BA0025465A /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
-		4FDB16811DBD66BA0025465A /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4FFE1F2F1DC0D0C300859492 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE1F2E1DC0D0C300859492 /* EITexture.swift */; };
 		4FFE1F301DC0D1EF00859492 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE1F2E1DC0D0C300859492 /* EITexture.swift */; };
 /* End PBXBuildFile section */
@@ -784,20 +779,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FFE1F301DC0D1EF00859492 /* EITexture.swift in Sources */,
 				4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */,
+				4FDB16771DBD658C0025465A /* HelloModel_IORenderer.swift in Sources */,
+				4FFE1F301DC0D1EF00859492 /* EITexture.swift in Sources */,
 				4F0C7E5B1DBE8518005F42C3 /* MeshModel.swift in Sources */,
 				4FDB16781DBD66BA0025465A /* RendererExtensions.swift in Sources */,
 				4FDB16791DBD66BA0025465A /* EIArcball.swift in Sources */,
 				4FDB167A1DBD66BA0025465A /* EICamera.swift in Sources */,
 				4FDB167B1DBD66BA0025465A /* Math.swift in Sources */,
-				4FDB167C1DBD66BA0025465A /* MetallicModel.swift in Sources */,
 				4FDB167D1DBD66BA0025465A /* MetallicTransform.swift in Sources */,
-				4FDB167E1DBD66BA0025465A /* finalPass.metal in Sources */,
-				4FDB167F1DBD66BA0025465A /* hello.metal in Sources */,
-				4FDB16801DBD66BA0025465A /* showST.metal in Sources */,
-				4FDB16811DBD66BA0025465A /* texture.metal in Sources */,
-				4FDB16771DBD658C0025465A /* HelloModel_IORenderer.swift in Sources */,
 				4FDB16761DBD658C0025465A /* HelloModel_IOMetalView.swift in Sources */,
 				4F56AF891DBAF08E00E396E7 /* AppDelegate.swift in Sources */,
 			);
