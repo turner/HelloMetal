@@ -1,5 +1,5 @@
 //
-//  MeshModel.swift
+//  EIMesh.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 10/23/16.
