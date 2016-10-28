@@ -7,18 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F0911761DBBFA4000D252BF /* Multipass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0911751DBBFA4000D252BF /* Multipass.xcassets */; };
 		4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
-		4F2F1F8A1DBA587000B80FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */; };
-		4F2F1F9D1DBA59C500B80FE4 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
-		4F2F1F9E1DBA59C500B80FE4 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
-		4F2F1F9F1DBA59C500B80FE4 /* finalPass.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */; };
-		4F2F1FA01DBA59C500B80FE4 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
-		4F2F1FA11DBA59C500B80FE4 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
-		4F2F1FA21DBA59C500B80FE4 /* MetallicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* MetallicModel.swift */; };
-		4F2F1FA31DBA59C500B80FE4 /* MetallicTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */; };
-		4F2F1FA41DBA59C500B80FE4 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
-		4F2F1FA51DBA59C500B80FE4 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4F56AF891DBAF08E00E396E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F56AF881DBAF08E00E396E7 /* AppDelegate.swift */; };
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */; };
@@ -28,7 +17,6 @@
 		4F64B3721DC3FD36005BD8B1 /* RenderPass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */; };
 		4F64B3751DC3FD36005BD8B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B3731DC3FD36005BD8B1 /* LaunchScreen.storyboard */; };
 		4F64B37C1DC40406005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
-		4F64B37D1DC40413005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
 		4F64B37E1DC4041A005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
 		4F64B37F1DC40420005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
 		4F64B3801DC4042A005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
@@ -74,10 +62,6 @@
 		4F7270A11DC373690039E130 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4F7270A21DC373690039E130 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F7270A31DC373690039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
-		4F7ABE191DA83A9F0054AFA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE171DA83A9F0054AFA9 /* Main.storyboard */; };
-		4F7ABE1E1DA83A9F0054AFA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1C1DA83A9F0054AFA9 /* LaunchScreen.storyboard */; };
-		4F7ABE4F1DA83C100054AFA9 /* MultipassMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE471DA83C100054AFA9 /* MultipassMetalView.swift */; };
-		4F7ABE501DA83C100054AFA9 /* MultiPassRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE481DA83C100054AFA9 /* MultiPassRenderer.swift */; };
 		4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4FDB16761DBD658C0025465A /* HelloModel_IOMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16741DBD658C0025465A /* HelloModel_IOMetalView.swift */; };
 		4FDB16771DBD658C0025465A /* HelloModel_IORenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16751DBD658C0025465A /* HelloModel_IORenderer.swift */; };
@@ -90,15 +74,12 @@
 		4FFA63F11DC377AC002F8E34 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4FFA63F21DC377BA002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
 		4FFA63F31DC377BA002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
-		4FFA63F41DC377C4002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
-		4FFA63F51DC377C4002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
 		4FFA63F61DC377DC002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
 		4FFA63F71DC377DC002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
 		4FFA63F81DC377DC002F8E34 /* MetallicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* MetallicModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4F0911751DBBFA4000D252BF /* Multipass.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Multipass.xcassets; sourceTree = "<group>"; };
 		4F0C7E591DBE8431005F42C3 /* EIMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIMesh.swift; path = Shared/EIMesh.swift; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -143,13 +124,6 @@
 		4F7270911DC372410039E130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7270951DC372F50039E130 /* HelloCameraPlaneMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloCameraPlaneMetalView.swift; sourceTree = "<group>"; };
 		4F7270961DC372F50039E130 /* HelloCameraPlaneRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloCameraPlaneRenderer.swift; sourceTree = "<group>"; };
-		4F7ABE101DA83A9F0054AFA9 /* HelloMultiPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMultiPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4F7ABE181DA83A9F0054AFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4F7ABE1D1DA83A9F0054AFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4F7ABE1F1DA83A9F0054AFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F7ABE471DA83C100054AFA9 /* MultipassMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipassMetalView.swift; sourceTree = "<group>"; };
-		4F7ABE481DA83C100054AFA9 /* MultiPassRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPassRenderer.swift; sourceTree = "<group>"; };
 		4FBF51CC1DC02B6200444668 /* model_io.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = model_io.metal; path = Shared/model_io.metal; sourceTree = "<group>"; };
 		4FDB16741DBD658C0025465A /* HelloModel_IOMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloModel_IOMetalView.swift; sourceTree = "<group>"; };
 		4FDB16751DBD658C0025465A /* HelloModel_IORenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloModel_IORenderer.swift; sourceTree = "<group>"; };
@@ -180,13 +154,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4F7270801DC372410039E130 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4F7ABE0D1DA83A9F0054AFA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -289,7 +256,6 @@
 				4F2F1F461DBA510800B80FE4 /* Shared */,
 				4F7270371DC368780039E130 /* Hello */,
 				4F7270841DC372410039E130 /* HelloCameraPlane */,
-				4F7ABE121DA83A9F0054AFA9 /* HelloMultipass */,
 				4F56AF871DBAF08E00E396E7 /* HelloModel_IO */,
 				4F64B3691DC3FD36005BD8B1 /* HelloRenderPass */,
 				4F2F1F101DBA50FA00B80FE4 /* Frameworks */,
@@ -300,28 +266,12 @@
 		4F7ABE111DA83A9F0054AFA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F7ABE101DA83A9F0054AFA9 /* HelloMultiPass.app */,
 				4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */,
 				4F7270361DC368780039E130 /* Hello.app */,
 				4F7270831DC372410039E130 /* HelloCameraPlane.app */,
 				4F64B3681DC3FD36005BD8B1 /* HelloRenderPass.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		4F7ABE121DA83A9F0054AFA9 /* HelloMultipass */ = {
-			isa = PBXGroup;
-			children = (
-				4F0911751DBBFA4000D252BF /* Multipass.xcassets */,
-				4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */,
-				4F7ABE471DA83C100054AFA9 /* MultipassMetalView.swift */,
-				4F7ABE481DA83C100054AFA9 /* MultiPassRenderer.swift */,
-				4F7ABE171DA83A9F0054AFA9 /* Main.storyboard */,
-				4F7ABE1C1DA83A9F0054AFA9 /* LaunchScreen.storyboard */,
-				4F7ABE1F1DA83A9F0054AFA9 /* Info.plist */,
-			);
-			name = HelloMultipass;
-			path = HelloMetal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,23 +345,6 @@
 			productReference = 4F7270831DC372410039E130 /* HelloCameraPlane.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4F7ABE381DA83A9F0054AFA9 /* Build configuration list for PBXNativeTarget "HelloMultiPass" */;
-			buildPhases = (
-				4F7ABE0C1DA83A9F0054AFA9 /* Sources */,
-				4F7ABE0D1DA83A9F0054AFA9 /* Frameworks */,
-				4F7ABE0E1DA83A9F0054AFA9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = HelloMultiPass;
-			productName = HelloMetal;
-			productReference = 4F7ABE101DA83A9F0054AFA9 /* HelloMultiPass.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -442,11 +375,6 @@
 						DevelopmentTeam = NCTVS5F8E2;
 						ProvisioningStyle = Automatic;
 					};
-					4F7ABE0F1DA83A9F0054AFA9 = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = NCTVS5F8E2;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = 4F7ABE0B1DA83A9F0054AFA9 /* Build configuration list for PBXProject "HelloMetal" */;
@@ -465,7 +393,6 @@
 				4F7270351DC368780039E130 /* Hello */,
 				4F7270821DC372410039E130 /* HelloCameraPlane */,
 				4F64B3671DC3FD36005BD8B1 /* HelloRenderPass */,
-				4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */,
 				4F56AF851DBAF08E00E396E7 /* HelloModel_IO */,
 			);
 		};
@@ -513,17 +440,6 @@
 				4F72708D1DC372410039E130 /* CameraPlane.xcassets in Resources */,
 				4F7270901DC372410039E130 /* LaunchScreen.storyboard in Resources */,
 				4F72708B1DC372410039E130 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4F7ABE0E1DA83A9F0054AFA9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F64B37D1DC40413005BD8B1 /* Textures.xcassets in Resources */,
-				4F0911761DBBFA4000D252BF /* Multipass.xcassets in Resources */,
-				4F7ABE1E1DA83A9F0054AFA9 /* LaunchScreen.storyboard in Resources */,
-				4F7ABE191DA83A9F0054AFA9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,27 +528,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F7ABE0C1DA83A9F0054AFA9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4FFA63F41DC377C4002F8E34 /* EITexture.swift in Sources */,
-				4FFA63F51DC377C4002F8E34 /* RendererExtensions.swift in Sources */,
-				4F2F1F9D1DBA59C500B80FE4 /* EIArcball.swift in Sources */,
-				4F2F1F9E1DBA59C500B80FE4 /* EICamera.swift in Sources */,
-				4F2F1F9F1DBA59C500B80FE4 /* finalPass.metal in Sources */,
-				4F2F1FA01DBA59C500B80FE4 /* hello.metal in Sources */,
-				4F2F1FA11DBA59C500B80FE4 /* Math.swift in Sources */,
-				4F2F1FA21DBA59C500B80FE4 /* MetallicModel.swift in Sources */,
-				4F2F1FA31DBA59C500B80FE4 /* MetallicTransform.swift in Sources */,
-				4F2F1FA41DBA59C500B80FE4 /* showST.metal in Sources */,
-				4F2F1FA51DBA59C500B80FE4 /* texture.metal in Sources */,
-				4F2F1F8A1DBA587000B80FE4 /* AppDelegate.swift in Sources */,
-				4F7ABE4F1DA83C100054AFA9 /* MultipassMetalView.swift in Sources */,
-				4F7ABE501DA83C100054AFA9 /* MultiPassRenderer.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -696,22 +591,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				4F72708F1DC372410039E130 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		4F7ABE171DA83A9F0054AFA9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F7ABE181DA83A9F0054AFA9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4F7ABE1C1DA83A9F0054AFA9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F7ABE1D1DA83A9F0054AFA9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -918,32 +797,6 @@
 			};
 			name = Release;
 		};
-		4F7ABE391DA83A9F0054AFA9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NCTVS5F8E2;
-				INFOPLIST_FILE = HelloMetal/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloMetal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		4F7ABE3A1DA83A9F0054AFA9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NCTVS5F8E2;
-				INFOPLIST_FILE = HelloMetal/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloMetal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -988,15 +841,6 @@
 			buildConfigurations = (
 				4F7ABE361DA83A9F0054AFA9 /* Debug */,
 				4F7ABE371DA83A9F0054AFA9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4F7ABE381DA83A9F0054AFA9 /* Build configuration list for PBXNativeTarget "HelloMultiPass" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4F7ABE391DA83A9F0054AFA9 /* Debug */,
-				4F7ABE3A1DA83A9F0054AFA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
