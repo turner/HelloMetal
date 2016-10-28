@@ -8,28 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4F0911761DBBFA4000D252BF /* Multipass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0911751DBBFA4000D252BF /* Multipass.xcassets */; };
-		4F0911781DBBFA7400D252BF /* Quad.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0911771DBBFA7400D252BF /* Quad.xcassets */; };
-		4F0911791DBBFAB900D252BF /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
 		4F09117A1DBBFB1400D252BF /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
-		4F0C7E5A1DBE8431005F42C3 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4F2353881DBAB5F10095DF5F /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
-		4F2353891DBAE30B0095DF5F /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
-		4F2F1F531DBA538300B80FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2F1F511DBA538300B80FE4 /* Main.storyboard */; };
-		4F2F1F581DBA538300B80FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2F1F561DBA538300B80FE4 /* LaunchScreen.storyboard */; };
-		4F2F1F7B1DBA55B400B80FE4 /* HelloQuadMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F791DBA55B400B80FE4 /* HelloQuadMetalView.swift */; };
-		4F2F1F7C1DBA55B400B80FE4 /* HelloQuadRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F7A1DBA55B400B80FE4 /* HelloQuadRenderer.swift */; };
-		4F2F1F891DBA585E00B80FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F871DBA583A00B80FE4 /* AppDelegate.swift */; };
 		4F2F1F8A1DBA587000B80FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */; };
-		4F2F1F941DBA599900B80FE4 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
-		4F2F1F951DBA599900B80FE4 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
-		4F2F1F961DBA599900B80FE4 /* finalPass.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */; };
-		4F2F1F971DBA599900B80FE4 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
-		4F2F1F981DBA599900B80FE4 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
-		4F2F1F991DBA599900B80FE4 /* MetallicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* MetallicModel.swift */; };
-		4F2F1F9A1DBA599900B80FE4 /* MetallicTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */; };
-		4F2F1F9B1DBA599900B80FE4 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
-		4F2F1F9C1DBA599900B80FE4 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4F2F1F9D1DBA59C500B80FE4 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4F2F1F9E1DBA59C500B80FE4 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4F2F1F9F1DBA59C500B80FE4 /* finalPass.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */; };
@@ -63,7 +45,7 @@
 		4F7270571DC36ADD0039E130 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
 		4F7270861DC372410039E130 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270851DC372410039E130 /* AppDelegate.swift */; };
 		4F72708B1DC372410039E130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7270891DC372410039E130 /* Main.storyboard */; };
-		4F72708D1DC372410039E130 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F72708C1DC372410039E130 /* Assets.xcassets */; };
+		4F72708D1DC372410039E130 /* CameraPlane.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F72708C1DC372410039E130 /* CameraPlane.xcassets */; };
 		4F7270901DC372410039E130 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F72708E1DC372410039E130 /* LaunchScreen.storyboard */; };
 		4F7270971DC372F50039E130 /* HelloCameraPlaneMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270951DC372F50039E130 /* HelloCameraPlaneMetalView.swift */; };
 		4F7270981DC372F50039E130 /* HelloCameraPlaneRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270961DC372F50039E130 /* HelloCameraPlaneRenderer.swift */; };
@@ -83,7 +65,6 @@
 		4F7ABE1E1DA83A9F0054AFA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1C1DA83A9F0054AFA9 /* LaunchScreen.storyboard */; };
 		4F7ABE4F1DA83C100054AFA9 /* MultipassMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE471DA83C100054AFA9 /* MultipassMetalView.swift */; };
 		4F7ABE501DA83C100054AFA9 /* MultiPassRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE481DA83C100054AFA9 /* MultiPassRenderer.swift */; };
-		4FBF51CD1DC02B6200444668 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4FDB16761DBD658C0025465A /* HelloModel_IOMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16741DBD658C0025465A /* HelloModel_IOMetalView.swift */; };
 		4FDB16771DBD658C0025465A /* HelloModel_IORenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16751DBD658C0025465A /* HelloModel_IORenderer.swift */; };
@@ -92,25 +73,16 @@
 		4FDB167A1DBD66BA0025465A /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4FDB167B1DBD66BA0025465A /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
 		4FDB167D1DBD66BA0025465A /* MetallicTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */; };
-		4FFE1F2F1DC0D0C300859492 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE1F2E1DC0D0C300859492 /* EITexture.swift */; };
 		4FFE1F301DC0D1EF00859492 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE1F2E1DC0D0C300859492 /* EITexture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4F0911751DBBFA4000D252BF /* Multipass.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Multipass.xcassets; sourceTree = "<group>"; };
-		4F0911771DBBFA7400D252BF /* Quad.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Quad.xcassets; path = helloQuad/Quad.xcassets; sourceTree = SOURCE_ROOT; };
 		4F0C7E591DBE8431005F42C3 /* EIMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIMesh.swift; path = Shared/EIMesh.swift; sourceTree = "<group>"; };
 		4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererExtensions.swift; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
-		4F2F1F4B1DBA538200B80FE4 /* HelloQuad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloQuad.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F2F1F521DBA538300B80FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4F2F1F571DBA538300B80FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4F2F1F591DBA538300B80FE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F2F1F791DBA55B400B80FE4 /* HelloQuadMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelloQuadMetalView.swift; path = helloQuad/HelloQuadMetalView.swift; sourceTree = SOURCE_ROOT; };
-		4F2F1F7A1DBA55B400B80FE4 /* HelloQuadRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelloQuadRenderer.swift; path = helloQuad/HelloQuadRenderer.swift; sourceTree = SOURCE_ROOT; };
-		4F2F1F871DBA583A00B80FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = helloQuad/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIArcball.swift; path = Shared/EIArcball.swift; sourceTree = "<group>"; };
 		4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EICamera.swift; path = Shared/EICamera.swift; sourceTree = "<group>"; };
 		4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = finalPass.metal; path = Shared/finalPass.metal; sourceTree = "<group>"; };
@@ -137,7 +109,7 @@
 		4F7270831DC372410039E130 /* HelloCameraPlane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCameraPlane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7270851DC372410039E130 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F72708A1DC372410039E130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4F72708C1DC372410039E130 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4F72708C1DC372410039E130 /* CameraPlane.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CameraPlane.xcassets; sourceTree = "<group>"; };
 		4F72708F1DC372410039E130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F7270911DC372410039E130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7270951DC372F50039E130 /* HelloCameraPlaneMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloCameraPlaneMetalView.swift; sourceTree = "<group>"; };
@@ -157,13 +129,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4F2F1F481DBA538200B80FE4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4F56AF831DBAF08E00E396E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,20 +191,6 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		4F2F1F4C1DBA538200B80FE4 /* HelloQuad */ = {
-			isa = PBXGroup;
-			children = (
-				4F0911771DBBFA7400D252BF /* Quad.xcassets */,
-				4F2F1F871DBA583A00B80FE4 /* AppDelegate.swift */,
-				4F2F1F791DBA55B400B80FE4 /* HelloQuadMetalView.swift */,
-				4F2F1F7A1DBA55B400B80FE4 /* HelloQuadRenderer.swift */,
-				4F2F1F511DBA538300B80FE4 /* Main.storyboard */,
-				4F2F1F561DBA538300B80FE4 /* LaunchScreen.storyboard */,
-				4F2F1F591DBA538300B80FE4 /* Info.plist */,
-			);
-			path = HelloQuad;
-			sourceTree = "<group>";
-		};
 		4F56AF871DBAF08E00E396E7 /* HelloModel_IO */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,7 +222,7 @@
 		4F7270841DC372410039E130 /* HelloCameraPlane */ = {
 			isa = PBXGroup;
 			children = (
-				4F72708C1DC372410039E130 /* Assets.xcassets */,
+				4F72708C1DC372410039E130 /* CameraPlane.xcassets */,
 				4F7270951DC372F50039E130 /* HelloCameraPlaneMetalView.swift */,
 				4F7270961DC372F50039E130 /* HelloCameraPlaneRenderer.swift */,
 				4F7270851DC372410039E130 /* AppDelegate.swift */,
@@ -288,7 +239,6 @@
 				4F2F1F461DBA510800B80FE4 /* Shared */,
 				4F7270371DC368780039E130 /* Hello */,
 				4F7270841DC372410039E130 /* HelloCameraPlane */,
-				4F2F1F4C1DBA538200B80FE4 /* HelloQuad */,
 				4F7ABE121DA83A9F0054AFA9 /* HelloMultipass */,
 				4F56AF871DBAF08E00E396E7 /* HelloModel_IO */,
 				4F2F1F101DBA50FA00B80FE4 /* Frameworks */,
@@ -300,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				4F7ABE101DA83A9F0054AFA9 /* HelloMultiPass.app */,
-				4F2F1F4B1DBA538200B80FE4 /* HelloQuad.app */,
 				4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */,
 				4F7270361DC368780039E130 /* Hello.app */,
 				4F7270831DC372410039E130 /* HelloCameraPlane.app */,
@@ -326,23 +275,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4F2F1F4A1DBA538200B80FE4 /* HelloQuad */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4F2F1F701DBA538300B80FE4 /* Build configuration list for PBXNativeTarget "HelloQuad" */;
-			buildPhases = (
-				4F2F1F471DBA538200B80FE4 /* Sources */,
-				4F2F1F481DBA538200B80FE4 /* Frameworks */,
-				4F2F1F491DBA538200B80FE4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = HelloQuad;
-			productName = HelloQuad;
-			productReference = 4F2F1F4B1DBA538200B80FE4 /* HelloQuad.app */;
-			productType = "com.apple.product-type.application";
-		};
 		4F56AF851DBAF08E00E396E7 /* HelloModel_IO */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F56AFB11DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IO" */;
@@ -421,12 +353,6 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Elastic Image Software";
 				TargetAttributes = {
-					4F2F1F4A1DBA538200B80FE4 = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = NCTVS5F8E2;
-						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
-					};
 					4F56AF851DBAF08E00E396E7 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NCTVS5F8E2;
@@ -464,7 +390,6 @@
 			targets = (
 				4F7270351DC368780039E130 /* Hello */,
 				4F7270821DC372410039E130 /* HelloCameraPlane */,
-				4F2F1F4A1DBA538200B80FE4 /* HelloQuad */,
 				4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */,
 				4F56AF851DBAF08E00E396E7 /* HelloModel_IO */,
 			);
@@ -472,17 +397,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4F2F1F491DBA538200B80FE4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F0911791DBBFAB900D252BF /* Textures.xcassets in Resources */,
-				4F0911781DBBFA7400D252BF /* Quad.xcassets in Resources */,
-				4F2F1F581DBA538300B80FE4 /* LaunchScreen.storyboard in Resources */,
-				4F2F1F531DBA538300B80FE4 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4F56AF841DBAF08E00E396E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,7 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F7270991DC3734F0039E130 /* Textures.xcassets in Resources */,
-				4F72708D1DC372410039E130 /* Assets.xcassets in Resources */,
+				4F72708D1DC372410039E130 /* CameraPlane.xcassets in Resources */,
 				4F7270901DC372410039E130 /* LaunchScreen.storyboard in Resources */,
 				4F72708B1DC372410039E130 /* Main.storyboard in Resources */,
 			);
@@ -530,29 +444,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4F2F1F471DBA538200B80FE4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F2F1F891DBA585E00B80FE4 /* AppDelegate.swift in Sources */,
-				4F2F1F7C1DBA55B400B80FE4 /* HelloQuadRenderer.swift in Sources */,
-				4F2F1F7B1DBA55B400B80FE4 /* HelloQuadMetalView.swift in Sources */,
-				4F2353891DBAE30B0095DF5F /* RendererExtensions.swift in Sources */,
-				4F2F1F971DBA599900B80FE4 /* hello.metal in Sources */,
-				4F2F1F941DBA599900B80FE4 /* EIArcball.swift in Sources */,
-				4F2F1F991DBA599900B80FE4 /* MetallicModel.swift in Sources */,
-				4F2F1F9B1DBA599900B80FE4 /* showST.metal in Sources */,
-				4F2F1F9A1DBA599900B80FE4 /* MetallicTransform.swift in Sources */,
-				4F2F1F961DBA599900B80FE4 /* finalPass.metal in Sources */,
-				4FFE1F2F1DC0D0C300859492 /* EITexture.swift in Sources */,
-				4F2F1F951DBA599900B80FE4 /* EICamera.swift in Sources */,
-				4F0C7E5A1DBE8431005F42C3 /* EIMesh.swift in Sources */,
-				4FBF51CD1DC02B6200444668 /* model_io.metal in Sources */,
-				4F2F1F981DBA599900B80FE4 /* Math.swift in Sources */,
-				4F2F1F9C1DBA599900B80FE4 /* texture.metal in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4F56AF821DBAF08E00E396E7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -635,22 +526,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4F2F1F511DBA538300B80FE4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F2F1F521DBA538300B80FE4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4F2F1F561DBA538300B80FE4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F2F1F571DBA538300B80FE4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -718,35 +593,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		4F2F1F711DBA538300B80FE4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = NCTVS5F8E2;
-				INFOPLIST_FILE = HelloQuad/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloQuad;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		4F2F1F721DBA538300B80FE4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = NCTVS5F8E2;
-				INFOPLIST_FILE = HelloQuad/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloQuad;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 		4F56AFAB1DBAF08E00E396E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -949,15 +795,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4F2F1F701DBA538300B80FE4 /* Build configuration list for PBXNativeTarget "HelloQuad" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4F2F1F711DBA538300B80FE4 /* Debug */,
-				4F2F1F721DBA538300B80FE4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4F56AFB11DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -983,6 +820,7 @@
 				4F7270941DC372410039E130 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F7ABE0B1DA83A9F0054AFA9 /* Build configuration list for PBXProject "HelloMetal" */ = {
 			isa = XCConfigurationList;
