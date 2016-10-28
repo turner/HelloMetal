@@ -1,2 +1,3 @@
 # HelloMetal
-Swift + Metal. Together again. For the first time.
+Metal Starter kit. Metal + Swift 3.0 + Model I/O + all the fixins. Yum.
+
