@@ -9,7 +9,7 @@
 import MetalKit
 import GLKit
 
-class MultiPassRenderer: NSObject, MTKViewDelegate {
+class RenderPassRenderer: NSObject, MTKViewDelegate {
 
     var camera: EICamera!
 
@@ -134,10 +134,10 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        reshape(view:view as! MultipassMetalView)
+        reshape(view:view as! RenderPassMetalView)
     }
 
-    func reshape (view: MultipassMetalView) {
+    func reshape (view: RenderPassMetalView) {
 
         view.arcBall.reshape(viewBounds: view.bounds)
 
@@ -164,7 +164,7 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
 
     }
 
-    func update(view: MultipassMetalView, drawableSize:CGSize) {
+    func update(view: RenderPassMetalView, drawableSize:CGSize) {
 
         // render plane
         finalPassRenderSurface.metallicTransform.update(camera: camera, transformer: {
@@ -185,7 +185,7 @@ class MultiPassRenderer: NSObject, MTKViewDelegate {
 
     public func draw(in view: MTKView) {
 
-        update(view: view as! MultipassMetalView, drawableSize: view.bounds.size)
+        update(view: view as! RenderPassMetalView, drawableSize: view.bounds.size)
 
         let commandBuffer = commandQueue.makeCommandBuffer()
 

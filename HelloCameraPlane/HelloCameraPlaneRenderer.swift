@@ -1,5 +1,5 @@
 //
-//  MultiPassRenderer.swift
+//  RenderPassRenderer.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 9/11/16.

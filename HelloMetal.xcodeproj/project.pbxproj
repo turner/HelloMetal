@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4F0911761DBBFA4000D252BF /* Multipass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0911751DBBFA4000D252BF /* Multipass.xcassets */; };
-		4F09117A1DBBFB1400D252BF /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
 		4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4F2F1F8A1DBA587000B80FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */; };
 		4F2F1F9D1DBA59C500B80FE4 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
@@ -20,11 +19,32 @@
 		4F2F1FA31DBA59C500B80FE4 /* MetallicTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */; };
 		4F2F1FA41DBA59C500B80FE4 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F2F1FA51DBA59C500B80FE4 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
-		4F2F1FA81DBA5B1500B80FE4 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
 		4F56AF891DBAF08E00E396E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F56AF881DBAF08E00E396E7 /* AppDelegate.swift */; };
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */; };
 		4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF911DBAF08E00E396E7 /* LaunchScreen.storyboard */; };
+		4F64B36B1DC3FD36005BD8B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64B36A1DC3FD36005BD8B1 /* AppDelegate.swift */; };
+		4F64B3701DC3FD36005BD8B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B36E1DC3FD36005BD8B1 /* Main.storyboard */; };
+		4F64B3721DC3FD36005BD8B1 /* RenderPass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */; };
+		4F64B3751DC3FD36005BD8B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B3731DC3FD36005BD8B1 /* LaunchScreen.storyboard */; };
+		4F64B37C1DC40406005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
+		4F64B37D1DC40413005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
+		4F64B37E1DC4041A005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
+		4F64B37F1DC40420005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
+		4F64B3801DC4042A005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
+		4F64B3831DC40535005BD8B1 /* RenderPassMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64B3811DC40535005BD8B1 /* RenderPassMetalView.swift */; };
+		4F64B3841DC40535005BD8B1 /* RenderPassRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */; };
+		4F64B3921DC40671005BD8B1 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
+		4F64B3931DC40671005BD8B1 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
+		4F64B3961DC40671005BD8B1 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
+		4F64B3971DC40671005BD8B1 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
+		4F64B3981DC40671005BD8B1 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
+		4F64B3991DC40671005BD8B1 /* MetallicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* MetallicModel.swift */; };
+		4F64B39A1DC40671005BD8B1 /* MetallicTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */; };
+		4F64B39B1DC40671005BD8B1 /* finalPass.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */; };
+		4F64B39C1DC406CF005BD8B1 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
+		4F64B39D1DC406CF005BD8B1 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
+		4F64B39E1DC406CF005BD8B1 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4F7270391DC368780039E130 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270381DC368780039E130 /* AppDelegate.swift */; };
 		4F72703E1DC368780039E130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703C1DC368780039E130 /* Main.storyboard */; };
 		4F7270401DC368780039E130 /* Hello.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703F1DC368780039E130 /* Hello.xcassets */; };
@@ -39,14 +59,12 @@
 		4F7270511DC368C80039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4F7270551DC369090039E130 /* HelloRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270531DC369090039E130 /* HelloRenderer.swift */; };
 		4F7270561DC369090039E130 /* HelloMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270541DC369090039E130 /* HelloMetalView.swift */; };
-		4F7270571DC36ADD0039E130 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
 		4F7270861DC372410039E130 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270851DC372410039E130 /* AppDelegate.swift */; };
 		4F72708B1DC372410039E130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7270891DC372410039E130 /* Main.storyboard */; };
 		4F72708D1DC372410039E130 /* CameraPlane.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F72708C1DC372410039E130 /* CameraPlane.xcassets */; };
 		4F7270901DC372410039E130 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F72708E1DC372410039E130 /* LaunchScreen.storyboard */; };
 		4F7270971DC372F50039E130 /* HelloCameraPlaneMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270951DC372F50039E130 /* HelloCameraPlaneMetalView.swift */; };
 		4F7270981DC372F50039E130 /* HelloCameraPlaneRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270961DC372F50039E130 /* HelloCameraPlaneRenderer.swift */; };
-		4F7270991DC3734F0039E130 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
 		4F72709B1DC373680039E130 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4F72709C1DC373680039E130 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4F72709D1DC373680039E130 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
@@ -100,6 +118,15 @@
 		4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Model_IO.xcassets; sourceTree = "<group>"; };
 		4F56AF921DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F56AF941DBAF08E00E396E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F64B3681DC3FD36005BD8B1 /* HelloRenderPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloRenderPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F64B36A1DC3FD36005BD8B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4F64B36F1DC3FD36005BD8B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RenderPass.xcassets; sourceTree = "<group>"; };
+		4F64B3741DC3FD36005BD8B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F64B3761DC3FD36005BD8B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Textures.xcassets; path = Shared/Textures.xcassets; sourceTree = "<group>"; };
+		4F64B3811DC40535005BD8B1 /* RenderPassMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderPassMetalView.swift; sourceTree = "<group>"; };
+		4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderPassRenderer.swift; sourceTree = "<group>"; };
 		4F7270361DC368780039E130 /* Hello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7270381DC368780039E130 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F72703D1DC368780039E130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,7 +146,6 @@
 		4F7ABE101DA83A9F0054AFA9 /* HelloMultiPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMultiPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F7ABE181DA83A9F0054AFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Textures.xcassets; path = HelloMetal/Textures.xcassets; sourceTree = "<group>"; };
 		4F7ABE1D1DA83A9F0054AFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F7ABE1F1DA83A9F0054AFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7ABE471DA83C100054AFA9 /* MultipassMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipassMetalView.swift; sourceTree = "<group>"; };
@@ -133,6 +159,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		4F56AF831DBAF08E00E396E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F64B3651DC3FD36005BD8B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -176,7 +209,7 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */,
+				4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */,
 				4FFA63ED1DC3773C002F8E34 /* EITexture.swift */,
 				4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */,
 				4FBF51CC1DC02B6200444668 /* model_io.metal */,
@@ -206,6 +239,20 @@
 				4F56AF941DBAF08E00E396E7 /* Info.plist */,
 			);
 			path = HelloModel_IO;
+			sourceTree = "<group>";
+		};
+		4F64B3691DC3FD36005BD8B1 /* HelloRenderPass */ = {
+			isa = PBXGroup;
+			children = (
+				4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */,
+				4F64B3811DC40535005BD8B1 /* RenderPassMetalView.swift */,
+				4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */,
+				4F64B36A1DC3FD36005BD8B1 /* AppDelegate.swift */,
+				4F64B36E1DC3FD36005BD8B1 /* Main.storyboard */,
+				4F64B3731DC3FD36005BD8B1 /* LaunchScreen.storyboard */,
+				4F64B3761DC3FD36005BD8B1 /* Info.plist */,
+			);
+			path = HelloRenderPass;
 			sourceTree = "<group>";
 		};
 		4F7270371DC368780039E130 /* Hello */ = {
@@ -244,6 +291,7 @@
 				4F7270841DC372410039E130 /* HelloCameraPlane */,
 				4F7ABE121DA83A9F0054AFA9 /* HelloMultipass */,
 				4F56AF871DBAF08E00E396E7 /* HelloModel_IO */,
+				4F64B3691DC3FD36005BD8B1 /* HelloRenderPass */,
 				4F2F1F101DBA50FA00B80FE4 /* Frameworks */,
 				4F7ABE111DA83A9F0054AFA9 /* Products */,
 			);
@@ -256,6 +304,7 @@
 				4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */,
 				4F7270361DC368780039E130 /* Hello.app */,
 				4F7270831DC372410039E130 /* HelloCameraPlane.app */,
+				4F64B3681DC3FD36005BD8B1 /* HelloRenderPass.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,6 +342,23 @@
 			name = HelloModel_IO;
 			productName = HelloModel_IO;
 			productReference = 4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4F64B3671DC3FD36005BD8B1 /* HelloRenderPass */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F64B3791DC3FD36005BD8B1 /* Build configuration list for PBXNativeTarget "HelloRenderPass" */;
+			buildPhases = (
+				4F64B3641DC3FD36005BD8B1 /* Sources */,
+				4F64B3651DC3FD36005BD8B1 /* Frameworks */,
+				4F64B3661DC3FD36005BD8B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloRenderPass;
+			productName = HelloRenderPass;
+			productReference = 4F64B3681DC3FD36005BD8B1 /* HelloRenderPass.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4F7270351DC368780039E130 /* Hello */ = {
@@ -361,6 +427,11 @@
 						DevelopmentTeam = NCTVS5F8E2;
 						ProvisioningStyle = Automatic;
 					};
+					4F64B3671DC3FD36005BD8B1 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = NCTVS5F8E2;
+						ProvisioningStyle = Automatic;
+					};
 					4F7270351DC368780039E130 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NCTVS5F8E2;
@@ -393,6 +464,7 @@
 			targets = (
 				4F7270351DC368780039E130 /* Hello */,
 				4F7270821DC372410039E130 /* HelloCameraPlane */,
+				4F64B3671DC3FD36005BD8B1 /* HelloRenderPass */,
 				4F7ABE0F1DA83A9F0054AFA9 /* HelloMultiPass */,
 				4F56AF851DBAF08E00E396E7 /* HelloModel_IO */,
 			);
@@ -404,10 +476,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F09117A1DBBFB1400D252BF /* Textures.xcassets in Resources */,
+				4F64B37C1DC40406005BD8B1 /* Textures.xcassets in Resources */,
 				4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */,
 				4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */,
 				4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F64B3661DC3FD36005BD8B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F64B37E1DC4041A005BD8B1 /* Textures.xcassets in Resources */,
+				4F64B3721DC3FD36005BD8B1 /* RenderPass.xcassets in Resources */,
+				4F64B3751DC3FD36005BD8B1 /* LaunchScreen.storyboard in Resources */,
+				4F64B3701DC3FD36005BD8B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +498,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F7270571DC36ADD0039E130 /* Textures.xcassets in Resources */,
+				4F64B3801DC4042A005BD8B1 /* Textures.xcassets in Resources */,
 				4F7270401DC368780039E130 /* Hello.xcassets in Resources */,
 				4F7270431DC368780039E130 /* LaunchScreen.storyboard in Resources */,
 				4F72703E1DC368780039E130 /* Main.storyboard in Resources */,
@@ -426,7 +509,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F7270991DC3734F0039E130 /* Textures.xcassets in Resources */,
+				4F64B37F1DC40420005BD8B1 /* Textures.xcassets in Resources */,
 				4F72708D1DC372410039E130 /* CameraPlane.xcassets in Resources */,
 				4F7270901DC372410039E130 /* LaunchScreen.storyboard in Resources */,
 				4F72708B1DC372410039E130 /* Main.storyboard in Resources */,
@@ -437,8 +520,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F64B37D1DC40413005BD8B1 /* Textures.xcassets in Resources */,
 				4F0911761DBBFA4000D252BF /* Multipass.xcassets in Resources */,
-				4F2F1FA81DBA5B1500B80FE4 /* Textures.xcassets in Resources */,
 				4F7ABE1E1DA83A9F0054AFA9 /* LaunchScreen.storyboard in Resources */,
 				4F7ABE191DA83A9F0054AFA9 /* Main.storyboard in Resources */,
 			);
@@ -463,6 +546,27 @@
 				4FDB167D1DBD66BA0025465A /* MetallicTransform.swift in Sources */,
 				4FDB16761DBD658C0025465A /* HelloModel_IOMetalView.swift in Sources */,
 				4F56AF891DBAF08E00E396E7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F64B3641DC3FD36005BD8B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F64B36B1DC3FD36005BD8B1 /* AppDelegate.swift in Sources */,
+				4F64B3831DC40535005BD8B1 /* RenderPassMetalView.swift in Sources */,
+				4F64B3841DC40535005BD8B1 /* RenderPassRenderer.swift in Sources */,
+				4F64B3921DC40671005BD8B1 /* EITexture.swift in Sources */,
+				4F64B3931DC40671005BD8B1 /* RendererExtensions.swift in Sources */,
+				4F64B3961DC40671005BD8B1 /* EIArcball.swift in Sources */,
+				4F64B3971DC40671005BD8B1 /* EICamera.swift in Sources */,
+				4F64B3981DC40671005BD8B1 /* Math.swift in Sources */,
+				4F64B3991DC40671005BD8B1 /* MetallicModel.swift in Sources */,
+				4F64B39A1DC40671005BD8B1 /* MetallicTransform.swift in Sources */,
+				4F64B39C1DC406CF005BD8B1 /* hello.metal in Sources */,
+				4F64B39D1DC406CF005BD8B1 /* showST.metal in Sources */,
+				4F64B39E1DC406CF005BD8B1 /* texture.metal in Sources */,
+				4F64B39B1DC40671005BD8B1 /* finalPass.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +652,22 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		4F64B36E1DC3FD36005BD8B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F64B36F1DC3FD36005BD8B1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4F64B3731DC3FD36005BD8B1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F64B3741DC3FD36005BD8B1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		4F72703C1DC368780039E130 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -620,6 +740,32 @@
 				INFOPLIST_FILE = HelloModel_IO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IO";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4F64B3771DC3FD36005BD8B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloRenderPass/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloRenderPass;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4F64B3781DC3FD36005BD8B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloRenderPass/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloRenderPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -806,6 +952,15 @@
 			buildConfigurations = (
 				4F56AFAB1DBAF08E00E396E7 /* Debug */,
 				4F56AFAC1DBAF08E00E396E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F64B3791DC3FD36005BD8B1 /* Build configuration list for PBXNativeTarget "HelloRenderPass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F64B3771DC3FD36005BD8B1 /* Debug */,
+				4F64B3781DC3FD36005BD8B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
