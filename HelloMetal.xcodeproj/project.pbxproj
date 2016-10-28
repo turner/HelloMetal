@@ -10,7 +10,6 @@
 		4F0911761DBBFA4000D252BF /* Multipass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0911751DBBFA4000D252BF /* Multipass.xcassets */; };
 		4F09117A1DBBFB1400D252BF /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
 		4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
-		4F2353881DBAB5F10095DF5F /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
 		4F2F1F8A1DBA587000B80FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE131DA83A9F0054AFA9 /* AppDelegate.swift */; };
 		4F2F1F9D1DBA59C500B80FE4 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4F2F1F9E1DBA59C500B80FE4 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
@@ -30,7 +29,6 @@
 		4F72703E1DC368780039E130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703C1DC368780039E130 /* Main.storyboard */; };
 		4F7270401DC368780039E130 /* Hello.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703F1DC368780039E130 /* Hello.xcassets */; };
 		4F7270431DC368780039E130 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7270411DC368780039E130 /* LaunchScreen.storyboard */; };
-		4F7270481DC368C80039E130 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
 		4F7270491DC368C80039E130 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4F72704A1DC368C80039E130 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4F72704B1DC368C80039E130 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
@@ -39,7 +37,6 @@
 		4F72704F1DC368C80039E130 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4F7270501DC368C80039E130 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F7270511DC368C80039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
-		4F7270521DC368C80039E130 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE1F2E1DC0D0C300859492 /* EITexture.swift */; };
 		4F7270551DC369090039E130 /* HelloRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270531DC369090039E130 /* HelloRenderer.swift */; };
 		4F7270561DC369090039E130 /* HelloMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270541DC369090039E130 /* HelloMetalView.swift */; };
 		4F7270571DC36ADD0039E130 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
@@ -50,7 +47,6 @@
 		4F7270971DC372F50039E130 /* HelloCameraPlaneMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270951DC372F50039E130 /* HelloCameraPlaneMetalView.swift */; };
 		4F7270981DC372F50039E130 /* HelloCameraPlaneRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270961DC372F50039E130 /* HelloCameraPlaneRenderer.swift */; };
 		4F7270991DC3734F0039E130 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */; };
-		4F72709A1DC373680039E130 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
 		4F72709B1DC373680039E130 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4F72709C1DC373680039E130 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4F72709D1DC373680039E130 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
@@ -60,7 +56,6 @@
 		4F7270A11DC373690039E130 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4F7270A21DC373690039E130 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F7270A31DC373690039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
-		4F7270A41DC373690039E130 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE1F2E1DC0D0C300859492 /* EITexture.swift */; };
 		4F7ABE191DA83A9F0054AFA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE171DA83A9F0054AFA9 /* Main.storyboard */; };
 		4F7ABE1E1DA83A9F0054AFA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7ABE1C1DA83A9F0054AFA9 /* LaunchScreen.storyboard */; };
 		4F7ABE4F1DA83C100054AFA9 /* MultipassMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7ABE471DA83C100054AFA9 /* MultipassMetalView.swift */; };
@@ -68,18 +63,25 @@
 		4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4FDB16761DBD658C0025465A /* HelloModel_IOMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16741DBD658C0025465A /* HelloModel_IOMetalView.swift */; };
 		4FDB16771DBD658C0025465A /* HelloModel_IORenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16751DBD658C0025465A /* HelloModel_IORenderer.swift */; };
-		4FDB16781DBD66BA0025465A /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */; };
 		4FDB16791DBD66BA0025465A /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4FDB167A1DBD66BA0025465A /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4FDB167B1DBD66BA0025465A /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
 		4FDB167D1DBD66BA0025465A /* MetallicTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */; };
-		4FFE1F301DC0D1EF00859492 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE1F2E1DC0D0C300859492 /* EITexture.swift */; };
+		4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
+		4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
+		4FFA63F11DC377AC002F8E34 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
+		4FFA63F21DC377BA002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
+		4FFA63F31DC377BA002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
+		4FFA63F41DC377C4002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
+		4FFA63F51DC377C4002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
+		4FFA63F61DC377DC002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
+		4FFA63F71DC377DC002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
+		4FFA63F81DC377DC002F8E34 /* MetallicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* MetallicModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4F0911751DBBFA4000D252BF /* Multipass.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Multipass.xcassets; sourceTree = "<group>"; };
 		4F0C7E591DBE8431005F42C3 /* EIMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIMesh.swift; path = Shared/EIMesh.swift; sourceTree = "<group>"; };
-		4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererExtensions.swift; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
@@ -125,7 +127,8 @@
 		4FBF51CC1DC02B6200444668 /* model_io.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = model_io.metal; path = Shared/model_io.metal; sourceTree = "<group>"; };
 		4FDB16741DBD658C0025465A /* HelloModel_IOMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloModel_IOMetalView.swift; sourceTree = "<group>"; };
 		4FDB16751DBD658C0025465A /* HelloModel_IORenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloModel_IORenderer.swift; sourceTree = "<group>"; };
-		4FFE1F2E1DC0D0C300859492 /* EITexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EITexture.swift; sourceTree = "<group>"; };
+		4FFA63ED1DC3773C002F8E34 /* EITexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EITexture.swift; path = Shared/EITexture.swift; sourceTree = "<group>"; };
+		4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RendererExtensions.swift; path = Shared/RendererExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,9 +177,10 @@
 			isa = PBXGroup;
 			children = (
 				4F7ABE1A1DA83A9F0054AFA9 /* Textures.xcassets */,
+				4FFA63ED1DC3773C002F8E34 /* EITexture.swift */,
+				4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */,
 				4FBF51CC1DC02B6200444668 /* model_io.metal */,
 				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
-				4F2353871DBAB5F10095DF5F /* RendererExtensions.swift */,
 				4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */,
 				4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */,
 				4F2F1F8F1DBA599900B80FE4 /* Math.swift */,
@@ -186,7 +190,6 @@
 				4F2F1F8E1DBA599900B80FE4 /* hello.metal */,
 				4F2F1F921DBA599900B80FE4 /* showST.metal */,
 				4F2F1F931DBA599900B80FE4 /* texture.metal */,
-				4FFE1F2E1DC0D0C300859492 /* EITexture.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -448,11 +451,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FFA63F61DC377DC002F8E34 /* EITexture.swift in Sources */,
+				4FFA63F71DC377DC002F8E34 /* RendererExtensions.swift in Sources */,
+				4FFA63F81DC377DC002F8E34 /* MetallicModel.swift in Sources */,
 				4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */,
 				4FDB16771DBD658C0025465A /* HelloModel_IORenderer.swift in Sources */,
-				4FFE1F301DC0D1EF00859492 /* EITexture.swift in Sources */,
 				4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */,
-				4FDB16781DBD66BA0025465A /* RendererExtensions.swift in Sources */,
 				4FDB16791DBD66BA0025465A /* EIArcball.swift in Sources */,
 				4FDB167A1DBD66BA0025465A /* EICamera.swift in Sources */,
 				4FDB167B1DBD66BA0025465A /* Math.swift in Sources */,
@@ -466,16 +470,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FFA63F11DC377AC002F8E34 /* EIMesh.swift in Sources */,
 				4F7270391DC368780039E130 /* AppDelegate.swift in Sources */,
+				4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */,
 				4F7270551DC369090039E130 /* HelloRenderer.swift in Sources */,
 				4F7270561DC369090039E130 /* HelloMetalView.swift in Sources */,
-				4F7270481DC368C80039E130 /* RendererExtensions.swift in Sources */,
 				4F7270491DC368C80039E130 /* EIArcball.swift in Sources */,
 				4F72704A1DC368C80039E130 /* EICamera.swift in Sources */,
 				4F72704B1DC368C80039E130 /* Math.swift in Sources */,
+				4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */,
 				4F72704C1DC368C80039E130 /* MetallicModel.swift in Sources */,
 				4F72704D1DC368C80039E130 /* MetallicTransform.swift in Sources */,
-				4F7270521DC368C80039E130 /* EITexture.swift in Sources */,
 				4F72704F1DC368C80039E130 /* hello.metal in Sources */,
 				4F7270501DC368C80039E130 /* showST.metal in Sources */,
 				4F7270511DC368C80039E130 /* texture.metal in Sources */,
@@ -486,16 +491,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FFA63F21DC377BA002F8E34 /* EITexture.swift in Sources */,
+				4FFA63F31DC377BA002F8E34 /* RendererExtensions.swift in Sources */,
 				4F7270861DC372410039E130 /* AppDelegate.swift in Sources */,
 				4F7270981DC372F50039E130 /* HelloCameraPlaneRenderer.swift in Sources */,
 				4F7270971DC372F50039E130 /* HelloCameraPlaneMetalView.swift in Sources */,
-				4F72709A1DC373680039E130 /* RendererExtensions.swift in Sources */,
 				4F72709B1DC373680039E130 /* EIArcball.swift in Sources */,
 				4F72709C1DC373680039E130 /* EICamera.swift in Sources */,
 				4F72709D1DC373680039E130 /* Math.swift in Sources */,
 				4F72709E1DC373690039E130 /* MetallicModel.swift in Sources */,
 				4F72709F1DC373690039E130 /* MetallicTransform.swift in Sources */,
-				4F7270A41DC373690039E130 /* EITexture.swift in Sources */,
 				4F7270A01DC373690039E130 /* finalPass.metal in Sources */,
 				4F7270A11DC373690039E130 /* hello.metal in Sources */,
 				4F7270A21DC373690039E130 /* showST.metal in Sources */,
@@ -507,6 +512,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FFA63F41DC377C4002F8E34 /* EITexture.swift in Sources */,
+				4FFA63F51DC377C4002F8E34 /* RendererExtensions.swift in Sources */,
 				4F2F1F9D1DBA59C500B80FE4 /* EIArcball.swift in Sources */,
 				4F2F1F9E1DBA59C500B80FE4 /* EICamera.swift in Sources */,
 				4F2F1F9F1DBA59C500B80FE4 /* finalPass.metal in Sources */,
@@ -514,7 +521,6 @@
 				4F2F1FA11DBA59C500B80FE4 /* Math.swift in Sources */,
 				4F2F1FA21DBA59C500B80FE4 /* MetallicModel.swift in Sources */,
 				4F2F1FA31DBA59C500B80FE4 /* MetallicTransform.swift in Sources */,
-				4F2353881DBAB5F10095DF5F /* RendererExtensions.swift in Sources */,
 				4F2F1FA41DBA59C500B80FE4 /* showST.metal in Sources */,
 				4F2F1FA51DBA59C500B80FE4 /* texture.metal in Sources */,
 				4F2F1F8A1DBA587000B80FE4 /* AppDelegate.swift in Sources */,
