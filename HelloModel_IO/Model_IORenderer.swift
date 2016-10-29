@@ -9,7 +9,7 @@
 import MetalKit
 import GLKit
 
-class HelloModel_IORenderer: NSObject, MTKViewDelegate {
+class Model_IORenderer: NSObject, MTKViewDelegate {
 
     var camera: EICamera!
 
@@ -102,15 +102,15 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        reshape(view:view as! HelloModel_IOMetalView)
+        reshape(view:view as! Model_IOMetalView)
     }
 
-    func reshape (view: HelloModel_IOMetalView) {
+    func reshape (view: Model_IOMetalView) {
         view.arcBall.reshape(viewBounds: view.bounds)
         camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 8000)
     }
 
-    func update(view: HelloModel_IOMetalView, drawableSize:CGSize) {
+    func update(view: Model_IOMetalView, drawableSize:CGSize) {
 
         // render plane
         renderPlane.metallicTransform.update(camera: camera, transformer: {
@@ -126,7 +126,7 @@ class HelloModel_IORenderer: NSObject, MTKViewDelegate {
 
     public func draw(in view: MTKView) {
 
-        update(view: view as! HelloModel_IOMetalView, drawableSize: view.bounds.size)
+        update(view: view as! Model_IOMetalView, drawableSize: view.bounds.size)
 
         // final pass
         if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {

@@ -1,13 +1,12 @@
 
 import MetalKit
 
-public class RenderPassMetalView: EIView {
+public class MetalView: EIView {
 
     required public init(coder: NSCoder) {
         super.init(coder: coder)
-        renderer = RenderPassRenderer(view: self, device: device!)
+        renderer = Renderer(view: self, device: device!)
         delegate = renderer
     }
 
 }
-
