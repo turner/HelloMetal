@@ -42,20 +42,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         heroModel = MetallicQuadModel(device: device)
 
         do {
-
-            let textureLoader = MTKTextureLoader(device: device)
-
-            guard let image = UIImage(named:"kids_grid_3x3_translucent") else {
-                fatalError("Error: Can not create UIImage")
-            }
-
-            if (image.cgImage?.alphaInfo == .premultipliedLast) {
-                print("texture uses premultiplied alpha. Rock.")
-            }
-
-            let textureLoaderOptions:[String:NSNumber] = [ MTKTextureLoaderOptionSRGB:false ]
-
-            heroModelTexture = try textureLoader.newTexture(with: image.cgImage!, options: textureLoaderOptions)
+            heroModelTexture = try makeTexture(device: device, name: "kids_grid_3x3_translucent")
         } catch {
             fatalError("Error: Can not load texture")
         }
@@ -78,24 +65,11 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         heroBackdrop = MetallicQuadModel(device: device)
 
         do {
-
-            let textureLoader = MTKTextureLoader(device: device)
-
-            guard let image = UIImage(named:"mobile") else {
-                fatalError("Error: Can not create UIImage")
-            }
-
-            if (image.cgImage?.alphaInfo == .premultipliedLast) {
-                print("texture uses premultiplied alpha. Rock.")
-            }
-
-            let textureLoaderOptions:[String:NSNumber] = [ MTKTextureLoaderOptionSRGB:false ]
-
-            heroBackdropTexture = try textureLoader.newTexture(with: image.cgImage!, options: textureLoaderOptions)
+            heroBackdropTexture = try makeTexture(device: device, name: "mobile")
         } catch {
             fatalError("Error: Can not load texture")
         }
-
+        
         do {
             
             heroBackdropPipelineState = try device.makeRenderPipelineState(descriptor:
