@@ -12,6 +12,22 @@
 		4F10A9D81DC42E7600053B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
 		4F10A9D91DC42E8600053B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
 		4F10A9DA1DC42E8D00053B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
+		4F1A00561DC4C29600DF5156 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F111DBA50FA00B80FE4 /* Metal.framework */; };
+		4F1A00571DC4C29600DF5156 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */; };
+		4F1A00581DC4C2A200DF5156 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
+		4F1A005A1DC4C2C500DF5156 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
+		4F1A005B1DC4C2E600DF5156 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F111DBA50FA00B80FE4 /* Metal.framework */; };
+		4F1A005C1DC4C2E600DF5156 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */; };
+		4F1A005D1DC4C2EF00DF5156 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
+		4F1A005E1DC4C2F700DF5156 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
+		4F1A005F1DC4C30700DF5156 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F111DBA50FA00B80FE4 /* Metal.framework */; };
+		4F1A00601DC4C30700DF5156 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */; };
+		4F1A00611DC4C30F00DF5156 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
+		4F1A00621DC4C31600DF5156 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
+		4F1A00631DC4C32700DF5156 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F111DBA50FA00B80FE4 /* Metal.framework */; };
+		4F1A00641DC4C32700DF5156 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */; };
+		4F1A00651DC4C32E00DF5156 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
+		4F1A00661DC4C33500DF5156 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
 		4F1CA3AF1DC43067006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B01DC43680006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
@@ -85,6 +101,7 @@
 /* Begin PBXFileReference section */
 		4F0C7E591DBE8431005F42C3 /* EIMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIMesh.swift; path = Shared/EIMesh.swift; sourceTree = "<group>"; };
 		4F10A9D61DC42DC800053B77 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shared/AppDelegate.swift; sourceTree = "<group>"; };
+		4F1A00591DC4C2C500DF5156 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		4F1CA3AE1DC43067006B6213 /* EIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIView.swift; path = Shared/EIView.swift; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -137,6 +154,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F1A00661DC4C33500DF5156 /* SceneKit.framework in Frameworks */,
+				4F1A00651DC4C32E00DF5156 /* ModelIO.framework in Frameworks */,
+				4F1A00631DC4C32700DF5156 /* Metal.framework in Frameworks */,
+				4F1A00641DC4C32700DF5156 /* MetalKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +165,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F1A00621DC4C31600DF5156 /* SceneKit.framework in Frameworks */,
+				4F1A00611DC4C30F00DF5156 /* ModelIO.framework in Frameworks */,
+				4F1A005F1DC4C30700DF5156 /* Metal.framework in Frameworks */,
+				4F1A00601DC4C30700DF5156 /* MetalKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +176,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F1A005A1DC4C2C500DF5156 /* SceneKit.framework in Frameworks */,
+				4F1A00581DC4C2A200DF5156 /* ModelIO.framework in Frameworks */,
+				4F1A00561DC4C29600DF5156 /* Metal.framework in Frameworks */,
+				4F1A00571DC4C29600DF5156 /* MetalKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +187,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F1A005E1DC4C2F700DF5156 /* SceneKit.framework in Frameworks */,
+				4F1A005D1DC4C2EF00DF5156 /* ModelIO.framework in Frameworks */,
+				4F1A005B1DC4C2E600DF5156 /* Metal.framework in Frameworks */,
+				4F1A005C1DC4C2E600DF5156 /* MetalKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +200,7 @@
 		4F2F1F101DBA50FA00B80FE4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F1A00591DC4C2C500DF5156 /* SceneKit.framework */,
 				4F2F1F111DBA50FA00B80FE4 /* Metal.framework */,
 				4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */,
 				4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */,
