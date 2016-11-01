@@ -15,9 +15,8 @@ class EIArcball {
 
     var viewBounds: CGRect!
     
-    var fromVector: GLKVector3!
-    var toVector: GLKVector3!
-    
+    var startVector: GLKVector3!
+
     var rotationTimer: Timer?
     
     var ballCenter = CGPoint(x:0.0, y:0.0)
@@ -29,8 +28,8 @@ class EIArcball {
     var quaternionTouchDown = GLKQuaternionIdentity
     var rotationMatrixTouchDown = GLKMatrix4Identity
     
-    var rotationAngle = Float(0)
-    var rotationAxis = GLKVector3Make(0, 0, 0);
+    var angleOfRotation = Float(0)
+    var axisOfRotation = GLKVector3Make(0, 0, 0);
     
     init(viewBounds: CGRect) {
         self.viewBounds = viewBounds
@@ -47,21 +46,17 @@ class EIArcball {
             rotationTimer = nil;
         }
         
-        fromVector = ballLocationInXYPlane(screenLocation: screenLocation)
-//        fromVector.description(blurb:"from")
-        
+        startVector = ballLocationInXYPlane(screenLocation: screenLocation)
     }
 
     func updateDrag (screenLocation: CGPoint) {
 
-        toVector = ballLocationInXYPlane(screenLocation: screenLocation)
-//        toVector.description(blurb:"  to")
+        let endVector = ballLocationInXYPlane(screenLocation: screenLocation)
 
-        rotationAngle = acos(GLKVector3DotProduct(fromVector, toVector))
-        rotationAxis = GLKVector3CrossProduct(fromVector, toVector)
-        
-        let quaternionDrag = GLKQuaternionMakeWithAngleAndVector3Axis(rotationAngle, rotationAxis)
-        quaternion = GLKQuaternionMultiply(quaternionDrag, quaternionTouchDown)
+        angleOfRotation = acos(GLKVector3DotProduct(startVector, endVector))
+        axisOfRotation = GLKVector3CrossProduct(startVector, endVector)
+
+        quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(angleOfRotation, axisOfRotation), quaternionTouchDown)
         
         rotationMatrix = GLKMatrix4MakeWithQuaternion(quaternion)
     }
@@ -102,7 +97,7 @@ class EIArcball {
             radians -= Float(kRotationDecelerationRate * radiansBegin)
             anglePackage["radians"] = radians as AnyObject?
             
-            let quaternionDrag = GLKQuaternionMakeWithAngleAndVector3Axis(radians, rotationAxis)
+            let quaternionDrag = GLKQuaternionMakeWithAngleAndVector3Axis(radians, axisOfRotation)
             quaternion = GLKQuaternionMultiply(quaternionDrag, quaternionTouchDown)
             rotationMatrix = GLKMatrix4MakeWithQuaternion(quaternion)
             
