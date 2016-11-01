@@ -80,11 +80,11 @@ class EIArcball {
         
         let radians = acos(GLKVector3DotProduct(a, b));
 
-        rotationTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kRotationRate),
-                                             target:self,
-                                             selector: Selector(("rotationTimerHandler")),
-                                             userInfo: [ "radiansBegin":radians, "radians":radians, "radiansEnd":0, "counter":0 ],
-                                             repeats: true)
+//        rotationTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kRotationRate),
+//                                             target:self,
+//                                             selector: Selector(("rotationTimerHandler")),
+//                                             userInfo: [ "radiansBegin":radians, "radians":radians, "radiansEnd":0, "counter":0 ],
+//                                             repeats: true)
     }
     
     func rotationTimerHandler(timer:Timer) {
