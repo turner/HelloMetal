@@ -9,10 +9,15 @@ public class EIView: MTKView {
     required public init(coder: NSCoder) {
 
         super.init(coder: coder)
+        
+        // we will call MTKView.draw() explicitly
+        isPaused = true
+        enableSetNeedsDisplay = true
 
         device = MTLCreateSystemDefaultDevice()!
 
-        arcBall = EIArcball.init(viewBounds: bounds)
+//        arcBall = EIArcball.init(viewBounds: bounds)
+        arcBall = EIArcball.init(view:self)
 
         addGestureRecognizer(UIPanGestureRecognizer.init(
             target: arcBall,

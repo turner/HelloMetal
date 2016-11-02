@@ -7,12 +7,15 @@
 //
 
 import GLKit
+import MetalKit
 
 class EIArcball {
  
     let kRotationRate = CGFloat(1.0/30.0);
     let kRotationDecelerationRate = CGFloat(1.0/60.0);
-
+    
+    var view: MTKView!
+    
     var viewBounds: CGRect!
     
     var startVector: GLKVector3!
@@ -30,6 +33,12 @@ class EIArcball {
     
     var angleOfRotation = Float(0)
     var axisOfRotation = GLKVector3Make(0, 0, 0);
+    
+    init(view: MTKView) {
+        
+        self.view = view
+        viewBounds = view.bounds
+    }
     
     init(viewBounds: CGRect) {
         self.viewBounds = viewBounds
@@ -59,6 +68,8 @@ class EIArcball {
         quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(angleOfRotation, axisOfRotation), quaternionTouchDown)
         
         rotationMatrix = GLKMatrix4MakeWithQuaternion(quaternion)
+        
+        view.draw()
     }
     
     func endDrag(velocityInView:CGPoint, locationInView:CGPoint) {
@@ -75,14 +86,14 @@ class EIArcball {
         
         let radians = acos(GLKVector3DotProduct(a, b));
 
-//        rotationTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kRotationRate),
-//                                             target:self,
-//                                             selector: Selector(("rotationTimerHandler")),
-//                                             userInfo: [ "radiansBegin":radians, "radians":radians, "radiansEnd":0, "counter":0 ],
-//                                             repeats: true)
+        rotationTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kRotationRate),
+                                             target:self,
+                                             selector: #selector(self.rotationTimerHandler),
+                                             userInfo: [ "radiansBegin":radians, "radians":radians, "radiansEnd":0, "counter":0 ],
+                                             repeats: true)
     }
     
-    func rotationTimerHandler(timer:Timer) {
+    @objc func rotationTimerHandler(timer:Timer) {
         
         var anglePackage = timer.userInfo as! Dictionary<String, AnyObject>
         
@@ -90,7 +101,6 @@ class EIArcball {
         var radians      = anglePackage["radians"] as! Float
         
         if (radians < 0) {
-            
             timer.invalidate()
         } else {
             
@@ -103,6 +113,8 @@ class EIArcball {
             
             quaternionTouchDown = quaternion
             rotationMatrixTouchDown = rotationMatrix
+            
+            view.draw()
         }
     }
 
