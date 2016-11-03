@@ -14,27 +14,27 @@ struct EIMesh {
     var mesh: MTKMesh!
 
     var submesh: MTKSubmesh {
-        return self.mesh.submeshes[ 0 ]
+        return mesh.submeshes[ 0 ]
     }
 
     var vertexMetalBuffer: MTLBuffer {
-        return self.mesh.vertexBuffers[ 0 ].buffer
+        return mesh.vertexBuffers[ 0 ].buffer
     }
 
     var vertexIndexMetalBuffer: MTLBuffer {
-        return self.mesh.submeshes[ 0 ].indexBuffer.buffer
+        return mesh.submeshes[ 0 ].indexBuffer.buffer
     }
 
     var primitiveType: MTLPrimitiveType {
-        return self.mesh.submeshes[ 0 ].primitiveType
+        return mesh.submeshes[ 0 ].primitiveType
     }
 
     var indexCount: Int {
-        return self.mesh.submeshes[ 0 ].indexCount
+        return mesh.submeshes[ 0 ].indexCount
     }
 
     var indexType: MTLIndexType {
-        return self.mesh.submeshes[ 0 ].indexType
+        return mesh.submeshes[ 0 ].indexType
     }
 
     var metalVertexDescriptor: MTLVertexDescriptor!
@@ -43,10 +43,10 @@ struct EIMesh {
 
     mutating func initializationHelper (device: MTLDevice)  -> MDLVertexDescriptor {
         
-        self.metallicTransform = MetallicTransform(device: device)
+        metallicTransform = MetallicTransform(device: device)
         
         // Metal vertex descriptor
-        self.metalVertexDescriptor = MTLVertexDescriptor()
+        metalVertexDescriptor = MTLVertexDescriptor()
         
         // xyz
         metalVertexDescriptor.attributes[0].format = .float3
@@ -95,10 +95,24 @@ extension EIPlane {
                                            segments: vector_uint2(xTesselation, yTesselation),
                                            geometryType: .triangles,
                                            allocator: MTKMeshBufferAllocator(device: device))
-            
+
+            /*
+            Setting this applies the new layout in 'vertexBuffers' thus is a
+            heavyweight operation as structured copies of almost all vertex
+            buffer data could be made.
+
+            Additionally, if the new vertexDescriptor does not have an attribute in the original vertexDescriptor, that
+            attribute will be deleted.  If the original vertexDescriptor does
+            not have an attribute in the new vertexDescriptor, the data for the
+            added attribute set as the added attribute's initializationValue
+            property.
+
+            The allocator associated with each original meshbuffer is used to
+            reallocate the corresponding resultant meshbuffer.
+            */
             mdlMesh.vertexDescriptor = initializationHelper(device: device)
             
-            self.mesh = try MTKMesh(mesh: mdlMesh, device: device)
+            mesh = try MTKMesh(mesh: mdlMesh, device: device)
             
         } catch {
             fatalError("Error: Can not create Metal mesh")
@@ -130,7 +144,7 @@ extension EICube {
             
             mdlMesh.vertexDescriptor = initializationHelper(device: device)
             
-            self.mesh = try MTKMesh(mesh: mdlMesh, device: device)
+            mesh = try MTKMesh(mesh: mdlMesh, device: device)
             
         } catch {
             fatalError("Error: Can not create Metal mesh")
@@ -165,7 +179,7 @@ extension EISphere {
         
             mdlMesh.vertexDescriptor = initializationHelper(device: device)
             
-            self.mesh = try MTKMesh(mesh: mdlMesh, device: device)
+            mesh = try MTKMesh(mesh: mdlMesh, device: device)
             
         } catch {
             fatalError("Error: Can not create Metal mesh")
