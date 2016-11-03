@@ -86,28 +86,29 @@ class EIArcball {
         
         let radians = acos(GLKVector3DotProduct(a, b));
 
+        let package:Dictionary<String, CGFloat> = [ "radiansBegin":CGFloat(radians), "radians":CGFloat(radians), "radiansEnd":CGFloat(0) ]
         rotationTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kRotationRate),
                                              target:self,
-                                             selector: #selector(self.rotationTimerHandler),
-                                             userInfo: [ "radiansBegin":radians, "radians":radians, "radiansEnd":0, "counter":0 ],
+                                             selector: #selector(EIArcball.rotationTimerHandler),
+                                             userInfo: package,
                                              repeats: true)
     }
     
     @objc func rotationTimerHandler(timer:Timer) {
         
-        var anglePackage = timer.userInfo as! Dictionary<String, AnyObject>
+        var anglePackage = timer.userInfo as! Dictionary<String, CGFloat>
         
-        let radiansBegin = anglePackage["radiansBegin"] as! CGFloat
-        var radians      = anglePackage["radians"] as! Float
+        let radiansBegin = anglePackage["radiansBegin"] as CGFloat!
+        let radians      = anglePackage[     "radians"] as CGFloat!
         
-        if (radians < 0) {
+        if (radians! < CGFloat(0)) {
             timer.invalidate()
         } else {
             
-            radians -= Float(kRotationDecelerationRate * radiansBegin)
-            anglePackage["radians"] = radians as AnyObject?
+            let r = radians! - kRotationDecelerationRate * radiansBegin!
+            anglePackage["radians"] = r
             
-            let quaternionDrag = GLKQuaternionMakeWithAngleAndVector3Axis(radians, axisOfRotation)
+            let quaternionDrag = GLKQuaternionMakeWithAngleAndVector3Axis(Float(r), axisOfRotation)
             quaternion = GLKQuaternionMultiply(quaternionDrag, quaternionTouchDown)
             rotationMatrix = GLKMatrix4MakeWithQuaternion(quaternion)
             

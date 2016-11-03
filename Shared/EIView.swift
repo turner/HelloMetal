@@ -16,7 +16,6 @@ public class EIView: MTKView {
 
         device = MTLCreateSystemDefaultDevice()!
 
-//        arcBall = EIArcball.init(viewBounds: bounds)
         arcBall = EIArcball.init(view:self)
 
         addGestureRecognizer(UIPanGestureRecognizer.init(
