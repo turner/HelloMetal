@@ -86,7 +86,7 @@ class EIArcball {
         
         let radians = acos(GLKVector3DotProduct(a, b));
 
-        let package:Dictionary<String, CGFloat> = [ "radiansBegin":CGFloat(radians), "radians":CGFloat(radians), "radiansEnd":CGFloat(0) ]
+        let package:NSMutableDictionary = [ "radiansBegin":CGFloat(radians), "radians":CGFloat(radians) ]
         rotationTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kRotationRate),
                                              target:self,
                                              selector: #selector(EIArcball.rotationTimerHandler),
@@ -96,19 +96,18 @@ class EIArcball {
     
     @objc func rotationTimerHandler(timer:Timer) {
         
-        var anglePackage = timer.userInfo as! Dictionary<String, CGFloat>
-        
-        let radiansBegin = anglePackage["radiansBegin"] as CGFloat!
-        let radians      = anglePackage[     "radians"] as CGFloat!
-        
-        if (radians! < CGFloat(0)) {
+        let anglePackage = timer.userInfo as! NSMutableDictionary
+        let radiansBegin = anglePackage[ "radiansBegin" ] as! CGFloat
+        let radians      = anglePackage[      "radians" ] as! CGFloat
+
+        if (radians < CGFloat(0)) {
             timer.invalidate()
         } else {
+
+            let updated = (radians - kRotationDecelerationRate * radiansBegin)
+            anglePackage[ "radians" ] = updated
             
-            let r = radians! - kRotationDecelerationRate * radiansBegin!
-            anglePackage["radians"] = r
-            
-            let quaternionDrag = GLKQuaternionMakeWithAngleAndVector3Axis(Float(r), axisOfRotation)
+            let quaternionDrag = GLKQuaternionMakeWithAngleAndVector3Axis(Float(updated), axisOfRotation)
             quaternion = GLKQuaternionMultiply(quaternionDrag, quaternionTouchDown)
             rotationMatrix = GLKMatrix4MakeWithQuaternion(quaternion)
             
