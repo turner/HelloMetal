@@ -30,24 +30,36 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
     var depthStencilState: MTLDepthStencilState!
 
     var commandQueue: MTLCommandQueue!
+    
+    var ballMesh: MDLMesh!
+    var cylinderMesh: MDLMesh!
 
     init(view: MTKView, device: MTLDevice) {
 
         let library = device.newDefaultLibrary()
         
         guard let scene = SCNScene(named:"ballAndCylinder.scn") else {
-            fatalError("Error: Can not create scene")
+            fatalError("Error: Can not create SCNScene")
         }
         
         guard let ballNode = scene.rootNode.childNode(withName:"ballIdentity", recursively:true) else {
             fatalError("Error: Can not create ballNode")
         }
-
+        
         guard let ballGeometry = ballNode.geometry else {
             fatalError("Error: Can not create ballGeometry")
         }
         
-        let ballMesh = MDLMesh(scnGeometry:ballGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
+        guard let cylinderNode = scene.rootNode.childNode(withName:"cylinderIdentity", recursively:true) else {
+            fatalError("Error: Can not create cylinderNode")
+        }
+        
+        guard let cylinderGeometry = cylinderNode.geometry else {
+            fatalError("Error: Can not create cylinderGeometry")
+        }
+        
+        ballMesh = MDLMesh(scnGeometry:ballGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
+        cylinderMesh = MDLMesh(scnGeometry:cylinderGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
         
         // Metal vertex descriptor
         let metalVertexDescriptor = MTLVertexDescriptor()
@@ -79,11 +91,11 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
                 
         ballMesh.vertexDescriptor = modelIOVertexDescriptor
-
+        cylinderMesh.vertexDescriptor = modelIOVertexDescriptor
+        
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
-//        heroModel = EISphere(device: device, xExtent: 50, yExtent: 150, zExtent: 50, uTesselation: 64, vTesselation: 64)
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
@@ -146,40 +158,6 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
         
         commandQueue = device.makeCommandQueue()
 
-    }
-
-    func createVertexDescriptor (device: MTLDevice) -> MDLVertexDescriptor {
-        
-        // Metal vertex descriptor
-        let metalVertexDescriptor = MTLVertexDescriptor()
-        
-        // xyz
-        metalVertexDescriptor.attributes[0].format = .float3
-        metalVertexDescriptor.attributes[0].offset = 0
-        metalVertexDescriptor.attributes[0].bufferIndex = 0
-        
-        // n
-        metalVertexDescriptor.attributes[1].format = .float3
-        metalVertexDescriptor.attributes[1].offset = 12
-        metalVertexDescriptor.attributes[1].bufferIndex = 0
-        
-        // st
-        metalVertexDescriptor.attributes[2].format = .half2
-        metalVertexDescriptor.attributes[2].offset = 24
-        metalVertexDescriptor.attributes[2].bufferIndex = 0
-        
-        // Single interleaved buffer.
-        metalVertexDescriptor.layouts[0].stride = 28
-        metalVertexDescriptor.layouts[0].stepRate = 1
-        metalVertexDescriptor.layouts[0].stepFunction = .perVertex
-        
-        // Model I/O vertex descriptor
-        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
-        (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
-        (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
-        (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
-        
-        return modelIOVertexDescriptor
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
