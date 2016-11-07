@@ -32,8 +32,7 @@
 		4F1CA3B01DC43680006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
-		4F3237C01DD0BCAF00E2DB11 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F3237BF1DD0BCAF00E2DB11 /* art.scnassets */; };
-		4F3237C11DD0BF1000E2DB11 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F3237BF1DD0BCAF00E2DB11 /* art.scnassets */; };
+		4F3237C31DD0C32200E2DB11 /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F3237C21DD0C32200E2DB11 /* scenes.scnassets */; };
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */; };
 		4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF911DBAF08E00E396E7 /* LaunchScreen.storyboard */; };
@@ -117,7 +116,7 @@
 		4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetallicTransform.swift; path = Shared/MetallicTransform.swift; sourceTree = "<group>"; };
 		4F2F1F921DBA599900B80FE4 /* showST.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = showST.metal; path = Shared/showST.metal; sourceTree = "<group>"; };
 		4F2F1F931DBA599900B80FE4 /* texture.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = texture.metal; path = Shared/texture.metal; sourceTree = "<group>"; };
-		4F3237BF1DD0BCAF00E2DB11 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = art.scnassets; path = Shared/art.scnassets; sourceTree = "<group>"; };
+		4F3237C21DD0C32200E2DB11 /* scenes.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = scenes.scnassets; sourceTree = "<group>"; };
 		4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloModel_IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F56AF8D1DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Model_IO.xcassets; sourceTree = "<group>"; };
@@ -214,7 +213,7 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4F3237BF1DD0BCAF00E2DB11 /* art.scnassets */,
+				4F3237C21DD0C32200E2DB11 /* scenes.scnassets */,
 				4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */,
 				4F10A9D61DC42DC800053B77 /* AppDelegate.swift */,
 				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
@@ -440,7 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F3237C11DD0BF1000E2DB11 /* art.scnassets in Resources */,
+				4F3237C31DD0C32200E2DB11 /* scenes.scnassets in Resources */,
 				4F64B37C1DC40406005BD8B1 /* Textures.xcassets in Resources */,
 				4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */,
 				4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */,
@@ -465,7 +464,6 @@
 			files = (
 				4F64B3801DC4042A005BD8B1 /* Textures.xcassets in Resources */,
 				4F7270401DC368780039E130 /* Hello.xcassets in Resources */,
-				4F3237C01DD0BCAF00E2DB11 /* art.scnassets in Resources */,
 				4F7270431DC368780039E130 /* LaunchScreen.storyboard in Resources */,
 				4F72703E1DC368780039E130 /* Main.storyboard in Resources */,
 			);
