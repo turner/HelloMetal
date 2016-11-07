@@ -46,27 +46,7 @@ struct EIMesh {
         metallicTransform = MetallicTransform(device: device)
         
         // Metal vertex descriptor
-        metalVertexDescriptor = MTLVertexDescriptor()
-        
-        // xyz
-        metalVertexDescriptor.attributes[0].format = .float3
-        metalVertexDescriptor.attributes[0].offset = 0
-        metalVertexDescriptor.attributes[0].bufferIndex = 0
-        
-        // n
-        metalVertexDescriptor.attributes[1].format = .float3
-        metalVertexDescriptor.attributes[1].offset = 12
-        metalVertexDescriptor.attributes[1].bufferIndex = 0
-        
-        // st
-        metalVertexDescriptor.attributes[2].format = .half2
-        metalVertexDescriptor.attributes[2].offset = 24
-        metalVertexDescriptor.attributes[2].bufferIndex = 0
-        
-        // Single interleaved buffer.
-        metalVertexDescriptor.layouts[0].stride = 28
-        metalVertexDescriptor.layouts[0].stepRate = 1
-        metalVertexDescriptor.layouts[0].stepFunction = .perVertex
+        metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
         
         // Model I/O vertex descriptor
         let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
