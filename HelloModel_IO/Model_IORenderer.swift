@@ -31,6 +31,8 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
 
     var commandQueue: MTLCommandQueue!
     
+    var assetFromScene: MDLAsset!
+    
     var ballMesh: MDLMesh!
     var cylinderMesh: MDLMesh!
 
@@ -41,7 +43,19 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
         guard let scene = SCNScene(named:"scenes.scnassets/ballAndCylinder.scn") else {
             fatalError("Error: Can not create SCNScene")
         }
+
+        // TODO: play with the asset
+        assetFromScene = MDLAsset(scnScene: scene, bufferAllocator:MTKMeshBufferAllocator(device: device))
+
+        // Metal vertex descriptor
+        let metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
         
+        // Model I/O vertex descriptor
+        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
+        (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
+        (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
+        (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
+
         guard let ballNode = scene.rootNode.childNode(withName:"ballIdentity", recursively:true) else {
             fatalError("Error: Can not create ballNode")
         }
@@ -49,6 +63,9 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
         guard let ballGeometry = ballNode.geometry else {
             fatalError("Error: Can not create ballGeometry")
         }
+        
+        ballMesh = MDLMesh(scnGeometry:ballGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
+        ballMesh.vertexDescriptor = modelIOVertexDescriptor
         
         guard let cylinderNode = scene.rootNode.childNode(withName:"cylinderIdentity", recursively:true) else {
             fatalError("Error: Can not create cylinderNode")
@@ -58,19 +75,7 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
             fatalError("Error: Can not create cylinderGeometry")
         }
         
-        ballMesh = MDLMesh(scnGeometry:ballGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
         cylinderMesh = MDLMesh(scnGeometry:cylinderGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
-        
-        // Metal vertex descriptor
-        let metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
-        
-        // Model I/O vertex descriptor
-        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
-        (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
-        (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
-        (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
-                
-        ballMesh.vertexDescriptor = modelIOVertexDescriptor
         cylinderMesh.vertexDescriptor = modelIOVertexDescriptor
         
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
