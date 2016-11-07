@@ -38,7 +38,7 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
 
         let library = device.newDefaultLibrary()
         
-        guard let scene = SCNScene(named:"ballAndCylinder.scn") else {
+        guard let scene = SCNScene(named:"art.scnassets/ballAndCylinder.scn") else {
             fatalError("Error: Can not create SCNScene")
         }
         

@@ -32,7 +32,8 @@
 		4F1CA3B01DC43680006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
-		4F2EF6E81DCDF976009199B7 /* ballAndCylinder.scn in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF6E71DCDF976009199B7 /* ballAndCylinder.scn */; };
+		4F3237C01DD0BCAF00E2DB11 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F3237BF1DD0BCAF00E2DB11 /* art.scnassets */; };
+		4F3237C11DD0BF1000E2DB11 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F3237BF1DD0BCAF00E2DB11 /* art.scnassets */; };
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */; };
 		4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF911DBAF08E00E396E7 /* LaunchScreen.storyboard */; };
@@ -83,7 +84,6 @@
 		4F7270A11DC373690039E130 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4F7270A21DC373690039E130 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F7270A31DC373690039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
-		4FABE39F1DCCC9F30078E3DD /* ball.scn in Resources */ = {isa = PBXBuildFile; fileRef = 4FABE39E1DCCC9F30078E3DD /* ball.scn */; };
 		4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4FDB16761DBD658C0025465A /* Model_IOMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16741DBD658C0025465A /* Model_IOMetalView.swift */; };
 		4FDB16771DBD658C0025465A /* Model_IORenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16751DBD658C0025465A /* Model_IORenderer.swift */; };
@@ -105,7 +105,6 @@
 		4F10A9D61DC42DC800053B77 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shared/AppDelegate.swift; sourceTree = "<group>"; };
 		4F1A00591DC4C2C500DF5156 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		4F1CA3AE1DC43067006B6213 /* EIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIView.swift; path = Shared/EIView.swift; sourceTree = "<group>"; };
-		4F2EF6E71DCDF976009199B7 /* ballAndCylinder.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = ballAndCylinder.scn; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
@@ -118,6 +117,7 @@
 		4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetallicTransform.swift; path = Shared/MetallicTransform.swift; sourceTree = "<group>"; };
 		4F2F1F921DBA599900B80FE4 /* showST.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = showST.metal; path = Shared/showST.metal; sourceTree = "<group>"; };
 		4F2F1F931DBA599900B80FE4 /* texture.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = texture.metal; path = Shared/texture.metal; sourceTree = "<group>"; };
+		4F3237BF1DD0BCAF00E2DB11 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = art.scnassets; path = Shared/art.scnassets; sourceTree = "<group>"; };
 		4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloModel_IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F56AF8D1DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Model_IO.xcassets; sourceTree = "<group>"; };
@@ -145,7 +145,6 @@
 		4F7270911DC372410039E130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7270951DC372F50039E130 /* CameraPlaneMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPlaneMetalView.swift; sourceTree = "<group>"; };
 		4F7270961DC372F50039E130 /* CameraPlaneRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPlaneRenderer.swift; sourceTree = "<group>"; };
-		4FABE39E1DCCC9F30078E3DD /* ball.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = ball.scn; sourceTree = "<group>"; };
 		4FBF51CC1DC02B6200444668 /* model_io.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = model_io.metal; path = Shared/model_io.metal; sourceTree = "<group>"; };
 		4FDB16741DBD658C0025465A /* Model_IOMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model_IOMetalView.swift; sourceTree = "<group>"; };
 		4FDB16751DBD658C0025465A /* Model_IORenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model_IORenderer.swift; sourceTree = "<group>"; };
@@ -215,6 +214,7 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4F3237BF1DD0BCAF00E2DB11 /* art.scnassets */,
 				4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */,
 				4F10A9D61DC42DC800053B77 /* AppDelegate.swift */,
 				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
@@ -244,8 +244,6 @@
 				4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */,
 				4F56AF911DBAF08E00E396E7 /* LaunchScreen.storyboard */,
 				4F56AF941DBAF08E00E396E7 /* Info.plist */,
-				4FABE39E1DCCC9F30078E3DD /* ball.scn */,
-				4F2EF6E71DCDF976009199B7 /* ballAndCylinder.scn */,
 			);
 			path = HelloModel_IO;
 			sourceTree = "<group>";
@@ -442,8 +440,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FABE39F1DCCC9F30078E3DD /* ball.scn in Resources */,
-				4F2EF6E81DCDF976009199B7 /* ballAndCylinder.scn in Resources */,
+				4F3237C11DD0BF1000E2DB11 /* art.scnassets in Resources */,
 				4F64B37C1DC40406005BD8B1 /* Textures.xcassets in Resources */,
 				4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */,
 				4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */,
@@ -468,6 +465,7 @@
 			files = (
 				4F64B3801DC4042A005BD8B1 /* Textures.xcassets in Resources */,
 				4F7270401DC368780039E130 /* Hello.xcassets in Resources */,
+				4F3237C01DD0BCAF00E2DB11 /* art.scnassets in Resources */,
 				4F7270431DC368780039E130 /* LaunchScreen.storyboard in Resources */,
 				4F72703E1DC368780039E130 /* Main.storyboard in Resources */,
 			);
