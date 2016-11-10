@@ -55,12 +55,12 @@ class EIArcball {
             rotationTimer = nil;
         }
         
-        startVector = ballLocationInXYPlane(screenLocation: screenLocation)
+        startVector = ballLocationInCameraSpaceXYPlane(screenLocation: screenLocation)
     }
 
     func updateDrag (screenLocation: CGPoint) {
 
-        let endVector = ballLocationInXYPlane(screenLocation: screenLocation)
+        let endVector = ballLocationInCameraSpaceXYPlane(screenLocation: screenLocation)
 
         angleOfRotation = acos(GLKVector3DotProduct(startVector, endVector))
         axisOfRotation = GLKVector3CrossProduct(startVector, endVector)
@@ -81,8 +81,8 @@ class EIArcball {
         let yy = CGFloat(kRotationRate * CGFloat(velocityInView.y)) + CGFloat(locationInView.y)
         let screenLocationTo = CGPoint(x:xx, y:yy)
         
-        let a = ballLocationInXYPlane(screenLocation:locationInView)
-        let b = ballLocationInXYPlane(screenLocation:screenLocationTo)
+        let a = ballLocationInCameraSpaceXYPlane(screenLocation:locationInView)
+        let b = ballLocationInCameraSpaceXYPlane(screenLocation:screenLocationTo)
         
         let radians = acos(GLKVector3DotProduct(a, b));
 
@@ -118,7 +118,7 @@ class EIArcball {
         }
     }
 
-    func ballLocationInXYPlane(screenLocation:CGPoint) -> GLKVector3 {
+    func ballLocationInCameraSpaceXYPlane(screenLocation:CGPoint) -> GLKVector3 {
 
         let locationInBallCoordinates = self.locationInBallCoordinates(screenLocation:screenLocation)
 
@@ -141,7 +141,7 @@ class EIArcball {
 
     }
 
-    func ballLocationInXZPlane(screenLocation:CGPoint) -> GLKVector3 {
+    func ballLocationInCameraSpaceXZPlane(screenLocation:CGPoint) -> GLKVector3 {
 
         let locationInBallCoordinates = self.locationInBallCoordinates(screenLocation:screenLocation)
 
