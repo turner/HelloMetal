@@ -156,7 +156,7 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
 
             renderCommandEncoder.drawIndexedPrimitives(
                     type: renderPlane.primitiveType,
-                    indexCount: Int(renderPlane.indexCount),
+                    indexCount: renderPlane.indexCount,
                     indexType: renderPlane.indexType,
                     indexBuffer: renderPlane.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)
@@ -178,7 +178,7 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
 
             renderCommandEncoder.drawIndexedPrimitives(
                     type: heroModel.primitiveType,
-                    indexCount: Int(heroModel.indexCount),
+                    indexCount: heroModel.indexCount,
                     indexType: heroModel.indexType,
                     indexBuffer: heroModel.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)

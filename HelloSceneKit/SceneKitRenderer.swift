@@ -33,13 +33,13 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
     
     var assetFromScene: MDLAsset!
     
-    var ballMesh: MDLMesh!
+    var modelIOMesh: MDLMesh!
 
     init(view: MTKView, device: MTLDevice) {
 
         let library = device.newDefaultLibrary()
         
-        guard let scene = SCNScene(named:"scenes.scnassets/ball.scn") else {
+        guard let scene = SCNScene(named:"scenes.scnassets/quad.scn") else {
             fatalError("Error: Can not create SCNScene")
         }
 
@@ -55,16 +55,16 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
 
-        guard let ballNode = scene.rootNode.childNode(withName:"ballIdentity", recursively:true) else {
+        guard let sceneNode = scene.rootNode.childNode(withName:"quadIdentity", recursively:true) else {
             fatalError("Error: Can not create ballNode")
         }
         
-        guard let ballGeometry = ballNode.geometry else {
+        guard let sceneGeometry = sceneNode.geometry else {
             fatalError("Error: Can not create ballGeometry")
         }
         
-        ballMesh = MDLMesh(scnGeometry:ballGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
-        ballMesh.vertexDescriptor = modelIOVertexDescriptor
+        modelIOMesh = MDLMesh(scnGeometry: sceneGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
+        modelIOMesh.vertexDescriptor = modelIOVertexDescriptor
                 
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
@@ -189,7 +189,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
             renderCommandEncoder.drawIndexedPrimitives(
                     type: renderPlane.primitiveType,
-                    indexCount: Int(renderPlane.indexCount),
+                    indexCount: renderPlane.indexCount,
                     indexType: renderPlane.indexType,
                     indexBuffer: renderPlane.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)
@@ -211,7 +211,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
             renderCommandEncoder.drawIndexedPrimitives(
                     type: heroModel.primitiveType,
-                    indexCount: Int(heroModel.indexCount),
+                    indexCount: heroModel.indexCount,
                     indexType: heroModel.indexType,
                     indexBuffer: heroModel.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)

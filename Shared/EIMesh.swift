@@ -71,7 +71,7 @@ extension EIPlane {
         
         do {
             
-            let mdlMesh = MDLMesh.newPlane(withDimensions: vector_float2(xExtent, yExtent),
+            let modelIOMesh = MDLMesh.newPlane(withDimensions: vector_float2(xExtent, yExtent),
                                            segments: vector_uint2(xTesselation, yTesselation),
                                            geometryType: .triangles,
                                            allocator: MTKMeshBufferAllocator(device: device))
@@ -90,9 +90,9 @@ extension EIPlane {
             The allocator associated with each original meshbuffer is used to
             reallocate the corresponding resultant meshbuffer.
             */
-            mdlMesh.vertexDescriptor = initializationHelper(device: device)
+            modelIOMesh.vertexDescriptor = initializationHelper(device: device)
             
-            mesh = try MTKMesh(mesh: mdlMesh, device: device)
+            mesh = try MTKMesh(mesh: modelIOMesh, device: device)
             
         } catch {
             fatalError("Error: Can not create Metal mesh")
@@ -133,7 +133,6 @@ extension EICube {
     }
     
 }
-
 
 typealias EISphere = EIMesh
 
