@@ -6,8 +6,11 @@
 //  Copyright © 2016 Elastic Image Software. All rights reserved.
 //
 
+import SceneKit
+import SceneKit.ModelIO
 import ModelIO
 import MetalKit
+import GLKit
 
 struct EIMesh {
 
@@ -59,22 +62,63 @@ struct EIMesh {
 
 }
 
+typealias EISceneKitMesh = EIMesh
+
+extension EISceneKitMesh {
+
+    init(device:MTLDevice, sceneName:String, nodeName:String) {
+
+        guard let scene = SCNScene(named:sceneName) else {
+            fatalError("Error: Can not create SCNScene with \(sceneName)")
+        }
+
+        guard let sceneNode = scene.rootNode.childNode(withName:nodeName, recursively:true) else {
+            fatalError("Error: Can not create sceneNode")
+        }
+
+        guard let sceneGeometry = sceneNode.geometry else {
+            fatalError("Error: Can not create sceneGeometry")
+        }
+        
+        // Metal vertex descriptor
+        let metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
+        
+        // Model I/O vertex descriptor
+        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
+        (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
+        (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
+        (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
+
+        let modelIOMesh = MDLMesh(scnGeometry: sceneGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
+        
+        modelIOMesh.vertexDescriptor = modelIOVertexDescriptor
+        
+        do {
+            mesh = try MTKMesh(mesh: modelIOMesh, device: device)
+        } catch {
+            fatalError("Error: Can not create Metal mesh")
+        }
+        
+    }
+
+}
+
 typealias EIPlane = EIMesh
 
 extension EIPlane {
-    
+
     init(device: MTLDevice,
          xExtent:Float,
          yExtent:Float,
          xTesselation:UInt32,
          yTesselation:UInt32) {
-        
+
         do {
-            
+
             let modelIOMesh = MDLMesh.newPlane(withDimensions: vector_float2(xExtent, yExtent),
-                                           segments: vector_uint2(xTesselation, yTesselation),
-                                           geometryType: .triangles,
-                                           allocator: MTKMeshBufferAllocator(device: device))
+                    segments: vector_uint2(xTesselation, yTesselation),
+                    geometryType: .triangles,
+                    allocator: MTKMeshBufferAllocator(device: device))
 
             /*
             Setting this applies the new layout in 'vertexBuffers' thus is a
@@ -91,15 +135,15 @@ extension EIPlane {
             reallocate the corresponding resultant meshbuffer.
             */
             modelIOMesh.vertexDescriptor = initializationHelper(device: device)
-            
+
             mesh = try MTKMesh(mesh: modelIOMesh, device: device)
-            
+
         } catch {
             fatalError("Error: Can not create Metal mesh")
         }
-        
+
     }
-    
+
 }
 
 typealias EICube = EIMesh
