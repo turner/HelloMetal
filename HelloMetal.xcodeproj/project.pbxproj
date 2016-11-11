@@ -27,11 +27,31 @@
 		4F1A00631DC4C32700DF5156 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F111DBA50FA00B80FE4 /* Metal.framework */; };
 		4F1A00641DC4C32700DF5156 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */; };
 		4F1A00651DC4C32E00DF5156 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
-		4F1A00661DC4C33500DF5156 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
 		4F1CA3AF1DC43067006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B01DC43680006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
+		4F4E3E291DD6177B005E40AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E271DD6177B005E40AC /* Main.storyboard */; };
+		4F4E3E2B1DD6177B005E40AC /* SceneKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */; };
+		4F4E3E2E1DD6177B005E40AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E2C1DD6177B005E40AC /* LaunchScreen.storyboard */; };
+		4F4E3E331DD6178D005E40AC /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
+		4F4E3E341DD6178D005E40AC /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
+		4F4E3E351DD617AA005E40AC /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F111DBA50FA00B80FE4 /* Metal.framework */; };
+		4F4E3E361DD617AA005E40AC /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */; };
+		4F4E3E371DD617B1005E40AC /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
+		4F4E3E381DD617B7005E40AC /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
+		4F4E3E3B1DD6182E005E40AC /* SceneKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */; };
+		4F4E3E3C1DD6182E005E40AC /* SceneKitMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4E3E3A1DD6182E005E40AC /* SceneKitMetalView.swift */; };
+		4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
+		4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
+		4F4E3E3F1DD618C2005E40AC /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
+		4F4E3E401DD618C2005E40AC /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
+		4F4E3E411DD618C2005E40AC /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
+		4F4E3E421DD618C2005E40AC /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
+		4F4E3E431DD618C2005E40AC /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
+		4F4E3E441DD618C2005E40AC /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* Math.swift */; };
+		4F4E3E451DD618C2005E40AC /* MetallicTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */; };
+		4F4E3E461DD618C2005E40AC /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */; };
 		4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF911DBAF08E00E396E7 /* LaunchScreen.storyboard */; };
@@ -83,7 +103,6 @@
 		4F7270A21DC373690039E130 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F7270A31DC373690039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4F9EB3CE1DD0CB55006025B5 /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
-		4F9EB3CF1DD0CB76006025B5 /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
 		4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4FDB16761DBD658C0025465A /* Model_IOMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16741DBD658C0025465A /* Model_IOMetalView.swift */; };
 		4FDB16771DBD658C0025465A /* Model_IORenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16751DBD658C0025465A /* Model_IORenderer.swift */; };
@@ -117,6 +136,13 @@
 		4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetallicTransform.swift; path = Shared/MetallicTransform.swift; sourceTree = "<group>"; };
 		4F2F1F921DBA599900B80FE4 /* showST.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = showST.metal; path = Shared/showST.metal; sourceTree = "<group>"; };
 		4F2F1F931DBA599900B80FE4 /* texture.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = texture.metal; path = Shared/texture.metal; sourceTree = "<group>"; };
+		4F4E3E211DD6177B005E40AC /* HelloSceneKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSceneKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F4E3E281DD6177B005E40AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SceneKit.xcassets; sourceTree = "<group>"; };
+		4F4E3E2D1DD6177B005E40AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F4E3E2F1DD6177B005E40AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitRenderer.swift; sourceTree = "<group>"; };
+		4F4E3E3A1DD6182E005E40AC /* SceneKitMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitMetalView.swift; sourceTree = "<group>"; };
 		4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloModel_IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F56AF8D1DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Model_IO.xcassets; sourceTree = "<group>"; };
@@ -153,11 +179,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4F4E3E1E1DD6177B005E40AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4E3E381DD617B7005E40AC /* SceneKit.framework in Frameworks */,
+				4F4E3E371DD617B1005E40AC /* ModelIO.framework in Frameworks */,
+				4F4E3E351DD617AA005E40AC /* Metal.framework in Frameworks */,
+				4F4E3E361DD617AA005E40AC /* MetalKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4F56AF831DBAF08E00E396E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F1A00661DC4C33500DF5156 /* SceneKit.framework in Frameworks */,
 				4F1A00651DC4C32E00DF5156 /* ModelIO.framework in Frameworks */,
 				4F1A00631DC4C32700DF5156 /* Metal.framework in Frameworks */,
 				4F1A00641DC4C32700DF5156 /* MetalKit.framework in Frameworks */,
@@ -234,6 +270,19 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
+		4F4E3E221DD6177B005E40AC /* HelloSceneKit */ = {
+			isa = PBXGroup;
+			children = (
+				4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */,
+				4F4E3E3A1DD6182E005E40AC /* SceneKitMetalView.swift */,
+				4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */,
+				4F4E3E271DD6177B005E40AC /* Main.storyboard */,
+				4F4E3E2C1DD6177B005E40AC /* LaunchScreen.storyboard */,
+				4F4E3E2F1DD6177B005E40AC /* Info.plist */,
+			);
+			path = HelloSceneKit;
+			sourceTree = "<group>";
+		};
 		4F56AF871DBAF08E00E396E7 /* HelloModel_IO */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +344,7 @@
 				4F7270841DC372410039E130 /* HelloCameraPlane */,
 				4F64B3691DC3FD36005BD8B1 /* HelloRenderPass */,
 				4F56AF871DBAF08E00E396E7 /* HelloModel_IO */,
+				4F4E3E221DD6177B005E40AC /* HelloSceneKit */,
 				4F2F1F101DBA50FA00B80FE4 /* Frameworks */,
 				4F7ABE111DA83A9F0054AFA9 /* Products */,
 			);
@@ -307,6 +357,7 @@
 				4F7270361DC368780039E130 /* Hello.app */,
 				4F7270831DC372410039E130 /* HelloCameraPlane.app */,
 				4F64B3681DC3FD36005BD8B1 /* HelloRenderPass.app */,
+				4F4E3E211DD6177B005E40AC /* HelloSceneKit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -314,6 +365,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4F4E3E201DD6177B005E40AC /* HelloSceneKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F4E3E321DD6177B005E40AC /* Build configuration list for PBXNativeTarget "HelloSceneKit" */;
+			buildPhases = (
+				4F4E3E1D1DD6177B005E40AC /* Sources */,
+				4F4E3E1E1DD6177B005E40AC /* Frameworks */,
+				4F4E3E1F1DD6177B005E40AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloSceneKit;
+			productName = HelloSceneKit;
+			productReference = 4F4E3E211DD6177B005E40AC /* HelloSceneKit.app */;
+			productType = "com.apple.product-type.application";
+		};
 		4F56AF851DBAF08E00E396E7 /* HelloModel_IO */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F56AFB11DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IO" */;
@@ -388,10 +456,16 @@
 		4F7ABE081DA83A9F0054AFA9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Elastic Image Software";
 				TargetAttributes = {
+					4F4E3E201DD6177B005E40AC = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = NCTVS5F8E2;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+					};
 					4F56AF851DBAF08E00E396E7 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NCTVS5F8E2;
@@ -431,16 +505,28 @@
 				4F7270821DC372410039E130 /* HelloCameraPlane */,
 				4F64B3671DC3FD36005BD8B1 /* HelloRenderPass */,
 				4F56AF851DBAF08E00E396E7 /* HelloModel_IO */,
+				4F4E3E201DD6177B005E40AC /* HelloSceneKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4F4E3E1F1DD6177B005E40AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4E3E331DD6178D005E40AC /* scenes.scnassets in Resources */,
+				4F4E3E341DD6178D005E40AC /* Textures.xcassets in Resources */,
+				4F4E3E2B1DD6177B005E40AC /* SceneKit.xcassets in Resources */,
+				4F4E3E2E1DD6177B005E40AC /* LaunchScreen.storyboard in Resources */,
+				4F4E3E291DD6177B005E40AC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4F56AF841DBAF08E00E396E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F9EB3CF1DD0CB76006025B5 /* scenes.scnassets in Resources */,
 				4F64B37C1DC40406005BD8B1 /* Textures.xcassets in Resources */,
 				4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */,
 				4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */,
@@ -485,6 +571,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4F4E3E1D1DD6177B005E40AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */,
+				4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */,
+				4F4E3E3C1DD6182E005E40AC /* SceneKitMetalView.swift in Sources */,
+				4F4E3E3B1DD6182E005E40AC /* SceneKitRenderer.swift in Sources */,
+				4F4E3E3F1DD618C2005E40AC /* EIArcball.swift in Sources */,
+				4F4E3E401DD618C2005E40AC /* EITexture.swift in Sources */,
+				4F4E3E411DD618C2005E40AC /* RendererExtensions.swift in Sources */,
+				4F4E3E421DD618C2005E40AC /* EIMesh.swift in Sources */,
+				4F4E3E431DD618C2005E40AC /* EICamera.swift in Sources */,
+				4F4E3E441DD618C2005E40AC /* Math.swift in Sources */,
+				4F4E3E451DD618C2005E40AC /* MetallicTransform.swift in Sources */,
+				4F4E3E461DD618C2005E40AC /* model_io.metal in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4F56AF821DBAF08E00E396E7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -573,6 +678,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4F4E3E271DD6177B005E40AC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F4E3E281DD6177B005E40AC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4F4E3E2C1DD6177B005E40AC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F4E3E2D1DD6177B005E40AC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -640,6 +761,37 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4F4E3E301DD6177B005E40AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloSceneKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloSceneKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4F4E3E311DD6177B005E40AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloSceneKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloSceneKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		4F56AFAB1DBAF08E00E396E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -842,6 +994,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4F4E3E321DD6177B005E40AC /* Build configuration list for PBXNativeTarget "HelloSceneKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F4E3E301DD6177B005E40AC /* Debug */,
+				4F4E3E311DD6177B005E40AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4F56AFB11DBAF08E00E396E7 /* Build configuration list for PBXNativeTarget "HelloModel_IO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

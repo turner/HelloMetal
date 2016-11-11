@@ -5,8 +5,6 @@
 //  Created by Douglass Turner on 9/11/16.
 //  Copyright © 2016 Elastic Image Software. All rights reserved.
 //
-import SceneKit
-import SceneKit.ModelIO
 import ModelIO
 import MetalKit
 import GLKit
@@ -31,53 +29,10 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
 
     var commandQueue: MTLCommandQueue!
     
-    var assetFromScene: MDLAsset!
-    
-    var ballMesh: MDLMesh!
-    var cylinderMesh: MDLMesh!
-
     init(view: MTKView, device: MTLDevice) {
 
         let library = device.newDefaultLibrary()
-        
-        guard let scene = SCNScene(named:"scenes.scnassets/ballAndCylinder.scn") else {
-            fatalError("Error: Can not create SCNScene")
-        }
-
-        // TODO: play with the asset
-        assetFromScene = MDLAsset(scnScene: scene, bufferAllocator:MTKMeshBufferAllocator(device: device))
-
-        // Metal vertex descriptor
-        let metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
-        
-        // Model I/O vertex descriptor
-        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
-        (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
-        (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
-        (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
-
-        guard let ballNode = scene.rootNode.childNode(withName:"ballIdentity", recursively:true) else {
-            fatalError("Error: Can not create ballNode")
-        }
-        
-        guard let ballGeometry = ballNode.geometry else {
-            fatalError("Error: Can not create ballGeometry")
-        }
-        
-        ballMesh = MDLMesh(scnGeometry:ballGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
-        ballMesh.vertexDescriptor = modelIOVertexDescriptor
-        
-        guard let cylinderNode = scene.rootNode.childNode(withName:"cylinderIdentity", recursively:true) else {
-            fatalError("Error: Can not create cylinderNode")
-        }
-        
-        guard let cylinderGeometry = cylinderNode.geometry else {
-            fatalError("Error: Can not create cylinderGeometry")
-        }
-        
-        cylinderMesh = MDLMesh(scnGeometry:cylinderGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
-        cylinderMesh.vertexDescriptor = modelIOVertexDescriptor
-        
+                
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
