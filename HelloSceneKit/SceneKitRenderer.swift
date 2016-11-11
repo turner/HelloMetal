@@ -34,13 +34,12 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
     var assetFromScene: MDLAsset!
     
     var ballMesh: MDLMesh!
-    var cylinderMesh: MDLMesh!
 
     init(view: MTKView, device: MTLDevice) {
 
         let library = device.newDefaultLibrary()
         
-        guard let scene = SCNScene(named:"scenes.scnassets/ballAndCylinder.scn") else {
+        guard let scene = SCNScene(named:"scenes.scnassets/ball.scn") else {
             fatalError("Error: Can not create SCNScene")
         }
 
@@ -66,18 +65,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         
         ballMesh = MDLMesh(scnGeometry:ballGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
         ballMesh.vertexDescriptor = modelIOVertexDescriptor
-        
-        guard let cylinderNode = scene.rootNode.childNode(withName:"cylinderIdentity", recursively:true) else {
-            fatalError("Error: Can not create cylinderNode")
-        }
-        
-        guard let cylinderGeometry = cylinderNode.geometry else {
-            fatalError("Error: Can not create cylinderGeometry")
-        }
-        
-        cylinderMesh = MDLMesh(scnGeometry:cylinderGeometry, bufferAllocator:MTKMeshBufferAllocator(device: device))
-        cylinderMesh.vertexDescriptor = modelIOVertexDescriptor
-        
+                
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
