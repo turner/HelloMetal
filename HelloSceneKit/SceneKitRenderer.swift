@@ -14,7 +14,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
     var camera: EICamera!
 
     // hero model
-    var heroModel: EICube!
+    var heroModel: EIPlane!
     var heroModelTexture: MTLTexture!
     var heroModelPipelineState: MTLRenderPipelineState!
 
@@ -36,10 +36,10 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
 //        heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
-//        heroModel = EIPlane(device: device, xExtent: 200, yExtent: 200, xTesselation: 2, yTesselation: 2)
+        heroModel = EIPlane(device: device, xExtent: 200, yExtent: 200, xTesselation: 2, yTesselation: 2)
         
 //        heroModel = EISceneKitMesh(device: device, sceneName:"scenes.scnassets/realship.obj", nodeName: "quadIdentity")
-        heroModel = EISceneKitMesh(device: device, sceneName:"scenes.scnassets/quad.scn", nodeName:"quadIdentity")
+//        heroModel = EISceneKitMesh(device: device, sceneName:"scenes.scnassets/quad.scn", nodeName:"quadIdentity")
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")

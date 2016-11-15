@@ -10,16 +10,15 @@ import GLKit
 import MetalKit
 
 class EIArcball {
+    
+    var view:MTKView
+    var viewBounds:CGRect
  
     let kRotationRate = CGFloat(1.0/30.0);
     let kRotationDecelerationRate = CGFloat(1.0/60.0);
     
-    var view: MTKView!
+    var startVector = GLKVector3Make(0, 0, 0)
     
-    var viewBounds: CGRect!
-    
-    var startVector: GLKVector3!
-
     var rotationTimer: Timer?
     
     var ballCenter = CGPoint(x:0.0, y:0.0)
@@ -35,13 +34,8 @@ class EIArcball {
     var axisOfRotation = GLKVector3Make(0, 0, 0);
     
     init(view: MTKView) {
-        
         self.view = view
         viewBounds = view.bounds
-    }
-    
-    init(viewBounds: CGRect) {
-        self.viewBounds = viewBounds
     }
 
     func reshape (viewBounds: CGRect) {

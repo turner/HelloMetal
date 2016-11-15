@@ -254,7 +254,6 @@
 			children = (
 				4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */,
 				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
-				4F6E5A331DD8F7C900397B84 /* model_io_two_sided_texture.metal */,
 				4F10A9D61DC42DC800053B77 /* AppDelegate.swift */,
 				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
 				4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */,
@@ -265,6 +264,7 @@
 				4F2F1F901DBA599900B80FE4 /* MetallicModel.swift */,
 				4F2F1F911DBA599900B80FE4 /* MetallicTransform.swift */,
 				4FBF51CC1DC02B6200444668 /* model_io.metal */,
+				4F6E5A331DD8F7C900397B84 /* model_io_two_sided_texture.metal */,
 				4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */,
 				4F2F1F8E1DBA599900B80FE4 /* hello.metal */,
 				4F2F1F921DBA599900B80FE4 /* showST.metal */,

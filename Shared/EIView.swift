@@ -3,12 +3,12 @@ import MetalKit
 
 public class EIView: MTKView {
     
-    var renderer: MTKViewDelegate!
-    var arcBall: EIArcball!
+    var renderer:MTKViewDelegate!
+    var arcBall:EIArcball!
 
     required public init(coder: NSCoder) {
 
-        super.init(coder: coder)
+        super.init(coder:coder)
         
         // we will call MTKView.draw() explicitly
         isPaused = true
@@ -16,7 +16,7 @@ public class EIView: MTKView {
 
         device = MTLCreateSystemDefaultDevice()!
 
-        arcBall = EIArcball.init(view:self)
+        arcBall = EIArcball(view:self)
 
         addGestureRecognizer(UIPanGestureRecognizer.init(
             target: arcBall,

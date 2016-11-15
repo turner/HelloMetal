@@ -11,18 +11,18 @@ import GLKit
 
 class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
-    var camera: EICamera!
+    var camera: EICamera
 
     // hero model
-    var heroModel: MetallicQuadModel!
-    var heroModelTexture: MTLTexture!
+    var heroModel: MetallicQuadModel
+    var heroModelTexture: MTLTexture
     var heroModelPipelineState: MTLRenderPipelineState!
 
-    var cameraPlane: MetallicQuadModel!
-    var cameraPlaneTexture: MTLTexture!
+    var cameraPlane: MetallicQuadModel
+    var cameraPlaneTexture: MTLTexture
     var cameraPlanePipelineState: MTLRenderPipelineState!
 
-    var commandQueue: MTLCommandQueue!
+    var commandQueue: MTLCommandQueue
 
     init(view: MTKView, device: MTLDevice) {
 

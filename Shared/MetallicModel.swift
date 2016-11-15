@@ -24,9 +24,9 @@ struct MetallicQuadModel {
             2, 3, 0
     ]
 
-    var vertexMetalBuffer: MTLBuffer!
-    var vertexIndexMetalBuffer: MTLBuffer!
-    var metallicTransform: MetallicTransform!
+    var vertexMetalBuffer: MTLBuffer
+    var vertexIndexMetalBuffer: MTLBuffer
+    var metallicTransform: MetallicTransform
 
     init(device: MTLDevice) {
         let vertexSize = MemoryLayout<Vertex>.size

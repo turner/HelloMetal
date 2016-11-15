@@ -11,16 +11,22 @@ import GLKit
 
 class Renderer: NSObject, MTKViewDelegate {
 
-    var camera: EICamera!
+    var camera:EICamera
 
-    var heroModel: MetallicQuadModel!
-    var heroModelTexture: MTLTexture!
-    var heroModelPipelineState: MTLRenderPipelineState!
+    var heroModel:MetallicQuadModel
+    var heroModelTexture:MTLTexture
+    var heroModelPipelineState:MTLRenderPipelineState!
 
-    var commandQueue: MTLCommandQueue!
+    var commandQueue:MTLCommandQueue
+    
+    var view:MTKView
+    var device:MTLDevice
 
     init(view: MTKView, device: MTLDevice) {
-
+        
+        self.view = view
+        self.device = device
+        
         let library = device.newDefaultLibrary()
         
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
@@ -50,7 +56,7 @@ class Renderer: NSObject, MTKViewDelegate {
         commandQueue = device.makeCommandQueue()
 
     }
-
+    
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         reshape(view:view as! EIView)
     }

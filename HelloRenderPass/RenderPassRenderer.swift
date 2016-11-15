@@ -11,23 +11,23 @@ import GLKit
 
 class RenderPassRenderer: NSObject, MTKViewDelegate {
 
-    var camera: EICamera!
+    var camera: EICamera
 
     // hero model
-    var heroModel: MetallicQuadModel!
-    var heroModelTexture: MTLTexture!
+    var heroModel: MetallicQuadModel
+    var heroModelTexture: MTLTexture
     var heroModelPipelineState: MTLRenderPipelineState!
 
     // hero backdrop
-    var heroBackdrop: MetallicQuadModel!
-    var heroBackdropTexture: MTLTexture!
+    var heroBackdrop: MetallicQuadModel
+    var heroBackdropTexture: MTLTexture
     var heroBackdropPipelineState: MTLRenderPipelineState!
 
     // render to texture
-    var renderToTexturePassDescriptor: MTLRenderPassDescriptor!
+    var renderToTexturePassDescriptor: MTLRenderPassDescriptor
 
     // final pass
-    var finalPassRenderSurface: MetallicQuadModel!
+    var finalPassRenderSurface: MetallicQuadModel
     var finalPassPipelineState: MTLRenderPipelineState!
 
     var commandQueue: MTLCommandQueue!

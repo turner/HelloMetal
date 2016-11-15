@@ -16,14 +16,13 @@ import MetalKit.MTKModel
 
 import GLKit
 
-struct EIMesh {
+class EIMesh {
 
-    var mesh: MTKMesh!
-    var metalMeshBufferAllocator: MTKMeshBufferAllocator!
+    var metallicTransform: MetallicTransform
 
-    var metallicModelIOMesh:MDLMesh!
-    var modelIOMesh:MDLMesh!
-    
+    var mesh: MTKMesh
+    var metalVertexDescriptor:MTLVertexDescriptor
+
     var submesh: MTKSubmesh {
         return mesh.submeshes[ 0 ]
     }
@@ -48,136 +47,25 @@ struct EIMesh {
         return mesh.submeshes[ 0 ].indexType
     }
 
-    var metalVertexDescriptor: MTLVertexDescriptor!
+    init(device: MTLDevice, mdlMesh:MDLMesh) {
 
-    var metallicTransform: MetallicTransform!
+        metallicTransform = MetallicTransform(device:device)
 
-    mutating func initializationHelper (device: MTLDevice)  -> MDLVertexDescriptor {
-        
-        metallicTransform = MetallicTransform(device: device)
-        
         // Metal vertex descriptor
         metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
-        
+
         // Model I/O vertex descriptor
         let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
         (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
         (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
 
-        return modelIOVertexDescriptor
-    }
+        metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
 
-}
-
-typealias EISceneKitMesh = EIMesh
-
-extension EISceneKitMesh {
-
-    init(device:MTLDevice, sceneName:String, nodeName:String) {
-
-        let metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
-        
-        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
-        (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
-        (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
-        (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
-        
-        metalMeshBufferAllocator = MTKMeshBufferAllocator(device:device)
-
-        guard let scene = SCNScene(named:sceneName) else {
-            fatalError("Error: Can not create SCNScene with \(sceneName)")
-        }
-        
-        
-        // TODO: Play with asset ... some day, sigh ...
-//        let asset = MDLAsset(scnScene:scene, bufferAllocator:MTKMeshBufferAllocator(device:device))
-
-        
-        /*
-         
-         Use with "MetalKit Essentials Using the MetalKit View TextureLoader and ModelIO" Apple demo
-         approach. Sadly, ".scn" URLs not supported
-         
-        let asset = MDLAsset(url:objURL,
-                             vertexDescriptor:modelIOVertexDescriptor,
-                             bufferAllocator:metalMeshBufferAllocator)
-
-         var metalMeshList:NSArray?
-         var modelIOMeshList: NSArray?
-         
-         do {
-            metalMeshList = try MTKMesh.newMeshes(from:asset, device:device, sourceMeshes:&modelIOMeshList) as NSArray?
-         } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        
-        let bbox = asset.boundingBox
-        print("bbox: \(bbox.minBounds.x) \(bbox.minBounds.y) \(bbox.minBounds.z)")
-        print("bbox: \(bbox.maxBounds.x) \(bbox.maxBounds.y) \(bbox.maxBounds.z)")
-        
-        let kids = asset.childObjects(of:MDLMesh.self)
-        
-        let objModelIOMesh:MDLMesh = kids[ 0 ] as! MDLMesh
-        
-        objModelIOMesh.vertexDescriptor = modelIOVertexDescriptor
-        */
-        
-        guard let sceneNode = scene.rootNode.childNode(withName:nodeName, recursively:true) else {
-            fatalError("Error: Can not create sceneNode")
-        }
-
-        guard let sceneGeometry = sceneNode.geometry else {
-            fatalError("Error: Can not create sceneGeometry")
-        }
-        
-//        modelIOMesh = MDLMesh(scnGeometry:sceneGeometry)
-//        modelIOMesh.vertexDescriptor = modelIOVertexDescriptor
-        
-        metallicModelIOMesh = MDLMesh(scnGeometry:sceneGeometry, bufferAllocator: MTKMeshBufferAllocator(device: device))
-        metallicModelIOMesh.vertexDescriptor = modelIOVertexDescriptor
-        
-        // Always prints 'true'
-        print("\(metallicModelIOMesh.vertexBuffers.first?.allocator is MTKMeshBufferAllocator)")
+        mdlMesh.vertexDescriptor = modelIOVertexDescriptor
 
         do {
-            mesh = try MTKMesh(mesh:metallicModelIOMesh, device:device)
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        
-    }
-
-}
-
-typealias EIPlane = EIMesh
-
-extension EIPlane {
-
-    init(device: MTLDevice,
-         xExtent:Float,
-         yExtent:Float,
-         xTesselation:UInt32,
-         yTesselation:UInt32) {
-
-        do {
-            
-            modelIOMesh = MDLMesh.newPlane(withDimensions: vector_float2(xExtent, yExtent),
-                                                   segments: vector_uint2(xTesselation, yTesselation),
-                                                   geometryType: .triangles,
-                                                   allocator: nil)
-            
-            modelIOMesh.vertexDescriptor = initializationHelper(device: device)
-           
-            metallicModelIOMesh = MDLMesh.newPlane(withDimensions: vector_float2(xExtent, yExtent),
-                                                   segments: vector_uint2(xTesselation, yTesselation),
-                                                   geometryType: .triangles,
-                                                   allocator: MTKMeshBufferAllocator(device: device))
-
-            metallicModelIOMesh.vertexDescriptor = initializationHelper(device: device)
-
-            mesh = try MTKMesh(mesh: metallicModelIOMesh, device: device)
-
+            mesh = try MTKMesh(mesh:mdlMesh, device:device)
         } catch {
             fatalError("Error: Can not create Metal mesh")
         }
@@ -186,9 +74,24 @@ extension EIPlane {
 
 }
 
-typealias EICube = EIMesh
+class EIPlane: EIMesh {
+    
+    init(device: MTLDevice,
+         xExtent:Float,
+         yExtent:Float,
+         xTesselation:UInt32,
+         yTesselation:UInt32) {
+        
+        let mdlMesh = MDLMesh.newPlane(withDimensions:vector_float2(xExtent, yExtent), segments:vector_uint2(xTesselation, yTesselation),
+                                       geometryType:.triangles,
+                                       allocator: MTKMeshBufferAllocator(device:device))
+        
+        super.init(device:device, mdlMesh:mdlMesh)
+    }
+    
+}
 
-extension EICube {
+class EICube: EIMesh {
     
     init(device: MTLDevice,
          xExtent:Float,
@@ -198,58 +101,118 @@ extension EICube {
          yTesselation:UInt32,
          zTesselation:UInt32) {
         
-        do {
-            
-            let mdlMesh = MDLMesh.newBox(withDimensions: vector_float3(xExtent, yExtent, zExtent),
-                                         segments: vector_uint3(xTesselation, yTesselation, zTesselation),
-                                         geometryType: .triangles,
-                                         inwardNormals: false,
-                                         allocator: MTKMeshBufferAllocator(device: device))
-            
-            mdlMesh.vertexDescriptor = initializationHelper(device: device)
-            
-            mesh = try MTKMesh(mesh: mdlMesh, device: device)
-            
-        } catch {
-            fatalError("Error: Can not create Metal mesh")
-        }
+        let mdlMesh = MDLMesh.newBox(withDimensions: vector_float3(xExtent, yExtent, zExtent),
+                                     segments: vector_uint3(xTesselation, yTesselation, zTesselation),
+                                     geometryType: .triangles,
+                                     inwardNormals: false,
+                                     allocator: MTKMeshBufferAllocator(device: device))
         
+        super.init(device:device, mdlMesh:mdlMesh)
     }
     
 }
 
-typealias EISphere = EIMesh
-
-extension EISphere {
+class EISphere: EIMesh {
     
     init(device: MTLDevice,
-         xExtent:Float,
-         yExtent:Float,
-         zExtent:Float,
+         xRadius:Float,
+         yRadius:Float,
+         zRadius:Float,
          uTesselation:Int,
          vTesselation:Int) {
         
-        do {
-            
-            let mdlMesh = MDLMesh.newEllipsoid(withRadii: vector_float3(xExtent, yExtent, zExtent),
-                                               radialSegments: uTesselation,
-                                               verticalSegments: vTesselation,
-                                               geometryType: .triangles,
-                                               inwardNormals: false,
-                                               hemisphere: false,
-                                               allocator: MTKMeshBufferAllocator(device: device))
-            
+        let mdlMesh = MDLMesh.newEllipsoid(withRadii: vector_float3(xRadius, yRadius, zRadius),
+                                           radialSegments: uTesselation,
+                                           verticalSegments: vTesselation,
+                                           geometryType: .triangles,
+                                           inwardNormals: false,
+                                           hemisphere: false,
+                                           allocator: MTKMeshBufferAllocator(device: device))
         
-            mdlMesh.vertexDescriptor = initializationHelper(device: device)
-            
-            mesh = try MTKMesh(mesh: mdlMesh, device: device)
-            
-        } catch {
-            fatalError("Error: Can not create Metal mesh")
-        }
-        
+        super.init(device:device, mdlMesh:mdlMesh)
     }
     
 }
 
+/*
+ typealias EISceneKitMesh = EIMesh
+ 
+ extension EISceneKitMesh {
+ 
+ init(device:MTLDevice, sceneName:String, nodeName:String) {
+ 
+ let metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
+ 
+ let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
+ (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
+ (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
+ (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
+ 
+ metalMeshBufferAllocator = MTKMeshBufferAllocator(device:device)
+ 
+ guard let scene = SCNScene(named:sceneName) else {
+ fatalError("Error: Can not create SCNScene with \(sceneName)")
+ }
+ 
+ 
+ // TODO: Play with asset ... some day, sigh ...
+ //        let asset = MDLAsset(scnScene:scene, bufferAllocator:MTKMeshBufferAllocator(device:device))
+ 
+ 
+ /*
+ 
+ Use with "MetalKit Essentials Using the MetalKit View TextureLoader and ModelIO" Apple demo
+ approach. Sadly, ".scn" URLs not supported
+ 
+ let asset = MDLAsset(url:objURL,
+ vertexDescriptor:modelIOVertexDescriptor,
+ bufferAllocator:metalMeshBufferAllocator)
+ 
+ var metalMeshList:NSArray?
+ var modelIOMeshList: NSArray?
+ 
+ do {
+ metalMeshList = try MTKMesh.newMeshes(from:asset, device:device, sourceMeshes:&modelIOMeshList) as NSArray?
+ } catch let error as NSError {
+ print(error.localizedDescription)
+ }
+ 
+ let bbox = asset.boundingBox
+ print("bbox: \(bbox.minBounds.x) \(bbox.minBounds.y) \(bbox.minBounds.z)")
+ print("bbox: \(bbox.maxBounds.x) \(bbox.maxBounds.y) \(bbox.maxBounds.z)")
+ 
+ let kids = asset.childObjects(of:MDLMesh.self)
+ 
+ let objModelIOMesh:MDLMesh = kids[ 0 ] as! MDLMesh
+ 
+ objModelIOMesh.vertexDescriptor = modelIOVertexDescriptor
+ */
+ 
+ guard let sceneNode = scene.rootNode.childNode(withName:nodeName, recursively:true) else {
+ fatalError("Error: Can not create sceneNode")
+ }
+ 
+ guard let sceneGeometry = sceneNode.geometry else {
+ fatalError("Error: Can not create sceneGeometry")
+ }
+ 
+ //        modelIOMesh = MDLMesh(scnGeometry:sceneGeometry)
+ //        modelIOMesh.vertexDescriptor = modelIOVertexDescriptor
+ 
+ metallicModelIOMesh = MDLMesh(scnGeometry:sceneGeometry, bufferAllocator: MTKMeshBufferAllocator(device: device))
+ metallicModelIOMesh.vertexDescriptor = modelIOVertexDescriptor
+ 
+ // Always prints 'true'
+ print("\(metallicModelIOMesh.vertexBuffers.first?.allocator is MTKMeshBufferAllocator)")
+ 
+ do {
+ mesh = try MTKMesh(mesh:metallicModelIOMesh, device:device)
+ } catch let error as NSError {
+ print(error.localizedDescription)
+ }
+ 
+ }
+ 
+ }
+ */
 

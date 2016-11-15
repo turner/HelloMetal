@@ -11,23 +11,26 @@ import GLKit
 
 class Model_IORenderer: NSObject, MTKViewDelegate {
 
-    var camera: EICamera!
+    var camera: EICamera
 
     // hero model
-    var heroModel: EICube!
-    var heroModelTexture: MTLTexture!
+//    var heroModel: EIPlane
+    var heroModel: EICube
+//    var heroModel: EISphere
+    
+    var heroModelTexture: MTLTexture
     var heroModelPipelineState: MTLRenderPipelineState!
 
-    var frontTexture: MTLTexture!
-    var backTexture: MTLTexture!
+    var frontTexture: MTLTexture
+    var backTexture: MTLTexture
 
-    var renderPlane: EIPlane!
-    var renderPlaneTexture: MTLTexture!
+    var renderPlane: EIPlane
+    var renderPlaneTexture: MTLTexture
     var renderPlanePipelineState: MTLRenderPipelineState!
     
-    var depthStencilState: MTLDepthStencilState!
+    var depthStencilState: MTLDepthStencilState
 
-    var commandQueue: MTLCommandQueue!
+    var commandQueue: MTLCommandQueue
     
     init(view: MTKView, device: MTLDevice) {
 
@@ -35,7 +38,9 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
                 
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
+//        heroModel = EISphere(device: device, xRadius: 150, yRadius: 50, zRadius: 150, uTesselation: 32, vTesselation: 32)
         heroModel = EICube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+//        heroModel = EIPlane(device: device, xExtent: 200, yExtent: 200, xTesselation: 2, yTesselation: 2)
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")

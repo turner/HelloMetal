@@ -14,19 +14,19 @@ import GLKit
 
 struct EICamera {
 
-    var location: GLKVector3!
-    var target: GLKVector3!
-    var transform: GLKMatrix4!
-    var projectionTransform: GLKMatrix4!
+    var location = GLKVector3Make(0, 0, 0)
+    var target = GLKVector3Make(0, 0, 0)
+    var transform = GLKMatrix4Identity
+    var projectionTransform = GLKMatrix4Identity
 
-    var near: Float!
-    var far: Float!
+    var near = Float(0)
+    var far = Float(0)
 
-    var fovYDegrees: Float!
-    var aspectRatioWidthOverHeight: Float!
+    var fovYDegrees = Float(0)
+    var aspectRatioWidthOverHeight = Float(0)
 
     init(location:GLKVector3, target:GLKVector3, approximateUp:GLKVector3) {
-        self.setTransform(location:location, target:target, approximateUp:approximateUp)
+        self.setTransform(location: location, target: target, approximateUp: approximateUp)
     }
 
     mutating func setTransform (location:GLKVector3, target:GLKVector3, approximateUp:GLKVector3) {
