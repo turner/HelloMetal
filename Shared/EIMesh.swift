@@ -88,18 +88,17 @@ extension EISceneKitMesh {
         guard let scene = SCNScene(named:sceneName) else {
             fatalError("Error: Can not create SCNScene with \(sceneName)")
         }
-
-        
         
         
         // TODO: Play with asset ... some day, sigh ...
 //        let asset = MDLAsset(scnScene:scene, bufferAllocator:MTKMeshBufferAllocator(device:device))
-        
-        
-        
-        
+
         
         /*
+         
+         Use with "MetalKit Essentials Using the MetalKit View TextureLoader and ModelIO" Apple demo
+         approach. Sadly, ".scn" URLs not supported
+         
         let asset = MDLAsset(url:objURL,
                              vertexDescriptor:modelIOVertexDescriptor,
                              bufferAllocator:metalMeshBufferAllocator)
@@ -124,13 +123,6 @@ extension EISceneKitMesh {
         objModelIOMesh.vertexDescriptor = modelIOVertexDescriptor
         */
         
-        /*
-        var asset = MDLAsset(scnScene:scene)
-        var kids = asset.childObjects(of:MDLMesh.self)
-        var mioMesh:MDLMesh = kids[ 0 ] as! MDLMesh
-        mioMesh.vertexDescriptor = modelIOVertexDescriptor
-        */
-        
         guard let sceneNode = scene.rootNode.childNode(withName:nodeName, recursively:true) else {
             fatalError("Error: Can not create sceneNode")
         }
@@ -145,6 +137,7 @@ extension EISceneKitMesh {
         metallicModelIOMesh = MDLMesh(scnGeometry:sceneGeometry, bufferAllocator: MTKMeshBufferAllocator(device: device))
         metallicModelIOMesh.vertexDescriptor = modelIOVertexDescriptor
         
+        // Always prints 'true'
         print("\(metallicModelIOMesh.vertexBuffers.first?.allocator is MTKMeshBufferAllocator)")
 
         do {
