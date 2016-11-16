@@ -22,7 +22,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
     var frontTexture: MTLTexture
     var backTexture: MTLTexture
 
-    var renderPlane: EIPlane
+    var renderPlane: EIMesh
     var renderPlaneTexture: MTLTexture
     var renderPlanePipelineState: MTLRenderPipelineState!
     
@@ -37,7 +37,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
 //        heroModel = EIMesh.plane(device:device, xExtent:200, yExtent:200, xTesselation:2, yTesselation:2)
-        heroModel = EIMesh.cube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 8, yTesselation: 8, zTesselation: 8)
+        heroModel = EIMesh.cube(device:device, xExtent:200, yExtent:200, zExtent:200, xTesselation:8, yTesselation:8, zTesselation:8)
         
 //        heroModel = EIMeshViaSceneKit(device: device, sceneName:"scenes.scnassets/realship.obj", nodeName: "quadIdentity")
         
@@ -74,7 +74,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         }
 
         // render plane
-        renderPlane = EIPlane(device: device, xExtent: 2, yExtent: 2, xTesselation: 4, yTesselation: 4)
+        renderPlane = EIMesh.plane(device:device, xExtent:2, zExtent:2, xTesselation:4, zTesselation:4)
 
         do {
             renderPlaneTexture = try makeTexture(device: device, name: "mobile")
