@@ -13,7 +13,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
     var camera: EICamera
 
-    var heroModel: EIPlane
+    var heroModel: EIMesh
 //    var heroModel: EIMeshViaSceneKit
     
     var heroModelTexture: MTLTexture
@@ -36,7 +36,8 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
                         
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        heroModel = EIPlane(device: device, xExtent: 200, yExtent: 200, xTesselation: 2, yTesselation: 2)
+//        heroModel = EIMesh.plane(device:device, xExtent:200, yExtent:200, xTesselation:2, yTesselation:2)
+        heroModel = EIMesh.cube(device: device, xExtent: 200, yExtent: 200, zExtent: 200, xTesselation: 8, yTesselation: 8, zTesselation: 8)
         
 //        heroModel = EIMeshViaSceneKit(device: device, sceneName:"scenes.scnassets/realship.obj", nodeName: "quadIdentity")
         

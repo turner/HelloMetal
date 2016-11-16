@@ -73,6 +73,44 @@ class EIMesh {
 
     }
 
+    class func plane(device: MTLDevice,
+                     xExtent:Float,
+                     yExtent:Float,
+                     xTesselation:UInt32,
+                     yTesselation:UInt32) -> EIMesh {
+
+        return EIMesh(device:device, mdlMeshProvider:{
+
+            return MDLMesh.newPlane(withDimensions:vector_float2(xExtent, yExtent),
+                    segments:vector_uint2(xTesselation, yTesselation),
+                    geometryType:.triangles,
+                    allocator: MTKMeshBufferAllocator(device:device))
+
+        })
+
+    }
+
+
+    class func cube(device: MTLDevice,
+                    xExtent:Float,
+                    yExtent:Float,
+                    zExtent:Float,
+                    xTesselation:UInt32,
+                    yTesselation:UInt32,
+                    zTesselation:UInt32) -> EIMesh {
+
+        return EIMesh(device:device, mdlMeshProvider:{
+
+            return MDLMesh.newBox(withDimensions: vector_float3(xExtent, yExtent, zExtent),
+                    segments: vector_uint3(xTesselation, yTesselation, zTesselation),
+                    geometryType: .triangles,
+                    inwardNormals: false,
+                    allocator: MTKMeshBufferAllocator(device: device))
+
+        })
+
+    }
+
 }
 
 class EIPlane: EIMesh {
@@ -136,34 +174,34 @@ class EISphere: EIMesh {
 }
 
 class EIMeshViaSceneKit : EIMesh {
-    
+
     init(device:MTLDevice, sceneName:String, nodeName:String) {
-        
-        
+
+
         super.init(device:device, mdlMeshProvider: {
-            
+
             guard let scene = SCNScene(named:sceneName) else {
                 fatalError("Error: Can not create SCNScene with \(sceneName)")
             }
-            
+
             guard let sceneNode = scene.rootNode.childNode(withName:nodeName, recursively:true) else {
                 fatalError("Error: Can not create sceneNode")
             }
-            
+
             guard let sceneGeometry = sceneNode.geometry else {
                 fatalError("Error: Can not create sceneGeometry")
             }
-            
+
             let mdlm = MDLMesh(scnGeometry:sceneGeometry, bufferAllocator: MTKMeshBufferAllocator(device: device))
-            
+
             print("\(mdlm.vertexBuffers.first?.allocator is MTKMeshBufferAllocator)")
-            
+
             return mdlm
         })
-        
+
     }
-    
-    
+
+
 }
 
 /*
