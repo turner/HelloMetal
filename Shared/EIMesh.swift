@@ -75,21 +75,20 @@ class EIMesh {
 
     class func plane(device: MTLDevice,
                      xExtent:Float,
-                     yExtent:Float,
+                     zExtent:Float,
                      xTesselation:UInt32,
-                     yTesselation:UInt32) -> EIMesh {
+                     zTesselation:UInt32) -> EIMesh {
 
         return EIMesh(device:device, mdlMeshProvider:{
 
-            return MDLMesh.newPlane(withDimensions:vector_float2(xExtent, yExtent),
-                    segments:vector_uint2(xTesselation, yTesselation),
+            return MDLMesh.newPlane(withDimensions:vector_float2(xExtent, zExtent),
+                    segments:vector_uint2(xTesselation, zTesselation),
                     geometryType:.triangles,
                     allocator: MTKMeshBufferAllocator(device:device))
 
         })
 
     }
-
 
     class func cube(device: MTLDevice,
                     xExtent:Float,
@@ -111,56 +110,15 @@ class EIMesh {
 
     }
 
-}
+    class func sphere(device: MTLDevice,
+                      xRadius:Float,
+                      yRadius:Float,
+                      zRadius:Float,
+                      uTesselation:Int,
+                      vTesselation:Int) -> EIMesh {
 
-class EIPlane: EIMesh {
+        return EIMesh(device:device, mdlMeshProvider:{
 
-    init(device: MTLDevice,
-         xExtent:Float,
-         yExtent:Float,
-         xTesselation:UInt32,
-         yTesselation:UInt32) {
-
-        super.init(device:device, mdlMeshProvider: {
-            return MDLMesh.newPlane(withDimensions:vector_float2(xExtent, yExtent), segments:vector_uint2(xTesselation, yTesselation),
-                    geometryType:.triangles,
-                    allocator: MTKMeshBufferAllocator(device:device))
-        })
-    }
-
-}
-
-class EICube: EIMesh {
-
-    init(device: MTLDevice,
-         xExtent:Float,
-         yExtent:Float,
-         zExtent:Float,
-         xTesselation:UInt32,
-         yTesselation:UInt32,
-         zTesselation:UInt32) {
-
-        super.init(device:device, mdlMeshProvider: {
-            return MDLMesh.newBox(withDimensions: vector_float3(xExtent, yExtent, zExtent),
-                    segments: vector_uint3(xTesselation, yTesselation, zTesselation),
-                    geometryType: .triangles,
-                    inwardNormals: false,
-                    allocator: MTKMeshBufferAllocator(device: device))
-        })
-    }
-
-}
-
-class EISphere: EIMesh {
-
-    init(device: MTLDevice,
-         xRadius:Float,
-         yRadius:Float,
-         zRadius:Float,
-         uTesselation:Int,
-         vTesselation:Int) {
-
-        super.init(device:device, mdlMeshProvider: {
             return MDLMesh.newEllipsoid(withRadii: vector_float3(xRadius, yRadius, zRadius),
                     radialSegments: uTesselation,
                     verticalSegments: vTesselation,
@@ -168,7 +126,9 @@ class EISphere: EIMesh {
                     inwardNormals: false,
                     hemisphere: false,
                     allocator: MTKMeshBufferAllocator(device: device))
+
         })
+
     }
 
 }
@@ -176,7 +136,6 @@ class EISphere: EIMesh {
 class EIMeshViaSceneKit : EIMesh {
 
     init(device:MTLDevice, sceneName:String, nodeName:String) {
-
 
         super.init(device:device, mdlMeshProvider: {
 
@@ -200,7 +159,6 @@ class EIMeshViaSceneKit : EIMesh {
         })
 
     }
-
 
 }
 
