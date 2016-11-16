@@ -135,6 +135,37 @@ class EISphere: EIMesh {
 
 }
 
+class EIMeshViaSceneKit : EIMesh {
+    
+    init(device:MTLDevice, sceneName:String, nodeName:String) {
+        
+        
+        super.init(device:device, mdlMeshProvider: {
+            
+            guard let scene = SCNScene(named:sceneName) else {
+                fatalError("Error: Can not create SCNScene with \(sceneName)")
+            }
+            
+            guard let sceneNode = scene.rootNode.childNode(withName:nodeName, recursively:true) else {
+                fatalError("Error: Can not create sceneNode")
+            }
+            
+            guard let sceneGeometry = sceneNode.geometry else {
+                fatalError("Error: Can not create sceneGeometry")
+            }
+            
+            let mdlm = MDLMesh(scnGeometry:sceneGeometry, bufferAllocator: MTKMeshBufferAllocator(device: device))
+            
+            print("\(mdlm.vertexBuffers.first?.allocator is MTKMeshBufferAllocator)")
+            
+            return mdlm
+        })
+        
+    }
+    
+    
+}
+
 /*
 typealias EISceneKitMesh = EIMesh
 
