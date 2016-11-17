@@ -36,8 +36,8 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
 //        heroModel = EIMesh.sphere(device: device, xRadius: 150, yRadius: 50, zRadius: 150, uTesselation: 32, vTesselation: 32)
-        heroModel = EIMesh.cube(device: device, xExtent: 200, yExtent: 100, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
-//        heroModel = EIMesh.plane(device: device, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
+//        heroModel = EIMesh.cube(device: device, xExtent: 200, yExtent: 100, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+        heroModel = EIMesh.plane(device: device, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")

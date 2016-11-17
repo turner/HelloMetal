@@ -80,11 +80,13 @@ class EIMesh {
                      zTesselation:UInt32) -> EIMesh {
 
         return EIMesh(device:device, mdlMeshProvider:{
+            
+//            let probe:MDLMesh            
+//            probe = MDLMesh.newPlane(withDimensions:vector_float2(xExtent, zExtent), segments:vector_uint2(xTesselation, zTesselation), geometryType:.triangles, allocator: nil)
+            
+//            return probe
 
-            return MDLMesh.newPlane(withDimensions:vector_float2(xExtent, zExtent),
-                    segments:vector_uint2(xTesselation, zTesselation),
-                    geometryType:.triangles,
-                    allocator: MTKMeshBufferAllocator(device:device))
+            return MDLMesh.newPlane(withDimensions:vector_float2(xExtent, zExtent), segments:vector_uint2(xTesselation, zTesselation), geometryType:.triangles, allocator: MTKMeshBufferAllocator(device:device))
 
         })
 
