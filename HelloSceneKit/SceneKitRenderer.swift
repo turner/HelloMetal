@@ -42,7 +42,9 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 //        heroModel = EIMeshViaSceneKit(device: device, sceneName:"scenes.scnassets/realship.obj", nodeName: "quadIdentity")
 //        heroModel = EIMesh.sceneMesh(device: device, sceneName:"scenes.scnassets/quad.scn", nodeName:"quadIdentity")
 
-        heroModel = EIOneMeshToRuleThemAll(device: device, sceneName:"scenes.scnassets/quad.scn", nodeName:"quadIdentity")
+//        heroModel = EIOneMeshToRuleThemAll(device: device, sceneName:"scenes.scnassets/quad.scn", nodeName:"quadIdentity")
+//        heroModel = EIOneMeshToRuleThemAll(device: device, sceneName:"scenes.scnassets/ball.scn", nodeName:"ballIdentity")
+        heroModel = EIOneMeshToRuleThemAll(device: device, sceneName:"scenes.scnassets/cylinder.scn", nodeName:"cylinderIdentity")
         
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
@@ -126,6 +128,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         // hero model
         heroModel.metallicTransform.update(camera: camera, transformer: {
             return view.arcBall.rotationMatrix
+//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
         })
 
     }

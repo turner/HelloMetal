@@ -130,6 +130,7 @@ class EIMesh {
         
     }
     
+    /*
     class func sceneMesh(device:MTLDevice, sceneName:String, nodeName:String) -> EIMesh {
         
         return EIMesh(device:device, mdlMeshProvider:{
@@ -159,13 +160,16 @@ class EIMesh {
         })
         
     }
-
+    */
+    
 }
 
 class EIOneMeshToRuleThemAll {
 
     var metallicTransform: MetallicTransform
-
+    
+    var modelIOMesh: MDLMesh
+    
     var modelIOMeshMetallic: MDLMesh
 
     var mesh: MTKMesh
@@ -180,13 +184,11 @@ class EIOneMeshToRuleThemAll {
         return mesh.submeshes[ 0 ].primitiveType
     }
 
-    var indexCount: Int {
-        return /*mesh.submeshes[ 0 ].indexCount*/6
-    }
-
     var indexType: MTLIndexType {
         return mesh.submeshes[ 0 ].indexType
     }
+    
+    var indexCount:Int
 
     init(device: MTLDevice, sceneName:String, nodeName:String) {
 
@@ -215,16 +217,18 @@ class EIOneMeshToRuleThemAll {
             fatalError("Error: Can not create sceneGeometry")
         }
 
-        var modelIOMesh = MDLMesh(scnGeometry:sceneGeometry, bufferAllocator:nil)
+        modelIOMesh = MDLMesh(scnGeometry:sceneGeometry, bufferAllocator:nil)
         modelIOMesh.vertexDescriptor = modelIOVertexDescriptor
 
-        var mdlSubmesh:MDLSubmesh = modelIOMesh.submeshes?[ 0 ] as! MDLSubmesh
+        let mdlSubmesh:MDLSubmesh = modelIOMesh.submeshes?[ 0 ] as! MDLSubmesh
+        
+        indexCount = mdlSubmesh.indexCount
 
-        var indexBuffer = mdlSubmesh.indexBuffer
-        vertexIndexMetalBuffer = device.makeBuffer(bytes: indexBuffer.map().bytes, length: indexBuffer.length, options:MTLResourceOptions.storageModeShared)
+        let indexBuffer = mdlSubmesh.indexBuffer
+        vertexIndexMetalBuffer = device.makeBuffer(bytes:indexBuffer.map().bytes, length:indexBuffer.length, options:MTLResourceOptions.storageModeShared)
 
-        var vertexBuffer = modelIOMesh.vertexBuffers[ 0 ]
-        vertexMetalBuffer = device.makeBuffer(bytes: vertexBuffer.map().bytes, length: vertexBuffer.length, options:MTLResourceOptions.storageModeShared)
+        let vertexBuffer = modelIOMesh.vertexBuffers[ 0 ]
+        vertexMetalBuffer = device.makeBuffer(bytes:vertexBuffer.map().bytes, length:vertexBuffer.length, options:MTLResourceOptions.storageModeShared)
 
         modelIOMeshMetallic = MDLMesh.newPlane(withDimensions:vector_float2(4, 4), segments:vector_uint2(2, 2), geometryType:.triangles, allocator: MTKMeshBufferAllocator(device:device))
         modelIOMeshMetallic.vertexDescriptor = modelIOVertexDescriptor
