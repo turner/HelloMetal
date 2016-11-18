@@ -20,7 +20,9 @@ class EIMesh {
 
     var metallicTransform: MetallicTransform
 
+    var modelIOMeshMetallic: MDLMesh
     var mesh: MTKMesh
+    
     var metalVertexDescriptor:MTLVertexDescriptor
 
     var submesh: MTKSubmesh {
@@ -61,12 +63,12 @@ class EIMesh {
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
 
         metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
-
-        let mdlMesh = mdlMeshProvider()
-        mdlMesh.vertexDescriptor = modelIOVertexDescriptor
+        
+        modelIOMeshMetallic = mdlMeshProvider()
+        modelIOMeshMetallic.vertexDescriptor = modelIOVertexDescriptor
 
         do {
-            mesh = try MTKMesh(mesh:mdlMesh, device:device)
+            mesh = try MTKMesh(mesh:modelIOMeshMetallic, device:device)
         } catch {
             fatalError("Error: Can not create Metal mesh")
         }
@@ -81,11 +83,6 @@ class EIMesh {
 
         return EIMesh(device:device, mdlMeshProvider:{
             
-//            let probe:MDLMesh            
-//            probe = MDLMesh.newPlane(withDimensions:vector_float2(xExtent, zExtent), segments:vector_uint2(xTesselation, zTesselation), geometryType:.triangles, allocator: nil)
-            
-//            return probe
-
             return MDLMesh.newPlane(withDimensions:vector_float2(xExtent, zExtent), segments:vector_uint2(xTesselation, zTesselation), geometryType:.triangles, allocator: MTKMeshBufferAllocator(device:device))
 
         })
@@ -111,30 +108,138 @@ class EIMesh {
         })
 
     }
-
+    
     class func sphere(device: MTLDevice,
                       xRadius:Float,
                       yRadius:Float,
                       zRadius:Float,
                       uTesselation:Int,
                       vTesselation:Int) -> EIMesh {
-
+        
         return EIMesh(device:device, mdlMeshProvider:{
-
+            
             return MDLMesh.newEllipsoid(withRadii: vector_float3(xRadius, yRadius, zRadius),
-                    radialSegments: uTesselation,
-                    verticalSegments: vTesselation,
-                    geometryType: .triangles,
-                    inwardNormals: false,
-                    hemisphere: false,
-                    allocator: MTKMeshBufferAllocator(device: device))
-
+                                        radialSegments: uTesselation,
+                                        verticalSegments: vTesselation,
+                                        geometryType: .triangles,
+                                        inwardNormals: false,
+                                        hemisphere: false,
+                                        allocator: MTKMeshBufferAllocator(device: device))
+            
         })
+        
+    }
+    
+    class func sceneMesh(device:MTLDevice, sceneName:String, nodeName:String) -> EIMesh {
+        
+        return EIMesh(device:device, mdlMeshProvider:{
+            
+            guard let scene = SCNScene(named:sceneName) else {
+                fatalError("Error: Can not create SCNScene with \(sceneName)")
+            }
+            
+            guard let sceneNode = scene.rootNode.childNode(withName:nodeName, recursively:true) else {
+                fatalError("Error: Can not create sceneNode")
+            }
+            
+            guard let sceneGeometry = sceneNode.geometry else {
+                fatalError("Error: Can not create sceneGeometry")
+            }
+ 
+            let mdlm = MDLMesh(scnGeometry:sceneGeometry, bufferAllocator:nil)
+            
+            let mdlSubmesh:MDLSubmesh = mdlm.submeshes?[ 0 ] as! MDLSubmesh
+            
+            let mdlIndexBuffer:MDLMeshBuffer = mdlSubmesh.indexBuffer
+            
+            let mtlBuffer:MTLBuffer = device.makeBuffer(bytes:mdlIndexBuffer.map().bytes, length: mdlIndexBuffer.length, options:MTLResourceOptions.storageModeShared)
+
+            return MDLMesh.newPlane(withDimensions:vector_float2(4, 4), segments:vector_uint2(2, 2), geometryType:.triangles, allocator: MTKMeshBufferAllocator(device:device))
+            
+        })
+        
+    }
+
+}
+
+class EIOneMeshToRuleThemAll {
+
+    var metallicTransform: MetallicTransform
+
+    var modelIOMeshMetallic: MDLMesh
+
+    var mesh: MTKMesh
+
+    var metalVertexDescriptor:MTLVertexDescriptor
+
+    var vertexMetalBuffer: MTLBuffer
+
+    var vertexIndexMetalBuffer: MTLBuffer
+
+    var primitiveType: MTLPrimitiveType {
+        return mesh.submeshes[ 0 ].primitiveType
+    }
+
+    var indexCount: Int {
+        return /*mesh.submeshes[ 0 ].indexCount*/6
+    }
+
+    var indexType: MTLIndexType {
+        return mesh.submeshes[ 0 ].indexType
+    }
+
+    init(device: MTLDevice, sceneName:String, nodeName:String) {
+
+        metallicTransform = MetallicTransform(device:device)
+
+        // Metal vertex descriptor
+        metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
+
+        // Model I/O vertex descriptor
+        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
+        (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
+        (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
+        (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
+
+        metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
+
+        guard let scene = SCNScene(named:sceneName) else {
+            fatalError("Error: Can not create SCNScene with \(sceneName)")
+        }
+
+        guard let sceneNode = scene.rootNode.childNode(withName:nodeName, recursively:true) else {
+            fatalError("Error: Can not create sceneNode")
+        }
+
+        guard let sceneGeometry = sceneNode.geometry else {
+            fatalError("Error: Can not create sceneGeometry")
+        }
+
+        var modelIOMesh = MDLMesh(scnGeometry:sceneGeometry, bufferAllocator:nil)
+        modelIOMesh.vertexDescriptor = modelIOVertexDescriptor
+
+        var mdlSubmesh:MDLSubmesh = modelIOMesh.submeshes?[ 0 ] as! MDLSubmesh
+
+        var indexBuffer = mdlSubmesh.indexBuffer
+        vertexIndexMetalBuffer = device.makeBuffer(bytes: indexBuffer.map().bytes, length: indexBuffer.length, options:MTLResourceOptions.storageModeShared)
+
+        var vertexBuffer = modelIOMesh.vertexBuffers[ 0 ]
+        vertexMetalBuffer = device.makeBuffer(bytes: vertexBuffer.map().bytes, length: vertexBuffer.length, options:MTLResourceOptions.storageModeShared)
+
+        modelIOMeshMetallic = MDLMesh.newPlane(withDimensions:vector_float2(4, 4), segments:vector_uint2(2, 2), geometryType:.triangles, allocator: MTKMeshBufferAllocator(device:device))
+        modelIOMeshMetallic.vertexDescriptor = modelIOVertexDescriptor
+
+        do {
+            mesh = try MTKMesh(mesh:modelIOMeshMetallic, device:device)
+        } catch {
+            fatalError("Error: Can not create Metal mesh")
+        }
 
     }
 
 }
 
+/*
 class EIMeshViaSceneKit : EIMesh {
 
     init(device:MTLDevice, sceneName:String, nodeName:String) {
@@ -163,6 +268,7 @@ class EIMeshViaSceneKit : EIMesh {
     }
 
 }
+*/
 
 /*
 typealias EISceneKitMesh = EIMesh
