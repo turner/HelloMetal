@@ -35,13 +35,13 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
                         
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
         
-//        heroModel = EIMesh.sceneMesh(device:device,
-//                                     sceneName:"scenes.scnassets/teapot.scn",
-//                                     nodeName:"teapotIdentity")
-        
         heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/jet.scn",
-                                     nodeName:"jetIdentity")
+                                     sceneName:"scenes.scnassets/teapot.scn",
+                                     nodeName:"teapotIdentity")
+        
+//        heroModel = EIMesh.sceneMesh(device:device,
+//                                     sceneName:"scenes.scnassets/jet.scn",
+//                                     nodeName:"jetIdentity")
         
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
