@@ -219,7 +219,8 @@ class EIOneMeshToRuleThemAll {
         let mdlSubmesh:MDLSubmesh = modelIOMesh.submeshes?[ 0 ] as! MDLSubmesh
  
         indexCount = mdlSubmesh.indexCount
-
+        indexType = (.uInt32 == mdlSubmesh.indexType) ? .uint32 : .uint16;
+        
         let indexBuffer = mdlSubmesh.indexBuffer
         vertexIndexMetalBuffer = device.makeBuffer(bytes:indexBuffer.map().bytes,
                                                    length:indexBuffer.length,
@@ -244,7 +245,7 @@ class EIOneMeshToRuleThemAll {
         }
         
         primitiveType = metalMesh.submeshes[ 0 ].primitiveType
-        indexType = metalMesh.submeshes[ 0 ].indexType
+//        indexType = metalMesh.submeshes[ 0 ].indexType
         
     }
 

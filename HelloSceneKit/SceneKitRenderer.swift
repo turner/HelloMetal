@@ -39,12 +39,16 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 //        heroModel = EIMesh.plane(device:device, xExtent:200, zExtent:200, xTesselation:2, zTesselation:2)
 //        heroModel = EIMesh.cube(device:device, xExtent:200, yExtent:100, zExtent:200, xTesselation:8, yTesselation:8, zTesselation:8)
         
-//        heroModel = EIMeshViaSceneKit(device: device, sceneName:"scenes.scnassets/realship.obj", nodeName: "quadIdentity")
-//        heroModel = EIMesh.sceneMesh(device: device, sceneName:"scenes.scnassets/quad.scn", nodeName:"quadIdentity")
-
 //        heroModel = EIOneMeshToRuleThemAll(device: device, sceneName:"scenes.scnassets/quad.scn", nodeName:"quadIdentity")
 //        heroModel = EIOneMeshToRuleThemAll(device: device, sceneName:"scenes.scnassets/ball.scn", nodeName:"ballIdentity")
-        heroModel = EIOneMeshToRuleThemAll(device: device, sceneName:"scenes.scnassets/cylinder.scn", nodeName:"cylinderIdentity")
+        
+//        heroModel = EIOneMeshToRuleThemAll(device:device,
+//                                           sceneName:"scenes.scnassets/cylinder.scn",
+//                                           nodeName:"cylinderIdentity")
+        
+        heroModel = EIOneMeshToRuleThemAll(device:device,
+                                           sceneName:"scenes.scnassets/head.scn",
+                                           nodeName:"headIdentity")
         
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
