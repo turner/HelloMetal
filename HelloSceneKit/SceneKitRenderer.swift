@@ -46,9 +46,13 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 //                                           sceneName:"scenes.scnassets/cylinder.scn",
 //                                           nodeName:"cylinderIdentity")
         
+//        heroModel = EIOneMeshToRuleThemAll(device:device,
+//                                           sceneName:"scenes.scnassets/head.scn",
+//                                           nodeName:"headIdentity")
+        
         heroModel = EIOneMeshToRuleThemAll(device:device,
-                                           sceneName:"scenes.scnassets/head.scn",
-                                           nodeName:"headIdentity")
+                                           sceneName:"scenes.scnassets/teapot.scn",
+                                           nodeName:"teapotIdentity")
         
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
@@ -131,8 +135,10 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
         // hero model
         heroModel.metallicTransform.update(camera: camera, transformer: {
-            return view.arcBall.rotationMatrix
-//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
+//            return view.arcBall.rotationMatrix
+            
+            // scaling for teapot
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
         })
 
     }
