@@ -40,8 +40,8 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 //                                     nodeName:"teapotIdentity")
         
         heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/jet.scn",
-                                     nodeName:"jetIdentity")
+                                     sceneName:"scenes.scnassets/head.scn",
+                                     nodeName:"headIdentity")
         
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
@@ -50,7 +50,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            frontTexture = try makeTexture(device: device, name: "jet")
+            frontTexture = try makeTexture(device: device, name: "diagnostic")
         } catch {
             fatalError("Error: Can not load texture")
         }
@@ -124,10 +124,10 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
         // hero model
         heroModel.metallicTransform.update(camera: camera, transformer: {
-//            return view.arcBall.rotationMatrix
+            return view.arcBall.rotationMatrix
             
             // scaling for teapot
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
+//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
         })
 
     }
