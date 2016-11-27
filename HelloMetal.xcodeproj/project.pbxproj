@@ -103,6 +103,11 @@
 		4F7270A11DC373690039E130 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4F7270A21DC373690039E130 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F7270A31DC373690039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
+		4F80A4991DEB86420082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
+		4F80A49A1DEB86550082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
+		4F80A49B1DEB865E0082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
+		4F80A49C1DEB86670082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
+		4F80A49D1DEB866F0082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F9EB3CE1DD0CB55006025B5 /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
 		4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4FDB16761DBD658C0025465A /* Model_IOMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16741DBD658C0025465A /* Model_IOMetalView.swift */; };
@@ -172,6 +177,7 @@
 		4F7270911DC372410039E130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7270951DC372F50039E130 /* CameraPlaneMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPlaneMetalView.swift; sourceTree = "<group>"; };
 		4F7270961DC372F50039E130 /* CameraPlaneRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPlaneRenderer.swift; sourceTree = "<group>"; };
+		4F80A4981DEB86420082EE39 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = scenes.scnassets; sourceTree = "<group>"; };
 		4FBF51CC1DC02B6200444668 /* model_io.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = model_io.metal; path = Shared/model_io.metal; sourceTree = "<group>"; };
 		4FDB16741DBD658C0025465A /* Model_IOMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model_IOMetalView.swift; sourceTree = "<group>"; };
@@ -185,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F80A49D1DEB866F0082EE39 /* GLKit.framework in Frameworks */,
 				4F4E3E381DD617B7005E40AC /* SceneKit.framework in Frameworks */,
 				4F4E3E371DD617B1005E40AC /* ModelIO.framework in Frameworks */,
 				4F4E3E351DD617AA005E40AC /* Metal.framework in Frameworks */,
@@ -196,6 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F80A49C1DEB86670082EE39 /* GLKit.framework in Frameworks */,
 				4F1A00651DC4C32E00DF5156 /* ModelIO.framework in Frameworks */,
 				4F1A00631DC4C32700DF5156 /* Metal.framework in Frameworks */,
 				4F1A00641DC4C32700DF5156 /* MetalKit.framework in Frameworks */,
@@ -206,6 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F80A49B1DEB865E0082EE39 /* GLKit.framework in Frameworks */,
 				4F1A00621DC4C31600DF5156 /* SceneKit.framework in Frameworks */,
 				4F1A00611DC4C30F00DF5156 /* ModelIO.framework in Frameworks */,
 				4F1A005F1DC4C30700DF5156 /* Metal.framework in Frameworks */,
@@ -217,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F80A4991DEB86420082EE39 /* GLKit.framework in Frameworks */,
 				4F1A005A1DC4C2C500DF5156 /* SceneKit.framework in Frameworks */,
 				4F1A00581DC4C2A200DF5156 /* ModelIO.framework in Frameworks */,
 				4F1A00561DC4C29600DF5156 /* Metal.framework in Frameworks */,
@@ -228,6 +238,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F80A49A1DEB86550082EE39 /* GLKit.framework in Frameworks */,
 				4F1A005E1DC4C2F700DF5156 /* SceneKit.framework in Frameworks */,
 				4F1A005D1DC4C2EF00DF5156 /* ModelIO.framework in Frameworks */,
 				4F1A005B1DC4C2E600DF5156 /* Metal.framework in Frameworks */,
@@ -241,6 +252,7 @@
 		4F2F1F101DBA50FA00B80FE4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F80A4981DEB86420082EE39 /* GLKit.framework */,
 				4F1A00591DC4C2C500DF5156 /* SceneKit.framework */,
 				4F2F1F111DBA50FA00B80FE4 /* Metal.framework */,
 				4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */,
