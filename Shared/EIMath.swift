@@ -1,12 +1,14 @@
 import GLKit
 
 struct Vertex {
-    var xyzw: GLKVector4
+    var xyz: GLKVector3
+    var n: GLKVector3
     var rgba: GLKVector4
     var st: GLKVector2
     
-    init(xyzw: GLKVector4, rgba: GLKVector4, st: GLKVector2) {
-        self.xyzw = xyzw
+    init(xyz: GLKVector3, n: GLKVector3, rgba: GLKVector4, st: GLKVector2) {
+        self.xyz = xyz
+        self.n = n
         self.rgba = rgba
         self.st = st
     }

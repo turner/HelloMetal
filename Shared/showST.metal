@@ -3,6 +3,13 @@
 using namespace metal;
 
 struct _Vertex_ {
+    float3 xyz;
+    float3 n;
+    float4 rgba;
+    float2 st;
+};
+
+struct InterpolatedVertex {
     float4 xyzw [[position]]; // required
     float4 rgba;
     float2 st;
@@ -16,17 +23,17 @@ struct _Transforms_ {
     float4x4 modelViewProjectionMatrix;
 };
 
-vertex _Vertex_ showSTVertexShader(constant _Vertex_ *vertices [[buffer(0)]],
+vertex InterpolatedVertex showSTVertexShader(constant _Vertex_ *vertices [[buffer(0)]],
                                    constant _Transforms_ &transforms [[buffer(1)]],
                                    uint vertexIndex [[vertex_id]]) {
-    _Vertex_ out;
-    out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyzw);
+    InterpolatedVertex out;
+    out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyz, 1.0);
     out.rgba = vertices[vertexIndex].rgba;
     out.st = vertices[vertexIndex].st;
     return out;
 }
 
-fragment float4 showSTFragmentShader(_Vertex_ vert [[stage_in]]) {
+fragment float4 showSTFragmentShader(InterpolatedVertex vert [[stage_in]]) {
     
     float4 s = float4(vert.st[0], 0, 0, 1);
 //    return s;
