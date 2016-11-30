@@ -14,14 +14,14 @@ struct Transform {
     var normalMatrix = GLKMatrix3Identity
     var modelMatrix = GLKMatrix4Identity
     var viewMatrix = GLKMatrix4Identity
-    var projectionMatrix = GLKMatrix4Identity
+    var modelViewMatrix = GLKMatrix4Identity
     var modelViewProjectionMatrix = GLKMatrix4Identity
     
     init() {
         normalMatrix = GLKMatrix3Identity
         modelMatrix = GLKMatrix4Identity
         viewMatrix = GLKMatrix4Identity
-        projectionMatrix = GLKMatrix4Identity
+        modelViewMatrix = GLKMatrix4Identity
         modelViewProjectionMatrix = GLKMatrix4Identity
     }
     
@@ -29,7 +29,7 @@ struct Transform {
         normalMatrix = GLKMatrix3Identity
         modelMatrix = GLKMatrix4Identity
         viewMatrix = GLKMatrix4Identity
-        projectionMatrix = GLKMatrix4Identity
+        modelViewMatrix = GLKMatrix4Identity
         modelViewProjectionMatrix = mvp
     }
 }
@@ -73,12 +73,21 @@ struct EITransform {
     */
 
     mutating func update (camera: EICamera, transformer:() -> GLKMatrix4) {
-        transform.modelMatrix = transformer()
-        transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * transform.modelMatrix
-        
+
         var success:Bool = false
         transform.normalMatrix = GLKMatrix3InvertAndTranspose( GLKMatrix4GetMatrix3( camera.transform * transform.modelMatrix ), &success)
 //        print("is invertible \(success)" )
+
+        //  M
+        transform.modelMatrix = transformer()
+        //  V
+        transform.viewMatrix = camera.transform
+        //  V * M
+        transform.modelViewMatrix = camera.transform * transform.modelMatrix
+        //  P * V * M
+//        transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * transform.modelMatrix
+        transform.modelViewProjectionMatrix = camera.projectionTransform * transform.viewMatrix * transform.modelMatrix
+
         update()
     }
 }
