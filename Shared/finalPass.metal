@@ -3,7 +3,7 @@
 using namespace metal;
 
 struct _Vertex_ {
-    float4 xyzw [[position]];
+    float4 xyzw [[position]]; // required
     float4 rgba;
     float2 st;
 };
@@ -30,12 +30,15 @@ fragment float4 finalPassFragmentShader(_Vertex_ vert [[ stage_in ]], texture2d<
     float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
     
     // hack
-//    if (vert.st[0] < 0.5) {
-//        return rgba;
-//    } else {
-//        float4 cooked = 1 - rgba;
-//        return cooked;
-//    }
+    if (vert.st[0] < 0.5) {
+        return rgba;
+    } else {
+        float _r = 1 - rgba.r/rgba.a;
+        float _g = 1 - rgba.g/rgba.a;
+        float _b = 1 - rgba.b/rgba.a;
+        float4 cooked = float4(rgba.a * _r, rgba.a * _g, rgba.a * _b, rgba.a);
+        return cooked;
+    }
     
-    return rgba;
+//    return rgba;
 }

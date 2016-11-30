@@ -3,7 +3,7 @@
 using namespace metal;
 
 struct _Vertex_ {
-    float4 xyzw [[position]];
+    float4 xyzw [[position]]; // required
     float4 rgba;
     float2 st;
 };
