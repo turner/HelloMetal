@@ -12,7 +12,6 @@ import GLKit
 struct Transform {
 
     var normalMatrix = GLKMatrix3Identity
-
     var modelMatrix = GLKMatrix4Identity
     var viewMatrix = GLKMatrix4Identity
     var modelViewMatrix = GLKMatrix4Identity
@@ -54,19 +53,20 @@ struct EITransform {
 
     mutating func update (camera: EICamera, transformer:() -> GLKMatrix4) {
 
-        var success:Bool = false
-        transform.normalMatrix = GLKMatrix3InvertAndTranspose( GLKMatrix4GetMatrix3( camera.transform * transform.modelMatrix ), &success)
-//        print("is invertible \(success)" )
-
         //  M
         transform.modelMatrix = transformer()
         //  V
         transform.viewMatrix = camera.transform
         //  V * M
-        transform.modelViewMatrix = camera.transform * transform.modelMatrix
+        transform.modelViewMatrix = transform.viewMatrix * transform.modelMatrix
         //  P * V * M
-        transform.modelViewProjectionMatrix = camera.projectionTransform * transform.viewMatrix * transform.modelMatrix
-
+        transform.modelViewProjectionMatrix = camera.projectionTransform * transform.modelViewMatrix
+        
+        var success:Bool
+        
+        success = false
+        transform.normalMatrix = GLKMatrix3InvertAndTranspose( GLKMatrix4GetMatrix3( transform.modelViewMatrix ), &success)
+                
         update()
     }
 }

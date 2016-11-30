@@ -26,8 +26,8 @@ struct _Transforms_ {
 };
 
 vertex InterpolatedVertex litTextureVertexShader(constant _Vertex_ *vertices [[ buffer(0) ]],
-                                    constant _Transforms_ &transforms [[ buffer(1) ]],
-                                    uint vertexIndex [[ vertex_id ]]) {
+                                                 constant _Transforms_ &transforms [[ buffer(1) ]],
+                                                 uint vertexIndex [[ vertex_id ]]) {
     InterpolatedVertex out;
 
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[ vertexIndex ].xyz, 1.0);
@@ -46,11 +46,25 @@ vertex InterpolatedVertex litTextureVertexShader(constant _Vertex_ *vertices [[ 
 }
 
 fragment float4 litTextureFragmentShader(InterpolatedVertex vert [[ stage_in ]],
-                                      texture2d<float> texas [[ texture(0) ]]) {
+                                         bool isFrontFacing [[front_facing]],
+                                         texture2d<float> texas [[ texture(0) ]]) {
     
     constexpr sampler defaultSampler;
+
+    float4 rgba;
+
+    float3 n = normalize(vert.n);
+    rgba = float4(abs(n.x), abs(n.y), abs(n.z), 1.0);
     
-    float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
+//    if (isFrontFacing == true) {
+//        rgba = float4(n, 1.0);
+//    } else {
+//        rgba = float4(-n, 1.0);
+//    }
+
+
+//    rgba = texas.sample(defaultSampler, vert.st).rgba;
+
     return rgba;
     
 }
