@@ -129,6 +129,8 @@
 		4FEE5E311DEEE03B00B47AC2 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4FEE5E341DEEE0F400B47AC2 /* LightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */; };
 		4FEE5E351DEEE0F400B47AC2 /* LightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E331DEEE0F400B47AC2 /* LightView.swift */; };
+		4FEE5E371DEEE9F300B47AC2 /* litTexture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E361DEEE9F300B47AC2 /* litTexture.metal */; };
+		4FEE5E381DEEEAB700B47AC2 /* litTexture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E361DEEE9F300B47AC2 /* litTexture.metal */; };
 		4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
 		4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
 		4FFA63F21DC377BA002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
@@ -202,6 +204,7 @@
 		4FEE5E1E1DEEDF5500B47AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightRenderer.swift; sourceTree = "<group>"; };
 		4FEE5E331DEEE0F400B47AC2 /* LightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightView.swift; sourceTree = "<group>"; };
+		4FEE5E361DEEE9F300B47AC2 /* litTexture.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = litTexture.metal; path = Shared/litTexture.metal; sourceTree = "<group>"; };
 		4FFA63ED1DC3773C002F8E34 /* EITexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EITexture.swift; path = Shared/EITexture.swift; sourceTree = "<group>"; };
 		4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RendererExtensions.swift; path = Shared/RendererExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -304,6 +307,7 @@
 				4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */,
 				4F2F1F8E1DBA599900B80FE4 /* hello.metal */,
 				4F2F1F921DBA599900B80FE4 /* showST.metal */,
+				4FEE5E361DEEE9F300B47AC2 /* litTexture.metal */,
 				4F2F1F931DBA599900B80FE4 /* texture.metal */,
 			);
 			name = Shared;
@@ -731,6 +735,7 @@
 				4F7270491DC368C80039E130 /* EIArcball.swift in Sources */,
 				4F72704A1DC368C80039E130 /* EICamera.swift in Sources */,
 				4F72704B1DC368C80039E130 /* Math.swift in Sources */,
+				4FEE5E371DEEE9F300B47AC2 /* litTexture.metal in Sources */,
 				4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */,
 				4F72704C1DC368C80039E130 /* EIQuad.swift in Sources */,
 				4F72704D1DC368C80039E130 /* EITransform.swift in Sources */,
@@ -780,6 +785,7 @@
 				4FEE5E341DEEE0F400B47AC2 /* LightRenderer.swift in Sources */,
 				4FEE5E301DEEE03B00B47AC2 /* showST.metal in Sources */,
 				4FEE5E311DEEE03B00B47AC2 /* texture.metal in Sources */,
+				4FEE5E381DEEEAB700B47AC2 /* litTexture.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1207,6 +1213,7 @@
 				4FEE5E201DEEDF5500B47AC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

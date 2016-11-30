@@ -16,7 +16,9 @@ struct _Transforms_ {
     float4x4 modelViewProjectionMatrix;
 };
 
-vertex _Vertex_ helloVertexShader(constant _Vertex_ *vertices [[buffer(0)]], constant _Transforms_ &transforms [[buffer(1)]], uint vertexIndex [[vertex_id]]) {
+vertex _Vertex_ helloVertexShader(constant _Vertex_ *vertices [[buffer(0)]],
+                                  constant _Transforms_ &transforms [[buffer(1)]],
+                                  uint vertexIndex [[vertex_id]]) {
     _Vertex_ out;
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyzw);
     out.rgba = vertices[vertexIndex].rgba;

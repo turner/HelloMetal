@@ -45,8 +45,8 @@ class LightRenderer: NSObject, MTKViewDelegate {
                 try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
                                                 library:library!,
-                                                vertexShaderName:"textureVertexShader",
-                                                fragmentShaderName:"textureFragmentShader",
+                                                vertexShaderName:"litTextureVertexShader",
+                                                fragmentShaderName:"litTextureFragmentShader",
                                                 doIncludeDepthAttachment: false,
                                                 vertexDescriptor: nil))
         } catch let e {

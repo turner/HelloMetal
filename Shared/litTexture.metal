@@ -16,22 +16,29 @@ struct _Transforms_ {
     float4x4 modelViewProjectionMatrix;
 };
 
-vertex _Vertex_ textureVertexShader(constant _Vertex_ *vertices [[ buffer(0) ]],
-                                    constant _Transforms_ &transforms [[ buffer(1) ]],
-                                    uint vertexIndex [[ vertex_id ]]) {
+vertex _Vertex_ litTextureVertexShader(constant _Vertex_ *vertices [[ buffer(0) ]],
+                                       constant _Transforms_ &transforms [[ buffer(1) ]],
+                                       uint vertexIndex [[ vertex_id ]]) {
     _Vertex_ out;
+    
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyzw);
+    
     out.rgba = vertices[vertexIndex].rgba;
+    
     out.st = vertices[vertexIndex].st;
+    
     return out;
 }
 
-fragment float4 textureFragmentShader(_Vertex_ vert [[ stage_in ]],
-                                      texture2d<float> texas [[ texture(0) ]]) {
+fragment float4 litTextureFragmentShader(_Vertex_ vert [[ stage_in ]],
+                                         texture2d<float> texas [[ texture(0) ]]) {
     
     constexpr sampler defaultSampler;
     
     float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
     return rgba;
+    
+//    float3 rgb = float3(rgba.r/rgba.a, rgba.g/rgba.a, rgba.b/rgba.a);
+//    return float4(rgb.r * vert.rgba.r, rgb.g * vert.rgba.g, rgb.b * vert.rgba.b, rgba.a);
     
 }

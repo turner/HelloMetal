@@ -53,8 +53,9 @@ struct EITransform {
     }
 
     /*
-        Cheat Sheet
-
+        Transform Cheat Sheet
+        ---------------------
+     
         // PVM = P * V * M
         GLKMatrix4 projectionViewModelTransform =
         GLKMatrix4Multiply(camera.projectionTransform, GLKMatrix4Multiply(camera.transform, modelTransform));
