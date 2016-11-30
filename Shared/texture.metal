@@ -38,7 +38,8 @@ fragment float4 textureFragmentShader(InterpolatedVertex vert [[ stage_in ]],
     
     constexpr sampler defaultSampler;
     
-    float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
+//    float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
+    float4 rgba = vert.rgba;
     return rgba;
     
 }

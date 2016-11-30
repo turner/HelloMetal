@@ -28,17 +28,22 @@ struct _Transforms_ {
 vertex InterpolatedVertex litTextureVertexShader(constant _Vertex_ *vertices [[ buffer(0) ]],
                                                  constant _Transforms_ &transforms [[ buffer(1) ]],
                                                  uint vertexIndex [[ vertex_id ]]) {
+    
+    
     InterpolatedVertex out;
 
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[ vertexIndex ].xyz, 1.0);
 
-    out.n = transforms.normalMatrix * vertices[ vertexIndex ].n;
+    float3 normalInEyeSpace = normalize(transforms.normalMatrix * vertices[ vertexIndex ].n);
+    out.n = normalInEyeSpace;
+//    out.n = transforms.normalMatrix * vertices[ vertexIndex ].n;
 
     // in camera space
     float4 f4 = -(transforms.modelViewMatrix * float4(vertices[ vertexIndex ].xyz, 1.0));
     out.toEye = f4.xyz;
     
     out.rgba = vertices[ vertexIndex ].rgba;
+//    out.rgba = float4(abs(out.n.x), abs(out.n.y), abs(out.n.z), 1.0);
 
     out.st = vertices[ vertexIndex ].st;
 
@@ -52,9 +57,11 @@ fragment float4 litTextureFragmentShader(InterpolatedVertex vert [[ stage_in ]],
     constexpr sampler defaultSampler;
 
     float4 rgba;
+    
+    rgba = vert.rgba;
 
-    float3 n = normalize(vert.n);
-    rgba = float4(abs(n.x), abs(n.y), abs(n.z), 1.0);
+//    float3 n = normalize(vert.n);
+//    rgba = float4(abs(n.x), abs(n.y), abs(n.z), 1.0);
     
 //    if (isFrontFacing == true) {
 //        rgba = float4(n, 1.0);

@@ -29,7 +29,7 @@ class LightRenderer: NSObject, MTKViewDelegate {
         
         let library = device.newDefaultLibrary()
         
-        camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+        camera = EICamera(location:GLKVector3(v:(0, 0, 100)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         heroModel = EIQuad(device: device)
 
@@ -63,13 +63,13 @@ class LightRenderer: NSObject, MTKViewDelegate {
 
     func reshape (view: EIView) {
         view.arcBall.reshape(viewBounds: view.bounds)
-        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 8000)
+        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 10, far: 200)
     }
 
     func update(view: EIView, drawableSize:CGSize) {
 
         heroModel.metallicTransform.update(camera: camera, transformer: {
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(30, 15, 1)
         })
         
     }

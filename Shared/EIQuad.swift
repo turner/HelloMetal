@@ -12,10 +12,10 @@ import GLKit
 struct EIQuad {
 
     let vertices = [
-            Vertex(xyz: GLKVector3(v:(-1.0, -1.0,  0.0)), n: GLKVector3(v:(0.0, 0.0, 1.0)), rgba: GLKVector4(v:(1, 1, 1, 1)), st: GLKVector2(v:(0, 1))),
-            Vertex(xyz: GLKVector3(v:( 1.0, -1.0,  0.0)), n: GLKVector3(v:(0.0, 0.0, 1.0)), rgba: GLKVector4(v:(1, 0, 0, 1)), st: GLKVector2(v:(1, 1))),
-            Vertex(xyz: GLKVector3(v:( 1.0,  1.0,  0.0)), n: GLKVector3(v:(0.0, 0.0, 1.0)), rgba: GLKVector4(v:(1, 1, 0, 1)), st: GLKVector2(v:(1, 0))),
-            Vertex(xyz: GLKVector3(v:(-1.0,  1.0,  0.0)), n: GLKVector3(v:(0.0, 0.0, 1.0)), rgba: GLKVector4(v:(0, 1, 0, 1)), st: GLKVector2(v:(0, 0))),
+            Vertex(xyz: GLKVector3(v:(-1.0, -1.0,  0.0)), n: GLKVector3(v:(0.0, 0.0, 1.0)), rgba: GLKVector4(v:(1.0, 0.0, 0.0, 1.0)), st: GLKVector2(v:(0, 1))),
+            Vertex(xyz: GLKVector3(v:( 1.0, -1.0,  0.0)), n: GLKVector3(v:(0.0, 0.0, 1.0)), rgba: GLKVector4(v:(1.0, 0.0, 0.0, 1.0)), st: GLKVector2(v:(1, 1))),
+            Vertex(xyz: GLKVector3(v:( 1.0,  1.0,  0.0)), n: GLKVector3(v:(0.0, 0.0, 1.0)), rgba: GLKVector4(v:(1.0, 0.0, 0.0, 1.0)), st: GLKVector2(v:(1, 0))),
+            Vertex(xyz: GLKVector3(v:(-1.0,  1.0,  0.0)), n: GLKVector3(v:(0.0, 0.0, 1.0)), rgba: GLKVector4(v:(1.0, 0.0, 0.0, 1.0)), st: GLKVector2(v:(0, 0))),
     ]
 
     let vertexIndices: [UInt16] =
