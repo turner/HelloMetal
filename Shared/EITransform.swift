@@ -12,26 +12,11 @@ import GLKit
 struct Transform {
 
     var normalMatrix = GLKMatrix3Identity
+
     var modelMatrix = GLKMatrix4Identity
     var viewMatrix = GLKMatrix4Identity
     var modelViewMatrix = GLKMatrix4Identity
     var modelViewProjectionMatrix = GLKMatrix4Identity
-    
-    init() {
-        normalMatrix = GLKMatrix3Identity
-        modelMatrix = GLKMatrix4Identity
-        viewMatrix = GLKMatrix4Identity
-        modelViewMatrix = GLKMatrix4Identity
-        modelViewProjectionMatrix = GLKMatrix4Identity
-    }
-    
-    init(mvp: GLKMatrix4) {
-        normalMatrix = GLKMatrix3Identity
-        modelMatrix = GLKMatrix4Identity
-        viewMatrix = GLKMatrix4Identity
-        modelViewMatrix = GLKMatrix4Identity
-        modelViewProjectionMatrix = mvp
-    }
 }
 
 struct EITransform {
@@ -39,11 +24,6 @@ struct EITransform {
     var metalBuffer: MTLBuffer
 
     init(device: MTLDevice) {
-        metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])
-    }
-    
-    init(mvp: GLKMatrix4, device: MTLDevice) {
-        transform = Transform(mvp: mvp)
         metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])
     }
 
@@ -85,7 +65,6 @@ struct EITransform {
         //  V * M
         transform.modelViewMatrix = camera.transform * transform.modelMatrix
         //  P * V * M
-//        transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * transform.modelMatrix
         transform.modelViewProjectionMatrix = camera.projectionTransform * transform.viewMatrix * transform.modelMatrix
 
         update()
