@@ -13,7 +13,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
     var camera:EICamera
 
-    var heroModel:MetallicQuadModel
+    var heroModel: EIQuad
     var heroModelTexture:MTLTexture
     var heroModelPipelineState:MTLRenderPipelineState!
 
@@ -31,7 +31,7 @@ class Renderer: NSObject, MTKViewDelegate {
         
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        heroModel = MetallicQuadModel(device: device)
+        heroModel = EIQuad(device: device)
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "kids_grid_3x3")

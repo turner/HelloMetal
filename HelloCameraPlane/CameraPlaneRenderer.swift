@@ -14,11 +14,11 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
     var camera: EICamera
 
     // hero model
-    var heroModel: MetallicQuadModel
+    var heroModel: EIQuad
     var heroModelTexture: MTLTexture
     var heroModelPipelineState: MTLRenderPipelineState!
 
-    var cameraPlane: MetallicQuadModel
+    var cameraPlane: EIQuad
     var cameraPlaneTexture: MTLTexture
     var cameraPlanePipelineState: MTLRenderPipelineState!
 
@@ -32,7 +32,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
         
         // hero model
-        heroModel = MetallicQuadModel(device: device)
+        heroModel = EIQuad(device: device)
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "kids_grid_3x3")
@@ -56,7 +56,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
 
         // render plane
-        cameraPlane = MetallicQuadModel(device: device)
+        cameraPlane = EIQuad(device: device)
 
         do {
             cameraPlaneTexture = try makeTexture(device: device, name: "swirl")

@@ -14,12 +14,12 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
     var camera: EICamera
 
     // hero model
-    var heroModel: MetallicQuadModel
+    var heroModel: EIQuad
     var heroModelTexture: MTLTexture
     var heroModelPipelineState: MTLRenderPipelineState!
 
     // hero backdrop
-    var heroBackdrop: MetallicQuadModel
+    var heroBackdrop: EIQuad
     var heroBackdropTexture: MTLTexture
     var heroBackdropPipelineState: MTLRenderPipelineState!
 
@@ -27,7 +27,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
     var renderToTexturePassDescriptor: MTLRenderPassDescriptor
 
     // final pass
-    var finalPassRenderSurface: MetallicQuadModel
+    var finalPassRenderSurface: EIQuad
     var finalPassPipelineState: MTLRenderPipelineState!
 
     var commandQueue: MTLCommandQueue!
@@ -39,7 +39,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
         // hero model
-        heroModel = MetallicQuadModel(device: device)
+        heroModel = EIQuad(device: device)
 
         do {
             heroModelTexture = try makeTexture(device: device, name: "kids_grid_3x3_translucent")
@@ -62,7 +62,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         }
 
         // hero backdrop
-        heroBackdrop = MetallicQuadModel(device: device)
+        heroBackdrop = EIQuad(device: device)
 
         do {
             heroBackdropTexture = try makeTexture(device: device, name: "mobile")
@@ -87,7 +87,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         renderToTexturePassDescriptor = MTLRenderPassDescriptor(clearColor:MTLClearColorMake(1, 1, 1, 1), clearDepth:1)
 
         // final pass
-        finalPassRenderSurface = MetallicQuadModel(device: device)
+        finalPassRenderSurface = EIQuad(device: device)
 
         do {
             

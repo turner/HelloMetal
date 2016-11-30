@@ -1,5 +1,5 @@
 //
-//  MetallicModel.swift
+//  EIQuad.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 9/11/16.
@@ -9,7 +9,7 @@
 import Metal
 import GLKit
 
-struct MetallicQuadModel {
+struct EIQuad {
 
     let vertices = [
             Vertex(xyzw: GLKVector4(v:(-1.0, -1.0,  0.0, 1.0)), rgba: GLKVector4(v:(1, 1, 1, 1)), st: GLKVector2(v:(0, 1))),
@@ -26,7 +26,7 @@ struct MetallicQuadModel {
 
     var vertexMetalBuffer: MTLBuffer
     var vertexIndexMetalBuffer: MTLBuffer
-    var metallicTransform: MetallicTransform
+    var metallicTransform: EITransform
 
     init(device: MTLDevice) {
         let vertexSize = MemoryLayout<Vertex>.size
@@ -35,7 +35,7 @@ struct MetallicQuadModel {
         self.vertexMetalBuffer      = device.makeBuffer(bytes: self.vertices,      length: vertexSize * vertexCount,       options: [])
         self.vertexIndexMetalBuffer = device.makeBuffer(bytes: self.vertexIndices, length: MemoryLayout<UInt16>.size * self.vertexIndices.count , options: [])
 
-        self.metallicTransform = MetallicTransform(device: device)
+        self.metallicTransform = EITransform(device: device)
 
     }
 

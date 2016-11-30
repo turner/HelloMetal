@@ -18,7 +18,7 @@ import GLKit
 
 class EIMesh {
 
-    var metallicTransform: MetallicTransform
+    var metallicTransform: EITransform
 
     var modelIOMeshMetallic: MDLMesh
     var modelIOMesh:MDLMesh
@@ -37,7 +37,7 @@ class EIMesh {
 
     private init(device:MTLDevice, mdlMeshProvider:() -> MDLMesh) {
 
-        metallicTransform = MetallicTransform(device:device)
+        metallicTransform = EITransform(device:device)
 
         // Metal vertex descriptor
         metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
@@ -79,7 +79,7 @@ class EIMesh {
 
     private init(device:MTLDevice, sceneName:String, nodeName:String) {
 
-        metallicTransform = MetallicTransform(device:device)
+        metallicTransform = EITransform(device:device)
 
         // Metal vertex descriptor
         metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()

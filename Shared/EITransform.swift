@@ -1,5 +1,5 @@
 //
-//  MetallicTransform.swift
+//  EITransform.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 9/11/16.
@@ -31,7 +31,7 @@ struct Transform {
     }
 }
 
-struct MetallicTransform {
+struct EITransform {
     var transform: Transform!
     var metalBuffer: MTLBuffer!
 
