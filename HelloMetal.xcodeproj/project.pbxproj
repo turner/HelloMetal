@@ -340,8 +340,8 @@
 		4F7ABE071DA83A9F0054AFA9 = {
 			isa = PBXGroup;
 			children = (
-				4F2F1F461DBA510800B80FE4 /* Shared */,
 				4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */,
+				4F2F1F461DBA510800B80FE4 /* Shared */,
 				4F7270371DC368780039E130 /* Hello */,
 				4F7270841DC372410039E130 /* HelloCameraPlane */,
 				4F64B3691DC3FD36005BD8B1 /* HelloRenderPass */,
