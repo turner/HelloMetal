@@ -11,52 +11,50 @@ import GLKit
 
 struct Transform {
 
-    var modelMatrix: GLKMatrix4
-    var viewMatrix: GLKMatrix4
-    var projectionMatrix: GLKMatrix4
-    var modelViewProjectionMatrix: GLKMatrix4
-
+    var normalMatrix = GLKMatrix3Identity
+    var modelMatrix = GLKMatrix4Identity
+    var viewMatrix = GLKMatrix4Identity
+    var projectionMatrix = GLKMatrix4Identity
+    var modelViewProjectionMatrix = GLKMatrix4Identity
+    
     init() {
-        self.modelMatrix = GLKMatrix4Identity
-        self.viewMatrix = GLKMatrix4Identity
-        self.projectionMatrix = GLKMatrix4Identity
-        self.modelViewProjectionMatrix = GLKMatrix4Identity
+        normalMatrix = GLKMatrix3Identity
+        modelMatrix = GLKMatrix4Identity
+        viewMatrix = GLKMatrix4Identity
+        projectionMatrix = GLKMatrix4Identity
+        modelViewProjectionMatrix = GLKMatrix4Identity
     }
-
+    
     init(mvp: GLKMatrix4) {
-        self.modelMatrix = GLKMatrix4Identity
-        self.viewMatrix = GLKMatrix4Identity
-        self.projectionMatrix = GLKMatrix4Identity
-        self.modelViewProjectionMatrix = mvp
+        normalMatrix = GLKMatrix3Identity
+        modelMatrix = GLKMatrix4Identity
+        viewMatrix = GLKMatrix4Identity
+        projectionMatrix = GLKMatrix4Identity
+        modelViewProjectionMatrix = mvp
     }
 }
 
 struct EITransform {
-    var transform: Transform!
-    var metalBuffer: MTLBuffer!
+    var transform = Transform()
+    var metalBuffer: MTLBuffer
 
     init(device: MTLDevice) {
-        self.transform = Transform()
-        self.metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])
+        metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])
     }
     
     init(mvp: GLKMatrix4, device: MTLDevice) {
-        self.transform = Transform(mvp: mvp)
-        self.metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])
+        transform = Transform(mvp: mvp)
+        metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])
     }
 
     mutating func update () {
-
-        let bufferPointer = self.metalBuffer.contents()
-        memcpy(bufferPointer, &self.transform, MemoryLayout<Transform>.size)
-
+        let bufferPointer = metalBuffer.contents()
+        memcpy(bufferPointer, &transform, MemoryLayout<Transform>.size)
     }
 
     mutating func update (camera: EICamera, transformer:() -> GLKMatrix4) {
-
-        self.transform.modelMatrix = transformer()
-        self.transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * self.transform.modelMatrix
-
-        self.update()
+        transform.modelMatrix = transformer()
+        transform.modelViewProjectionMatrix = camera.projectionTransform * camera.transform * transform.modelMatrix
+        update()
     }
 }
