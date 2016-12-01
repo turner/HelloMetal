@@ -31,13 +31,13 @@ class LightRenderer: NSObject, MTKViewDelegate {
                         
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
         
-//        heroModel = EIMesh.sceneMesh(device:device,
-//                                     sceneName:"scenes.scnassets/teapot.scn",
-//                                     nodeName:"teapotIdentity")
-        
         heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/head.scn",
-                                     nodeName:"headIdentity")
+                                     sceneName:"scenes.scnassets/teapot.scn",
+                                     nodeName:"teapotIdentity")
+        
+//        heroModel = EIMesh.sceneMesh(device:device,
+//                                     sceneName:"scenes.scnassets/head.scn",
+//                                     nodeName:"headIdentity")
         
 //        heroModel = EIMesh.sceneMesh(device:device,
 //                                     sceneName:"scenes.scnassets/bear.scn",
@@ -112,10 +112,10 @@ class LightRenderer: NSObject, MTKViewDelegate {
 
         // hero model
         heroModel.metallicTransform.update(camera: camera, transformer: {
-            return view.arcBall.rotationMatrix
+//            return view.arcBall.rotationMatrix
             
             // scaling for teapot
-//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
         })
 
     }

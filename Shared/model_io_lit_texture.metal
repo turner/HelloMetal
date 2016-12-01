@@ -11,8 +11,8 @@ struct xyz_n_st {
 struct xyzw_n_st_rgba {
     float4 xyzw [[ position ]];
     float3 n;
+    float4  rgba;
     half2  st;
-    half4  rgba;
 };
 
 struct TransformPackage {
@@ -41,26 +41,55 @@ struct TransformPackage {
 
 vertex xyzw_n_st_rgba litTextureMIOVertexShader(xyz_n_st in [[ stage_in ]],
                                                 constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+ 
+    
+    // light at camera location. Flashlight style.
+    float3 lightPosition = float3(0, 0, 1500);
+    float3 lightPositionEyeSpace = (transformPackage.viewMatrix * float4(lightPosition, 1.0)).xyz;
+    
+    float3 normalEyeSpace = normalize(transformPackage.normalMatrix * in.n);
+    
+    float3 diffuseColor = float3(1, .5, .25);
+    
+    float NdotL = max(0.0, dot(normalEyeSpace, normalize(lightPositionEyeSpace)));
+    float3 diffuseColorNdotL = diffuseColor * NdotL;
     
     xyzw_n_st_rgba out;
+    
+    // rgba
+    out.rgba = float4(NdotL, NdotL, NdotL, 1);
+//    out.rgba = float4(lightPositionEyeSpace, 1);
+//    out.rgba = float4(diffuseColorNdotL, 1);
     
     // xyzw
     out.xyzw = transformPackage.modelViewProjectionMatrix * float4(in.xyz, 1.0);
     
     // n
-//    out.n = transformPackage.normalMatrix * in.n;
-    out.n = in.n;
+    out.n = normalEyeSpace;
 
     // st
     out.st = in.st;
-    
-    // rgba
-    out.rgba = half4(1,0,0,1);
 
     return out;
 
 }
 
+fragment float4 litTextureMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]],
+                                            bool isFrontFacing [[ front_facing ]],
+                                            texture2d<float> texas [[ texture(0 )]]) {
+    
+    constexpr sampler defaultSampler;
+    
+    float4 rgba;
+    
+    rgba = in.rgba;
+//    rgba = in.rgba * texas.sample(defaultSampler, float2(in.st)).rgba;
+    
+    return rgba;
+    
+}
+
+/*
 fragment float4 litTextureMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]],
                                             bool isFrontFacing [[ front_facing ]],
                                             texture2d<float> texas [[ texture(0 )]]) {
@@ -82,4 +111,5 @@ fragment float4 litTextureMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]],
     return rgba;
     
 }
+*/
 

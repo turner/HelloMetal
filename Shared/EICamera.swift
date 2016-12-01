@@ -16,7 +16,7 @@ struct EICamera {
 
     var location = GLKVector3Make(0, 0, 0)
     var target = GLKVector3Make(0, 0, 0)
-    var transform = GLKMatrix4Identity
+    var viewTransform = GLKMatrix4Identity
     var projectionTransform = GLKMatrix4Identity
 
     var near = Float(0)
@@ -34,7 +34,13 @@ struct EICamera {
         self.location = location
         self.target = target
 
-        self.transform = makeLookAt(eye:location, target: target, approximateUp: approximateUp)
+        self.viewTransform = makeLookAt(eye:location, target: target, approximateUp: approximateUp)
+        self.viewTransform.description(blurb:"view transform")
+
+        let lightPosition = GLKVector4(v:(0, 0, 1500, 1))
+        let lightPositionEyeSpace = GLKMatrix4MultiplyVector4(self.viewTransform, lightPosition);
+        lightPositionEyeSpace.description(blurb:"light eye space");
+
     }
 
     mutating func setProjection (fovYDegrees:Float, aspectRatioWidthOverHeight:Float, near:Float, far:Float) {
@@ -82,7 +88,7 @@ struct EICamera {
     func createRenderPlaneTransform(distanceFromCamera: Float) -> GLKMatrix4 {
 
         var unused: Bool = true
-        let _A_ = GLKMatrix4Invert(self.transform, &unused);
+        let _A_ = GLKMatrix4Invert(self.viewTransform, &unused);
         let A = GLKMatrix4MakeWithColumns(GLKMatrix4GetColumn(_A_, 0), GLKMatrix4GetColumn(_A_, 1), GLKMatrix4GetColumn(_A_, 2), GLKMatrix4GetColumn(GLKMatrix4Identity, 3));
 
         // Translate rotated camera plane to camera origin.

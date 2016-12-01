@@ -25,12 +25,22 @@ extension CGRect {
 }
 
 extension GLKVector3 {
-    
+
     func description (blurb: String?=nil) {
-        
+
         let str = blurb ?? "---"
-        
+
         print("\(str) \(self.x) \(self.y) \(self.z)")
+    }
+}
+
+extension GLKVector4 {
+
+    func description (blurb: String?=nil) {
+
+        let str = blurb ?? "---"
+
+        print("\(str) \(self.x) \(self.y) \(self.z) \(self.w)")
     }
 }
 
