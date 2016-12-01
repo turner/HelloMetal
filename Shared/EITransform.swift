@@ -25,11 +25,6 @@ struct EITransform {
         metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])
     }
 
-    mutating func update () {
-        let bufferPointer = metalBuffer.contents()
-        memcpy(bufferPointer, &transform, MemoryLayout<Transform>.size)
-    }
-
     /*
         Transform Cheat Sheet
         ---------------------
@@ -61,36 +56,22 @@ struct EITransform {
         
         //  P * V * M
         transform.modelViewProjectionMatrix = camera.projectionTransform * transform.modelViewMatrix
-        
-        
-        let m3x3 = GLKMatrix4GetMatrix3( transform.modelViewMatrix )
 
-        var success:Bool
-        success = false
-        let m3x3InvertTranspose = GLKMatrix3InvertAndTranspose(m3x3, &success)
+        // eye space normal transform is the inverse( transpose( of model-view transform ) )
+        // invert then transpose upper 3x3
+        var success = false
+        let m3x3 = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3( transform.modelViewMatrix ), &success)
         
-        // eye space normal transform
+        // stuff into 4x4 to match metal shader TransformerPackage struct.
 //        transform.normalMatrix = GLKMatrix4Identity
-        transform.normalMatrix = GLKMatrix4Make(
-                m3x3InvertTranspose.m00, m3x3InvertTranspose.m01, m3x3InvertTranspose.m02, 0,
-                m3x3InvertTranspose.m10, m3x3InvertTranspose.m11, m3x3InvertTranspose.m12, 0,
-                m3x3InvertTranspose.m20, m3x3InvertTranspose.m21, m3x3InvertTranspose.m22, 0,
-                0, 0, 0, 1)
+        transform.normalMatrix = GLKMatrix4Make(m3x3.m00, m3x3.m01, m3x3.m02, 0,
+                                                m3x3.m10, m3x3.m11, m3x3.m12, 0,
+                                                m3x3.m20, m3x3.m21, m3x3.m22, 0,
+                                                       0,        0,        0, 1)
+
+        let bufferPointer = metalBuffer.contents()
+        memcpy(bufferPointer, &transform, MemoryLayout<Transform>.size)
 
         
-        
-        
-        
-        
-        
-        
-//        success = false
-//        transform.normalMatrix = GLKMatrix3InvertAndTranspose( GLKMatrix4GetMatrix3( transform.modelViewMatrix ), &success)
-
-
-//        transform.normalMatrix.description(blurb:"normal matrix")
-
-
-        update()
     }
 }

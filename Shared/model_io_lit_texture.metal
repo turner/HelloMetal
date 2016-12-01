@@ -31,13 +31,11 @@ vertex xyzw_n_st_rgba litTextureMIOVertexShader(xyz_n_st in [[ stage_in ]],
     float3 lightPosition = float3(0, 0, 1500);
     float3 lightPositionEyeSpace = (transformPackage.viewMatrix * float4(lightPosition, 1)).xyz;
     
-    float4x4 _normal_matrix_ = transformPackage.normalMatrix;
-
     float4 f4 = float4(in.n, 1);
-    float4 nes = _normal_matrix_ * f4;
-    float3 f3 = nes.xyz;
+    float4 nes = transformPackage.normalMatrix * f4;
     
-    float3 normalEyeSpace = normalize( f3 );
+    float3 f3 = nes.xyz;
+    float3 normalEyeSpace = normalize(f3);
 
     float3 diffuseColor = float3(1, 1, 1);
     
