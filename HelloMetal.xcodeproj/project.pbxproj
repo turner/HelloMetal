@@ -68,7 +68,16 @@
 		4F64B39C1DC406CF005BD8B1 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4F64B39D1DC406CF005BD8B1 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F64B39E1DC406CF005BD8B1 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
-		4F6E5A351DD8F80B00397B84 /* model_io_two_sided_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F6E5A331DD8F7C900397B84 /* model_io_two_sided_texture.metal */; };
+		4F6734651DEFABBC00443FEA /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
+		4F6734661DEFAD3300443FEA /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
+		4F6734681DEFAD9200443FEA /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
+		4F6734691DEFAD9800443FEA /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
+		4F67346A1DEFADB700443FEA /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
+		4F67346C1DEFAF3D00443FEA /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
+		4F67346D1DEFB00B00443FEA /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
+		4F67346E1DEFB5B200443FEA /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
+		4F67346F1DEFB5BF00443FEA /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
+		4F6734701DEFB67C00443FEA /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
 		4F72703E1DC368780039E130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703C1DC368780039E130 /* Main.storyboard */; };
 		4F7270401DC368780039E130 /* Hello.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703F1DC368780039E130 /* Hello.xcassets */; };
 		4F7270431DC368780039E130 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7270411DC368780039E130 /* LaunchScreen.storyboard */; };
@@ -122,15 +131,9 @@
 		4FEE5E2A1DEEE03B00B47AC2 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
 		4FEE5E2B1DEEE03B00B47AC2 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4FEE5E2C1DEEE03B00B47AC2 /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
-		4FEE5E2D1DEEE03B00B47AC2 /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
 		4FEE5E2E1DEEE03B00B47AC2 /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
-		4FEE5E2F1DEEE03B00B47AC2 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
-		4FEE5E301DEEE03B00B47AC2 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
-		4FEE5E311DEEE03B00B47AC2 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4FEE5E341DEEE0F400B47AC2 /* LightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */; };
 		4FEE5E351DEEE0F400B47AC2 /* LightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E331DEEE0F400B47AC2 /* LightView.swift */; };
-		4FEE5E371DEEE9F300B47AC2 /* litTexture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E361DEEE9F300B47AC2 /* litTexture.metal */; };
-		4FEE5E381DEEEAB700B47AC2 /* litTexture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E361DEEE9F300B47AC2 /* litTexture.metal */; };
 		4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
 		4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
 		4FFA63F21DC377BA002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
@@ -177,7 +180,7 @@
 		4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Textures.xcassets; path = Shared/Textures.xcassets; sourceTree = "<group>"; };
 		4F64B3811DC40535005BD8B1 /* RenderPassMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderPassMetalView.swift; sourceTree = "<group>"; };
 		4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderPassRenderer.swift; sourceTree = "<group>"; };
-		4F6E5A331DD8F7C900397B84 /* model_io_two_sided_texture.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = model_io_two_sided_texture.metal; path = Shared/model_io_two_sided_texture.metal; sourceTree = "<group>"; };
+		4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = model_io_lit_texture.metal; path = Shared/model_io_lit_texture.metal; sourceTree = "<group>"; };
 		4F7270361DC368780039E130 /* Hello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F72703D1DC368780039E130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F72703F1DC368780039E130 /* Hello.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Hello.xcassets; sourceTree = "<group>"; };
@@ -204,7 +207,6 @@
 		4FEE5E1E1DEEDF5500B47AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightRenderer.swift; sourceTree = "<group>"; };
 		4FEE5E331DEEE0F400B47AC2 /* LightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightView.swift; sourceTree = "<group>"; };
-		4FEE5E361DEEE9F300B47AC2 /* litTexture.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = litTexture.metal; path = Shared/litTexture.metal; sourceTree = "<group>"; };
 		4FFA63ED1DC3773C002F8E34 /* EITexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EITexture.swift; path = Shared/EITexture.swift; sourceTree = "<group>"; };
 		4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RendererExtensions.swift; path = Shared/RendererExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -268,6 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FEE5E231DEEDFEE00B47AC2 /* GLKit.framework in Frameworks */,
+				4F6734681DEFAD9200443FEA /* SceneKit.framework in Frameworks */,
+				4F6734691DEFAD9800443FEA /* ModelIO.framework in Frameworks */,
 				4FEE5E241DEEDFF500B47AC2 /* Metal.framework in Frameworks */,
 				4FEE5E251DEEDFF500B47AC2 /* MetalKit.framework in Frameworks */,
 			);
@@ -292,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */,
+				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
 				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
 				4F10A9D61DC42DC800053B77 /* AppDelegate.swift */,
 				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
@@ -300,14 +305,12 @@
 				4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */,
 				4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */,
 				4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */,
-				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
 				4F2F1F911DBA599900B80FE4 /* EITransform.swift */,
+				4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */,
 				4FBF51CC1DC02B6200444668 /* model_io.metal */,
-				4F6E5A331DD8F7C900397B84 /* model_io_two_sided_texture.metal */,
 				4F2F1F921DBA599900B80FE4 /* showST.metal */,
 				4F2F1F8E1DBA599900B80FE4 /* hello.metal */,
 				4F2F1F931DBA599900B80FE4 /* texture.metal */,
-				4FEE5E361DEEE9F300B47AC2 /* litTexture.metal */,
 				4F2F1F8D1DBA599900B80FE4 /* finalPass.metal */,
 			);
 			name = Shared;
@@ -384,11 +387,11 @@
 				4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */,
 				4F2F1F461DBA510800B80FE4 /* Shared */,
 				4F7270371DC368780039E130 /* Hello */,
-				4FEE5E111DEEDF5500B47AC2 /* HelloLight */,
 				4F7270841DC372410039E130 /* HelloCameraPlane */,
 				4F64B3691DC3FD36005BD8B1 /* HelloRenderPass */,
 				4F56AF871DBAF08E00E396E7 /* HelloModel_IO */,
 				4F4E3E221DD6177B005E40AC /* HelloSceneKit */,
+				4FEE5E111DEEDF5500B47AC2 /* HelloLight */,
 				4F2F1F101DBA50FA00B80FE4 /* Frameworks */,
 				4F7ABE111DA83A9F0054AFA9 /* Products */,
 			);
@@ -582,11 +585,11 @@
 			projectRoot = "";
 			targets = (
 				4F7270351DC368780039E130 /* Hello */,
-				4FEE5E0F1DEEDF5500B47AC2 /* HelloLight */,
 				4F7270821DC372410039E130 /* HelloCameraPlane */,
 				4F64B3671DC3FD36005BD8B1 /* HelloRenderPass */,
 				4F56AF851DBAF08E00E396E7 /* HelloModel_IO */,
 				4F4E3E201DD6177B005E40AC /* HelloSceneKit */,
+				4FEE5E0F1DEEDF5500B47AC2 /* HelloLight */,
 			);
 		};
 /* End PBXProject section */
@@ -652,6 +655,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F67346A1DEFADB700443FEA /* scenes.scnassets in Resources */,
 				4FEE5E221DEEDFD000B47AC2 /* Textures.xcassets in Resources */,
 				4FEE5E1A1DEEDF5500B47AC2 /* Light.xcassets in Resources */,
 				4FEE5E1D1DEEDF5500B47AC2 /* LaunchScreen.storyboard in Resources */,
@@ -677,7 +681,8 @@
 				4F4E3E431DD618C2005E40AC /* EICamera.swift in Sources */,
 				4F4E3E441DD618C2005E40AC /* EIMath.swift in Sources */,
 				4F4E3E451DD618C2005E40AC /* EITransform.swift in Sources */,
-				4F6E5A351DD8F80B00397B84 /* model_io_two_sided_texture.metal in Sources */,
+				4F6734651DEFABBC00443FEA /* model_io.metal in Sources */,
+				4F67346F1DEFB5BF00443FEA /* model_io_lit_texture.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +703,7 @@
 				4FDB167B1DBD66BA0025465A /* EIMath.swift in Sources */,
 				4FDB167D1DBD66BA0025465A /* EITransform.swift in Sources */,
 				4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */,
+				4F6734701DEFB67C00443FEA /* model_io_lit_texture.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,9 +739,9 @@
 				4F7270551DC369090039E130 /* Renderer.swift in Sources */,
 				4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */,
 				4F7270491DC368C80039E130 /* EIArcball.swift in Sources */,
+				4F67346C1DEFAF3D00443FEA /* model_io_lit_texture.metal in Sources */,
 				4F72704A1DC368C80039E130 /* EICamera.swift in Sources */,
 				4F72704B1DC368C80039E130 /* EIMath.swift in Sources */,
-				4FEE5E371DEEE9F300B47AC2 /* litTexture.metal in Sources */,
 				4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */,
 				4F72704C1DC368C80039E130 /* EIQuad.swift in Sources */,
 				4F72704D1DC368C80039E130 /* EITransform.swift in Sources */,
@@ -773,19 +779,17 @@
 			files = (
 				4FEE5E261DEEE03B00B47AC2 /* AppDelegate.swift in Sources */,
 				4FEE5E271DEEE03B00B47AC2 /* EIView.swift in Sources */,
-				4FEE5E291DEEE03B00B47AC2 /* EITexture.swift in Sources */,
-				4FEE5E281DEEE03B00B47AC2 /* EIArcball.swift in Sources */,
-				4FEE5E2B1DEEE03B00B47AC2 /* EICamera.swift in Sources */,
 				4FEE5E351DEEE0F400B47AC2 /* LightView.swift in Sources */,
-				4FEE5E2C1DEEE03B00B47AC2 /* EIMath.swift in Sources */,
-				4FEE5E2A1DEEE03B00B47AC2 /* RendererExtensions.swift in Sources */,
-				4FEE5E2D1DEEE03B00B47AC2 /* EIQuad.swift in Sources */,
-				4FEE5E2E1DEEE03B00B47AC2 /* EITransform.swift in Sources */,
-				4FEE5E2F1DEEE03B00B47AC2 /* hello.metal in Sources */,
 				4FEE5E341DEEE0F400B47AC2 /* LightRenderer.swift in Sources */,
-				4FEE5E301DEEE03B00B47AC2 /* showST.metal in Sources */,
-				4FEE5E311DEEE03B00B47AC2 /* texture.metal in Sources */,
-				4FEE5E381DEEEAB700B47AC2 /* litTexture.metal in Sources */,
+				4FEE5E281DEEE03B00B47AC2 /* EIArcball.swift in Sources */,
+				4FEE5E291DEEE03B00B47AC2 /* EITexture.swift in Sources */,
+				4FEE5E2A1DEEE03B00B47AC2 /* RendererExtensions.swift in Sources */,
+				4F6734661DEFAD3300443FEA /* EIMesh.swift in Sources */,
+				4FEE5E2B1DEEE03B00B47AC2 /* EICamera.swift in Sources */,
+				4FEE5E2C1DEEE03B00B47AC2 /* EIMath.swift in Sources */,
+				4FEE5E2E1DEEE03B00B47AC2 /* EITransform.swift in Sources */,
+				4F67346E1DEFB5B200443FEA /* model_io.metal in Sources */,
+				4F67346D1DEFB00B00443FEA /* model_io_lit_texture.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

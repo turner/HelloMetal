@@ -19,7 +19,7 @@ struct TransformPackage {
     float3x3 normalMatrix;
     float4x4 modelMatrix;
     float4x4 viewMatrix;
-    float4x4 projectionMatrix;
+    float4x4 modelViewMatrix;
     float4x4 modelViewProjectionMatrix;
 };
 

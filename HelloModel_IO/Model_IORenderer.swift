@@ -61,8 +61,8 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
             heroModelPipelineState =
                     try device.makeRenderPipelineState(descriptor:MTLRenderPipelineDescriptor(view:view,
                             library:library!,
-                            vertexShaderName:"textureTwoSidedMIOVertexShader",
-                            fragmentShaderName:"textureTwoSidedMIOFragmentShader",
+                            vertexShaderName:"litTextureMIOVertexShader",
+                            fragmentShaderName:"litTextureMIOFragmentShader",
                             doIncludeDepthAttachment: false,
                             vertexDescriptor:heroModel.metalVertexDescriptor))
         } catch let e {
@@ -83,8 +83,8 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
                     try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
                             library:library!,
-                            vertexShaderName:"textureTwoSidedMIOVertexShader",
-                            fragmentShaderName:"textureTwoSidedMIOFragmentShader",
+                            vertexShaderName:"textureMIOVertexShader",
+                            fragmentShaderName:"textureMIOFragmentShader",
                             doIncludeDepthAttachment: false,
                             vertexDescriptor: renderPlane.metalVertexDescriptor))
 
@@ -154,7 +154,6 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setVertexBuffer(renderPlane.metallicTransform.metalBuffer, offset: 0, at: 1)
 
             renderCommandEncoder.setFragmentTexture(renderPlaneTexture, at: 0)
-            renderCommandEncoder.setFragmentTexture(renderPlaneTexture, at: 1)
 
             renderCommandEncoder.drawIndexedPrimitives(
                     type: renderPlane.primitiveType,
@@ -175,8 +174,7 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
 
-            renderCommandEncoder.setFragmentTexture(frontTexture, at: 0)
-            renderCommandEncoder.setFragmentTexture(backTexture, at: 1)
+            renderCommandEncoder.setFragmentTexture(heroModelTexture, at: 0)
 
             renderCommandEncoder.drawIndexedPrimitives(
                     type: heroModel.primitiveType,

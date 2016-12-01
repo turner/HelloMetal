@@ -24,12 +24,16 @@ struct _Transforms_ {
 };
 
 vertex InterpolatedVertex textureVertexShader(constant _Vertex_ *vertices [[ buffer(0) ]],
-                                    constant _Transforms_ &transforms [[ buffer(1) ]],
-                                    uint vertexIndex [[ vertex_id ]]) {
+                                              constant _Transforms_ &transforms [[ buffer(1) ]],
+                                              uint vertexIndex [[ vertex_id ]]) {
     InterpolatedVertex out;
+    
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyz, 1.0);
+    
     out.rgba = vertices[vertexIndex].rgba;
+    
     out.st = vertices[vertexIndex].st;
+    
     return out;
 }
 
@@ -38,8 +42,7 @@ fragment float4 textureFragmentShader(InterpolatedVertex vert [[ stage_in ]],
     
     constexpr sampler defaultSampler;
     
-//    float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
-    float4 rgba = vert.rgba;
+    float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
     return rgba;
     
 }
