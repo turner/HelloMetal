@@ -11,12 +11,12 @@ struct xyz_n_st {
 struct xyzw_n_st_rgba {
     float4 xyzw [[ position ]];
     float3 n;
+    float4  rgba;
     half2  st;
-    half4  rgba;
 };
 
 struct TransformPackage {
-    float3x3 normalMatrix;
+    float4x4 normalMatrix;
     float4x4 modelMatrix;
     float4x4 viewMatrix;
     float4x4 modelViewMatrix;
@@ -37,7 +37,7 @@ vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]],
     out.st = in.st;
     
     // rgba
-    out.rgba = half4(0,0,0,0);
+    out.rgba = float4(0,0,0,0);
 
     return out;
 
@@ -74,7 +74,7 @@ vertex xyzw_n_st_rgba textureMIOVertexShader(xyz_n_st in [[ stage_in ]], constan
     out.st = in.st;
 
     // rgba
-    out.rgba = half4(0,0,0,0);
+    out.rgba = float4(0,0,0,0);
 
     return out;
 
@@ -104,7 +104,7 @@ vertex xyzw_n_st_rgba showMIOVertexShader(xyz_n_st in [[ stage_in ]], constant T
     out.st = in.st;
 
     // rgba
-    out.rgba = half4(0,0,0,0);
+    out.rgba = float4(0,0,0,0);
 
     return out;
 

@@ -35,11 +35,11 @@ struct EICamera {
         self.target = target
 
         self.viewTransform = makeLookAt(eye:location, target: target, approximateUp: approximateUp)
-        self.viewTransform.description(blurb:"view transform")
+//        self.viewTransform.description(blurb:"view transform")
 
-        let lightPosition = GLKVector4(v:(0, 0, 1500, 1))
-        let lightPositionEyeSpace = GLKMatrix4MultiplyVector4(self.viewTransform, lightPosition);
-        lightPositionEyeSpace.description(blurb:"light eye space");
+//        let lightPosition = GLKVector4(v:(0, 0, 1500, 1))
+//        let lightPositionEyeSpace = GLKMatrix4MultiplyVector4(self.viewTransform, lightPosition);
+//        lightPositionEyeSpace.description(blurb:"light eye space");
 
     }
 

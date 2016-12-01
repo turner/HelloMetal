@@ -44,12 +44,25 @@ extension GLKVector4 {
     }
 }
 
-extension GLKMatrix4 {
-    
+extension GLKMatrix3 {
+
     func description (blurb: String?=nil) {
-        
+
         let str = blurb ?? "---"
-        
+
+        print("\(str)\n")
+        print("\(self.m00) \(self.m01) \(self.m02)\n")
+        print("\(self.m10) \(self.m11) \(self.m12)\n")
+        print("\(self.m20) \(self.m21) \(self.m22)\n")
+    }
+}
+
+extension GLKMatrix4 {
+
+    func description (blurb: String?=nil) {
+
+        let str = blurb ?? "---"
+
         print("\(str)\n")
         print("\(self.m00) \(self.m01) \(self.m02) \(self.m03)\n")
         print("\(self.m10) \(self.m11) \(self.m12) \(self.m13)\n")

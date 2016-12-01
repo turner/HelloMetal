@@ -39,13 +39,13 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 //                                     sceneName:"scenes.scnassets/teapot.scn",
 //                                     nodeName:"teapotIdentity")
         
-//        heroModel = EIMesh.sceneMesh(device:device,
-//                                     sceneName:"scenes.scnassets/head.scn",
-//                                     nodeName:"headIdentity")
-        
         heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/bear.scn",
-                                     nodeName:"bearIdentity")
+                                     sceneName:"scenes.scnassets/head.scn",
+                                     nodeName:"headIdentity")
+        
+//        heroModel = EIMesh.sceneMesh(device:device,
+//                                     sceneName:"scenes.scnassets/bear.scn",
+//                                     nodeName:"bearIdentity")
         
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")

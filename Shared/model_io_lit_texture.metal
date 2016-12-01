@@ -16,28 +16,12 @@ struct xyzw_n_st_rgba {
 };
 
 struct TransformPackage {
-    float3x3 normalMatrix;
+    float4x4 normalMatrix;
     float4x4 modelMatrix;
     float4x4 viewMatrix;
     float4x4 modelViewMatrix;
     float4x4 modelViewProjectionMatrix;
 };
-
-//InterpolatedVertex out;
-//
-//out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[ vertexIndex ].xyz, 1.0);
-//
-//out.n = transforms.normalMatrix * vertices[ vertexIndex ].n;
-//
-//// in camera space
-//float4 f4 = -(transforms.modelViewMatrix * float4(vertices[ vertexIndex ].xyz, 1.0));
-//out.toEye = f4.xyz;
-//
-//out.rgba = vertices[ vertexIndex ].rgba;
-//
-//out.st = vertices[ vertexIndex ].st;
-//
-//return out;
 
 vertex xyzw_n_st_rgba litTextureMIOVertexShader(xyz_n_st in [[ stage_in ]],
                                                 constant TransformPackage &transformPackage [[ buffer(1) ]]) {
@@ -45,24 +29,29 @@ vertex xyzw_n_st_rgba litTextureMIOVertexShader(xyz_n_st in [[ stage_in ]],
     
     // light at camera location. Flashlight style.
     float3 lightPosition = float3(0, 0, 1500);
-    float3 lightPositionEyeSpace = (transformPackage.viewMatrix * float4(lightPosition, 1.0)).xyz;
+    float3 lightPositionEyeSpace = (transformPackage.viewMatrix * float4(lightPosition, 1)).xyz;
     
-    float3 normalEyeSpace = normalize(transformPackage.normalMatrix * in.n);
+    float4x4 _normal_matrix_ = transformPackage.normalMatrix;
+
+    float4 f4 = float4(in.n, 1);
+    float4 nes = _normal_matrix_ * f4;
+    float3 f3 = nes.xyz;
     
-    float3 diffuseColor = float3(1, .5, .25);
+    float3 normalEyeSpace = normalize( f3 );
+
+    float3 diffuseColor = float3(1, 1, 1);
     
-    float NdotL = max(0.0, dot(normalEyeSpace, normalize(lightPositionEyeSpace)));
+    float NdotL = max(0.0f, dot(normalEyeSpace, normalize(lightPositionEyeSpace)));
     float3 diffuseColorNdotL = diffuseColor * NdotL;
     
     xyzw_n_st_rgba out;
     
     // rgba
-    out.rgba = float4(NdotL, NdotL, NdotL, 1);
-//    out.rgba = float4(lightPositionEyeSpace, 1);
-//    out.rgba = float4(diffuseColorNdotL, 1);
+//    out.rgba = float4(normalEyeSpace, 1);
+    out.rgba = float4(diffuseColorNdotL, 1);
     
     // xyzw
-    out.xyzw = transformPackage.modelViewProjectionMatrix * float4(in.xyz, 1.0);
+    out.xyzw = transformPackage.modelViewProjectionMatrix * float4(in.xyz, 1);
     
     // n
     out.n = normalEyeSpace;
@@ -82,8 +71,8 @@ fragment float4 litTextureMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]],
     
     float4 rgba;
     
-    rgba = in.rgba;
-//    rgba = in.rgba * texas.sample(defaultSampler, float2(in.st)).rgba;
+//    rgba = in.rgba;
+    rgba = in.rgba * texas.sample(defaultSampler, float2(in.st)).rgba;
     
     return rgba;
     
