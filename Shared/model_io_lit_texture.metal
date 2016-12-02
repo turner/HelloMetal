@@ -11,7 +11,7 @@ struct xyz_n_st {
 struct xyzw_n_st_rgba {
     float4 xyzw [[ position ]];
     float3 n;
-    float4  rgba;
+    float4 rgba;
     half2  st;
 };
 

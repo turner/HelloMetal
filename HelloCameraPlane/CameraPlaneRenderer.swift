@@ -35,7 +35,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         heroModel = EIQuad(device: device)
 
         do {
-            heroModelTexture = try makeTexture(device: device, name: "kids_grid_3x3")
+            heroModelTexture = try makeTexture(device: device, name: "kids_grid_3x3_translucent")
         } catch {
             fatalError("Error: Can not load texture")
         }

@@ -16,7 +16,7 @@ struct InterpolatedVertex {
 };
 
 struct _Transforms_ {
-    float3x3 normalMatrix;
+    float4x4 normalMatrix;
     float4x4 modelMatrix;
     float4x4 viewMatrix;
     float4x4 modelViewMatrix;
