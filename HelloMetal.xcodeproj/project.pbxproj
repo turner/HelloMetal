@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0456BC1DF18B810011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
+		4F0456BD1DF18B990011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
+		4F0456BE1DF18BA60011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
+		4F0456BF1DF18BB20011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
 		4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4F10A9D71DC42DC800053B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
 		4F10A9D81DC42E7600053B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
@@ -144,6 +148,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F0456BB1DF18B810011E2CA /* model_io_show.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = model_io_show.metal; path = Shared/model_io_show.metal; sourceTree = "<group>"; };
 		4F0C7E591DBE8431005F42C3 /* EIMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIMesh.swift; path = Shared/EIMesh.swift; sourceTree = "<group>"; };
 		4F10A9D61DC42DC800053B77 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shared/AppDelegate.swift; sourceTree = "<group>"; };
 		4F1A00591DC4C2C500DF5156 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
@@ -307,6 +312,7 @@
 				4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */,
 				4F2F1F911DBA599900B80FE4 /* EITransform.swift */,
 				4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */,
+				4F0456BB1DF18B810011E2CA /* model_io_show.metal */,
 				4FBF51CC1DC02B6200444668 /* model_io.metal */,
 				4F2F1F921DBA599900B80FE4 /* showST.metal */,
 				4F2F1F8E1DBA599900B80FE4 /* hello.metal */,
@@ -682,6 +688,7 @@
 				4F4E3E441DD618C2005E40AC /* EIMath.swift in Sources */,
 				4F4E3E451DD618C2005E40AC /* EITransform.swift in Sources */,
 				4F6734651DEFABBC00443FEA /* model_io.metal in Sources */,
+				4F0456BE1DF18BA60011E2CA /* model_io_show.metal in Sources */,
 				4F67346F1DEFB5BF00443FEA /* model_io_lit_texture.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,6 +710,7 @@
 				4FDB167B1DBD66BA0025465A /* EIMath.swift in Sources */,
 				4FDB167D1DBD66BA0025465A /* EITransform.swift in Sources */,
 				4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */,
+				4F0456BD1DF18B990011E2CA /* model_io_show.metal in Sources */,
 				4F6734701DEFB67C00443FEA /* model_io_lit_texture.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -745,6 +753,7 @@
 				4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */,
 				4F72704C1DC368C80039E130 /* EIQuad.swift in Sources */,
 				4F72704D1DC368C80039E130 /* EITransform.swift in Sources */,
+				4F0456BC1DF18B810011E2CA /* model_io_show.metal in Sources */,
 				4F72704F1DC368C80039E130 /* hello.metal in Sources */,
 				4F7270501DC368C80039E130 /* showST.metal in Sources */,
 				4F7270511DC368C80039E130 /* texture.metal in Sources */,
@@ -789,6 +798,7 @@
 				4FEE5E2C1DEEE03B00B47AC2 /* EIMath.swift in Sources */,
 				4FEE5E2E1DEEE03B00B47AC2 /* EITransform.swift in Sources */,
 				4F67346E1DEFB5B200443FEA /* model_io.metal in Sources */,
+				4F0456BF1DF18BB20011E2CA /* model_io_show.metal in Sources */,
 				4F67346D1DEFB00B00443FEA /* model_io_lit_texture.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

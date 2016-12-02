@@ -55,8 +55,13 @@ class LightRenderer: NSObject, MTKViewDelegate {
             heroModelPipelineState =
                     try device.makeRenderPipelineState(descriptor:MTLRenderPipelineDescriptor(view:view,
                             library:library!,
+                            
                             vertexShaderName:"litTextureMIOVertexShader",
                             fragmentShaderName:"litTextureMIOFragmentShader",
+                        
+//                            vertexShaderName:"showMIOVertexShader",
+//                            fragmentShaderName:"showMIOFragmentShader",
+
                             doIncludeDepthAttachment: false,
                             vertexDescriptor:heroModel.metalVertexDescriptor))
         } catch let e {
