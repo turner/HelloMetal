@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "grycja-erde-11-iphone.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "kids_grid_3x3_drop_shadow@2x.png",
       "scale" : "2x"
     },
     {

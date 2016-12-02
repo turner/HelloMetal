@@ -59,7 +59,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         cameraPlane = EIQuad(device: device)
 
         do {
-            cameraPlaneTexture = try makeTexture(device: device, name: "swirl")
+            cameraPlaneTexture = try makeTexture(device: device, name: "mobile")
         } catch {
             fatalError("Error: Can not load texture")
         }

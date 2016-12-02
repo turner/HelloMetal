@@ -29,6 +29,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
     // final pass
     var finalPassRenderSurface: EIQuad
     var finalPassPipelineState: MTLRenderPipelineState!
+    var finalPassTexture: MTLTexture
 
     var commandQueue: MTLCommandQueue!
 
@@ -42,7 +43,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         heroModel = EIQuad(device: device)
 
         do {
-            heroModelTexture = try makeTexture(device: device, name: "kids_grid_3x3_translucent")
+            heroModelTexture = try makeTexture(device: device, name: "kids_grid_3x3")
         } catch {
             fatalError("Error: Can not load texture")
         }
@@ -88,6 +89,13 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         // final pass
         finalPassRenderSurface = EIQuad(device: device)
+        
+        do {
+            finalPassTexture = try makeTexture(device: device, name: "mobile-overlay")
+        } catch {
+            fatalError("Error: Can not load texture")
+        }
+        
 
         do {
             
@@ -95,7 +103,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
                 MTLRenderPipelineDescriptor(view:view,
                                             library:library!,
                                             vertexShaderName:"finalPassVertexShader",
-                                            fragmentShaderName:"finalPassFragmentShader",
+                                            fragmentShaderName:"finalPassOverlayFragmentShader",
                                             doIncludeDepthAttachment: false,
                                             vertexDescriptor: nil))
             
@@ -208,11 +216,12 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
             finalPassCommandEncoder.setTriangleFillMode(.fill)
             finalPassCommandEncoder.setCullMode(.none)
 
-            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.vertexMetalBuffer, offset: 0, at: 0)
-            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.metallicTransform.metalBuffer, offset: 0, at: 1)
+            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.vertexMetalBuffer, offset: 0, at:0)
+            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.metallicTransform.metalBuffer, offset: 0, at:1)
 
-            finalPassCommandEncoder.setFragmentTexture(renderToTexturePassDescriptor.colorAttachments[ 0 ].texture, at: 0)
-
+            finalPassCommandEncoder.setFragmentTexture(renderToTexturePassDescriptor.colorAttachments[ 0 ].texture, at:0)
+            finalPassCommandEncoder.setFragmentTexture(finalPassTexture, at:1)
+            
             finalPassCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
                     indexCount: finalPassRenderSurface.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,

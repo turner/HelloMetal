@@ -24,8 +24,8 @@ struct _Transforms_ {
 };
 
 vertex InterpolatedVertex finalPassVertexShader(constant _Vertex_ *vertices [[buffer(0)]],
-                                      constant _Transforms_ &transforms [[buffer(1)]],
-                                      uint vertexIndex [[vertex_id]]) {
+                                                constant _Transforms_ &transforms [[buffer(1)]],
+                                                uint vertexIndex [[vertex_id]]) {
     InterpolatedVertex out;
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyz, 1.0);
     out.rgba = vertices[vertexIndex].rgba;
@@ -33,7 +33,8 @@ vertex InterpolatedVertex finalPassVertexShader(constant _Vertex_ *vertices [[bu
     return out;
 }
 
-fragment float4 finalPassFragmentShader(InterpolatedVertex vert [[ stage_in ]], texture2d<float> texas [[ texture(0) ]]) {
+fragment float4 finalPassFragmentShader(InterpolatedVertex vert [[ stage_in ]],
+                                        texture2d<float> texas [[ texture(0) ]]) {
     
     constexpr sampler defaultSampler;
     
@@ -50,5 +51,21 @@ fragment float4 finalPassFragmentShader(InterpolatedVertex vert [[ stage_in ]], 
         return cooked;
     }
     
-//    return rgba;
+    //    return rgba;
+}
+
+fragment float4 finalPassOverlayFragmentShader(InterpolatedVertex vert [[ stage_in ]],
+                                               texture2d<float> texas [[ texture(0) ]],
+                                               texture2d<float> overlay [[ texture(1) ]]) {
+    
+    constexpr sampler defaultSampler;
+    
+    float4 _F = overlay.sample(defaultSampler, vert.st).rgba;
+    
+    float4 _B = texas.sample(defaultSampler, vert.st).rgba;
+    
+    float4 rgba = _F + (1.0f - _F.a) * _B;
+//    float4 rgba = _B;
+    
+    return rgba;
 }
