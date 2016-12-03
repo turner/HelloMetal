@@ -171,6 +171,7 @@ class LightRenderer: NSObject, MTKViewDelegate {
 
             // hero model
             renderCommandEncoder.setTriangleFillMode(.fill)
+//            renderCommandEncoder.setTriangleFillMode(.lines)
 
             renderCommandEncoder.setRenderPipelineState(heroModelPipelineState)
 

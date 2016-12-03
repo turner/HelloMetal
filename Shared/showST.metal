@@ -43,4 +43,6 @@ fragment float4 showSTFragmentShader(InterpolatedVertex vert [[stage_in]]) {
     
     float4 st = s + t;
     return st;
+    
+//    return float4(.25, .25, .25, 1.0);
 }

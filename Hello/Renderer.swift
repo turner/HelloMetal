@@ -45,8 +45,13 @@ class Renderer: NSObject, MTKViewDelegate {
                 try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
                                                 library:library!,
+
+//                                                vertexShaderName:"showSTVertexShader",
+//                                                fragmentShaderName:"showSTFragmentShader",
+
                                                 vertexShaderName:"textureVertexShader",
                                                 fragmentShaderName:"textureFragmentShader",
+                                                
                                                 doIncludeDepthAttachment: false,
                                                 vertexDescriptor: nil))
         } catch let e {
@@ -82,15 +87,17 @@ class Renderer: NSObject, MTKViewDelegate {
         if let passDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
             passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.5, 0.5, 0.5, 1.0)
+//            passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1,1,1,1)
 
             let commandBuffer = commandQueue.makeCommandBuffer()
 
             let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: passDescriptor)
 
             renderCommandEncoder.setFrontFacing(.counterClockwise)
+            
             renderCommandEncoder.setTriangleFillMode(.fill)
-            renderCommandEncoder.setCullMode(.none)
-
+//            renderCommandEncoder.setTriangleFillMode(.lines)
+            
             renderCommandEncoder.setRenderPipelineState(heroModelPipelineState)
             renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
