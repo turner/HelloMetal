@@ -46,7 +46,7 @@ class LightRenderer: NSObject, MTKViewDelegate {
 //                                     nodeName:"bearIdentity")
         
         do {
-            heroModelTexture = try makeTexture(device: device, name: "diagnostic")
+            heroModelTexture = try makeTexture(device: device, name: "swirl")
         } catch {
             fatalError("Error: Can not load texture")
         }
