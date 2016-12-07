@@ -69,8 +69,13 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
             heroModelPipelineState =
                     try device.makeRenderPipelineState(descriptor:MTLRenderPipelineDescriptor(view:view,
                             library:library!,
+                            
+//                            vertexShaderName:"showMIOVertexShader",
+//                            fragmentShaderName:"showMIOFragmentShader",
+                        
                             vertexShaderName:"textureTwoSidedMIOVertexShader",
                             fragmentShaderName:"textureTwoSidedMIOFragmentShader",
+                            
                             doIncludeDepthAttachment: false,
                             vertexDescriptor:heroModel.metalVertexDescriptor))
         } catch let e {
@@ -91,8 +96,8 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
                     try device.makeRenderPipelineState(descriptor:
                     MTLRenderPipelineDescriptor(view:view,
                             library:library!,
-                            vertexShaderName:"textureTwoSidedMIOVertexShader",
-                            fragmentShaderName:"textureTwoSidedMIOFragmentShader",
+                            vertexShaderName:"textureMIOVertexShader",
+                            fragmentShaderName:"textureMIOFragmentShader",
                             doIncludeDepthAttachment: false,
                             vertexDescriptor: renderPlane.metalVertexDescriptor))
 
@@ -140,7 +145,6 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
         update(view: view as! SceneKitMetalView, drawableSize: view.bounds.size)
 
-        // final pass
         if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
             let commandBuffer = commandQueue.makeCommandBuffer()
@@ -151,9 +155,6 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
             
             renderCommandEncoder.setFrontFacing(.counterClockwise)
             renderCommandEncoder.setCullMode(.none)
-
-            
-            
             
             
             // render plane
@@ -165,17 +166,12 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setVertexBuffer(renderPlane.metallicTransform.metalBuffer, offset: 0, at: 1)
 
             renderCommandEncoder.setFragmentTexture(renderPlaneTexture, at: 0)
-            renderCommandEncoder.setFragmentTexture(renderPlaneTexture, at: 1)
 
-            renderCommandEncoder.drawIndexedPrimitives(
-                    type: renderPlane.primitiveType,
-                    indexCount: renderPlane.indexCount,
-                    indexType: renderPlane.indexType,
-                    indexBuffer: renderPlane.vertexIndexMetalBuffer,
-                    indexBufferOffset: 0)
-
-
-
+            renderCommandEncoder.drawIndexedPrimitives(type: renderPlane.primitiveType,
+                                                       indexCount: renderPlane.indexCount,
+                                                       indexType: renderPlane.indexType,
+                                                       indexBuffer: renderPlane.vertexIndexMetalBuffer,
+                                                       indexBufferOffset: 0)
             
 
             // hero model
@@ -185,24 +181,20 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
             renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
-
+            
             renderCommandEncoder.setFragmentTexture(frontTexture, at: 0)
             renderCommandEncoder.setFragmentTexture(backTexture, at: 1)
 
-            renderCommandEncoder.drawIndexedPrimitives(
-                    type: heroModel.primitiveType,
-                    indexCount: heroModel.indexCount,
-                    indexType: heroModel.indexType,
-                    indexBuffer: heroModel.vertexIndexMetalBuffer,
-                    indexBufferOffset: 0)
-
-            
-            
-            
+            renderCommandEncoder.drawIndexedPrimitives(type: heroModel.primitiveType,
+                                                       indexCount: heroModel.indexCount,
+                                                       indexType: heroModel.indexType,
+                                                       indexBuffer: heroModel.vertexIndexMetalBuffer,
+                                                       indexBufferOffset: 0)
             
             renderCommandEncoder.endEncoding()
 
             commandBuffer.present(drawable)
+            
             commandBuffer.commit()
         }
 

@@ -23,7 +23,8 @@ struct TransformPackage {
     float4x4 modelViewProjectionMatrix;
 };
 
-vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]],
+                                                     constant TransformPackage &transformPackage [[ buffer(1) ]]) {
     
     xyzw_n_st_rgba out;
     
@@ -43,7 +44,10 @@ vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]],
 
 }
 
-fragment float4 textureTwoSidedMIOFragmentShader(xyzw_n_st_rgba in [[stage_in]], bool isFrontFacing [[front_facing]], texture2d<float> front [[texture(0)]], texture2d<float> back [[texture(1)]]) {
+fragment float4 textureTwoSidedMIOFragmentShader(xyzw_n_st_rgba in [[stage_in]],
+                                                 bool isFrontFacing [[front_facing]],
+                                                 texture2d<float> front [[texture(0)]],
+                                                 texture2d<float> back [[texture(1)]]) {
     
     constexpr sampler defaultSampler;
     

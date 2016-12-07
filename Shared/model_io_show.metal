@@ -28,9 +28,17 @@ vertex xyzw_n_st_rgba showMIOVertexShader(xyz_n_st in [[ stage_in ]],
  
     xyzw_n_st_rgba out;
     
+    // eye space normal
+    float4 nes = transformPackage.normalMatrix * float4(in.n, 1);
+    float3 normalEyeSpace = normalize(nes.xyz);
+    
+    // world space normal
+    float3 in_n = normalize(in.n);
+    
     // rgba
-    out.rgba = float4(in.st.x, in.st.y, 0, 1);
-//    out.rgba = float4(.25, .25, .25, 1);
+//    out.rgba = float4(in.st.x, in.st.y, 0, 1);
+//    out.rgba = float4(in_n, 1.0);
+    out.rgba = float4(normalEyeSpace, 1.0);
     
     // xyzw
     out.xyzw = transformPackage.modelViewProjectionMatrix * float4(in.xyz, 1);
@@ -42,9 +50,7 @@ vertex xyzw_n_st_rgba showMIOVertexShader(xyz_n_st in [[ stage_in ]],
 
 }
 
-fragment float4 showMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]],
-                                            bool isFrontFacing [[ front_facing ]],
-                                            texture2d<float> texas [[ texture(0 )]]) {
+fragment float4 showMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]]) {
     
     constexpr sampler defaultSampler;
     
