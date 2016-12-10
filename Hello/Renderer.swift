@@ -104,7 +104,7 @@ class Renderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setFragmentTexture(heroModelTexture, at: 0)
             renderCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
-                    indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
+                    indexCount: heroModel.indexCount,
                     indexType: MTLIndexType.uint16,
                     indexBuffer: heroModel.vertexIndexMetalBuffer,
                     indexBufferOffset: 0)
