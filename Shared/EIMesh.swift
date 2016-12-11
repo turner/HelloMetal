@@ -89,7 +89,7 @@ class EIMesh {
         (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
         (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
-
+        
         metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
 
         guard let scene = SCNScene(named:sceneName) else {
@@ -106,6 +106,14 @@ class EIMesh {
 
         modelIOMesh = MDLMesh(scnGeometry:sceneGeometry, bufferAllocator:nil)
         modelIOMesh.vertexDescriptor = modelIOVertexDescriptor
+        
+        
+        
+        // To create that cool low-poly look
+//        modelIOMesh.makeVerticesUnique()
+//        modelIOMesh.addNormals(withAttributeNamed:MDLVertexAttributeNormal, creaseThreshold:1.0)
+
+        
 
         let mdlSubmesh:MDLSubmesh = modelIOMesh.submeshes?[ 0 ] as! MDLSubmesh
 
