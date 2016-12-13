@@ -38,7 +38,7 @@ vertex xyzw_n_st_rgba showMIOVertexShader(xyz_n_st in [[ stage_in ]],
     // rgba
 //    out.rgba = float4(in.st.x, in.st.y, 0, 1);
 //    out.rgba = float4(in_n, 1.0);
-    out.rgba = float4(normalEyeSpace, 1.0);
+    out.rgba = float4((normalEyeSpace.x + 1.0)/2.0, (normalEyeSpace.y + 1.0)/2.0, (normalEyeSpace.z + 1.0)/2.0, 1.0);
     
     // xyzw
     out.xyzw = transformPackage.modelViewProjectionMatrix * float4(in.xyz, 1);

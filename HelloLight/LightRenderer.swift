@@ -29,17 +29,17 @@ class LightRenderer: NSObject, MTKViewDelegate {
 
         let library = device.newDefaultLibrary()
                         
-        camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+        camera = EICamera(location:GLKVector3(v:(0, 0, 500)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
 //        heroModel = EIMesh.plane(device: device, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
 
-//        heroModel = EIMesh.sceneMesh(device:device,
-//                                     sceneName:"scenes.scnassets/teapot.scn",
-//                                     nodeName:"teapotIdentity")
-        
         heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/head.scn",
-                                     nodeName:"headIdentity")
+                                     sceneName:"scenes.scnassets/teapot.scn",
+                                     nodeName:"teapotIdentity")
+        
+//        heroModel = EIMesh.sceneMesh(device:device,
+//                                     sceneName:"scenes.scnassets/head.scn",
+//                                     nodeName:"headIdentity")
         
 //        heroModel = EIMesh.sceneMesh(device:device,
 //                                     sceneName:"scenes.scnassets/bear.scn",
@@ -56,11 +56,11 @@ class LightRenderer: NSObject, MTKViewDelegate {
                     try device.makeRenderPipelineState(descriptor:MTLRenderPipelineDescriptor(view:view,
                             library:library!,
                             
-                            vertexShaderName:"litTextureMIOVertexShader",
-                            fragmentShaderName:"litTextureMIOFragmentShader",
+//                            vertexShaderName:"litTextureMIOVertexShader",
+//                            fragmentShaderName:"litTextureMIOFragmentShader",
                         
-//                            vertexShaderName:"showMIOVertexShader",
-//                            fragmentShaderName:"showMIOFragmentShader",
+                            vertexShaderName:"showMIOVertexShader",
+                            fragmentShaderName:"showMIOFragmentShader",
 
                             doIncludeDepthAttachment: false,
                             vertexDescriptor:heroModel.metalVertexDescriptor))
@@ -107,7 +107,7 @@ class LightRenderer: NSObject, MTKViewDelegate {
 
     func reshape (view: LightView) {
         view.arcBall.reshape(viewBounds: view.bounds)
-        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 8000)
+        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 100, far: 8000)
     }
 
     func update(view: LightView, drawableSize:CGSize) {
@@ -120,10 +120,10 @@ class LightRenderer: NSObject, MTKViewDelegate {
         // hero model
         heroModel.metallicTransform.update(camera: camera, transformer: {
             
-            return view.arcBall.rotationMatrix
+//            return view.arcBall.rotationMatrix
             
             // scaling for teapot
-//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
         })
 
     }
