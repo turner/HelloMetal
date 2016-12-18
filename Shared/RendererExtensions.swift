@@ -55,6 +55,8 @@ extension MTLRenderPipelineDescriptor {
         
         self.init()
         
+        sampleCount = view.sampleCount
+
         vertexFunction = library.makeFunction(name: vertexShaderName)
         fragmentFunction = library.makeFunction(name: fragmentShaderName)
         

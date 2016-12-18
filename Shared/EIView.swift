@@ -10,6 +10,9 @@ public class EIView: MTKView {
 
         super.init(coder:coder)
         
+        // Use 4x MSAA multisampling
+        sampleCount = 4
+        
         // we will call MTKView.draw() explicitly
         isPaused = true
         enableSetNeedsDisplay = true
