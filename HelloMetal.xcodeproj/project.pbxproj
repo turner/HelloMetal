@@ -503,12 +503,12 @@
 				4FDFA7EF1E0BFDEE005BEDF4 /* gourds.exr */,
 				4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */,
 				4FDFA7EA1E0BFB5F005BEDF4 /* HelloOpenEXR-Bridging-Header.h */,
+				4FDBF5061E0C041E007CC7F4 /* openexr.swift */,
 				4FDFA7DB1E0BF97A005BEDF4 /* OpenEXRView.swift */,
 				4FDFA7DC1E0BF97A005BEDF4 /* OpenEXRRenderer.swift */,
 				4FDFA7BC1E0BF7CE005BEDF4 /* Main.storyboard */,
 				4FDFA7C11E0BF7CE005BEDF4 /* LaunchScreen.storyboard */,
 				4FDFA7C41E0BF7CE005BEDF4 /* Info.plist */,
-				4FDBF5061E0C041E007CC7F4 /* openexr.swift */,
 			);
 			path = HelloOpenEXR;
 			sourceTree = "<group>";

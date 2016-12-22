@@ -27,10 +27,25 @@ func tickleOpenEXR(device: MTLDevice, name:String)  {
     
     print("main unsigned short \(MemoryLayout<CUnsignedShort>.size)")
     
-    for index in 0 ..< 4 * width {
-        print("main \(index % 4) \(buffer[ index ])")
-    }
+//    for index in 0 ..< 4 * width {
+//        print("main \(index % 4) \(buffer[ index ])")
+//    }
     
     print("main file \(name) width \(width) height \(height) length of bit buffer  \(buffer.count)\n")
+    
+    let byteCount = width * height * MemoryLayout<CUnsignedShort>.size * 4
+    let mtlBuffer:MTLBuffer = device.makeBuffer(bytes:theBits, length:byteCount, options:.storageModeShared)
+    
+    let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.rgba16Float,
+                                                              width:width,
+                                                              height:height,
+                                                              mipmapped:false)
+    
+    let bytesPerPixel = MemoryLayout<CUnsignedShort>.size * 4
+    let bytesPerRow = bytesPerPixel * width
+    
+    let mtlTexture:MTLTexture = mtlBuffer.makeTexture(descriptor:descriptor,
+                                                      offset: 0,
+                                                      bytesPerRow:bytesPerRow)
     
 }
