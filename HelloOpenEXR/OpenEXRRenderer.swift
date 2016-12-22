@@ -27,7 +27,7 @@ class OpenEXRRenderer: NSObject, MTKViewDelegate {
 
     init(view:MTKView, device:MTLDevice) {
         
-        tickleOpenEXR(device:device, name:"gourds.exr")
+        tickleOpenEXR(device:device, name:"dusk.exr")
 
         let library = device.newDefaultLibrary()
                         

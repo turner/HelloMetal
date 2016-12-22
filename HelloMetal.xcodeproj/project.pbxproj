@@ -122,6 +122,7 @@
 		4FDB167B1DBD66BA0025465A /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
 		4FDB167D1DBD66BA0025465A /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
 		4FDBF5071E0C041E007CC7F4 /* openexr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBF5061E0C041E007CC7F4 /* openexr.swift */; };
+		4FDBF5091E0C0C6C007CC7F4 /* dusk.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FDBF5081E0C0C6C007CC7F4 /* dusk.exr */; };
 		4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7BC1E0BF7CE005BEDF4 /* Main.storyboard */; };
 		4FDFA7C01E0BF7CE005BEDF4 /* openexr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */; };
 		4FDFA7C31E0BF7CE005BEDF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7C11E0BF7CE005BEDF4 /* LaunchScreen.storyboard */; };
@@ -253,6 +254,7 @@
 		4FDB16741DBD658C0025465A /* Model_IOMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model_IOMetalView.swift; sourceTree = "<group>"; };
 		4FDB16751DBD658C0025465A /* Model_IORenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model_IORenderer.swift; sourceTree = "<group>"; };
 		4FDBF5061E0C041E007CC7F4 /* openexr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = openexr.swift; sourceTree = "<group>"; };
+		4FDBF5081E0C0C6C007CC7F4 /* dusk.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = dusk.exr; sourceTree = "<group>"; };
 		4FDFA7B61E0BF7CE005BEDF4 /* HelloOpenEXR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloOpenEXR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FDFA7BD1E0BF7CE005BEDF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = openexr.xcassets; sourceTree = "<group>"; };
@@ -497,10 +499,11 @@
 		4FDFA7B71E0BF7CE005BEDF4 /* HelloOpenEXR */ = {
 			isa = PBXGroup;
 			children = (
-				4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */,
-				4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */,
 				4FDFA7EE1E0BFDEE005BEDF4 /* red.exr */,
 				4FDFA7EF1E0BFDEE005BEDF4 /* gourds.exr */,
+				4FDBF5081E0C0C6C007CC7F4 /* dusk.exr */,
+				4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */,
+				4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */,
 				4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */,
 				4FDFA7EA1E0BFB5F005BEDF4 /* HelloOpenEXR-Bridging-Header.h */,
 				4FDBF5061E0C041E007CC7F4 /* openexr.swift */,
@@ -811,6 +814,7 @@
 				4FDFA7F11E0BFDEE005BEDF4 /* gourds.exr in Resources */,
 				4FDFA7DA1E0BF8C2005BEDF4 /* Textures.xcassets in Resources */,
 				4FDFA7C01E0BF7CE005BEDF4 /* openexr.xcassets in Resources */,
+				4FDBF5091E0C0C6C007CC7F4 /* dusk.exr in Resources */,
 				4FDFA7F01E0BFDEE005BEDF4 /* red.exr in Resources */,
 				4FDFA7C31E0BF7CE005BEDF4 /* LaunchScreen.storyboard in Resources */,
 				4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */,
