@@ -121,6 +121,35 @@
 		4FDB167A1DBD66BA0025465A /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4FDB167B1DBD66BA0025465A /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
 		4FDB167D1DBD66BA0025465A /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
+		4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7BC1E0BF7CE005BEDF4 /* Main.storyboard */; };
+		4FDFA7C01E0BF7CE005BEDF4 /* openexr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */; };
+		4FDFA7C31E0BF7CE005BEDF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7C11E0BF7CE005BEDF4 /* LaunchScreen.storyboard */; };
+		4FDFA7C81E0BF84E005BEDF4 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
+		4FDFA7C91E0BF84E005BEDF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
+		4FDFA7CA1E0BF84E005BEDF4 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
+		4FDFA7CB1E0BF84E005BEDF4 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
+		4FDFA7CC1E0BF84E005BEDF4 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
+		4FDFA7CD1E0BF84E005BEDF4 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
+		4FDFA7CE1E0BF84E005BEDF4 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
+		4FDFA7CF1E0BF84E005BEDF4 /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
+		4FDFA7D01E0BF84E005BEDF4 /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
+		4FDFA7D11E0BF84E005BEDF4 /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
+		4FDFA7D21E0BF84E005BEDF4 /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
+		4FDFA7D31E0BF84E005BEDF4 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
+		4FDFA7D41E0BF890005BEDF4 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
+		4FDFA7D51E0BF89A005BEDF4 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
+		4FDFA7D61E0BF8A0005BEDF4 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F111DBA50FA00B80FE4 /* Metal.framework */; };
+		4FDFA7D71E0BF8A0005BEDF4 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */; };
+		4FDFA7D81E0BF8AB005BEDF4 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
+		4FDFA7D91E0BF8C2005BEDF4 /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
+		4FDFA7DA1E0BF8C2005BEDF4 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
+		4FDFA7DD1E0BF97A005BEDF4 /* OpenEXRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDFA7DB1E0BF97A005BEDF4 /* OpenEXRView.swift */; };
+		4FDFA7DE1E0BF97A005BEDF4 /* OpenEXRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDFA7DC1E0BF97A005BEDF4 /* OpenEXRRenderer.swift */; };
+		4FDFA7E71E0BFAF7005BEDF4 /* libiOSOpenEXRLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDFA7E41E0BFAD5005BEDF4 /* libiOSOpenEXRLibrary.a */; };
+		4FDFA7E91E0BFB00005BEDF4 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDFA7E81E0BFB00005BEDF4 /* libz.1.2.8.tbd */; };
+		4FDFA7EC1E0BFB60005BEDF4 /* pokeOpenEXR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */; };
+		4FDFA7F01E0BFDEE005BEDF4 /* red.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7EE1E0BFDEE005BEDF4 /* red.exr */; };
+		4FDFA7F11E0BFDEE005BEDF4 /* gourds.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7EF1E0BFDEE005BEDF4 /* gourds.exr */; };
 		4FEE5E181DEEDF5500B47AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE5E161DEEDF5500B47AC2 /* Main.storyboard */; };
 		4FEE5E1A1DEEDF5500B47AC2 /* Light.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */; };
 		4FEE5E1D1DEEDF5500B47AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE5E1B1DEEDF5500B47AC2 /* LaunchScreen.storyboard */; };
@@ -146,6 +175,23 @@
 		4FFA63F71DC377DC002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
 		4FFA63F81DC377DC002F8E34 /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4FDFA7E31E0BFAD5005BEDF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F86EB871E06CE0700269E38;
+			remoteInfo = iOSOpenEXRLibrary;
+		};
+		4FDFA7E51E0BFAEF005BEDF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F86EB861E06CE0700269E38;
+			remoteInfo = iOSOpenEXRLibrary;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4F0456BB1DF18B810011E2CA /* model_io_show.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = model_io_show.metal; path = Shared/model_io_show.metal; sourceTree = "<group>"; };
@@ -205,6 +251,19 @@
 		4FBF51CC1DC02B6200444668 /* model_io.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = model_io.metal; path = Shared/model_io.metal; sourceTree = "<group>"; };
 		4FDB16741DBD658C0025465A /* Model_IOMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model_IOMetalView.swift; sourceTree = "<group>"; };
 		4FDB16751DBD658C0025465A /* Model_IORenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model_IORenderer.swift; sourceTree = "<group>"; };
+		4FDFA7B61E0BF7CE005BEDF4 /* HelloOpenEXR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloOpenEXR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FDFA7BD1E0BF7CE005BEDF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = openexr.xcassets; sourceTree = "<group>"; };
+		4FDFA7C21E0BF7CE005BEDF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4FDFA7C41E0BF7CE005BEDF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FDFA7DB1E0BF97A005BEDF4 /* OpenEXRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEXRView.swift; sourceTree = "<group>"; };
+		4FDFA7DC1E0BF97A005BEDF4 /* OpenEXRRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEXRRenderer.swift; sourceTree = "<group>"; };
+		4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOSOpenEXRLibrary.xcodeproj; path = ../../iOSOpenEXRLibrary/iOSOpenEXRLibrary.xcodeproj; sourceTree = "<group>"; };
+		4FDFA7E81E0BFB00005BEDF4 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
+		4FDFA7EA1E0BFB5F005BEDF4 /* HelloOpenEXR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloOpenEXR-Bridging-Header.h"; sourceTree = "<group>"; };
+		4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pokeOpenEXR.cpp; sourceTree = "<group>"; };
+		4FDFA7EE1E0BFDEE005BEDF4 /* red.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = red.exr; sourceTree = "<group>"; };
+		4FDFA7EF1E0BFDEE005BEDF4 /* gourds.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = gourds.exr; sourceTree = "<group>"; };
 		4FEE5E101DEEDF5500B47AC2 /* HelloLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEE5E171DEEDF5500B47AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Light.xcassets; sourceTree = "<group>"; };
@@ -270,6 +329,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4FDFA7B31E0BF7CE005BEDF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FDFA7E91E0BFB00005BEDF4 /* libz.1.2.8.tbd in Frameworks */,
+				4FDFA7E71E0BFAF7005BEDF4 /* libiOSOpenEXRLibrary.a in Frameworks */,
+				4FDFA7D81E0BF8AB005BEDF4 /* SceneKit.framework in Frameworks */,
+				4FDFA7D61E0BF8A0005BEDF4 /* Metal.framework in Frameworks */,
+				4FDFA7D71E0BF8A0005BEDF4 /* MetalKit.framework in Frameworks */,
+				4FDFA7D51E0BF89A005BEDF4 /* ModelIO.framework in Frameworks */,
+				4FDFA7D41E0BF890005BEDF4 /* GLKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4FEE5E0D1DEEDF5500B47AC2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,6 +361,7 @@
 		4F2F1F101DBA50FA00B80FE4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FDFA7E81E0BFB00005BEDF4 /* libz.1.2.8.tbd */,
 				4F80A4981DEB86420082EE39 /* GLKit.framework */,
 				4F1A00591DC4C2C500DF5156 /* SceneKit.framework */,
 				4F2F1F111DBA50FA00B80FE4 /* Metal.framework */,
@@ -398,6 +472,7 @@
 				4F56AF871DBAF08E00E396E7 /* HelloModel_IO */,
 				4F4E3E221DD6177B005E40AC /* HelloSceneKit */,
 				4FEE5E111DEEDF5500B47AC2 /* HelloLight */,
+				4FDFA7B71E0BF7CE005BEDF4 /* HelloOpenEXR */,
 				4F2F1F101DBA50FA00B80FE4 /* Frameworks */,
 				4F7ABE111DA83A9F0054AFA9 /* Products */,
 			);
@@ -412,6 +487,33 @@
 				4F64B3681DC3FD36005BD8B1 /* HelloRenderPass.app */,
 				4F4E3E211DD6177B005E40AC /* HelloSceneKit.app */,
 				4FEE5E101DEEDF5500B47AC2 /* HelloLight.app */,
+				4FDFA7B61E0BF7CE005BEDF4 /* HelloOpenEXR.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4FDFA7B71E0BF7CE005BEDF4 /* HelloOpenEXR */ = {
+			isa = PBXGroup;
+			children = (
+				4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */,
+				4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */,
+				4FDFA7EE1E0BFDEE005BEDF4 /* red.exr */,
+				4FDFA7EF1E0BFDEE005BEDF4 /* gourds.exr */,
+				4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */,
+				4FDFA7EA1E0BFB5F005BEDF4 /* HelloOpenEXR-Bridging-Header.h */,
+				4FDFA7DB1E0BF97A005BEDF4 /* OpenEXRView.swift */,
+				4FDFA7DC1E0BF97A005BEDF4 /* OpenEXRRenderer.swift */,
+				4FDFA7BC1E0BF7CE005BEDF4 /* Main.storyboard */,
+				4FDFA7C11E0BF7CE005BEDF4 /* LaunchScreen.storyboard */,
+				4FDFA7C41E0BF7CE005BEDF4 /* Info.plist */,
+			);
+			path = HelloOpenEXR;
+			sourceTree = "<group>";
+		};
+		4FDFA7E01E0BFAD5005BEDF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4FDFA7E41E0BFAD5005BEDF4 /* libiOSOpenEXRLibrary.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -517,6 +619,24 @@
 			productReference = 4F7270831DC372410039E130 /* HelloCameraPlane.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4FDFA7B51E0BF7CE005BEDF4 /* HelloOpenEXR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FDFA7C71E0BF7CE005BEDF4 /* Build configuration list for PBXNativeTarget "HelloOpenEXR" */;
+			buildPhases = (
+				4FDFA7B21E0BF7CE005BEDF4 /* Sources */,
+				4FDFA7B31E0BF7CE005BEDF4 /* Frameworks */,
+				4FDFA7B41E0BF7CE005BEDF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4FDFA7E61E0BFAEF005BEDF4 /* PBXTargetDependency */,
+			);
+			name = HelloOpenEXR;
+			productName = HelloOpenEXR;
+			productReference = 4FDFA7B61E0BF7CE005BEDF4 /* HelloOpenEXR.app */;
+			productType = "com.apple.product-type.application";
+		};
 		4FEE5E0F1DEEDF5500B47AC2 /* HelloLight */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FEE5E211DEEDF5500B47AC2 /* Build configuration list for PBXNativeTarget "HelloLight" */;
@@ -540,7 +660,7 @@
 		4F7ABE081DA83A9F0054AFA9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Elastic Image Software";
 				TargetAttributes = {
@@ -570,6 +690,12 @@
 						DevelopmentTeam = NCTVS5F8E2;
 						ProvisioningStyle = Automatic;
 					};
+					4FDFA7B51E0BF7CE005BEDF4 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = NCTVS5F8E2;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
 					4FEE5E0F1DEEDF5500B47AC2 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = NCTVS5F8E2;
@@ -588,6 +714,12 @@
 			mainGroup = 4F7ABE071DA83A9F0054AFA9;
 			productRefGroup = 4F7ABE111DA83A9F0054AFA9 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4FDFA7E01E0BFAD5005BEDF4 /* Products */;
+					ProjectRef = 4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4F7270351DC368780039E130 /* Hello */,
@@ -596,9 +728,20 @@
 				4F56AF851DBAF08E00E396E7 /* HelloModel_IO */,
 				4F4E3E201DD6177B005E40AC /* HelloSceneKit */,
 				4FEE5E0F1DEEDF5500B47AC2 /* HelloLight */,
+				4FDFA7B51E0BF7CE005BEDF4 /* HelloOpenEXR */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4FDFA7E41E0BFAD5005BEDF4 /* libiOSOpenEXRLibrary.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libiOSOpenEXRLibrary.a;
+			remoteRef = 4FDFA7E31E0BFAD5005BEDF4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4F4E3E1F1DD6177B005E40AC /* Resources */ = {
@@ -654,6 +797,20 @@
 				4F72708D1DC372410039E130 /* CameraPlane.xcassets in Resources */,
 				4F7270901DC372410039E130 /* LaunchScreen.storyboard in Resources */,
 				4F72708B1DC372410039E130 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FDFA7B41E0BF7CE005BEDF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FDFA7D91E0BF8C2005BEDF4 /* scenes.scnassets in Resources */,
+				4FDFA7F11E0BFDEE005BEDF4 /* gourds.exr in Resources */,
+				4FDFA7DA1E0BF8C2005BEDF4 /* Textures.xcassets in Resources */,
+				4FDFA7C01E0BF7CE005BEDF4 /* openexr.xcassets in Resources */,
+				4FDFA7F01E0BFDEE005BEDF4 /* red.exr in Resources */,
+				4FDFA7C31E0BF7CE005BEDF4 /* LaunchScreen.storyboard in Resources */,
+				4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +939,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4FDFA7B21E0BF7CE005BEDF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FDFA7C91E0BF84E005BEDF4 /* AppDelegate.swift in Sources */,
+				4FDFA7CA1E0BF84E005BEDF4 /* EIView.swift in Sources */,
+				4FDFA7CB1E0BF84E005BEDF4 /* EIArcball.swift in Sources */,
+				4FDFA7CC1E0BF84E005BEDF4 /* EITexture.swift in Sources */,
+				4FDFA7CD1E0BF84E005BEDF4 /* RendererExtensions.swift in Sources */,
+				4FDFA7C81E0BF84E005BEDF4 /* EIMesh.swift in Sources */,
+				4FDFA7CE1E0BF84E005BEDF4 /* EICamera.swift in Sources */,
+				4FDFA7DD1E0BF97A005BEDF4 /* OpenEXRView.swift in Sources */,
+				4FDFA7CF1E0BF84E005BEDF4 /* EIMath.swift in Sources */,
+				4FDFA7D01E0BF84E005BEDF4 /* EITransform.swift in Sources */,
+				4FDFA7DE1E0BF97A005BEDF4 /* OpenEXRRenderer.swift in Sources */,
+				4FDFA7EC1E0BFB60005BEDF4 /* pokeOpenEXR.cpp in Sources */,
+				4FDFA7D11E0BF84E005BEDF4 /* model_io_lit_texture.metal in Sources */,
+				4FDFA7D21E0BF84E005BEDF4 /* model_io_show.metal in Sources */,
+				4FDFA7D31E0BF84E005BEDF4 /* model_io.metal in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4FEE5E0C1DEEDF5500B47AC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -804,6 +983,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4FDFA7E61E0BFAEF005BEDF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iOSOpenEXRLibrary;
+			targetProxy = 4FDFA7E51E0BFAEF005BEDF4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4F4E3E271DD6177B005E40AC /* Main.storyboard */ = {
@@ -882,6 +1069,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				4F72708F1DC372410039E130 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4FDFA7BC1E0BF7CE005BEDF4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FDFA7BD1E0BF7CE005BEDF4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4FDFA7C11E0BF7CE005BEDF4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FDFA7C21E0BF7CE005BEDF4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1135,6 +1338,39 @@
 			};
 			name = Release;
 		};
+		4FDFA7C51E0BF7CE005BEDF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloOpenEXR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloOpenEXR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HelloOpenEXR/HelloOpenEXR-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4FDFA7C61E0BF7CE005BEDF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = NCTVS5F8E2;
+				INFOPLIST_FILE = HelloOpenEXR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloOpenEXR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HelloOpenEXR/HelloOpenEXR-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		4FEE5E1F1DEEDF5500B47AC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1216,6 +1452,15 @@
 			buildConfigurations = (
 				4F7ABE361DA83A9F0054AFA9 /* Debug */,
 				4F7ABE371DA83A9F0054AFA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FDFA7C71E0BF7CE005BEDF4 /* Build configuration list for PBXNativeTarget "HelloOpenEXR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FDFA7C51E0BF7CE005BEDF4 /* Debug */,
+				4FDFA7C61E0BF7CE005BEDF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
