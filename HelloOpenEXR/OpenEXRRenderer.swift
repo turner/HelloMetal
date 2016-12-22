@@ -25,7 +25,9 @@ class OpenEXRRenderer: NSObject, MTKViewDelegate {
 
     var commandQueue: MTLCommandQueue
 
-    init(view: MTKView, device: MTLDevice) {
+    init(view:MTKView, device:MTLDevice) {
+        
+        tickleOpenEXR(device:device, name:"gourds.exr")
 
         let library = device.newDefaultLibrary()
                         
@@ -98,32 +100,6 @@ class OpenEXRRenderer: NSObject, MTKViewDelegate {
         depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
         
         commandQueue = device.makeCommandQueue()
-
-    }
-
-    func tickleOpenEXR(device: MTLDevice, name:String)  {
-        
-        let wp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
-        let hp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
-        let theBits:UnsafePointer<CUnsignedShort>
-        
-        //let filename:String = "red.exr"
-        let filename:String = "gourds.exr"
-        theBits = pokeOpenEXR(filename, wp, hp)
-        
-        let width = wp.pointee
-        let height = hp.pointee
-        
-        let length = 4 * width * height
-        let buffer = UnsafeBufferPointer(start: theBits, count: length);
-        
-        print("main unsigned short \(MemoryLayout<CUnsignedShort>.size)")
-        
-        //for index in 0 ..< 4 * width {
-        //    print("main \(index) \(buffer[ index ])")
-        //}
-        
-        print("main file \(filename) width \(width) height \(height) length of bit buffer  \(buffer.count)\n")
 
     }
 
