@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "74785C7CF5035E0474400C8BBFAE90845E69FD1B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "284BE131594EA753CF7E39BFDA3AC326384A4CB6" : 9223372036854775807,
+    "74785C7CF5035E0474400C8BBFAE90845E69FD1B" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "85E8328D-BF80-4916-9CA8-CD17DF924BD9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "284BE131594EA753CF7E39BFDA3AC326384A4CB6" : "iOSOpenEXRLibrary\/",
+    "74785C7CF5035E0474400C8BBFAE90845E69FD1B" : "HelloMetal\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "HelloMetal",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "HelloMetal.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:turner\/iOSOpenEXRLibrary.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "284BE131594EA753CF7E39BFDA3AC326384A4CB6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:turner\/HelloMetal.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "74785C7CF5035E0474400C8BBFAE90845E69FD1B"
+    }
+  ]
+}

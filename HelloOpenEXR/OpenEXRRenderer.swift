@@ -26,43 +26,34 @@ class OpenEXRRenderer: NSObject, MTKViewDelegate {
     var commandQueue: MTLCommandQueue
 
     init(view:MTKView, device:MTLDevice) {
-        
-        tickleOpenEXR(device:device, name:"dusk.exr")
 
         let library = device.newDefaultLibrary()
                         
         camera = EICamera(location:GLKVector3(v:(0, 0, 500)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-//        heroModel = EIMesh.plane(device: device, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
+        heroModel = EIMesh.plane(device: device, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
 
 //        heroModel = EIMesh.sceneMesh(device:device,
 //                                     sceneName:"scenes.scnassets/teapot.scn",
 //                                     nodeName:"teapotIdentity")
         
-        heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/head.scn",
-                                     nodeName:"headIdentity")
+//        heroModel = EIMesh.sceneMesh(device:device,
+//                                     sceneName:"scenes.scnassets/head.scn",
+//                                     nodeName:"headIdentity")
         
 //        heroModel = EIMesh.sceneMesh(device:device,
 //                                     sceneName:"scenes.scnassets/bear.scn",
 //                                     nodeName:"bearIdentity")
-        
-        do {
-            heroModelTexture = try makeTexture(device: device, name: "swirl")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
+
+        heroModelTexture = textureFromOpenEXR(device:device, name: "alias_wavefront_diagnostic.exr")
 
         do {
             heroModelPipelineState =
                     try device.makeRenderPipelineState(descriptor:MTLRenderPipelineDescriptor(view:view,
                             library:library!,
-                            
-//                            vertexShaderName:"litTextureMIOVertexShader",
-//                            fragmentShaderName:"litTextureMIOFragmentShader",
-                        
-                            vertexShaderName:"showMIOVertexShader",
-                            fragmentShaderName:"showMIOFragmentShader",
+                                                    
+                            vertexShaderName:"openexrVertexShader",
+                            fragmentShaderName:"openexrFragmentShader",
 
                             doIncludeDepthAttachment: false,
                             vertexDescriptor:heroModel.metalVertexDescriptor))

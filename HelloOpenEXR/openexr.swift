@@ -8,44 +8,29 @@
 
 import MetalKit
 
-func tickleOpenEXR(device: MTLDevice, name:String)  {
-    
-    let wp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
-    let hp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
-    let theBits:UnsafePointer<CUnsignedShort>
+func textureFromOpenEXR(device: MTLDevice, name:String) -> MTLTexture {
     
     let url = Bundle.main.url(forResource:name, withExtension:nil)
     let path = url?.path
     
+    let wp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
+    let hp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
+    let theBits:UnsafePointer<CUnsignedShort>    
     theBits = pokeOpenEXR(path, wp, hp)
     
-    let width = wp.pointee
-    let height = hp.pointee
+//    let length = 4 * width * height
+//    let buffer = UnsafeBufferPointer(start: theBits, count: length);
     
-    let length = 4 * width * height
-    let buffer = UnsafeBufferPointer(start: theBits, count: length);
-    
-    print("main unsigned short \(MemoryLayout<CUnsignedShort>.size)")
-    
-//    for index in 0 ..< 4 * width {
-//        print("main \(index % 4) \(buffer[ index ])")
-//    }
-    
-    print("main file \(name) width \(width) height \(height) length of bit buffer  \(buffer.count)\n")
-    
-    let byteCount = width * height * MemoryLayout<CUnsignedShort>.size * 4
+    let byteCount = wp.pointee * hp.pointee * MemoryLayout<CUnsignedShort>.size * 4
     let mtlBuffer:MTLBuffer = device.makeBuffer(bytes:theBits, length:byteCount, options:.storageModeShared)
     
     let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.rgba16Float,
-                                                              width:width,
-                                                              height:height,
+                                                              width:wp.pointee,
+                                                              height:hp.pointee,
                                                               mipmapped:false)
     
     let bytesPerPixel = MemoryLayout<CUnsignedShort>.size * 4
-    let bytesPerRow = bytesPerPixel * width
-    
-    let mtlTexture:MTLTexture = mtlBuffer.makeTexture(descriptor:descriptor,
-                                                      offset: 0,
-                                                      bytesPerRow:bytesPerRow)
+    let bytesPerRow = bytesPerPixel * wp.pointee
+    return mtlBuffer.makeTexture(descriptor:descriptor, offset: 0, bytesPerRow:bytesPerRow)
     
 }

@@ -23,6 +23,36 @@ struct TransformPackage {
     float4x4 modelViewProjectionMatrix;
 };
 
+vertex xyzw_n_st_rgba textureMIOVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+    
+    xyzw_n_st_rgba out;
+    
+    // xyzw
+    out.xyzw = transformPackage.modelViewProjectionMatrix * float4(in.xyz, 1.0);
+    
+    // n
+    out.n = in.n;
+    
+    // st
+    out.st = in.st;
+    
+    // rgba
+    out.rgba = float4(0,0,0,0);
+    
+    return out;
+    
+}
+
+fragment float4 textureMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]], texture2d<float> texas [[ texture(0) ]]) {
+    
+    constexpr sampler defaultSampler;
+    
+    float4 rgba = texas.sample(defaultSampler, float2(in.st)).rgba;
+    
+    return rgba;
+    
+}
+
 vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]],
                                                      constant TransformPackage &transformPackage [[ buffer(1) ]]) {
     
@@ -61,35 +91,4 @@ fragment float4 textureTwoSidedMIOFragmentShader(xyzw_n_st_rgba in [[stage_in]],
     
     return rgba;
     
-}
-
-
-vertex xyzw_n_st_rgba textureMIOVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
-
-    xyzw_n_st_rgba out;
-
-    // xyzw
-    out.xyzw = transformPackage.modelViewProjectionMatrix * float4(in.xyz, 1.0);
-
-    // n
-    out.n = in.n;
-
-    // st
-    out.st = in.st;
-
-    // rgba
-    out.rgba = float4(0,0,0,0);
-
-    return out;
-
-}
-
-fragment float4 textureMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]], texture2d<float> texas [[ texture(0) ]]) {
-
-    constexpr sampler defaultSampler;
-
-    float4 rgba = texas.sample(defaultSampler, float2(in.st)).rgba;
-
-    return rgba;
-
 }
