@@ -46,7 +46,7 @@ extern "C" const unsigned short * pokeOpenEXR(const char *exrFileName, long* wid
     long index;
 
     long length = 4 * fileContents.width() * fileContents.height();
-    unsigned short * rgbas = new unsigned short [length];
+    unsigned short * rgbas = new unsigned short [ length ];
 
     for (long y=0; y < fileContents.height(); y++) {
 
@@ -56,10 +56,10 @@ extern "C" const unsigned short * pokeOpenEXR(const char *exrFileName, long* wid
 
             index = exe + yOffset;
 
-            rgbas[ r_offset + index ] = fileContents[ x ][ y ].r.bits();
-            rgbas[ g_offset + index ] = fileContents[ x ][ y ].g.bits();
-            rgbas[ b_offset + index ] = fileContents[ x ][ y ].b.bits();
-            rgbas[ a_offset + index ] = fileContents[ x ][ y ].a.bits();
+            rgbas[ r_offset + index ] = fileContents[ y ][ x ].r.bits();
+            rgbas[ g_offset + index ] = fileContents[ y ][ x ].g.bits();
+            rgbas[ b_offset + index ] = fileContents[ y ][ x ].b.bits();
+            rgbas[ a_offset + index ] = fileContents[ y ][ x ].a.bits();
         }
     }
 
