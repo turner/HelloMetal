@@ -38,13 +38,9 @@ class LightRenderer: NSObject, MTKViewDelegate {
 //                                     nodeName:"teapotIdentity")
         
         heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/head.scn",
-                                     nodeName:"headIdentity")
-        
-//        heroModel = EIMesh.sceneMesh(device:device,
-//                                     sceneName:"scenes.scnassets/bear.scn",
-//                                     nodeName:"bearIdentity")
-        
+                                     sceneName:"scenes.scnassets/better_male_head.scn",
+                                     nodeName:"betterHeadIdentity")
+                
         do {
             heroModelTexture = try makeTexture(device: device, name: "swirl")
         } catch {
@@ -111,7 +107,7 @@ class LightRenderer: NSObject, MTKViewDelegate {
     }
 
     func update(view: LightView, drawableSize:CGSize) {
-
+        
         // render plane
         renderPlane.metallicTransform.update(camera: camera, transformer: {
             return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)

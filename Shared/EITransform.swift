@@ -57,7 +57,7 @@ struct EITransform {
         //  P * V * M
         transform.modelViewProjectionMatrix = camera.projectionTransform * transform.modelViewMatrix
 
-        // eye space normal transform is the inverse( transpose( of model-view transform ) )
+        // eye space normal transform is the inverse( transpose( model-view-transform ) )
         // invert then transpose upper 3x3
         var success = false
         let m3x3 = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3( transform.modelViewMatrix ), &success)
