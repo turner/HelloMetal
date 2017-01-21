@@ -32,10 +32,14 @@ class LightRenderer: NSObject, MTKViewDelegate {
         camera = EICamera(location:GLKVector3(v:(0, 0, 500)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
 //        heroModel = EIMesh.plane(device: device, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
-
+        
         heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/teapot.scn",
-                                     nodeName:"teapotIdentity")
+                                     sceneName:"scenes.scnassets/high-res-head-no-groups.scn",
+                                     nodeName:"highResHeadIdentity")
+        
+//        heroModel = EIMesh.sceneMesh(device:device,
+//                                     sceneName:"scenes.scnassets/teapot.scn",
+//                                     nodeName:"teapotIdentity")
         
 //        heroModel = EIMesh.sceneMesh(device:device,
 //                                     sceneName:"scenes.scnassets/better_male_head.scn",
@@ -119,9 +123,11 @@ class LightRenderer: NSObject, MTKViewDelegate {
             // typical return value
 //            return view.arcBall.rotationMatrix
             
-            // scaling for teapot
             // scaling for high res head
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(600, 600, 600)
+            
+            // scaling for teapot
+//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
         })
 
     }
