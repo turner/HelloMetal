@@ -33,14 +33,14 @@ class LightRenderer: NSObject, MTKViewDelegate {
 
 //        heroModel = EIMesh.plane(device: device, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
 
-//        heroModel = EIMesh.sceneMesh(device:device,
-//                                     sceneName:"scenes.scnassets/teapot.scn",
-//                                     nodeName:"teapotIdentity")
-        
         heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/better_male_head.scn",
-                                     nodeName:"betterHeadIdentity")
-                
+                                     sceneName:"scenes.scnassets/teapot.scn",
+                                     nodeName:"teapotIdentity")
+        
+//        heroModel = EIMesh.sceneMesh(device:device,
+//                                     sceneName:"scenes.scnassets/better_male_head.scn",
+//                                     nodeName:"betterHeadIdentity")
+        
         do {
             heroModelTexture = try makeTexture(device: device, name: "swirl")
         } catch {
@@ -115,11 +115,13 @@ class LightRenderer: NSObject, MTKViewDelegate {
 
         // hero model
         heroModel.metallicTransform.update(camera: camera, transformer: {
-            
-            return view.arcBall.rotationMatrix
+
+            // typical return value
+//            return view.arcBall.rotationMatrix
             
             // scaling for teapot
-//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
+            // scaling for high res head
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
         })
 
     }
