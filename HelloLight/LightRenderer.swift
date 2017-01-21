@@ -124,7 +124,7 @@ class LightRenderer: NSObject, MTKViewDelegate {
 //            return view.arcBall.rotationMatrix
             
             // scaling for high res head
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(600, 600, 600)
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(500, 500, 500) * GLKMatrix4MakeTranslation(0.0, 0.075, 0.101)
             
             // scaling for teapot
 //            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
