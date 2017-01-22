@@ -40,8 +40,8 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 //                                     nodeName:"teapotIdentity")
         
         heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/better_male_head.scn",
-                                     nodeName:"betterHeadIdentity")
+                                     sceneName:"scenes.scnassets/high-res-head-no-groups.scn",
+                                     nodeName:"highResHeadIdentity")
         
         do {
             heroModelTexture = try makeTexture(device: device, name: "mandrill")
@@ -129,7 +129,11 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
         // hero model
         heroModel.metallicTransform.update(camera: camera, transformer: {
-            return view.arcBall.rotationMatrix
+            
+//            return view.arcBall.rotationMatrix
+            
+            // scaling for high res head
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(750, 750, 750) * GLKMatrix4MakeTranslation(0.0, 0.075, 0.101)
             
             // scaling for teapot
 //            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
