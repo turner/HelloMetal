@@ -10,8 +10,8 @@ public class EIView: MTKView {
 
         super.init(coder:coder)
         
-        // Use 4x MSAA multisampling
-        sampleCount = 4
+        //        
+        sampleCount = 1
         
         //
         self.depthStencilPixelFormat = .depth32Float

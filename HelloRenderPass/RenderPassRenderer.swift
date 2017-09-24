@@ -49,18 +49,11 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            
-            let renderPipelineDescriptor =
-                MTLRenderPipelineDescriptor(view:view,
-                                            library:library!,
-                                            vertexShaderName:"textureVertexShader",
-                                            fragmentShaderName:"textureFragmentShader",
-                                            doIncludeDepthAttachment: true,
-                                            vertexDescriptor: nil)
-            
-            renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
-            
-            heroModelPipelineState = try device.makeRenderPipelineState(descriptor:renderPipelineDescriptor)
+
+            let desc = MTLRenderPipelineDescriptor(view:view, library:library!, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", doIncludeDepthAttachment: true, vertexDescriptor: nil)
+            desc.depthAttachmentPixelFormat = .depth32Float
+
+            heroModelPipelineState = try device.makeRenderPipelineState(descriptor: desc)
 
         } catch let e {
             Swift.print("\(e)")
@@ -74,20 +67,13 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         } catch {
             fatalError("Error: Can not load texture")
         }
-        
+
         do {
-            
-            let renderPipelineDescriptor =
-                MTLRenderPipelineDescriptor(view:view,
-                                            library:library!,
-                                            vertexShaderName:"textureVertexShader",
-                                            fragmentShaderName:"textureFragmentShader",
-                                            doIncludeDepthAttachment: true,
-                                            vertexDescriptor: nil)
-            
-            renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
-            
-            heroBackdropPipelineState = try device.makeRenderPipelineState(descriptor:renderPipelineDescriptor)
+
+            let desc = MTLRenderPipelineDescriptor(view:view, library:library!, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", doIncludeDepthAttachment: true, vertexDescriptor: nil)
+            desc.depthAttachmentPixelFormat = .depth32Float
+
+            heroBackdropPipelineState = try device.makeRenderPipelineState(descriptor: desc)
 
         } catch let e {
             Swift.print("\(e)")
@@ -97,24 +83,21 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         // final pass
         finalPassRenderSurface = EIQuad(device: device)
-        
+
         do {
             finalPassTexture = try makeTexture(device: device, name: "mobile-overlay")
         } catch {
             fatalError("Error: Can not load texture")
         }
-        
+
 
         do {
+
+            let desc = MTLRenderPipelineDescriptor(view:view, library:library!, vertexShaderName:"finalPassVertexShader", fragmentShaderName:"finalPassOverlayFragmentShader", doIncludeDepthAttachment: false, vertexDescriptor: nil)
+            desc.depthAttachmentPixelFormat = .depth32Float
             
-            finalPassPipelineState = try device.makeRenderPipelineState(descriptor:
-                MTLRenderPipelineDescriptor(view:view,
-                                            library:library!,
-                                            vertexShaderName:"finalPassVertexShader",
-                                            fragmentShaderName:"finalPassOverlayFragmentShader",
-                                            doIncludeDepthAttachment: false,
-                                            vertexDescriptor: nil))
-            
+            finalPassPipelineState = try device.makeRenderPipelineState(descriptor: desc)
+
         } catch let e {
             Swift.print("\(e)")
         }
@@ -131,27 +114,18 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         view.arcBall.reshape(viewBounds: view.bounds)
 
-        camera.setProjection(fovYDegrees:Float(35),
-                             aspectRatioWidthOverHeight:Float(view.bounds.size.width/view.bounds.size.height),
-                             near:200,
-                             far: 8000)
+        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width/view.bounds.size.height), near:200, far: 8000)
 
         // color
-        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat,
-                                                                             width:Int(view.bounds.size.width),
-                                                                             height:Int(view.bounds.size.height),
-                                                                             mipmapped:true)
-        
-        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = view.device?.makeTexture(descriptor:rgbaTextureDescriptor)
+        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:true)
+        rgbaTextureDescriptor.usage = [.renderTarget, .shaderRead]
 
         // depth
-        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float,
-                                                                              width:Int(view.bounds.size.width),
-                                                                              height:Int(view.bounds.size.height),
-                                                                              mipmapped:false)
-        
-        renderToTexturePassDescriptor.depthAttachment.texture = view.device?.makeTexture(descriptor:depthTextureDescriptor)
+        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:false)
+        depthTextureDescriptor.usage = .renderTarget
 
+        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = view.device?.makeTexture(descriptor:rgbaTextureDescriptor)
+        renderToTexturePassDescriptor.depthAttachment.texture       = view.device?.makeTexture(descriptor:depthTextureDescriptor)
     }
 
     func update(view: RenderPassMetalView, drawableSize:CGSize) {
@@ -182,12 +156,14 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         // render to texture
         let renderToTextureCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderToTexturePassDescriptor)
+
         renderToTextureCommandEncoder.setFrontFacing(.counterClockwise)
         renderToTextureCommandEncoder.setTriangleFillMode(.fill)
         renderToTextureCommandEncoder.setCullMode(.none)
 
         // hero backdrop
         renderToTextureCommandEncoder.setRenderPipelineState(heroBackdropPipelineState)
+
         renderToTextureCommandEncoder.setVertexBuffer(heroBackdrop.vertexMetalBuffer, offset: 0, at: 0)
         renderToTextureCommandEncoder.setVertexBuffer(heroBackdrop.metallicTransform.metalBuffer, offset: 0, at: 1)
         renderToTextureCommandEncoder.setFragmentTexture(heroBackdropTexture, at: 0)
@@ -200,6 +176,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         // hero model
         renderToTextureCommandEncoder.setRenderPipelineState(heroModelPipelineState)
+
         renderToTextureCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
         renderToTextureCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
         renderToTextureCommandEncoder.setFragmentTexture(heroModelTexture, at: 0)
@@ -216,7 +193,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
             finalPassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
-
+            
             let finalPassCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
             finalPassCommandEncoder.setRenderPipelineState(finalPassPipelineState)
 
@@ -226,10 +203,10 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
             finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.vertexMetalBuffer, offset: 0, at:0)
             finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.metallicTransform.metalBuffer, offset: 0, at:1)
-
+        
             finalPassCommandEncoder.setFragmentTexture(renderToTexturePassDescriptor.colorAttachments[ 0 ].texture, at:0)
             finalPassCommandEncoder.setFragmentTexture(finalPassTexture, at:1)
-            
+
             finalPassCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
                     indexCount: finalPassRenderSurface.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
