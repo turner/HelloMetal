@@ -13,6 +13,9 @@ public class EIView: MTKView {
         // Use 4x MSAA multisampling
         sampleCount = 4
         
+        //
+        self.depthStencilPixelFormat = .depth32Float
+        
         // we will call MTKView.draw() explicitly
         isPaused = true
         enableSetNeedsDisplay = true

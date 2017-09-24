@@ -50,13 +50,17 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         do {
             
-            heroModelPipelineState = try device.makeRenderPipelineState(descriptor:
+            let renderPipelineDescriptor =
                 MTLRenderPipelineDescriptor(view:view,
                                             library:library!,
                                             vertexShaderName:"textureVertexShader",
                                             fragmentShaderName:"textureFragmentShader",
                                             doIncludeDepthAttachment: true,
-                                            vertexDescriptor: nil))
+                                            vertexDescriptor: nil)
+            
+            renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
+            
+            heroModelPipelineState = try device.makeRenderPipelineState(descriptor:renderPipelineDescriptor)
 
         } catch let e {
             Swift.print("\(e)")
@@ -73,14 +77,18 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         
         do {
             
-            heroBackdropPipelineState = try device.makeRenderPipelineState(descriptor:
+            let renderPipelineDescriptor =
                 MTLRenderPipelineDescriptor(view:view,
                                             library:library!,
                                             vertexShaderName:"textureVertexShader",
                                             fragmentShaderName:"textureFragmentShader",
                                             doIncludeDepthAttachment: true,
-                                            vertexDescriptor: nil))
+                                            vertexDescriptor: nil)
             
+            renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
+            
+            heroBackdropPipelineState = try device.makeRenderPipelineState(descriptor:renderPipelineDescriptor)
+
         } catch let e {
             Swift.print("\(e)")
         }

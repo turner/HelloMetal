@@ -41,19 +41,20 @@ class Renderer: NSObject, MTKViewDelegate {
 
         do {
             
-            heroModelPipelineState =
-                try device.makeRenderPipelineState(descriptor:
-                    MTLRenderPipelineDescriptor(view:view,
-                                                library:library!,
-
-//                                                vertexShaderName:"showSTVertexShader",
-//                                                fragmentShaderName:"showSTFragmentShader",
-
-                                                vertexShaderName:"textureVertexShader",
-                                                fragmentShaderName:"textureFragmentShader",
-                                                
-                                                doIncludeDepthAttachment: false,
-                                                vertexDescriptor: nil))
+            let renderPipelineDescriptor =
+                MTLRenderPipelineDescriptor(view:view,
+                                            library:library!,
+                                            // vertexShaderName:"showSTVertexShader",
+                                            // fragmentShaderName:"showSTFragmentShader",
+                                            vertexShaderName:"textureVertexShader",
+                                            fragmentShaderName:"textureFragmentShader",
+                                            doIncludeDepthAttachment: false,
+                                            vertexDescriptor: nil)
+            
+            renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
+                
+            heroModelPipelineState = try device.makeRenderPipelineState(descriptor:renderPipelineDescriptor)
+            
         } catch let e {
             Swift.print("\(e)")
         }

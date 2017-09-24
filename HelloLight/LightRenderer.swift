@@ -52,18 +52,24 @@ class LightRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            heroModelPipelineState =
-                    try device.makeRenderPipelineState(descriptor:MTLRenderPipelineDescriptor(view:view,
-                            library:library!,
-                            
-//                            vertexShaderName:"litTextureMIOVertexShader",
-//                            fragmentShaderName:"litTextureMIOFragmentShader",
-                        
-                            vertexShaderName:"showMIOVertexShader",
-                            fragmentShaderName:"showMIOFragmentShader",
+            
+            let renderPipelineDescriptor =
+                MTLRenderPipelineDescriptor(view:view,
+                                            library:library!,
+                                            
+                                            // vertexShaderName:"litTextureMIOVertexShader",
+                                            // fragmentShaderName:"litTextureMIOFragmentShader",
+                    
+                                            vertexShaderName:"showMIOVertexShader",
+                                            fragmentShaderName:"showMIOFragmentShader",
+                                            
+                                            doIncludeDepthAttachment: false,
+                                            vertexDescriptor: heroModel.metalVertexDescriptor)
+            
+            renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
+            
+            heroModelPipelineState = try device.makeRenderPipelineState(descriptor:renderPipelineDescriptor)
 
-                            doIncludeDepthAttachment: false,
-                            vertexDescriptor:heroModel.metalVertexDescriptor))
         } catch let e {
             Swift.print("\(e)")
         }
@@ -78,14 +84,20 @@ class LightRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            renderPlanePipelineState =
-                    try device.makeRenderPipelineState(descriptor:
-                    MTLRenderPipelineDescriptor(view:view,
-                            library:library!,
-                            vertexShaderName:"textureMIOVertexShader",
-                            fragmentShaderName:"textureMIOFragmentShader",
-                            doIncludeDepthAttachment: false,
-                            vertexDescriptor: renderPlane.metalVertexDescriptor))
+            
+            let renderPipelineDescriptor =
+                MTLRenderPipelineDescriptor(view:view,
+                                            library:library!,
+                                            
+                                            vertexShaderName:"textureMIOVertexShader",
+                                            fragmentShaderName:"textureMIOFragmentShader",
+                                            
+                                            doIncludeDepthAttachment: false,
+                                            vertexDescriptor: renderPlane.metalVertexDescriptor)
+            
+            renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
+            
+            renderPlanePipelineState = try device.makeRenderPipelineState(descriptor:renderPipelineDescriptor)
 
         } catch let e {
             Swift.print("\(e)")

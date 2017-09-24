@@ -42,20 +42,24 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
         do {
             
-            heroModelPipelineState =
-                try device.makeRenderPipelineState(descriptor:
-                    MTLRenderPipelineDescriptor(view:view,
-                                                library:library!,
-                                                vertexShaderName:"textureVertexShader",
-                                                fragmentShaderName:"textureFragmentShader",
-                                                doIncludeDepthAttachment: false,
-                                                vertexDescriptor: nil))
+            let renderPipelineDescriptor =
+                MTLRenderPipelineDescriptor(view:view,
+                                            library:library!,
+                                            vertexShaderName:"textureVertexShader",
+                                            fragmentShaderName:"textureFragmentShader",
+                                            doIncludeDepthAttachment: false,
+                                            vertexDescriptor: nil)
+            
+            renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
+            
+            heroModelPipelineState = try device.makeRenderPipelineState(descriptor:renderPipelineDescriptor)
+            
         } catch let e {
             Swift.print("\(e)")
         }
 
 
-        // render plane
+        // camera render plane
         cameraPlane = EIQuad(device: device)
 
         do {
@@ -66,14 +70,17 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         
         do {
             
-            cameraPlanePipelineState =
-                try device.makeRenderPipelineState(descriptor:
-                    MTLRenderPipelineDescriptor(view:view,
-                                                library:library!,
-                                                vertexShaderName:"textureVertexShader",
-                                                fragmentShaderName:"textureFragmentShader",
-                                                doIncludeDepthAttachment: false,
-                                                vertexDescriptor: nil))
+            let renderPipelineDescriptor =
+                MTLRenderPipelineDescriptor(view:view,
+                                            library:library!,
+                                            vertexShaderName:"textureVertexShader",
+                                            fragmentShaderName:"textureFragmentShader",
+                                            doIncludeDepthAttachment: false,
+                                            vertexDescriptor: nil)
+            
+            renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
+            
+            cameraPlanePipelineState = try device.makeRenderPipelineState(descriptor:renderPipelineDescriptor)
             
         } catch let e {
             Swift.print("\(e)")
