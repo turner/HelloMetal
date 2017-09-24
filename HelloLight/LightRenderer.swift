@@ -57,12 +57,12 @@ class LightRenderer: NSObject, MTKViewDelegate {
                 MTLRenderPipelineDescriptor(view:view,
                                             library:library!,
                                             
-                                            // vertexShaderName:"litTextureMIOVertexShader",
-                                            // fragmentShaderName:"litTextureMIOFragmentShader",
+                                             vertexShaderName:"litTextureMIOVertexShader",
+                                             fragmentShaderName:"litTextureMIOFragmentShader",
                     
-                                            vertexShaderName:"showMIOVertexShader",
-                                            fragmentShaderName:"showMIOFragmentShader",
-                                            
+//                                            vertexShaderName:"showMIOVertexShader",
+//                                            fragmentShaderName:"showMIOFragmentShader",
+                    
                                             doIncludeDepthAttachment: false,
                                             vertexDescriptor: heroModel.metalVertexDescriptor)
             
