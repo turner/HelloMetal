@@ -15,11 +15,10 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
     var heroModel: EIMesh
     
-    var heroModelTexture: MTLTexture
     var heroModelPipelineState: MTLRenderPipelineState!
 
-    var frontTexture: MTLTexture
-    var backTexture: MTLTexture
+    var heroModelFrontFacingTexture: MTLTexture
+    var heroModalBackFacingTexture: MTLTexture
 
     var renderPlane: EIMesh
     var renderPlaneTexture: MTLTexture
@@ -42,22 +41,15 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         heroModel = EIMesh.sceneMesh(device:device,
                                      sceneName:"scenes.scnassets/high-res-head-no-groups.scn",
                                      nodeName:"highResHeadIdentity")
-        
+
         do {
-            heroModelTexture = try makeTexture(device: device, name: "mandrill")
+            heroModelFrontFacingTexture = try makeTexture(device: device, name: "blue_grey")
         } catch {
             fatalError("Error: Can not load texture")
         }
 
         do {
-//            frontTexture = try makeTexture(device: device, name: "diagnostic")
-            frontTexture = try makeTexture(device: device, name: "diagnostic_dugla")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-        do {
-            backTexture = try makeTexture(device: device, name: "show_st")
+            heroModalBackFacingTexture = try makeTexture(device: device, name: "show_st")
         } catch {
             fatalError("Error: Can not load texture")
         }
@@ -193,8 +185,8 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
             
-            renderCommandEncoder.setFragmentTexture(frontTexture, at: 0)
-            renderCommandEncoder.setFragmentTexture(backTexture, at: 1)
+            renderCommandEncoder.setFragmentTexture(heroModelFrontFacingTexture, at: 0)
+            renderCommandEncoder.setFragmentTexture(heroModalBackFacingTexture, at: 1)
 
             renderCommandEncoder.drawIndexedPrimitives(type: heroModel.primitiveType,
                                                        indexCount: heroModel.indexCount,
