@@ -50,7 +50,8 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            frontTexture = try makeTexture(device: device, name: "diagnostic")
+//            frontTexture = try makeTexture(device: device, name: "diagnostic")
+            frontTexture = try makeTexture(device: device, name: "diagnostic_dugla")
         } catch {
             fatalError("Error: Can not load texture")
         }
