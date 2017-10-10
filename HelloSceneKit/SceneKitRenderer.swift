@@ -14,7 +14,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
     var camera: EICamera
 
     var heroModel: EIMesh
-    
+
     var heroModelPipelineState: MTLRenderPipelineState!
 
     var heroModelFrontFacingTexture: MTLTexture
@@ -23,7 +23,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
     var renderPlane: EIMesh
     var renderPlaneTexture: MTLTexture
     var renderPlanePipelineState: MTLRenderPipelineState!
-    
+
     var depthStencilState: MTLDepthStencilState
 
     var commandQueue: MTLCommandQueue
@@ -31,16 +31,16 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
     init(view: MTKView, device: MTLDevice) {
 
         let library = device.newDefaultLibrary()
-                        
+
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
-        
+
 //        heroModel = EIMesh.sceneMesh(device:device,
 //                                     sceneName:"scenes.scnassets/teapot.scn",
 //                                     nodeName:"teapotIdentity")
-        
+
         heroModel = EIMesh.sceneMesh(device:device,
-                                     sceneName:"scenes.scnassets/high-res-head-no-groups.scn",
-                                     nodeName:"highResHeadIdentity")
+                sceneName:"scenes.scnassets/high-res-head-no-groups.scn",
+                nodeName:"highResHeadIdentity")
 
         do {
             heroModelFrontFacingTexture = try makeTexture(device: device, name: "blue_grey")
@@ -55,22 +55,22 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            
+
             let desc = MTLRenderPipelineDescriptor(view:view,
-                                                   library:library!,
-                                                   
-                                                   // vertexShaderName:"showMIOVertexShader",
-                                                    // fragmentShaderName:"showMIOFragmentShader",
-                
-                                                    vertexShaderName:"textureTwoSidedMIOVertexShader",
-                                                    fragmentShaderName:"textureTwoSidedMIOFragmentShader",
-                
-                                                    doIncludeDepthAttachment: false,
-                                                    vertexDescriptor:heroModel.metalVertexDescriptor)
-            
+                    library:library!,
+
+                    // vertexShaderName:"showMIOVertexShader",
+                    // fragmentShaderName:"showMIOFragmentShader",
+
+                    vertexShaderName:"textureTwoSidedMIOVertexShader",
+                    fragmentShaderName:"textureTwoSidedMIOFragmentShader",
+
+                    doIncludeDepthAttachment: false,
+                    vertexDescriptor:heroModel.metalVertexDescriptor)
+
             desc.depthAttachmentPixelFormat = .depth32Float;
 
-            
+
             heroModelPipelineState = try device.makeRenderPipelineState(descriptor:desc)
         } catch let e {
             Swift.print("\(e)")
@@ -86,16 +86,16 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            
+
             let desc = MTLRenderPipelineDescriptor(view:view,
-                                                   library:library!,
-                                                   
-                                                   vertexShaderName:"textureTwoSidedMIOVertexShader",
-                                                   fragmentShaderName:"textureTwoSidedMIOFragmentShader",
-                
-                                                   doIncludeDepthAttachment: false,
-                                                   vertexDescriptor:renderPlane.metalVertexDescriptor)
-            
+                    library:library!,
+
+                    vertexShaderName:"textureTwoSidedMIOVertexShader",
+                    fragmentShaderName:"textureTwoSidedMIOFragmentShader",
+
+                    doIncludeDepthAttachment: false,
+                    vertexDescriptor:renderPlane.metalVertexDescriptor)
+
             desc.depthAttachmentPixelFormat = .depth32Float;
 
             renderPlanePipelineState = try device.makeRenderPipelineState(descriptor:desc)
@@ -107,9 +107,9 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
         depthStencilDescriptor.depthCompareFunction = .less
         depthStencilDescriptor.isDepthWriteEnabled = true
-        
+
         depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
-        
+
         commandQueue = device.makeCommandQueue()
 
     }
@@ -132,12 +132,12 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
         // hero model
         heroModel.metallicTransform.update(camera: camera, transformer: {
-            
+
 //            return view.arcBall.rotationMatrix
-            
+
             // scaling for high res head
             return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(750, 750, 750) * GLKMatrix4MakeTranslation(0.0, 0.075, 0.101)
-            
+
             // scaling for teapot
 //            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
         })
@@ -153,13 +153,13 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
             let commandBuffer = commandQueue.makeCommandBuffer()
 
             let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
-            
+
             renderCommandEncoder.setDepthStencilState(depthStencilState)
-            
+
             renderCommandEncoder.setFrontFacing(.counterClockwise)
             renderCommandEncoder.setCullMode(.none)
-            
-            
+
+
             // render plane
             renderCommandEncoder.setTriangleFillMode(.fill)
 
@@ -171,11 +171,11 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
             renderCommandEncoder.setFragmentTexture(renderPlaneTexture, at: 0)
 
             renderCommandEncoder.drawIndexedPrimitives(type: renderPlane.primitiveType,
-                                                       indexCount: renderPlane.indexCount,
-                                                       indexType: renderPlane.indexType,
-                                                       indexBuffer: renderPlane.vertexIndexMetalBuffer,
-                                                       indexBufferOffset: 0)
-            
+                    indexCount: renderPlane.indexCount,
+                    indexType: renderPlane.indexType,
+                    indexBuffer: renderPlane.vertexIndexMetalBuffer,
+                    indexBufferOffset: 0)
+
 
             // hero model
             renderCommandEncoder.setTriangleFillMode(.fill)
@@ -184,20 +184,20 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
             renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
             renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
-            
+
             renderCommandEncoder.setFragmentTexture(heroModelFrontFacingTexture, at: 0)
             renderCommandEncoder.setFragmentTexture(heroModalBackFacingTexture, at: 1)
 
             renderCommandEncoder.drawIndexedPrimitives(type: heroModel.primitiveType,
-                                                       indexCount: heroModel.indexCount,
-                                                       indexType: heroModel.indexType,
-                                                       indexBuffer: heroModel.vertexIndexMetalBuffer,
-                                                       indexBufferOffset: 0)
-            
+                    indexCount: heroModel.indexCount,
+                    indexType: heroModel.indexType,
+                    indexBuffer: heroModel.vertexIndexMetalBuffer,
+                    indexBufferOffset: 0)
+
             renderCommandEncoder.endEncoding()
 
             commandBuffer.present(drawable)
-            
+
             commandBuffer.commit()
         }
 
