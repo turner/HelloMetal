@@ -38,9 +38,7 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 //                                     sceneName:"scenes.scnassets/teapot.scn",
 //                                     nodeName:"teapotIdentity")
 
-        heroModel = EIMesh.sceneMesh(device:device,
-                sceneName:"scenes.scnassets/high-res-head-no-groups.scn",
-                nodeName:"highResHeadIdentity")
+        heroModel = EIMesh.sceneMesh(device:device, sceneName:"scenes.scnassets/high-res-head-no-groups.scn", nodeName:"highResHeadIdentity")
 
         do {
             heroModelFrontFacingTexture = try makeTexture(device: device, name: "blue_grey")
