@@ -57,11 +57,11 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
             let desc = MTLRenderPipelineDescriptor(view:view,
                     library:library!,
 
-                    // vertexShaderName:"showMIOVertexShader",
-                    // fragmentShaderName:"showMIOFragmentShader",
+                     vertexShaderName:"showMIOVertexShader",
+                     fragmentShaderName:"showMIOFragmentShader",
 
-                    vertexShaderName:"textureTwoSidedMIOVertexShader",
-                    fragmentShaderName:"textureTwoSidedMIOFragmentShader",
+//                    vertexShaderName:"textureTwoSidedMIOVertexShader",
+//                    fragmentShaderName:"textureTwoSidedMIOFragmentShader",
 
                     doIncludeDepthAttachment: false,
                     vertexDescriptor:heroModel.metalVertexDescriptor)
