@@ -22,7 +22,7 @@ func textureFromOpenEXR(device: MTLDevice, name:String) -> MTLTexture {
 //    let buffer = UnsafeBufferPointer(start: theBits, count: length);
     
     let byteCount = wp.pointee * hp.pointee * MemoryLayout<CUnsignedShort>.size * 4
-    let mtlBuffer:MTLBuffer = device.makeBuffer(bytes:theBits, length:byteCount, options:.storageModeShared)
+    let mtlBuffer:MTLBuffer = device.makeBuffer(bytes:theBits, length:byteCount, options:.storageModeShared)!
     
     let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.rgba16Float,
                                                               width:wp.pointee,
@@ -31,6 +31,6 @@ func textureFromOpenEXR(device: MTLDevice, name:String) -> MTLTexture {
     
     let bytesPerPixel = MemoryLayout<CUnsignedShort>.size * 4
     let bytesPerRow = bytesPerPixel * wp.pointee
-    return mtlBuffer.makeTexture(descriptor:descriptor, offset: 0, bytesPerRow:bytesPerRow)
+    return mtlBuffer.makeTexture(descriptor:descriptor, offset: 0, bytesPerRow:bytesPerRow)!
     
 }

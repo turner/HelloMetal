@@ -27,7 +27,7 @@ class Renderer: NSObject, MTKViewDelegate {
         self.view = view
         self.device = device
         
-        let library = device.newDefaultLibrary()
+        let library = device.makeDefaultLibrary()
         
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
@@ -59,7 +59,7 @@ class Renderer: NSObject, MTKViewDelegate {
             Swift.print("\(e)")
         }
         
-        commandQueue = device.makeCommandQueue()
+        commandQueue = device.makeCommandQueue()!
 
     }
     
@@ -90,9 +90,9 @@ class Renderer: NSObject, MTKViewDelegate {
             passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.5, 0.5, 0.5, 1.0)
 //            passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1,1,1,1)
 
-            let commandBuffer = commandQueue.makeCommandBuffer()
+            let commandBuffer = commandQueue.makeCommandBuffer()!
 
-            let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: passDescriptor)
+            let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: passDescriptor)!
 
             renderCommandEncoder.setFrontFacing(.counterClockwise)
             
@@ -100,9 +100,9 @@ class Renderer: NSObject, MTKViewDelegate {
 //            renderCommandEncoder.setTriangleFillMode(.lines)
             
             renderCommandEncoder.setRenderPipelineState(heroModelPipelineState)
-            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
-            renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
-            renderCommandEncoder.setFragmentTexture(heroModelTexture, at: 0)
+            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, index: 0)
+            renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, index: 1)
+            renderCommandEncoder.setFragmentTexture(heroModelTexture, index: 0)
             renderCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
                     indexCount: heroModel.indexCount,

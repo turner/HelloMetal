@@ -123,12 +123,12 @@ class EIMesh {
         let indexBuffer = mdlSubmesh.indexBuffer
         vertexIndexMetalBuffer = device.makeBuffer(bytes:indexBuffer.map().bytes,
                 length:indexBuffer.length,
-                options:MTLResourceOptions.storageModeShared)
+                options:MTLResourceOptions.storageModeShared)!
 
         let vertexBuffer = modelIOMesh.vertexBuffers[ 0 ]
         vertexMetalBuffer = device.makeBuffer(bytes:vertexBuffer.map().bytes,
                 length:vertexBuffer.length,
-                options:MTLResourceOptions.storageModeShared)
+                options:MTLResourceOptions.storageModeShared)!
 
         modelIOMeshMetallic = MDLMesh.newPlane(withDimensions:vector_float2(4, 4),
                 segments:vector_uint2(2, 2),

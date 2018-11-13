@@ -22,7 +22,7 @@ struct EITransform {
     var metalBuffer: MTLBuffer
 
     init(device: MTLDevice) {
-        metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])
+        metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])!
     }
 
     /*
