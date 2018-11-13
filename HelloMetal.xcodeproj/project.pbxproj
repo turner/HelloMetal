@@ -1147,7 +1147,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloSceneKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -1167,7 +1167,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloSceneKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -1185,7 +1185,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IO";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -1203,7 +1203,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IO";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -1221,7 +1221,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloRenderPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -1239,7 +1239,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloRenderPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -1257,7 +1257,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.Hello;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -1275,7 +1275,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.Hello;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -1293,7 +1293,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloCameraPlane;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -1311,7 +1311,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloCameraPlane;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -1449,7 +1449,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HelloOpenEXR/HelloOpenEXR-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -1470,7 +1470,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloOpenEXR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HelloOpenEXR/HelloOpenEXR-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -1489,7 +1489,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloLight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -1508,7 +1508,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloLight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
