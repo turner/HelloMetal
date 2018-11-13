@@ -68,7 +68,6 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
 
             desc.depthAttachmentPixelFormat = .depth32Float;
 
-
             heroModelPipelineState = try device.makeRenderPipelineState(descriptor:desc)
         } catch let e {
             Swift.print("\(e)")

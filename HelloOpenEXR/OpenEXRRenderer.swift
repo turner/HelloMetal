@@ -48,15 +48,20 @@ class OpenEXRRenderer: NSObject, MTKViewDelegate {
         heroModelTexture = textureFromOpenEXR(device:device, name: "alias_wavefront_diagnostic.exr")
 
         do {
-            heroModelPipelineState =
-                    try device.makeRenderPipelineState(descriptor:MTLRenderPipelineDescriptor(view:view,
-                            library:library!,
-                                                    
-                            vertexShaderName:"openexrVertexShader",
-                            fragmentShaderName:"openexrFragmentShader",
 
-                            doIncludeDepthAttachment: false,
-                            vertexDescriptor:heroModel.metalVertexDescriptor))
+
+            let desc = MTLRenderPipelineDescriptor(view:view,
+                    library:library!,
+
+                    vertexShaderName:"openexrVertexShader",
+                    fragmentShaderName:"openexrFragmentShader",
+
+                    doIncludeDepthAttachment: false,
+                    vertexDescriptor:heroModel.metalVertexDescriptor)
+
+            desc.depthAttachmentPixelFormat = .depth32Float;
+
+            heroModelPipelineState = try device.makeRenderPipelineState(descriptor:desc)
         } catch let e {
             Swift.print("\(e)")
         }
@@ -71,14 +76,20 @@ class OpenEXRRenderer: NSObject, MTKViewDelegate {
         }
 
         do {
-            renderPlanePipelineState =
-                    try device.makeRenderPipelineState(descriptor:
-                    MTLRenderPipelineDescriptor(view:view,
-                            library:library!,
-                            vertexShaderName:"textureMIOVertexShader",
-                            fragmentShaderName:"textureMIOFragmentShader",
-                            doIncludeDepthAttachment: false,
-                            vertexDescriptor: renderPlane.metalVertexDescriptor))
+
+
+            let desc = MTLRenderPipelineDescriptor(view:view,
+                    library:library!,
+
+                    vertexShaderName:"textureMIOVertexShader",
+                    fragmentShaderName:"textureMIOFragmentShader",
+
+                    doIncludeDepthAttachment: false,
+                    vertexDescriptor:renderPlane.metalVertexDescriptor)
+
+            desc.depthAttachmentPixelFormat = .depth32Float;
+
+            renderPlanePipelineState = try device.makeRenderPipelineState(descriptor:desc)
 
         } catch let e {
             Swift.print("\(e)")
