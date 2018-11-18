@@ -35,7 +35,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
     init(view: MTKView, device: MTLDevice) {
 
-        let library = device.newDefaultLibrary()
+        let library = device.makeDefaultLibrary()
 
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
@@ -151,11 +151,11 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         update(view: view as! RenderPassMetalView, drawableSize: view.bounds.size)
 
-        let commandBuffer = commandQueue.makeCommandBuffer()
+        let commandBuffer = commandQueue.makeCommandBuffer()!
 
 
         // render to texture
-        let renderToTextureCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderToTexturePassDescriptor)
+        let renderToTextureCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderToTexturePassDescriptor)!
 
         renderToTextureCommandEncoder.setFrontFacing(.counterClockwise)
         renderToTextureCommandEncoder.setTriangleFillMode(.fill)
@@ -164,9 +164,9 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         // hero backdrop
         renderToTextureCommandEncoder.setRenderPipelineState(heroBackdropPipelineState)
 
-        renderToTextureCommandEncoder.setVertexBuffer(heroBackdrop.vertexMetalBuffer, offset: 0, at: 0)
-        renderToTextureCommandEncoder.setVertexBuffer(heroBackdrop.metallicTransform.metalBuffer, offset: 0, at: 1)
-        renderToTextureCommandEncoder.setFragmentTexture(heroBackdropTexture, at: 0)
+        renderToTextureCommandEncoder.setVertexBuffer(heroBackdrop.vertexMetalBuffer, offset: 0, index: 0)
+        renderToTextureCommandEncoder.setVertexBuffer(heroBackdrop.metallicTransform.metalBuffer, offset: 0, index: 1)
+        renderToTextureCommandEncoder.setFragmentTexture(heroBackdropTexture, index: 0)
         renderToTextureCommandEncoder.drawIndexedPrimitives(
                 type: .triangle,
                 indexCount: heroBackdrop.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
@@ -177,9 +177,9 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         // hero model
         renderToTextureCommandEncoder.setRenderPipelineState(heroModelPipelineState)
 
-        renderToTextureCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
-        renderToTextureCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
-        renderToTextureCommandEncoder.setFragmentTexture(heroModelTexture, at: 0)
+        renderToTextureCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, index: 0)
+        renderToTextureCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, index: 1)
+        renderToTextureCommandEncoder.setFragmentTexture(heroModelTexture, index: 0)
         renderToTextureCommandEncoder.drawIndexedPrimitives(
                 type: .triangle,
                 indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
@@ -194,18 +194,18 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
             finalPassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
             
-            let finalPassCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
+            let finalPassCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)!
             finalPassCommandEncoder.setRenderPipelineState(finalPassPipelineState)
 
             finalPassCommandEncoder.setFrontFacing(.counterClockwise)
             finalPassCommandEncoder.setTriangleFillMode(.fill)
             finalPassCommandEncoder.setCullMode(.none)
 
-            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.vertexMetalBuffer, offset: 0, at:0)
-            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.metallicTransform.metalBuffer, offset: 0, at:1)
+            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.vertexMetalBuffer, offset: 0, index:0)
+            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.metallicTransform.metalBuffer, offset: 0, index:1)
         
-            finalPassCommandEncoder.setFragmentTexture(renderToTexturePassDescriptor.colorAttachments[ 0 ].texture, at:0)
-            finalPassCommandEncoder.setFragmentTexture(finalPassTexture, at:1)
+            finalPassCommandEncoder.setFragmentTexture(renderToTexturePassDescriptor.colorAttachments[ 0 ].texture, index:0)
+            finalPassCommandEncoder.setFragmentTexture(finalPassTexture, index:1)
 
             finalPassCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,

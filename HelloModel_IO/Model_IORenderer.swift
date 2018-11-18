@@ -31,7 +31,7 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
     
     init(view: MTKView, device: MTLDevice) {
 
-        let library = device.newDefaultLibrary()
+        let library = device.makeDefaultLibrary()
                 
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
@@ -108,9 +108,9 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
         depthStencilDescriptor.depthCompareFunction = .less
         depthStencilDescriptor.isDepthWriteEnabled = true
         
-        depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
+        depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)!
         
-        commandQueue = device.makeCommandQueue()
+        commandQueue = device.makeCommandQueue()!
 
     }
 
@@ -144,9 +144,9 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
         // final pass
         if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
-            let commandBuffer = commandQueue.makeCommandBuffer()
+            let commandBuffer = commandQueue.makeCommandBuffer()!
 
-            let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
+            let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)!
             
             renderCommandEncoder.setDepthStencilState(depthStencilState)
             
@@ -162,10 +162,10 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
 
             renderCommandEncoder.setRenderPipelineState(renderPlanePipelineState)
 
-            renderCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, at: 0)
-            renderCommandEncoder.setVertexBuffer(renderPlane.metallicTransform.metalBuffer, offset: 0, at: 1)
+            renderCommandEncoder.setVertexBuffer(renderPlane.vertexMetalBuffer, offset: 0, index: 0)
+            renderCommandEncoder.setVertexBuffer(renderPlane.metallicTransform.metalBuffer, offset: 0, index: 1)
 
-            renderCommandEncoder.setFragmentTexture(renderPlaneTexture, at: 0)
+            renderCommandEncoder.setFragmentTexture(renderPlaneTexture, index: 0)
 
             renderCommandEncoder.drawIndexedPrimitives(
                     type: renderPlane.primitiveType,
@@ -183,10 +183,10 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
 
             renderCommandEncoder.setRenderPipelineState(heroModelPipelineState)
 
-            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
-            renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
+            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, index: 0)
+            renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, index: 1)
 
-            renderCommandEncoder.setFragmentTexture(heroModelTexture, at: 0)
+            renderCommandEncoder.setFragmentTexture(heroModelTexture, index: 0)
 
             renderCommandEncoder.drawIndexedPrimitives(
                     type: heroModel.primitiveType,

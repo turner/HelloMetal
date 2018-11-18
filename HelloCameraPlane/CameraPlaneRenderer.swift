@@ -26,7 +26,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
     init(view: MTKView, device: MTLDevice) {
 
-        let library = device.newDefaultLibrary()
+        let library = device.makeDefaultLibrary()
         
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
@@ -86,7 +86,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
             Swift.print("\(e)")
         }
         
-        commandQueue = device.makeCommandQueue()
+        commandQueue = device.makeCommandQueue()!
 
     }
 
@@ -120,18 +120,18 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         // final pass
         if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
-            let commandBuffer = commandQueue.makeCommandBuffer()
+            let commandBuffer = commandQueue.makeCommandBuffer()!
             
-            let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)
+            let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)!
             renderCommandEncoder.setFrontFacing(.counterClockwise)
             renderCommandEncoder.setTriangleFillMode(.fill)
             renderCommandEncoder.setCullMode(.none)
 
             // render plane
             renderCommandEncoder.setRenderPipelineState(cameraPlanePipelineState)
-            renderCommandEncoder.setVertexBuffer(cameraPlane.vertexMetalBuffer, offset: 0, at: 0)
-            renderCommandEncoder.setVertexBuffer(cameraPlane.metallicTransform.metalBuffer, offset: 0, at: 1)
-            renderCommandEncoder.setFragmentTexture(cameraPlaneTexture, at: 0)
+            renderCommandEncoder.setVertexBuffer(cameraPlane.vertexMetalBuffer, offset: 0, index: 0)
+            renderCommandEncoder.setVertexBuffer(cameraPlane.metallicTransform.metalBuffer, offset: 0, index: 1)
+            renderCommandEncoder.setFragmentTexture(cameraPlaneTexture, index: 0)
             renderCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
                     indexCount: cameraPlane.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
@@ -141,9 +141,9 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
             // hero model
             renderCommandEncoder.setRenderPipelineState(heroModelPipelineState)
-            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, at: 0)
-            renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, at: 1)
-            renderCommandEncoder.setFragmentTexture(heroModelTexture, at: 0)
+            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, index: 0)
+            renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, index: 1)
+            renderCommandEncoder.setFragmentTexture(heroModelTexture, index: 0)
             renderCommandEncoder.drawIndexedPrimitives(
                     type: .triangle,
                     indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,

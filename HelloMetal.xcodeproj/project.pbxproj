@@ -680,38 +680,43 @@
 					4F4E3E201DD6177B005E40AC = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = NCTVS5F8E2;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					4F56AF851DBAF08E00E396E7 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NCTVS5F8E2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					4F64B3671DC3FD36005BD8B1 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NCTVS5F8E2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					4F7270351DC368780039E130 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NCTVS5F8E2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					4F7270821DC372410039E130 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = NCTVS5F8E2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					4FDFA7B51E0BF7CE005BEDF4 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = NCTVS5F8E2;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					4FEE5E0F1DEEDF5500B47AC2 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = NCTVS5F8E2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1142,7 +1147,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloSceneKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1161,7 +1167,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloSceneKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1178,7 +1185,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IO";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1195,7 +1203,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.elasticimagesoftware.HelloModel-IO";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1212,7 +1221,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloRenderPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1229,7 +1239,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloRenderPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1246,7 +1257,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.Hello;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1263,7 +1275,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.Hello;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1280,7 +1293,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloCameraPlane;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1297,7 +1311,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloCameraPlane;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1434,7 +1449,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HelloOpenEXR/HelloOpenEXR-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1454,7 +1470,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloOpenEXR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HelloOpenEXR/HelloOpenEXR-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1472,7 +1489,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloLight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1490,7 +1508,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elasticimagesoftware.HelloLight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
