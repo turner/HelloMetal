@@ -14,19 +14,16 @@ public class EIView: MTKView {
         sampleCount = 1
         
         //
-        self.depthStencilPixelFormat = .depth32Float
+        depthStencilPixelFormat = .depth32Float
         
         // we will call MTKView.draw() explicitly
         isPaused = true
         enableSetNeedsDisplay = true
 
-        device = MTLCreateSystemDefaultDevice()!
-
         arcBall = EIArcball(view:self)
+        addGestureRecognizer(UIPanGestureRecognizer.init(target: arcBall, action: #selector(EIArcball.arcBallPanHandler)))
 
-        addGestureRecognizer(UIPanGestureRecognizer.init(
-            target: arcBall,
-            action: #selector(EIArcball.arcBallPanHandler)))
+        device = MTLCreateSystemDefaultDevice()
 
     }
 }
