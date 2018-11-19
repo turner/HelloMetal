@@ -5,8 +5,14 @@ public class CameraPlaneMetalView: EIView {
 
     required public init(coder: NSCoder) {
         super.init(coder: coder)
-        renderer = CameraPlaneRenderer(view: self, device: device!)
-        delegate = renderer
+        
+        if let device = device {
+            renderer = CameraPlaneRenderer(view: self, device: device)
+            delegate = renderer
+        } else {
+            fatalError("Error: Failure to create device")
+        }
+
     }
 
 }
