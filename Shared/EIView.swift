@@ -23,15 +23,11 @@ public class EIView: MTKView {
         arcBall = EIArcball(view:self)
         addGestureRecognizer(UIPanGestureRecognizer.init(target: arcBall, action: #selector(EIArcball.arcBallPanHandler)))
 
-
         guard let defaultDevice = MTLCreateSystemDefaultDevice() else {
             fatalError("Can not create Metal device")
         }
         
         device = defaultDevice
-        
-        renderer = Renderer(view: self, device: defaultDevice)
-        delegate = renderer
 
     }
 }
