@@ -29,7 +29,7 @@
 		4F1CA3B01DC43680006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
-		4F2BC4A821A76A0600460598 /* EIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BC4A721A76A0600460598 /* EIViewController.swift */; };
+		4F3DFC6321A773820096BDD6 /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFC6221A773820096BDD6 /* HelloViewController.swift */; };
 		4F4E3E291DD6177B005E40AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E271DD6177B005E40AC /* Main.storyboard */; };
 		4F4E3E2B1DD6177B005E40AC /* SceneKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */; };
 		4F4E3E2E1DD6177B005E40AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E2C1DD6177B005E40AC /* LaunchScreen.storyboard */; };
@@ -205,7 +205,6 @@
 		4F10A9D61DC42DC800053B77 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shared/AppDelegate.swift; sourceTree = "<group>"; };
 		4F1A00591DC4C2C500DF5156 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		4F1CA3AE1DC43067006B6213 /* EIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIView.swift; path = Shared/EIView.swift; sourceTree = "<group>"; };
-		4F2BC4A721A76A0600460598 /* EIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIViewController.swift; path = Shared/EIViewController.swift; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
@@ -218,6 +217,7 @@
 		4F2F1F911DBA599900B80FE4 /* EITransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EITransform.swift; path = Shared/EITransform.swift; sourceTree = "<group>"; };
 		4F2F1F921DBA599900B80FE4 /* showST.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = showST.metal; path = Shared/showST.metal; sourceTree = "<group>"; };
 		4F2F1F931DBA599900B80FE4 /* texture.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = texture.metal; path = Shared/texture.metal; sourceTree = "<group>"; };
+		4F3DFC6221A773820096BDD6 /* HelloViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloViewController.swift; sourceTree = "<group>"; };
 		4F4E3E211DD6177B005E40AC /* HelloSceneKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSceneKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F4E3E281DD6177B005E40AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SceneKit.xcassets; sourceTree = "<group>"; };
@@ -386,7 +386,6 @@
 			isa = PBXGroup;
 			children = (
 				4F10A9D61DC42DC800053B77 /* AppDelegate.swift */,
-				4F2BC4A721A76A0600460598 /* EIViewController.swift */,
 				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
 				4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */,
 				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
@@ -453,6 +452,7 @@
 			children = (
 				4F72703F1DC368780039E130 /* Hello.xcassets */,
 				4F7270531DC369090039E130 /* Renderer.swift */,
+				4F3DFC6221A773820096BDD6 /* HelloViewController.swift */,
 				4F7270541DC369090039E130 /* MetalView.swift */,
 				4F72703C1DC368780039E130 /* Main.storyboard */,
 				4F7270411DC368780039E130 /* LaunchScreen.storyboard */,
@@ -921,7 +921,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F2BC4A821A76A0600460598 /* EIViewController.swift in Sources */,
 				4F10A9D71DC42DC800053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3AF1DC43067006B6213 /* EIView.swift in Sources */,
 				4F7270561DC369090039E130 /* MetalView.swift in Sources */,
@@ -931,6 +930,7 @@
 				4F67346C1DEFAF3D00443FEA /* model_io_lit_texture.metal in Sources */,
 				4F72704A1DC368C80039E130 /* EICamera.swift in Sources */,
 				4F72704B1DC368C80039E130 /* EIMath.swift in Sources */,
+				4F3DFC6321A773820096BDD6 /* HelloViewController.swift in Sources */,
 				4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */,
 				4F72704C1DC368C80039E130 /* EIQuad.swift in Sources */,
 				4F72704D1DC368C80039E130 /* EITransform.swift in Sources */,

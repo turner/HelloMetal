@@ -3,8 +3,8 @@ import MetalKit
 
 public class EIView: MTKView {
     
-    var renderer:MTKViewDelegate!
     var arcBall:EIArcball!
+    var renderer:Renderer!
 
     required public init(coder: NSCoder) {
 
@@ -23,7 +23,15 @@ public class EIView: MTKView {
         arcBall = EIArcball(view:self)
         addGestureRecognizer(UIPanGestureRecognizer.init(target: arcBall, action: #selector(EIArcball.arcBallPanHandler)))
 
-        device = MTLCreateSystemDefaultDevice()
+
+        guard let defaultDevice = MTLCreateSystemDefaultDevice() else {
+            fatalError("Can not create Metal device")
+        }
+        
+        device = defaultDevice
+        
+        renderer = Renderer(view: self, device: defaultDevice)
+        delegate = renderer
 
     }
 }

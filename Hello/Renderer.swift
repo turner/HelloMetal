@@ -12,57 +12,49 @@ import GLKit
 class Renderer: NSObject, MTKViewDelegate {
 
     var camera:EICamera
+    var model: EIQuad
+    var texture:MTLTexture
+    var pipelineState:MTLRenderPipelineState!
 
-    var heroModel: EIQuad
-    var heroModelTexture:MTLTexture
-    var heroModelPipelineState:MTLRenderPipelineState!
-
-    var commandQueue:MTLCommandQueue
-    
-    var view:MTKView
-    var device:MTLDevice
+    var commandQueue:MTLCommandQueue?
 
     init(view: MTKView, device: MTLDevice) {
-        
-        self.view = view
-        self.device = device
-        
-        let library = device.makeDefaultLibrary()
-        
+
+        guard let library = device.makeDefaultLibrary() else {
+            fatalError("Error: Can not create default library")
+        }
+
         camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        heroModel = EIQuad(device: device)
+        model = EIQuad(device: device)
 
         do {
-            heroModelTexture = try makeTexture(device: device, name: "kids_grid_3x3")
+            texture = try makeTexture(device: device, name: "kids_grid_3x3")
         } catch {
             fatalError("Error: Can not load texture")
         }
 
+
+        // vertexShaderName:"showSTVertexShader",
+        // fragmentShaderName:"showSTFragmentShader",
+        let pipelineDescriptor =
+                MTLRenderPipelineDescriptor(view:view, library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", doIncludeDepthAttachment: false, vertexDescriptor: nil)
+
+        pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
+
         do {
-            
-            let renderPipelineDescriptor =
-                MTLRenderPipelineDescriptor(view:view,
-                                            library:library!,
-                                            // vertexShaderName:"showSTVertexShader",
-                                            // fragmentShaderName:"showSTFragmentShader",
-                                            vertexShaderName:"textureVertexShader",
-                                            fragmentShaderName:"textureFragmentShader",
-                                            doIncludeDepthAttachment: false,
-                                            vertexDescriptor: nil)
-            
-            renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
-                
-            heroModelPipelineState = try device.makeRenderPipelineState(descriptor:renderPipelineDescriptor)
-            
+            pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
         }
-        
-        commandQueue = device.makeCommandQueue()!
 
+        guard let cq = device.makeCommandQueue() else {
+            fatalError("Error: Can not create command queue")
+        }
+
+        commandQueue = cq
     }
-    
+
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         reshape(view:view as! EIView)
     }
@@ -74,10 +66,10 @@ class Renderer: NSObject, MTKViewDelegate {
 
     func update(view: EIView, drawableSize:CGSize) {
 
-        heroModel.metallicTransform.update(camera: camera, transformer: {
+        model.metallicTransform.update(camera: camera, transformer: {
             return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
         })
-        
+
     }
 
     public func draw(in view: MTKView) {
@@ -90,30 +82,29 @@ class Renderer: NSObject, MTKViewDelegate {
             passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.5, 0.5, 0.5, 1.0)
 //            passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1,1,1,1)
 
-            let commandBuffer = commandQueue.makeCommandBuffer()!
+            guard let buffer = commandQueue!.makeCommandBuffer() else {
+                fatalError("Error: Can not create command buffer")
+            }
 
-            let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: passDescriptor)!
+            guard let encoder = buffer.makeRenderCommandEncoder(descriptor: passDescriptor) else {
+                fatalError("Error: Can not create command encoder")
+            }
 
-            renderCommandEncoder.setFrontFacing(.counterClockwise)
-            
-            renderCommandEncoder.setTriangleFillMode(.fill)
+            encoder.setFrontFacing(.counterClockwise)
+
+            encoder.setTriangleFillMode(.fill)
 //            renderCommandEncoder.setTriangleFillMode(.lines)
-            
-            renderCommandEncoder.setRenderPipelineState(heroModelPipelineState)
-            renderCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, index: 0)
-            renderCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, index: 1)
-            renderCommandEncoder.setFragmentTexture(heroModelTexture, index: 0)
-            renderCommandEncoder.drawIndexedPrimitives(
-                    type: .triangle,
-                    indexCount: heroModel.indexCount,
-                    indexType: MTLIndexType.uint16,
-                    indexBuffer: heroModel.vertexIndexMetalBuffer,
-                    indexBufferOffset: 0)
 
-            renderCommandEncoder.endEncoding()
+            encoder.setRenderPipelineState(pipelineState)
+            encoder.setVertexBuffer(model.vertexMetalBuffer, offset: 0, index: 0)
+            encoder.setVertexBuffer(model.metallicTransform.metalBuffer, offset: 0, index: 1)
+            encoder.setFragmentTexture(texture, index: 0)
+            encoder.drawIndexedPrimitives(type: .triangle, indexCount: model.indexCount, indexType: MTLIndexType.uint16, indexBuffer: model.vertexIndexMetalBuffer, indexBufferOffset: 0)
 
-            commandBuffer.present(drawable)
-            commandBuffer.commit()
+            encoder.endEncoding()
+
+            buffer.present(drawable)
+            buffer.commit()
         }
 
     }

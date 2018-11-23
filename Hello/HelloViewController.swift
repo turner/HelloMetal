@@ -1,5 +1,5 @@
 //
-//  EIViewController.swift
+//  HelloViewController.swift
 //  Hello
 //
 //  Created by Douglass Turner on 11/22/18.
@@ -8,15 +8,14 @@
 
 import UIKit
 
-class EIViewController: UIViewController {
-
+class HelloViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-        // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 
