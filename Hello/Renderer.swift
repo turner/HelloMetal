@@ -24,13 +24,11 @@ class Renderer: NSObject, MTKViewDelegate {
         guard let library = device.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
         }
-        
+    
         // vertexShaderName:"showSTVertexShader",
         // fragmentShaderName:"showSTFragmentShader",
         let pipelineDescriptor =
-                MTLRenderPipelineDescriptor(view:view, library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", doIncludeDepthAttachment: false, vertexDescriptor: nil)
-
-        pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
+                MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
 
         do {
             pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)

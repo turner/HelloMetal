@@ -8,7 +8,6 @@
 
 import MetalKit
 
-
 extension MTLVertexDescriptor {
     
     class func xyz_n_st_vertexDescriptor() -> MTLVertexDescriptor {
@@ -41,10 +40,37 @@ extension MTLVertexDescriptor {
     }
 }
 
-
-
-
 extension MTLRenderPipelineDescriptor {
+
+    convenience init(library:MTLLibrary, vertexShaderName:String, fragmentShaderName:String, sampleCount:Int, colorPixelFormat:MTLPixelFormat, vertexDescriptor:MTLVertexDescriptor?) {
+
+        self.init()
+
+        vertexFunction   = library.makeFunction(name: vertexShaderName)
+        fragmentFunction = library.makeFunction(name: fragmentShaderName)
+
+        self.sampleCount = sampleCount
+
+        colorAttachments[ 0 ].pixelFormat = colorPixelFormat
+
+        colorAttachments[ 0 ].isBlendingEnabled = true
+
+        colorAttachments[ 0 ].rgbBlendOperation = .add
+        colorAttachments[ 0 ].alphaBlendOperation = .add
+
+        colorAttachments[ 0 ].sourceRGBBlendFactor = .one
+        colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
+
+        colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
+        colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
+
+        depthAttachmentPixelFormat = .depth32Float
+
+        if (nil != vertexDescriptor) {
+            self.vertexDescriptor = vertexDescriptor
+        }
+
+    }
     
     convenience init(view: MTKView,
                      library: MTLLibrary,
@@ -73,18 +99,17 @@ extension MTLRenderPipelineDescriptor {
         colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
         colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
         
-        if (doIncludeDepthAttachment == true) {
+        if (true == doIncludeDepthAttachment) {
             depthAttachmentPixelFormat = .depth32Float
         }
         
-        if (vertexDescriptor != nil) {
+        if (nil != vertexDescriptor) {
             self.vertexDescriptor = vertexDescriptor
         }
 
     }
 
 }
-
 
 extension MTLRenderPassDescriptor {
     
