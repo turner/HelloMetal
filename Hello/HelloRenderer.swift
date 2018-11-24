@@ -1,5 +1,5 @@
 //
-//  Renderer.swift
+//  HelloRenderer.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 9/11/16.
@@ -9,7 +9,7 @@
 import MetalKit
 import GLKit
 
-class Renderer: NSObject, MTKViewDelegate {
+class HelloRenderer: NSObject, MTKViewDelegate {
 
     var camera:EICamera!
     var model: EIQuad!
@@ -68,7 +68,6 @@ class Renderer: NSObject, MTKViewDelegate {
         if let passDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
             passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.5, 0.5, 0.5, 1.0)
-//            passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1,1,1,1)
 
             guard let buffer = commandQueue!.makeCommandBuffer() else {
                 fatalError("Error: Can not create command buffer")
@@ -79,15 +78,10 @@ class Renderer: NSObject, MTKViewDelegate {
             }
 
             encoder.setFrontFacing(.counterClockwise)
-
             encoder.setTriangleFillMode(.fill)
-//            renderCommandEncoder.setTriangleFillMode(.lines)
+            encoder.setCullMode(.none)
 
-            encoder.setRenderPipelineState(pipelineState)
-            encoder.setVertexBuffer(model.vertexMetalBuffer, offset: 0, index: 0)
-            encoder.setVertexBuffer(model.metallicTransform.metalBuffer, offset: 0, index: 1)
-            encoder.setFragmentTexture(texture, index: 0)
-            encoder.drawIndexedPrimitives(type: .triangle, indexCount: model.indexCount, indexType: MTLIndexType.uint16, indexBuffer: model.vertexIndexMetalBuffer, indexBufferOffset: 0)
+            encoder.EI_configure(renderPipelineState: pipelineState, model: model, texture: texture)
 
             encoder.endEncoding()
 

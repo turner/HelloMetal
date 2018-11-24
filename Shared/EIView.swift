@@ -4,7 +4,6 @@ import MetalKit
 public class EIView: MTKView {
     
     var arcBall:EIArcball!
-    var renderer:Renderer!
 
     required public init(coder: NSCoder) {
 
