@@ -51,6 +51,7 @@ extension MTLRenderPipelineDescriptor {
 
     }
 
+    // DEPRICATED
     convenience init(view: MTKView,
                      library: MTLLibrary,
                      vertexShaderName:String,

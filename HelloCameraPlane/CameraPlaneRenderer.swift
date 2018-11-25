@@ -66,7 +66,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 8000)
     }
 
-    func update(view: EIView, drawableSize:CGSize) {
+    func update(view:EIView, drawableSize:CGSize) {
 
         // render plane
         cameraPlane.metallicTransform.update(camera: camera, transformer: {

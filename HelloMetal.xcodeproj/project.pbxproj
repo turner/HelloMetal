@@ -56,12 +56,10 @@
 		4F56AF931DBAF08E00E396E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF911DBAF08E00E396E7 /* LaunchScreen.storyboard */; };
 		4F64B3701DC3FD36005BD8B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B36E1DC3FD36005BD8B1 /* Main.storyboard */; };
 		4F64B3721DC3FD36005BD8B1 /* RenderPass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */; };
-		4F64B3751DC3FD36005BD8B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B3731DC3FD36005BD8B1 /* LaunchScreen.storyboard */; };
 		4F64B37C1DC40406005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
 		4F64B37E1DC4041A005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
 		4F64B37F1DC40420005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
 		4F64B3801DC4042A005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
-		4F64B3831DC40535005BD8B1 /* RenderPassMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64B3811DC40535005BD8B1 /* RenderPassMetalView.swift */; };
 		4F64B3841DC40535005BD8B1 /* RenderPassRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */; };
 		4F64B3921DC40671005BD8B1 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
 		4F64B3931DC40671005BD8B1 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
@@ -170,6 +168,7 @@
 		4FEE5E2E1DEEE03B00B47AC2 /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
 		4FEE5E341DEEE0F400B47AC2 /* LightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */; };
 		4FEE5E351DEEE0F400B47AC2 /* LightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E331DEEE0F400B47AC2 /* LightView.swift */; };
+		4FF465C121A9BAFD00CA57F4 /* RenderPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */; };
 		4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
 		4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
 		4FFA63F21DC377BA002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
@@ -231,10 +230,8 @@
 		4F64B3681DC3FD36005BD8B1 /* HelloRenderPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloRenderPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F64B36F1DC3FD36005BD8B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RenderPass.xcassets; sourceTree = "<group>"; };
-		4F64B3741DC3FD36005BD8B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F64B3761DC3FD36005BD8B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Textures.xcassets; path = Shared/Textures.xcassets; sourceTree = "<group>"; };
-		4F64B3811DC40535005BD8B1 /* RenderPassMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderPassMetalView.swift; sourceTree = "<group>"; };
 		4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderPassRenderer.swift; sourceTree = "<group>"; };
 		4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = model_io_lit_texture.metal; path = Shared/model_io_lit_texture.metal; sourceTree = "<group>"; };
 		4F7270361DC368780039E130 /* Hello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hello.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,6 +273,7 @@
 		4FEE5E1E1DEEDF5500B47AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightRenderer.swift; sourceTree = "<group>"; };
 		4FEE5E331DEEE0F400B47AC2 /* LightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightView.swift; sourceTree = "<group>"; };
+		4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderPassViewController.swift; sourceTree = "<group>"; };
 		4FFA63ED1DC3773C002F8E34 /* EITexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EITexture.swift; path = Shared/EITexture.swift; sourceTree = "<group>"; };
 		4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RendererExtensions.swift; path = Shared/RendererExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -431,11 +429,10 @@
 		4F64B3691DC3FD36005BD8B1 /* HelloRenderPass */ = {
 			isa = PBXGroup;
 			children = (
-				4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */,
-				4F64B3811DC40535005BD8B1 /* RenderPassMetalView.swift */,
+				4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */,
 				4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */,
 				4F64B36E1DC3FD36005BD8B1 /* Main.storyboard */,
-				4F64B3731DC3FD36005BD8B1 /* LaunchScreen.storyboard */,
+				4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */,
 				4F64B3761DC3FD36005BD8B1 /* Info.plist */,
 			);
 			path = HelloRenderPass;
@@ -785,7 +782,6 @@
 			files = (
 				4F64B37E1DC4041A005BD8B1 /* Textures.xcassets in Resources */,
 				4F64B3721DC3FD36005BD8B1 /* RenderPass.xcassets in Resources */,
-				4F64B3751DC3FD36005BD8B1 /* LaunchScreen.storyboard in Resources */,
 				4F64B3701DC3FD36005BD8B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -890,7 +886,6 @@
 			files = (
 				4F10A9D91DC42E8600053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */,
-				4F64B3831DC40535005BD8B1 /* RenderPassMetalView.swift in Sources */,
 				4F64B3841DC40535005BD8B1 /* RenderPassRenderer.swift in Sources */,
 				4F64B3921DC40671005BD8B1 /* EITexture.swift in Sources */,
 				4F64B3931DC40671005BD8B1 /* RendererExtensions.swift in Sources */,
@@ -903,6 +898,7 @@
 				4F64B39D1DC406CF005BD8B1 /* showST.metal in Sources */,
 				4F64B39E1DC406CF005BD8B1 /* texture.metal in Sources */,
 				4F64B39B1DC40671005BD8B1 /* finalPass.metal in Sources */,
+				4FF465C121A9BAFD00CA57F4 /* RenderPassViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,14 +1042,6 @@
 				4F64B36F1DC3FD36005BD8B1 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4F64B3731DC3FD36005BD8B1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F64B3741DC3FD36005BD8B1 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		4F72703C1DC368780039E130 /* Main.storyboard */ = {
