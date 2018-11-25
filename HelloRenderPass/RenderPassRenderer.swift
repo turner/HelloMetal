@@ -149,22 +149,24 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         encoder.endEncoding()
 
         // final pass
-        if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
+        if let descriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
-            finalPassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
+            descriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
 
-            guard let finalPassCommandEncoder = buffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor) else {
+            guard let finalPassEncoder = buffer.makeRenderCommandEncoder(descriptor: descriptor) else {
                 fatalError("Error: Can not create command encoder")
             }
 
             // configure final pass encoder
-            finalPassCommandEncoder.setFrontFacing(.counterClockwise)
-            finalPassCommandEncoder.setTriangleFillMode(.fill)
-            finalPassCommandEncoder.setCullMode(.none)
+            finalPassEncoder.setFrontFacing(.counterClockwise)
+            finalPassEncoder.setTriangleFillMode(.fill)
+            finalPassEncoder.setCullMode(.none)
 
-            finalPassCommandEncoder.EI_configure(renderPipelineState: finalPassPipelineState, model: finalPassModel, texture: finalPassDescriptor.colorAttachments[ 0 ].texture!)
+            let textures:[MTLTexture] = [ finalPassDescriptor.colorAttachments[ 0 ].texture!, finalPassTexture ]
+            finalPassEncoder.EI_configureWithTextures(renderPipelineState: finalPassPipelineState, model: finalPassModel, textures: textures)
 
-            finalPassCommandEncoder.endEncoding()
+            finalPassEncoder.endEncoding()
+
 
             buffer.present(drawable)
             buffer.commit()

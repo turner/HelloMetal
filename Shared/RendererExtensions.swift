@@ -17,6 +17,20 @@ extension MTLRenderCommandEncoder {
         self.setFragmentTexture(texture, index: 0)
         self.drawIndexedPrimitives(type: .triangle, indexCount: model.indexCount, indexType: MTLIndexType.uint16, indexBuffer: model.vertexIndexMetalBuffer, indexBufferOffset: 0)
     }
+
+    func EI_configureWithTextures(renderPipelineState:MTLRenderPipelineState, model:EIQuad, textures:[MTLTexture]) {
+        self.setRenderPipelineState(renderPipelineState)
+        self.setVertexBuffer(model.vertexMetalBuffer, offset: 0, index: 0)
+        self.setVertexBuffer(model.metallicTransform.metalBuffer, offset: 0, index: 1)
+
+        for i in 0..<textures.count {
+            let texture = textures[ i ]
+            self.setFragmentTexture(texture, index: i)
+        }
+
+        self.drawIndexedPrimitives(type: .triangle, indexCount: model.indexCount, indexType: MTLIndexType.uint16, indexBuffer: model.vertexIndexMetalBuffer, indexBufferOffset: 0)
+    }
+
 }
 
 extension MTLRenderPipelineDescriptor {
