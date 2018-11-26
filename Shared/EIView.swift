@@ -10,7 +10,8 @@ public class EIView: MTKView {
         super.init(coder:coder)
         
         //        
-        sampleCount = 1
+        sampleCount = 4
+//        sampleCount = 1
         
         //
         depthStencilPixelFormat = .depth32Float

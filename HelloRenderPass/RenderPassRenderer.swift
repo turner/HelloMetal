@@ -29,7 +29,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
     var finalPassPipelineState: MTLRenderPipelineState!
 
     // render to texture
-    var finalPassDescriptor: MTLRenderPassDescriptor
+    var finalRenderPassDescriptor: MTLRenderPassDescriptor
 
     var commandQueue: MTLCommandQueue?
 
@@ -65,8 +65,6 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         // final pass pipline statate
         do {
 
-            finalPassDescriptor = MTLRenderPassDescriptor(clearColor:MTLClearColorMake(1, 1, 1, 1), clearDepth:1)
-
             let pipelineDescriptor =
                     MTLRenderPipelineDescriptor(library:library, vertexShaderName:"finalPassVertexShader", fragmentShaderName:"finalPassOverlayFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
 
@@ -74,6 +72,10 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         } catch let e {
             Swift.print("\(e)")
         }
+
+
+        finalRenderPassDescriptor = MTLRenderPassDescriptor(clearColor:MTLClearColorMake(1, 1, 1, 1), clearDepth:1)
+
 
         guard let cq = device.makeCommandQueue() else {
             fatalError("Error: Can not create command queue")
@@ -94,14 +96,20 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width/view.bounds.size.height), near:200, far: 8000)
 
         // color
-        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:true)
+        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:false)
+        rgbaTextureDescriptor.mipmapLevelCount = 1;
+        rgbaTextureDescriptor.textureType = .type2DMultisample
+        rgbaTextureDescriptor.sampleCount = view.sampleCount
         rgbaTextureDescriptor.usage = [.renderTarget, .shaderRead]
-        finalPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:rgbaTextureDescriptor)
+        finalRenderPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:rgbaTextureDescriptor)
 
         // depth
         let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:false)
+        depthTextureDescriptor.mipmapLevelCount = 1;
+        depthTextureDescriptor.textureType = .type2DMultisample
+        depthTextureDescriptor.sampleCount = view.sampleCount
         depthTextureDescriptor.usage = .renderTarget
-        finalPassDescriptor.depthAttachment.texture = view.device!.makeTexture(descriptor:depthTextureDescriptor)
+        finalRenderPassDescriptor.depthAttachment.texture = view.device!.makeTexture(descriptor:depthTextureDescriptor)
     }
 
     func update(view:EIView, drawableSize:CGSize) {
@@ -131,7 +139,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
             fatalError("Error: Can not create command buffer")
         }
 
-        guard let encoder = buffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor) else {
+        guard let encoder = buffer.makeRenderCommandEncoder(descriptor: finalRenderPassDescriptor) else {
             fatalError("Error: Can not create command encoder")
         }
 
@@ -162,7 +170,11 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
             finalPassEncoder.setTriangleFillMode(.fill)
             finalPassEncoder.setCullMode(.none)
 
-            let textures:[MTLTexture] = [ finalPassDescriptor.colorAttachments[ 0 ].texture!, finalPassTexture ]
+            let textures:[MTLTexture] =
+                    [
+                        finalRenderPassDescriptor.colorAttachments[ 0 ].texture!,
+                        finalPassTexture
+                    ]
             finalPassEncoder.EI_configureWithTextures(renderPipelineState: finalPassPipelineState, model: finalPassModel, textures: textures)
 
             finalPassEncoder.endEncoding()
