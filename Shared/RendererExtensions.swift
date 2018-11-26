@@ -124,6 +124,23 @@ extension MTLRenderPassDescriptor {
         depthAttachment.clearDepth = clearDepth;
 
     }
+    
+    public func EI_configure(clearColor:MTLClearColor, clearDepth: Double) {
+
+        // color
+        colorAttachments[ 0 ] = MTLRenderPassColorAttachmentDescriptor()
+        colorAttachments[ 0 ].storeAction = .store
+        colorAttachments[ 0 ].loadAction = .clear
+        colorAttachments[ 0 ].clearColor = clearColor
+        
+        // depth
+        depthAttachment = MTLRenderPassDepthAttachmentDescriptor()
+        depthAttachment.storeAction = .dontCare
+        depthAttachment.loadAction = .clear
+        depthAttachment.clearDepth = clearDepth;
+        
+    }
+    
 
 }
 

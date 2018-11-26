@@ -44,7 +44,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
             let pipelineDescriptor =
                     MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
-
+            
             pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
 
         } catch let e {
@@ -56,7 +56,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
             let pipelineDescriptor =
                     MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
-
+            
             backdropPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
@@ -67,14 +67,16 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
             let pipelineDescriptor =
                     MTLRenderPipelineDescriptor(library:library, vertexShaderName:"finalPassVertexShader", fragmentShaderName:"finalPassOverlayFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
-
+             
             finalPassPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
         }
 
 
-        finalRenderPassDescriptor = MTLRenderPassDescriptor(clearColor:MTLClearColorMake(1, 1, 1, 1), clearDepth:1)
+//        finalRenderPassDescriptor = MTLRenderPassDescriptor(clearColor:MTLClearColorMake(1, 1, 1, 1), clearDepth:1)
+        finalRenderPassDescriptor = MTLRenderPassDescriptor()
+        finalRenderPassDescriptor.EI_configure(clearColor: MTLClearColorMake(1, 1, 1, 1), clearDepth: 1)
 
 
         guard let cq = device.makeCommandQueue() else {
