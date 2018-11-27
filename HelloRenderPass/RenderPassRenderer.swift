@@ -74,9 +74,8 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         }
 
 
-//        finalRenderPassDescriptor = MTLRenderPassDescriptor(clearColor:MTLClearColorMake(1, 1, 1, 1), clearDepth:1)
         finalRenderPassDescriptor = MTLRenderPassDescriptor()
-        finalRenderPassDescriptor.EI_configure(clearColor: MTLClearColorMake(1, 1, 1, 1), clearDepth: 1)
+        finalRenderPassDescriptor.EI_renderpass_configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
 
 
         guard let cq = device.makeCommandQueue() else {
@@ -97,13 +96,18 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width/view.bounds.size.height), near:200, far: 8000)
 
-        // color
-        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:false)
-        rgbaTextureDescriptor.mipmapLevelCount = 1;
-        rgbaTextureDescriptor.textureType = .type2DMultisample
-        rgbaTextureDescriptor.sampleCount = view.sampleCount
-        rgbaTextureDescriptor.usage = [.renderTarget, .shaderRead]
-        finalRenderPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:rgbaTextureDescriptor)
+        // color - multi-sample texture
+        let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:false)
+        textureDescriptor.mipmapLevelCount = 1;
+        textureDescriptor.textureType = .type2DMultisample
+        textureDescriptor.sampleCount = view.sampleCount
+//        textureDescriptor.usage = [.renderTarget, .shaderRead]
+        textureDescriptor.usage = .renderTarget
+        finalRenderPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:textureDescriptor)
+
+        // color - point-sample resolve texture
+        let resolveTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:true)
+        finalRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture = view.device!.makeTexture(descriptor:resolveTextureDescriptor)
 
         // depth
         let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:false)
@@ -174,7 +178,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
             let textures:[MTLTexture] =
                     [
-                        finalRenderPassDescriptor.colorAttachments[ 0 ].texture!,
+                        finalRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture!,
                         finalPassTexture
                     ]
             finalPassEncoder.EI_configureWithTextures(renderPipelineState: finalPassPipelineState, model: finalPassModel, textures: textures)
