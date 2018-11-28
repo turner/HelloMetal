@@ -69,3 +69,4 @@ fastlane/test_output
 /.idea/HelloMetal.iml
 .DS_Store
 /.idea/runConfigurations
+/.idea/encodings.xml

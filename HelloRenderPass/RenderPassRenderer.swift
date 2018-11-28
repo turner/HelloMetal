@@ -11,6 +11,8 @@ import GLKit
 
 class RenderPassRenderer: NSObject, MTKViewDelegate {
 
+    let samplerState: MTLSamplerState
+
     var camera: EICamera!
 
     // hero model
@@ -35,6 +37,8 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
     init(view: MTKView, device: MTLDevice) {
 
+        samplerState = RenderPassRenderer.buildSamplerState(device: device)
+
         guard let library = device.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
         }
@@ -43,7 +47,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                    MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
             
             pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
 
@@ -55,7 +59,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                    MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
             
             backdropPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
@@ -66,7 +70,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor(library:library, vertexShaderName:"finalPassVertexShader", fragmentShaderName:"finalPassOverlayFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                    MTLRenderPipelineDescriptor(library:library, vertexShaderName:"finalPassVertexShader", fragmentShaderName:"finalPassOverlayWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
              
             finalPassPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
@@ -84,6 +88,15 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         commandQueue = cq
 
+    }
+
+    static func buildSamplerState(device: MTLDevice) -> MTLSamplerState {
+        let samplerDescriptor = MTLSamplerDescriptor()
+        samplerDescriptor.normalizedCoordinates = true
+        samplerDescriptor.minFilter = .linear
+        samplerDescriptor.magFilter = .linear
+        samplerDescriptor.mipFilter = .linear
+        return device.makeSamplerState(descriptor: samplerDescriptor)!
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
@@ -105,7 +118,6 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         textureDescriptor.mipmapLevelCount = 1;
         textureDescriptor.textureType = .type2DMultisample
         textureDescriptor.sampleCount = view.sampleCount
-//        textureDescriptor.usage = [.renderTarget, .shaderRead]
         textureDescriptor.usage = .renderTarget
         finalRenderPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:textureDescriptor)
 
@@ -157,12 +169,13 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         encoder.setFrontFacing(.counterClockwise)
         encoder.setTriangleFillMode(.fill)
         encoder.setCullMode(.none)
+        encoder.setFragmentSamplerState(samplerState, index: 0)
 
         // hero backdrop
-        encoder.EI_configure(renderPipelineState: backdropPipelineState, model: backdropModel, texture: backdropTexture)
+        encoder.EI_configureWithTextures(renderPipelineState: backdropPipelineState, model: backdropModel, textures: [ backdropTexture ])
 
         // hero model
-        encoder.EI_configure(renderPipelineState: pipelineState, model: model, texture: texture)
+        encoder.EI_configureWithTextures(renderPipelineState: pipelineState, model: model, textures: [ texture ])
 
         encoder.endEncoding()
 
@@ -179,6 +192,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
             finalPassEncoder.setFrontFacing(.counterClockwise)
             finalPassEncoder.setTriangleFillMode(.fill)
             finalPassEncoder.setCullMode(.none)
+            finalPassEncoder.setFragmentSamplerState(samplerState, index: 0)
 
             let textures:[MTLTexture] =
                     [

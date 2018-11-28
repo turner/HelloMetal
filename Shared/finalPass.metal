@@ -74,3 +74,13 @@ fragment float4 finalPassOverlayFragmentShader(InterpolatedVertex vert [[ stage_
     
     return rgba;
 }
+
+fragment float4 finalPassOverlayWithSamplerFragmentShader(InterpolatedVertex vert [[ stage_in ]], texture2d<float> underlay [[ texture(0) ]], texture2d<float> overlay [[ texture(1) ]], sampler textureSampler [[sampler(0)]]) {
+
+    float4 _F =  overlay.sample(textureSampler, vert.st).rgba;
+    float4 _B = underlay.sample(textureSampler, vert.st).rgba;
+
+    float4 rgba = _F + (1.0f - _F.a) * _B;
+
+    return rgba;
+}
