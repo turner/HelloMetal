@@ -33,6 +33,11 @@ vertex InterpolatedVertex finalPassVertexShader(constant _Vertex_ *vertices [[bu
     return out;
 }
 
+fragment float4 finalPassNoOpFragmentShader(InterpolatedVertex vert [[ stage_in ]], texture2d<float> renderpass_texture [[ texture(0) ]]) {
+    constexpr sampler defaultSampler;
+    return renderpass_texture.sample(defaultSampler, vert.st).rgba;
+}
+
 fragment float4 finalPassFragmentShader(InterpolatedVertex vert [[ stage_in ]],
                                         texture2d<float> texas [[ texture(0) ]]) {
     

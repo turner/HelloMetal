@@ -95,9 +95,13 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         view.arcBall.reshape(viewBounds: view.bounds)
 
         camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width/view.bounds.size.height), near:200, far: 8000)
+        
+        let scaleFactor = UIScreen.main.scale
+        let ww = scaleFactor * view.bounds.size.width
+        let hh = scaleFactor * view.bounds.size.height
 
         // color - multi-sample texture
-        let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:false)
+        let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(ww), height:Int(hh), mipmapped:false)
         textureDescriptor.mipmapLevelCount = 1;
         textureDescriptor.textureType = .type2DMultisample
         textureDescriptor.sampleCount = view.sampleCount
@@ -106,11 +110,11 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         finalRenderPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:textureDescriptor)
 
         // color - point-sample resolve texture
-        let resolveTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:true)
+        let resolveTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(ww), height:Int(hh), mipmapped:true)
         finalRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture = view.device!.makeTexture(descriptor:resolveTextureDescriptor)
 
         // depth
-        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:false)
+        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float, width:Int(ww), height:Int(hh), mipmapped:false)
         depthTextureDescriptor.mipmapLevelCount = 1;
         depthTextureDescriptor.textureType = .type2DMultisample
         depthTextureDescriptor.sampleCount = view.sampleCount

@@ -30,7 +30,7 @@ class RenderPassViewController: UIViewController {
         renderer.model = EIQuad(device: view.device!)
 
         do {
-            renderer.texture = try makeTexture(device: view.device!, name: "kids_grid_3x3")
+            renderer.texture = try makeTexture(device: view.device!, name: "kids_grid_3x3_translucent")
         } catch {
             fatalError("Error: Can not load model texture")
         }

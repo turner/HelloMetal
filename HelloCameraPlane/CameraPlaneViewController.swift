@@ -29,7 +29,7 @@ class CameraPlaneViewController: UIViewController {
         renderer.heroModel = EIQuad(device: view.device!);
 
         do {
-            renderer.heroTexture = try makeTexture(device: view.device!, name: "kids_grid_3x3_translucent")
+            renderer.heroTexture = try makeTexture(device: view.device!, name: "diagnostic")
         } catch {
             fatalError("Error: Can not load texture")
         }
