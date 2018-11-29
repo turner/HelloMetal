@@ -21,7 +21,7 @@ func makeTexture(device: MTLDevice, name:String) throws -> MTLTexture {
     
     do {
         let textureLoader = MTKTextureLoader(device: device)
-        let textureLoaderOptions:[MTKTextureLoader.Option : Any] = [.SRGB:false]
+        let textureLoaderOptions:[MTKTextureLoader.Option : Any] = [.generateMipmaps : true, .SRGB : false]
         
         return try textureLoader.newTexture(cgImage: image.cgImage!, options: textureLoaderOptions)
     }
