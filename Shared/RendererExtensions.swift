@@ -8,6 +8,24 @@
 
 import MetalKit
 
+extension MTLSamplerDescriptor {
+
+    class func EI_CreateMipMapSamplerState(device:MTLDevice) -> MTLSamplerState? {
+        
+    let samplerDescriptor = MTLSamplerDescriptor()
+        
+    samplerDescriptor.normalizedCoordinates = true
+        
+    samplerDescriptor.minFilter = .linear
+    samplerDescriptor.magFilter = .linear
+    samplerDescriptor.mipFilter = .linear
+        
+    return device.makeSamplerState(descriptor: samplerDescriptor)
+
+    }
+}
+
+
 extension MTLRenderCommandEncoder {
 
     func EI_configure(renderPipelineState:MTLRenderPipelineState, model:EIQuad, texture:MTLTexture) {

@@ -17,18 +17,23 @@ class HelloRenderer: NSObject, MTKViewDelegate {
     
     var pipelineState:MTLRenderPipelineState!
 
-    var commandQueue:MTLCommandQueue?
+    let commandQueue:MTLCommandQueue?
+    let samplerState: MTLSamplerState?
 
     init(view: MTKView, device: MTLDevice) {
+
+        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+            fatalError("Error: Can not create sampler state")
+        }
+
+        samplerState = ss
 
         guard let library = device.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
         }
     
-        // vertexShaderName:"showSTVertexShader",
-        // fragmentShaderName:"showSTFragmentShader",
         let pipelineDescriptor =
-                MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
 
         do {
             pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
@@ -80,6 +85,7 @@ class HelloRenderer: NSObject, MTKViewDelegate {
             encoder.setFrontFacing(.counterClockwise)
             encoder.setTriangleFillMode(.fill)
             encoder.setCullMode(.none)
+            encoder.setFragmentSamplerState(samplerState, index: 0)
 
             encoder.EI_configure(renderPipelineState: pipelineState, model: model, texture: texture)
 

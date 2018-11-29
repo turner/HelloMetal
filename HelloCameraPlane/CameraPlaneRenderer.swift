@@ -22,9 +22,16 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
     var cameraPlaneTexture: MTLTexture!
     var cameraPlanePipelineState: MTLRenderPipelineState!
 
-    var commandQueue: MTLCommandQueue?
+    let samplerState: MTLSamplerState?
+    let commandQueue: MTLCommandQueue?
 
     init(view: MTKView, device: MTLDevice) {
+
+        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+            fatalError("Error: Can not create sampler state")
+        }
+        
+        samplerState = ss
 
         guard let library = device.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
@@ -33,7 +40,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                    MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
 
             heroPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
@@ -43,7 +50,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                    MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
 
             cameraPlanePipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
@@ -98,6 +105,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
             encoder.setFrontFacing(.counterClockwise)
             encoder.setTriangleFillMode(.fill)
             encoder.setCullMode(.none)
+            encoder.setFragmentSamplerState(samplerState, index: 0)
 
             // render plane
             encoder.EI_configure(renderPipelineState: cameraPlanePipelineState, model: cameraPlane, texture: cameraPlaneTexture)

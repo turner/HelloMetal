@@ -11,8 +11,6 @@ import GLKit
 
 class RenderPassRenderer: NSObject, MTKViewDelegate {
 
-    let samplerState: MTLSamplerState
-
     var camera: EICamera!
 
     // hero model
@@ -33,11 +31,16 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
     // render to texture
     var finalRenderPassDescriptor: MTLRenderPassDescriptor
 
-    var commandQueue: MTLCommandQueue?
+    let commandQueue: MTLCommandQueue?
+    let samplerState: MTLSamplerState?
 
     init(view: MTKView, device: MTLDevice) {
 
-        samplerState = RenderPassRenderer.buildSamplerState(device: device)
+        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+            fatalError("Error: Can not create sampler state")
+        }
+        
+        samplerState = ss
 
         guard let library = device.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
@@ -88,15 +91,6 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         commandQueue = cq
 
-    }
-
-    static func buildSamplerState(device: MTLDevice) -> MTLSamplerState {
-        let samplerDescriptor = MTLSamplerDescriptor()
-        samplerDescriptor.normalizedCoordinates = true
-        samplerDescriptor.minFilter = .linear
-        samplerDescriptor.magFilter = .linear
-        samplerDescriptor.mipFilter = .linear
-        return device.makeSamplerState(descriptor: samplerDescriptor)!
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
