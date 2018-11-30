@@ -11,16 +11,18 @@ import MetalKit
 extension MTLSamplerDescriptor {
 
     class func EI_CreateMipMapSamplerState(device:MTLDevice) -> MTLSamplerState? {
-        
-    let samplerDescriptor = MTLSamplerDescriptor()
-        
-    samplerDescriptor.normalizedCoordinates = true
-        
-    samplerDescriptor.minFilter = .linear
-    samplerDescriptor.magFilter = .linear
-    samplerDescriptor.mipFilter = .linear
-        
-    return device.makeSamplerState(descriptor: samplerDescriptor)
+
+        let samplerDescriptor = MTLSamplerDescriptor()
+
+        // texture coordinate 0..1
+        samplerDescriptor.normalizedCoordinates = true
+
+        // bi-linear mipmap filtering
+        samplerDescriptor.minFilter = .linear
+        samplerDescriptor.magFilter = .linear
+        samplerDescriptor.mipFilter = .linear
+
+        return device.makeSamplerState(descriptor: samplerDescriptor)
 
     }
 }
@@ -44,6 +46,45 @@ extension MTLRenderCommandEncoder {
 }
 
 extension MTLRenderPipelineDescriptor {
+
+    class func EI_Create(library:MTLLibrary, vertexShaderName:String, fragmentShaderName:String, sampleCount:Int, colorPixelFormat:MTLPixelFormat, vertexDescriptor:MTLVertexDescriptor?) -> MTLRenderPipelineDescriptor {
+
+        let desc:MTLRenderPipelineDescriptor = MTLRenderPipelineDescriptor()
+
+        guard let vert = library.makeFunction(name: vertexShaderName) else {
+            fatalError("Error: Can not create vertex shader \(vertexShaderName)")
+        }
+
+        guard let frag = library.makeFunction(name: fragmentShaderName) else {
+            fatalError("Error: Can not create fragment shader \(fragmentShaderName)")
+        }
+
+        desc.vertexFunction   = vert
+        desc.fragmentFunction = frag
+
+        desc.sampleCount = sampleCount
+
+        desc.colorAttachments[ 0 ].pixelFormat = colorPixelFormat
+
+        desc.colorAttachments[ 0 ].isBlendingEnabled = true
+
+        desc.colorAttachments[ 0 ].rgbBlendOperation = .add
+        desc.colorAttachments[ 0 ].alphaBlendOperation = .add
+
+        desc.colorAttachments[ 0 ].sourceRGBBlendFactor = .one
+        desc.colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
+
+        desc.colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
+        desc.colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
+
+        desc.depthAttachmentPixelFormat = .depth32Float
+
+        if (nil != vertexDescriptor) {
+            desc.vertexDescriptor = vertexDescriptor
+        }
+
+        return desc
+    }
 
     convenience init(library:MTLLibrary, vertexShaderName:String, fragmentShaderName:String, sampleCount:Int, colorPixelFormat:MTLPixelFormat, vertexDescriptor:MTLVertexDescriptor?) {
 
@@ -133,27 +174,27 @@ extension MTLRenderPassDescriptor {
 }
 
 extension MTLVertexDescriptor {
-    
+
     class func xyz_n_st_vertexDescriptor() -> MTLVertexDescriptor {
-        
+
         // Metal vertex descriptor
         let vertexDescriptor = MTLVertexDescriptor()
-        
+
         // xyz
         vertexDescriptor.attributes[0].format = .float3
         vertexDescriptor.attributes[0].offset = 0
         vertexDescriptor.attributes[0].bufferIndex = 0
-        
+
         // n
         vertexDescriptor.attributes[1].format = .float3
         vertexDescriptor.attributes[1].offset = 12
         vertexDescriptor.attributes[1].bufferIndex = 0
-        
+
         // st
         vertexDescriptor.attributes[2].format = .half2
         vertexDescriptor.attributes[2].offset = 24
         vertexDescriptor.attributes[2].bufferIndex = 0
-        
+
         // Single interleaved buffer.
         vertexDescriptor.layouts[0].stride = 28
         vertexDescriptor.layouts[0].stepRate = 1

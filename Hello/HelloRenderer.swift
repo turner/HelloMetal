@@ -23,7 +23,7 @@ class HelloRenderer: NSObject, MTKViewDelegate {
     init(view: MTKView, device: MTLDevice) {
 
         guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
-            fatalError("Error: Can not create sampler state")
+            fatalError("Error: Can not create sampler state ")
         }
 
         samplerState = ss
@@ -33,7 +33,7 @@ class HelloRenderer: NSObject, MTKViewDelegate {
         }
     
         let pipelineDescriptor =
-                MTLRenderPipelineDescriptor(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
 
         do {
             pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
