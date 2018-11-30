@@ -36,6 +36,12 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
     init(view: MTKView, device: MTLDevice) {
 
+        guard let cq = device.makeCommandQueue() else {
+            fatalError("Error: Can not create command queue")
+        }
+        
+        commandQueue = cq
+        
         guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
             fatalError("Error: Can not create sampler state")
         }
@@ -83,13 +89,6 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         finalRenderPassDescriptor = MTLRenderPassDescriptor()
         finalRenderPassDescriptor.EI_renderpass_configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
-
-
-        guard let cq = device.makeCommandQueue() else {
-            fatalError("Error: Can not create command queue")
-        }
-
-        commandQueue = cq
 
     }
 

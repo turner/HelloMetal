@@ -22,6 +22,12 @@ class HelloRenderer: NSObject, MTKViewDelegate {
 
     init(view: MTKView, device: MTLDevice) {
 
+        guard let cq = device.makeCommandQueue() else {
+            fatalError("Error: Can not create command queue")
+        }
+        
+        commandQueue = cq
+
         guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
             fatalError("Error: Can not create sampler state ")
         }
@@ -40,12 +46,6 @@ class HelloRenderer: NSObject, MTKViewDelegate {
         } catch let e {
             Swift.print("\(e)")
         }
-
-        guard let cq = device.makeCommandQueue() else {
-            fatalError("Error: Can not create command queue")
-        }
-
-        commandQueue = cq
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {

@@ -53,6 +53,11 @@ fragment float4 textureMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]], textu
     
 }
 
+fragment float4 textureMIOWithSamplerFragmentShader(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
+    float4 rgba = texas.sample(textureSampler, float2(in.st)).rgba;
+    return rgba;
+}
+
 vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]],
                                                      constant TransformPackage &transformPackage [[ buffer(1) ]]) {
     

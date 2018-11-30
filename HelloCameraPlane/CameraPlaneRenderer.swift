@@ -27,6 +27,18 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
     init(view: MTKView, device: MTLDevice) {
 
+        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+            fatalError("Error: Can not create sampler state")
+        }
+        
+        samplerState = ss
+        
+        guard let cq = device.makeCommandQueue() else {
+            fatalError("Error: Can not create command queue")
+        }
+        
+        commandQueue = cq
+
         guard let library = device.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
         }
@@ -50,18 +62,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         } catch let e {
             Swift.print("\(e)")
         }
-
-        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
-            fatalError("Error: Can not create sampler state")
-        }
-
-        samplerState = ss
-
-        guard let cq = device.makeCommandQueue() else {
-            fatalError("Error: Can not create command queue")
-        }
-
-        commandQueue = cq
+        
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {

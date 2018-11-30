@@ -25,37 +25,26 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
     var cameraPlaneTexture: MTLTexture!
     var cameraPlanePipelineState: MTLRenderPipelineState!
     
-    var depthStencilState: MTLDepthStencilState
-
+    let depthStencilState: MTLDepthStencilState?
     let samplerState: MTLSamplerState?
     let commandQueue: MTLCommandQueue?
 
     init(view: MTKView, device: MTLDevice) {
 
+        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+            fatalError("Error: Can not create sampler state")
+        }
+        
+        samplerState = ss
+        
+        guard let cq = device.makeCommandQueue() else {
+            fatalError("Error: Can not create command queue")
+        }
+        
+        commandQueue = cq
+
         guard let library = device.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
-        }
-
-//        heroModel = EIMesh.sphere(device: device, xRadius: 150, yRadius: 150, zRadius: 150, uTesselation: 32, vTesselation: 32)
-        model = EIMesh.cube(device: device, xExtent: 200, yExtent: 100, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
-//        heroModel = EIMesh.plane(device: device, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
-
-        do {
-            texture = try makeTexture(device: device, name: "mandrill")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-        do {
-            frontTexture = try makeTexture(device: device, name: "mandrill")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-        do {
-            backTexture = try makeTexture(device: device, name: "lena")
-        } catch {
-            fatalError("Error: Can not load texture")
         }
 
         do {
@@ -64,26 +53,17 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
             // fragmentShaderName:"litTextureMIOFragmentShader",
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: model.metalVertexDescriptor)
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: model.metalVertexDescriptor)
 
             pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
         }
 
-        // render plane
-        cameraPlane = EIMesh.plane(device: device, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
-
-        do {
-            cameraPlaneTexture = try makeTexture(device: device, name: "mobile")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: model.metalVertexDescriptor)
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: model.metalVertexDescriptor)
 
             cameraPlanePipelineState = try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
 
@@ -91,38 +71,15 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
             Swift.print("\(e)")
         }
 
-
-
-
-
-
-
-
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
         depthStencilDescriptor.depthCompareFunction = .less
         depthStencilDescriptor.isDepthWriteEnabled = true
         
-        depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)!
-
-
-
-
-
-
-
-
-
-        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
-            fatalError("Error: Can not create sampler state")
+        guard let dss = device.makeDepthStencilState(descriptor: depthStencilDescriptor) else {
+            fatalError("Error: Can not create depth stencil state")
         }
-
-        samplerState = ss
-
-        guard let cq = device.makeCommandQueue() else {
-            fatalError("Error: Can not create command queue")
-        }
-
-        commandQueue = cq
+        
+        depthStencilState = dss
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
@@ -136,7 +93,7 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
 
     func update(view: EIView, drawableSize:CGSize) {
 
-        // render plane
+        // camera plane
         cameraPlane.metallicTransform.update(camera: camera, transformer: {
             return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
@@ -241,7 +198,7 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
             encoder.setCullMode(.none)
             encoder.setFragmentSamplerState(samplerState, index: 0)
 
-            // render plane
+            // camera plane
             encoder.EI_ConfigureWithEIMesh(renderPipelineState: cameraPlanePipelineState, model: cameraPlane, textures: [cameraPlaneTexture])
 
             // hero model

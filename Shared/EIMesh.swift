@@ -110,7 +110,7 @@ class EIMesh {
         
         
         // To create that cool low-poly look
-        modelIOMesh.makeVerticesUnique()
+//        modelIOMesh.makeVerticesUnique()
         modelIOMesh.addNormals(withAttributeNamed:MDLVertexAttributeNormal, creaseThreshold:1.0)
 
         
