@@ -69,11 +69,7 @@ class EIMesh {
         primitiveType = metalMesh.submeshes[ 0 ].primitiveType
 
         // unused - to shut compiler up
-        modelIOMesh = MDLMesh.newPlane(withDimensions:vector_float2(4, 4),
-                                       segments:vector_uint2(2, 2),
-                                       geometryType:.triangles,
-                                       allocator:nil)
-
+        modelIOMesh = MDLMesh.newPlane(withDimensions:vector_float2(4, 4), segments:vector_uint2(2, 2), geometryType:.triangles, allocator:nil)
 
     }
 

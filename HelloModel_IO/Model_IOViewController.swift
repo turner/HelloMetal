@@ -58,6 +58,34 @@ class Model_IOViewController: UIViewController {
             fatalError("Error: Can not load texture")
         }
 
+        guard let library = view.device!.makeDefaultLibrary() else {
+            fatalError("Error: Can not create default library")
+        }
+
+        do {
+
+            // vertexShaderName:"litTextureMIOVertexShader",
+            // fragmentShaderName:"litTextureMIOFragmentShader",
+
+            let pipelineDescriptor =
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.model.metalVertexDescriptor)
+
+            renderer.pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
+        } catch let e {
+            Swift.print("\(e)")
+        }
+
+        do {
+
+            let pipelineDescriptor =
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.cameraPlane.metalVertexDescriptor)
+
+            renderer.cameraPlanePipelineState = try view.device!.makeRenderPipelineState(descriptor: pipelineDescriptor)
+
+        } catch let e {
+            Swift.print("\(e)")
+        }
+
     }
 
     /*

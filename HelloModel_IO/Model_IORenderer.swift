@@ -43,34 +43,6 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
         
         commandQueue = cq
 
-        guard let library = device.makeDefaultLibrary() else {
-            fatalError("Error: Can not create default library")
-        }
-
-        do {
-
-            // vertexShaderName:"litTextureMIOVertexShader",
-            // fragmentShaderName:"litTextureMIOFragmentShader",
-
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: model.metalVertexDescriptor)
-
-            pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch let e {
-            Swift.print("\(e)")
-        }
-
-        do {
-
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: model.metalVertexDescriptor)
-
-            cameraPlanePipelineState = try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
-
-        } catch let e {
-            Swift.print("\(e)")
-        }
-
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
         depthStencilDescriptor.depthCompareFunction = .less
         depthStencilDescriptor.isDepthWriteEnabled = true
