@@ -28,15 +28,7 @@ extension MTLSamplerDescriptor {
 
 extension MTLRenderCommandEncoder {
 
-    func EI_configure(renderPipelineState:MTLRenderPipelineState, model:EIQuad, texture:MTLTexture) {
-        self.setRenderPipelineState(renderPipelineState)
-        self.setVertexBuffer(model.vertexMetalBuffer, offset: 0, index: 0)
-        self.setVertexBuffer(model.metallicTransform.metalBuffer, offset: 0, index: 1)
-        self.setFragmentTexture(texture, index: 0)
-        self.drawIndexedPrimitives(type: .triangle, indexCount: model.indexCount, indexType: MTLIndexType.uint16, indexBuffer: model.vertexIndexMetalBuffer, indexBufferOffset: 0)
-    }
-
-    func EI_configureWithTextures(renderPipelineState:MTLRenderPipelineState, model:EIQuad, textures:[MTLTexture]) {
+    func EI_Configure(renderPipelineState:MTLRenderPipelineState, model:EIQuad, textures:[MTLTexture]) {
         self.setRenderPipelineState(renderPipelineState)
         self.setVertexBuffer(model.vertexMetalBuffer, offset: 0, index: 0)
         self.setVertexBuffer(model.metallicTransform.metalBuffer, offset: 0, index: 1)
