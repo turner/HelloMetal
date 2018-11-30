@@ -166,10 +166,10 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         encoder.setFragmentSamplerState(samplerState, index: 0)
 
         // hero backdrop
-        encoder.EI_Configure(renderPipelineState: backdropPipelineState, model: backdropModel, textures: [ backdropTexture ])
+        encoder.EI_ConfigureWithEIQuad(renderPipelineState: backdropPipelineState, model: backdropModel, textures: [ backdropTexture ])
 
         // hero model
-        encoder.EI_Configure(renderPipelineState: pipelineState, model: model, textures: [ texture ])
+        encoder.EI_ConfigureWithEIQuad(renderPipelineState: pipelineState, model: model, textures: [ texture ])
 
         encoder.endEncoding()
 
@@ -193,7 +193,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
                         finalRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture!,
                         finalPassTexture
                     ]
-            finalPassEncoder.EI_Configure(renderPipelineState: finalPassPipelineState, model: finalPassModel, textures: textures)
+            finalPassEncoder.EI_ConfigureWithEIQuad(renderPipelineState: finalPassPipelineState, model: finalPassModel, textures: textures)
 
             finalPassEncoder.endEncoding()
 

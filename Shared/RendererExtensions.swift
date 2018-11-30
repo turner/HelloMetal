@@ -27,11 +27,12 @@ extension MTLSamplerDescriptor {
     }
 }
 
-
 extension MTLRenderCommandEncoder {
 
-    func EI_Configure(renderPipelineState:MTLRenderPipelineState, model:EIQuad, textures:[MTLTexture]) {
+    func EI_ConfigureWithEIQuad(renderPipelineState:MTLRenderPipelineState, model:EIQuad, textures:[MTLTexture]) {
+
         self.setRenderPipelineState(renderPipelineState)
+
         self.setVertexBuffer(model.vertexMetalBuffer, offset: 0, index: 0)
         self.setVertexBuffer(model.metallicTransform.metalBuffer, offset: 0, index: 1)
 

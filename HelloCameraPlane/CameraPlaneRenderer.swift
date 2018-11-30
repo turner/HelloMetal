@@ -14,9 +14,9 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
     var camera: EICamera!
 
     // hero model
-    var heroModel: EIQuad!
-    var heroTexture: MTLTexture!
-    var heroPipelineState: MTLRenderPipelineState!
+    var model: EIQuad!
+    var texture: MTLTexture!
+    var pipelineState: MTLRenderPipelineState!
 
     var cameraPlane: EIQuad!
     var cameraPlaneTexture: MTLTexture!
@@ -27,12 +27,6 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
     init(view: MTKView, device: MTLDevice) {
 
-        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
-            fatalError("Error: Can not create sampler state")
-        }
-        
-        samplerState = ss
-
         guard let library = device.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
         }
@@ -42,7 +36,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
             let pipelineDescriptor =
                     MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
 
-            heroPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
+            pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
             Swift.print("\(e)")
         }
@@ -56,6 +50,12 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         } catch let e {
             Swift.print("\(e)")
         }
+
+        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+            fatalError("Error: Can not create sampler state")
+        }
+
+        samplerState = ss
 
         guard let cq = device.makeCommandQueue() else {
             fatalError("Error: Can not create command queue")
@@ -81,7 +81,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         })
 
         // hero model
-        heroModel.metallicTransform.update(camera: camera, transformer: {
+        model.metallicTransform.update(camera: camera, transformer: {
             return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
         })
         
@@ -108,10 +108,10 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
             encoder.setFragmentSamplerState(samplerState, index: 0)
 
             // render plane
-            encoder.EI_Configure(renderPipelineState: cameraPlanePipelineState, model: cameraPlane, textures: [cameraPlaneTexture])
+            encoder.EI_ConfigureWithEIQuad(renderPipelineState: cameraPlanePipelineState, model: cameraPlane, textures: [cameraPlaneTexture])
 
             // hero model
-            encoder.EI_Configure(renderPipelineState: heroPipelineState, model: heroModel, textures: [heroTexture])
+            encoder.EI_ConfigureWithEIQuad(renderPipelineState: pipelineState, model: model, textures: [texture])
 
             encoder.endEncoding()
 
