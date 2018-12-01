@@ -147,6 +147,7 @@
 		4FDFA7EC1E0BFB60005BEDF4 /* pokeOpenEXR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */; };
 		4FDFA7F01E0BFDEE005BEDF4 /* red.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7EE1E0BFDEE005BEDF4 /* red.exr */; };
 		4FDFA7F11E0BFDEE005BEDF4 /* gourds.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7EF1E0BFDEE005BEDF4 /* gourds.exr */; };
+		4FE57D7F21B2C82500F72798 /* Model_IORendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE57D7E21B2C82500F72798 /* Model_IORendererExtensions.swift */; };
 		4FEE5E181DEEDF5500B47AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE5E161DEEDF5500B47AC2 /* Main.storyboard */; };
 		4FEE5E1A1DEEDF5500B47AC2 /* Light.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */; };
 		4FEE5E1D1DEEDF5500B47AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE5E1B1DEEDF5500B47AC2 /* LaunchScreen.storyboard */; };
@@ -261,6 +262,7 @@
 		4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pokeOpenEXR.cpp; sourceTree = "<group>"; };
 		4FDFA7EE1E0BFDEE005BEDF4 /* red.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = red.exr; sourceTree = "<group>"; };
 		4FDFA7EF1E0BFDEE005BEDF4 /* gourds.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = gourds.exr; sourceTree = "<group>"; };
+		4FE57D7E21B2C82500F72798 /* Model_IORendererExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_IORendererExtensions.swift; sourceTree = "<group>"; };
 		4FEE5E101DEEDF5500B47AC2 /* HelloLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEE5E171DEEDF5500B47AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Light.xcassets; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				4FC28A3D21B16AAF0041947C /* Model_IOViewController.swift */,
+				4FE57D7E21B2C82500F72798 /* Model_IORendererExtensions.swift */,
 				4FDB16751DBD658C0025465A /* Model_IORenderer.swift */,
 				4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */,
 				4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */,
@@ -859,6 +862,7 @@
 				4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */,
 				4FDB16771DBD658C0025465A /* Model_IORenderer.swift in Sources */,
 				4FFA63F61DC377DC002F8E34 /* EITexture.swift in Sources */,
+				4FE57D7F21B2C82500F72798 /* Model_IORendererExtensions.swift in Sources */,
 				4FFA63F71DC377DC002F8E34 /* RendererExtensions.swift in Sources */,
 				4FFA63F81DC377DC002F8E34 /* EIQuad.swift in Sources */,
 				4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */,
