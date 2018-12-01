@@ -109,10 +109,10 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
             encoder.setFragmentSamplerState(samplerState, index: 0)
 
             // render plane
-            encoder.EI_ConfigureWithEIQuad(renderPipelineState: cameraPlanePipelineState, model: cameraPlane, textures: [cameraPlaneTexture])
+            encoder.EI_Configure(renderPipelineState: cameraPlanePipelineState, model: cameraPlane, textures: [cameraPlaneTexture])
 
             // hero model
-            encoder.EI_ConfigureWithEIQuad(renderPipelineState: pipelineState, model: model, textures: [texture])
+            encoder.EI_Configure(renderPipelineState: pipelineState, model: model, textures: [texture])
 
             encoder.endEncoding()
 

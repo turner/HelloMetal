@@ -87,7 +87,7 @@ class HelloRenderer: NSObject, MTKViewDelegate {
             encoder.setCullMode(.none)
             encoder.setFragmentSamplerState(samplerState, index: 0)
 
-            encoder.EI_ConfigureWithEIQuad(renderPipelineState: pipelineState, model: model, textures: [texture])
+            encoder.EI_Configure(renderPipelineState: pipelineState, model: model, textures: [texture])
 
             encoder.endEncoding()
 

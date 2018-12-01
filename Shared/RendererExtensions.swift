@@ -29,7 +29,7 @@ extension MTLSamplerDescriptor {
 
 extension MTLRenderCommandEncoder {
 
-    func EI_ConfigureWithEIQuad(renderPipelineState:MTLRenderPipelineState, model:EIQuad, textures:[MTLTexture]) {
+    func EI_Configure(renderPipelineState:MTLRenderPipelineState, model:EIQuad, textures:[MTLTexture]) {
 
         self.setRenderPipelineState(renderPipelineState)
 
@@ -41,7 +41,7 @@ extension MTLRenderCommandEncoder {
             self.setFragmentTexture(texture, index: i)
         }
 
-        self.drawIndexedPrimitives(type: .triangle, indexCount: model.indexCount, indexType: MTLIndexType.uint16, indexBuffer: model.vertexIndexMetalBuffer, indexBufferOffset: 0)
+        self.drawIndexedPrimitives(type: model.primitiveType, indexCount: model.indexCount, indexType: model.indexType, indexBuffer: model.vertexIndexMetalBuffer, indexBufferOffset: 0)
     }
 
 }
