@@ -9,7 +9,7 @@
 import Metal
 import GLKit
 
-struct EIQuad {
+struct EIQuad : EIModelProtocol {
 
     let vertices = [
             Vertex(xyz: GLKVector3(v:(-1, -1,  0)), n: GLKVector3(v:(0, 0, 1)), rgba: GLKVector4(v:(1, 0, 0, 1)), st: GLKVector2(v:(0, 1))),
@@ -51,4 +51,27 @@ struct EIQuad {
 
     }
 
+    func getVertexMetalBuffer() -> MTLBuffer {
+        return vertexMetalBuffer
+    }
+
+    func getMetallicTransformMetalBuffer() -> MTLBuffer {
+        return metallicTransform.metalBuffer
+    }
+
+    func getPrimitiveType() -> MTLPrimitiveType {
+        return primitiveType
+    }
+
+    func getIndexCount() -> Int {
+        return indexCount
+    }
+
+    func getIndexType() -> MTLIndexType {
+        return indexType
+    }
+
+    func getIndexBuffer() -> MTLBuffer {
+        return vertexIndexMetalBuffer
+    }
 }

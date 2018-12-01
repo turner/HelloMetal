@@ -29,19 +29,19 @@ extension MTLSamplerDescriptor {
 
 extension MTLRenderCommandEncoder {
 
-    func EI_Configure(renderPipelineState:MTLRenderPipelineState, model:EIQuad, textures:[MTLTexture]) {
+    func EI_Configure(renderPipelineState:MTLRenderPipelineState, model:EIModelProtocol, textures:[MTLTexture]) {
 
         self.setRenderPipelineState(renderPipelineState)
 
-        self.setVertexBuffer(model.vertexMetalBuffer, offset: 0, index: 0)
-        self.setVertexBuffer(model.metallicTransform.metalBuffer, offset: 0, index: 1)
+        self.setVertexBuffer(model.getVertexMetalBuffer(), offset: 0, index: 0)
+        self.setVertexBuffer(model.getMetallicTransformMetalBuffer(), offset: 0, index: 1)
 
         for i in 0..<textures.count {
             let texture = textures[ i ]
             self.setFragmentTexture(texture, index: i)
         }
 
-        self.drawIndexedPrimitives(type: model.primitiveType, indexCount: model.indexCount, indexType: model.indexType, indexBuffer: model.vertexIndexMetalBuffer, indexBufferOffset: 0)
+        self.drawIndexedPrimitives(type: model.getPrimitiveType(), indexCount: model.getIndexCount(), indexType: model.getIndexType(), indexBuffer: model.getIndexBuffer(), indexBufferOffset: 0)
     }
 
 }
