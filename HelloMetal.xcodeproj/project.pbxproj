@@ -111,6 +111,9 @@
 		4F7270A11DC373690039E130 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4F7270A21DC373690039E130 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F7270A31DC373690039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
+		4F79540821B46B4100E4A25E /* LightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F79540721B46B4100E4A25E /* LightViewController.swift */; };
+		4F79540921B46BEB00E4A25E /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
+		4F79540A21B46BEB00E4A25E /* EIMeshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMeshExtensions.swift */; };
 		4F80A4991DEB86420082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F80A49A1DEB86550082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F80A49B1DEB865E0082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
@@ -158,7 +161,6 @@
 		4FDFA7F11E0BFDEE005BEDF4 /* gourds.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7EF1E0BFDEE005BEDF4 /* gourds.exr */; };
 		4FEE5E181DEEDF5500B47AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE5E161DEEDF5500B47AC2 /* Main.storyboard */; };
 		4FEE5E1A1DEEDF5500B47AC2 /* Light.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */; };
-		4FEE5E1D1DEEDF5500B47AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE5E1B1DEEDF5500B47AC2 /* LaunchScreen.storyboard */; };
 		4FEE5E221DEEDFD000B47AC2 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
 		4FEE5E231DEEDFEE00B47AC2 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4FEE5E241DEEDFF500B47AC2 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F111DBA50FA00B80FE4 /* Metal.framework */; };
@@ -172,7 +174,6 @@
 		4FEE5E2C1DEEE03B00B47AC2 /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
 		4FEE5E2E1DEEE03B00B47AC2 /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
 		4FEE5E341DEEE0F400B47AC2 /* LightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */; };
-		4FEE5E351DEEE0F400B47AC2 /* LightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E331DEEE0F400B47AC2 /* LightView.swift */; };
 		4FF465C121A9BAFD00CA57F4 /* RenderPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */; };
 		4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
 		4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
@@ -251,6 +252,7 @@
 		4F72708C1DC372410039E130 /* CameraPlane.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CameraPlane.xcassets; sourceTree = "<group>"; };
 		4F7270911DC372410039E130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7270961DC372F50039E130 /* CameraPlaneRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPlaneRenderer.swift; sourceTree = "<group>"; };
+		4F79540721B46B4100E4A25E /* LightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewController.swift; sourceTree = "<group>"; };
 		4F80A4981DEB86420082EE39 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		4F873AE61E0D6126002AF02D /* openexr.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = openexr.metal; path = Shared/openexr.metal; sourceTree = "<group>"; };
 		4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = alias_wavefront_diagnostic.exr; sourceTree = "<group>"; };
@@ -276,10 +278,8 @@
 		4FEE5E101DEEDF5500B47AC2 /* HelloLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEE5E171DEEDF5500B47AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Light.xcassets; sourceTree = "<group>"; };
-		4FEE5E1C1DEEDF5500B47AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FEE5E1E1DEEDF5500B47AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightRenderer.swift; sourceTree = "<group>"; };
-		4FEE5E331DEEE0F400B47AC2 /* LightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightView.swift; sourceTree = "<group>"; };
 		4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderPassViewController.swift; sourceTree = "<group>"; };
 		4FFA63ED1DC3773C002F8E34 /* EITexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EITexture.swift; path = Shared/EITexture.swift; sourceTree = "<group>"; };
 		4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RendererExtensions.swift; path = Shared/RendererExtensions.swift; sourceTree = "<group>"; };
@@ -480,8 +480,8 @@
 				4F7270841DC372410039E130 /* HelloCameraPlane */,
 				4F64B3691DC3FD36005BD8B1 /* HelloRenderPass */,
 				4F56AF871DBAF08E00E396E7 /* HelloModel_IO */,
-				4F4E3E221DD6177B005E40AC /* HelloSceneKit */,
 				4FEE5E111DEEDF5500B47AC2 /* HelloLight */,
+				4F4E3E221DD6177B005E40AC /* HelloSceneKit */,
 				4FDFA7B71E0BF7CE005BEDF4 /* HelloOpenEXR */,
 				4F2F1F101DBA50FA00B80FE4 /* Frameworks */,
 				4F7ABE111DA83A9F0054AFA9 /* Products */,
@@ -534,11 +534,10 @@
 		4FEE5E111DEEDF5500B47AC2 /* HelloLight */ = {
 			isa = PBXGroup;
 			children = (
-				4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */,
+				4F79540721B46B4100E4A25E /* LightViewController.swift */,
 				4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */,
-				4FEE5E331DEEE0F400B47AC2 /* LightView.swift */,
 				4FEE5E161DEEDF5500B47AC2 /* Main.storyboard */,
-				4FEE5E1B1DEEDF5500B47AC2 /* LaunchScreen.storyboard */,
+				4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */,
 				4FEE5E1E1DEEDF5500B47AC2 /* Info.plist */,
 			);
 			path = HelloLight;
@@ -744,8 +743,8 @@
 				4F7270821DC372410039E130 /* HelloCameraPlane */,
 				4F64B3671DC3FD36005BD8B1 /* HelloRenderPass */,
 				4F56AF851DBAF08E00E396E7 /* HelloModel_IO */,
-				4F4E3E201DD6177B005E40AC /* HelloSceneKit */,
 				4FEE5E0F1DEEDF5500B47AC2 /* HelloLight */,
+				4F4E3E201DD6177B005E40AC /* HelloSceneKit */,
 				4FDFA7B51E0BF7CE005BEDF4 /* HelloOpenEXR */,
 			);
 		};
@@ -837,7 +836,6 @@
 				4F67346A1DEFADB700443FEA /* scenes.scnassets in Resources */,
 				4FEE5E221DEEDFD000B47AC2 /* Textures.xcassets in Resources */,
 				4FEE5E1A1DEEDF5500B47AC2 /* Light.xcassets in Resources */,
-				4FEE5E1D1DEEDF5500B47AC2 /* LaunchScreen.storyboard in Resources */,
 				4FEE5E181DEEDF5500B47AC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -990,9 +988,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FEE5E261DEEE03B00B47AC2 /* AppDelegate.swift in Sources */,
+				4F79540821B46B4100E4A25E /* LightViewController.swift in Sources */,
 				4FEE5E271DEEE03B00B47AC2 /* EIView.swift in Sources */,
-				4FEE5E351DEEE0F400B47AC2 /* LightView.swift in Sources */,
+				4F79540921B46BEB00E4A25E /* EIModelProtocol.swift in Sources */,
+				4F79540A21B46BEB00E4A25E /* EIMeshExtensions.swift in Sources */,
+				4FEE5E261DEEE03B00B47AC2 /* AppDelegate.swift in Sources */,
 				4FEE5E341DEEE0F400B47AC2 /* LightRenderer.swift in Sources */,
 				4FEE5E281DEEE03B00B47AC2 /* EIArcball.swift in Sources */,
 				4FEE5E291DEEE03B00B47AC2 /* EITexture.swift in Sources */,
@@ -1088,14 +1088,6 @@
 				4FEE5E171DEEDF5500B47AC2 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4FEE5E1B1DEEDF5500B47AC2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4FEE5E1C1DEEDF5500B47AC2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

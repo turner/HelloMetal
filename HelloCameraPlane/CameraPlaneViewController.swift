@@ -28,13 +28,13 @@ class CameraPlaneViewController: UIViewController {
 
         renderer.model = EIQuad(device: view.device!);
 
+        renderer.cameraPlane = EIQuad(device: view.device!);
+
         do {
             renderer.texture = try makeTexture(device: view.device!, name: "diagnostic")
         } catch {
             fatalError("Error: Can not load texture")
         }
-
-        renderer.cameraPlane = EIQuad(device: view.device!);
 
         do {
             renderer.cameraPlaneTexture = try makeTexture(device: view.device!, name: "mobile")

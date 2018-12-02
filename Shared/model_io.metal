@@ -58,8 +58,7 @@ fragment float4 textureMIOWithSamplerFragmentShader(xyzw_n_st_rgba in [[stage_in
     return rgba;
 }
 
-vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]],
-                                                     constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
     
     xyzw_n_st_rgba out;
     
