@@ -16,7 +16,7 @@ import MetalKit.MTKModel
 
 import GLKit
 
-class EIMesh : EIModelProtocol  {
+class EIMesh {
 
     var metallicTransform: EITransform
 
@@ -141,30 +141,6 @@ class EIMesh : EIModelProtocol  {
 
         primitiveType = metalMesh.submeshes[ 0 ].primitiveType
 
-    }
-
-    func getVertexMetalBuffer() -> MTLBuffer {
-        return vertexMetalBuffer
-    }
-
-    func getMetallicTransformMetalBuffer() -> MTLBuffer {
-        return metallicTransform.metalBuffer
-    }
-
-    func getPrimitiveType() -> MTLPrimitiveType {
-        return primitiveType
-    }
-
-    func getIndexCount() -> Int {
-        return indexCount
-    }
-
-    func getIndexType() -> MTLIndexType {
-        return indexType
-    }
-
-    func getIndexBuffer() -> MTLBuffer {
-        return vertexIndexMetalBuffer
     }
 
     class func plane(device: MTLDevice,
