@@ -1,54 +1,51 @@
 //
-//  RenderPassRenderer.swift
+//  HelloRenderer.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 9/11/16.
 //  Copyright © 2016 Elastic Image Software. All rights reserved.
 //
-import ModelIO
+
 import MetalKit
 import GLKit
 
-class Model_IORenderer: NSObject, MTKViewDelegate {
+class HelloRenderer: NSObject, MTKViewDelegate {
 
-    var camera: EICamera!
-
-    // hero model
-    var model: EIMesh!
-    var texture: MTLTexture!
-    var pipelineState: MTLRenderPipelineState!
-
-    var cameraPlane: EIMesh!
-    var cameraPlaneTexture: MTLTexture!
-    var cameraPlanePipelineState: MTLRenderPipelineState!
+    var camera:EICamera!
+    var model: EIQuad!
+    var texture:MTLTexture!
     
-    let depthStencilState: MTLDepthStencilState?
+    var pipelineState:MTLRenderPipelineState!
+
+    let commandQueue:MTLCommandQueue?
     let samplerState: MTLSamplerState?
-    let commandQueue: MTLCommandQueue?
 
     init(view: MTKView, device: MTLDevice) {
 
-        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
-            fatalError("Error: Can not create sampler state")
-        }
-        
-        samplerState = ss
-        
         guard let cq = device.makeCommandQueue() else {
             fatalError("Error: Can not create command queue")
         }
         
         commandQueue = cq
 
-        let depthStencilDescriptor = MTLDepthStencilDescriptor()
-        depthStencilDescriptor.depthCompareFunction = .less
-        depthStencilDescriptor.isDepthWriteEnabled = true
-        
-        guard let dss = device.makeDepthStencilState(descriptor: depthStencilDescriptor) else {
-            fatalError("Error: Can not create depth stencil state")
+        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+            fatalError("Error: Can not create sampler state ")
         }
-        
-        depthStencilState = dss
+
+        samplerState = ss
+
+        guard let library = device.makeDefaultLibrary() else {
+            fatalError("Error: Can not create default library")
+        }
+    
+        let pipelineDescriptor =
+                MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+
+        do {
+            pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
+        } catch let e {
+            Swift.print("\(e)")
+        }
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
@@ -62,14 +59,8 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
 
     func update(view: EIView, drawableSize:CGSize) {
 
-        // camera plane
-        cameraPlane.metallicTransform.update(camera: camera, transformer: {
-            return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
-        })
-
-        // hero model
         model.metallicTransform.update(camera: camera, transformer: {
-            return view.arcBall.rotationMatrix
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
         })
 
     }
@@ -78,7 +69,10 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
 
         update(view: view as! EIView, drawableSize: view.bounds.size)
 
+        // final pass
         if let passDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
+
+            passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.5, 0.5, 0.5, 1.0)
 
             guard let buffer = commandQueue!.makeCommandBuffer() else {
                 fatalError("Error: Can not create command buffer")
@@ -88,18 +82,12 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
                 fatalError("Error: Can not create command encoder")
             }
 
-            encoder.setDepthStencilState(depthStencilState)
-
             encoder.setFrontFacing(.counterClockwise)
             encoder.setTriangleFillMode(.fill)
             encoder.setCullMode(.none)
             encoder.setFragmentSamplerState(samplerState, index: 0)
 
-            // camera plane
-            encoder.EI_Configure(renderPipelineState: cameraPlanePipelineState, model: cameraPlane, textures: [cameraPlaneTexture])
-
-            // hero model
-            encoder.EI_Configure(renderPipelineState: pipelineState, model: self.model, textures: [texture])
+            encoder.EI_Configure(renderPipelineState: pipelineState, model: model, textures: [texture])
 
             encoder.endEncoding()
 
@@ -108,4 +96,5 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
         }
 
     }
+
 }

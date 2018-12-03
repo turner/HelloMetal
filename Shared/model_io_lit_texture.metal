@@ -23,8 +23,7 @@ struct TransformPackage {
     float4x4 modelViewProjectionMatrix;
 };
 
-vertex xyzw_n_st_rgba litTextureMIOVertexShader(xyz_n_st in [[ stage_in ]],
-                                                constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba litTextureMIOVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
  
     
     // light at camera location. Flashlight style.
@@ -62,42 +61,8 @@ vertex xyzw_n_st_rgba litTextureMIOVertexShader(xyz_n_st in [[ stage_in ]],
 
 }
 
-fragment float4 litTextureMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]],
-                                            bool isFrontFacing [[ front_facing ]],
-                                            texture2d<float> texas [[ texture(0 )]]) {
-    
-    constexpr sampler defaultSampler;
-    
+fragment float4 litTextureMIOFragmentShader(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
     float4 rgba;
-    
-//    rgba = in.rgba;
-    rgba = in.rgba * texas.sample(defaultSampler, float2(in.st)).rgba;
-    
+    rgba = in.rgba * texas.sample(textureSampler, float2(in.st)).rgba;
     return rgba;
-    
 }
-
-/*
-fragment float4 litTextureMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]],
-                                            bool isFrontFacing [[ front_facing ]],
-                                            texture2d<float> texas [[ texture(0 )]]) {
-    
-    constexpr sampler defaultSampler;
- 
-    float3 v = normalize(in.n);
-
-    float4 rgba;
-    
-    if (isFrontFacing == true) {
-        rgba = float4(v, 1);
-//        rgba = texas.sample(defaultSampler, float2(in.st)).rgba;
-    } else {
-        rgba = float4(-v, 1);
-//        rgba = float4(.5,.5,.5,1);
-    }
-    
-    return rgba;
-    
-}
-*/
-

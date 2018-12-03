@@ -11,137 +11,136 @@ import GLKit
 
 class RenderPassRenderer: NSObject, MTKViewDelegate {
 
-    var camera: EICamera
+    var camera: EICamera!
 
     // hero model
-    var heroModel: EIQuad
-    var heroModelTexture: MTLTexture
-    var heroModelPipelineState: MTLRenderPipelineState!
+    var model: EIQuad!
+    var texture: MTLTexture!
+    var pipelineState: MTLRenderPipelineState!
 
     // hero backdrop
-    var heroBackdrop: EIQuad
-    var heroBackdropTexture: MTLTexture
-    var heroBackdropPipelineState: MTLRenderPipelineState!
-
-    // render to texture
-    var renderToTexturePassDescriptor: MTLRenderPassDescriptor
+    var backdropModel: EIQuad!
+    var backdropTexture: MTLTexture!
+    var backdropPipelineState: MTLRenderPipelineState!
 
     // final pass
-    var finalPassRenderSurface: EIQuad
+    var finalPassModel: EIQuad!
+    var finalPassTexture: MTLTexture!
     var finalPassPipelineState: MTLRenderPipelineState!
-    var finalPassTexture: MTLTexture
 
-    var commandQueue: MTLCommandQueue!
+    // render to texture
+    var finalRenderPassDescriptor: MTLRenderPassDescriptor
+
+    let commandQueue: MTLCommandQueue?
+    let samplerState: MTLSamplerState?
 
     init(view: MTKView, device: MTLDevice) {
 
-        let library = device.makeDefaultLibrary()
+        guard let cq = device.makeCommandQueue() else {
+            fatalError("Error: Can not create command queue")
+        }
+        
+        commandQueue = cq
+        
+        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+            fatalError("Error: Can not create sampler state")
+        }
+        
+        samplerState = ss
 
-        camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
-
-        // hero model
-        heroModel = EIQuad(device: device)
-
-        do {
-            heroModelTexture = try makeTexture(device: device, name: "kids_grid_3x3")
-        } catch {
-            fatalError("Error: Can not load texture")
+        guard let library = device.makeDefaultLibrary() else {
+            fatalError("Error: Can not create default library")
         }
 
+        // hero pipline state
         do {
 
-            let desc = MTLRenderPipelineDescriptor(view:view, library:library!, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", doIncludeDepthAttachment: true, vertexDescriptor: nil)
-            desc.depthAttachmentPixelFormat = .depth32Float
-
-            heroModelPipelineState = try device.makeRenderPipelineState(descriptor: desc)
-
-        } catch let e {
-            Swift.print("\(e)")
-        }
-
-        // hero backdrop
-        heroBackdrop = EIQuad(device: device)
-
-        do {
-            heroBackdropTexture = try makeTexture(device: device, name: "mobile")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-        do {
-
-            let desc = MTLRenderPipelineDescriptor(view:view, library:library!, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", doIncludeDepthAttachment: true, vertexDescriptor: nil)
-            desc.depthAttachmentPixelFormat = .depth32Float
-
-            heroBackdropPipelineState = try device.makeRenderPipelineState(descriptor: desc)
-
-        } catch let e {
-            Swift.print("\(e)")
-        }
-
-        renderToTexturePassDescriptor = MTLRenderPassDescriptor(clearColor:MTLClearColorMake(1, 1, 1, 1), clearDepth:1)
-
-        // final pass
-        finalPassRenderSurface = EIQuad(device: device)
-
-        do {
-            finalPassTexture = try makeTexture(device: device, name: "mobile-overlay")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-
-        do {
-
-            let desc = MTLRenderPipelineDescriptor(view:view, library:library!, vertexShaderName:"finalPassVertexShader", fragmentShaderName:"finalPassOverlayFragmentShader", doIncludeDepthAttachment: false, vertexDescriptor: nil)
-            desc.depthAttachmentPixelFormat = .depth32Float
+            let pipelineDescriptor =
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
             
-            finalPassPipelineState = try device.makeRenderPipelineState(descriptor: desc)
+            pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
 
         } catch let e {
             Swift.print("\(e)")
         }
 
-        commandQueue = device.makeCommandQueue()
+        // backdrop pipeline state
+        do {
+
+            let pipelineDescriptor =
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+            
+            backdropPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
+        } catch let e {
+            Swift.print("\(e)")
+        }
+
+        // final pass pipline statate
+        do {
+
+            let pipelineDescriptor =
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"finalPassVertexShader", fragmentShaderName:"finalPassOverlayFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+             
+            finalPassPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
+        } catch let e {
+            Swift.print("\(e)")
+        }
+
+
+        finalRenderPassDescriptor = MTLRenderPassDescriptor()
+        finalRenderPassDescriptor.EI_renderpass_configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
 
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        reshape(view:view as! RenderPassMetalView)
+        reshape(view:view as! EIView)
     }
 
-    func reshape (view: RenderPassMetalView) {
+    func reshape (view:EIView) {
 
         view.arcBall.reshape(viewBounds: view.bounds)
 
         camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width/view.bounds.size.height), near:200, far: 8000)
+        
+        let scaleFactor = UIScreen.main.scale
+        let ww = scaleFactor * view.bounds.size.width
+        let hh = scaleFactor * view.bounds.size.height
 
-        // color
-        let rgbaTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:true)
-        rgbaTextureDescriptor.usage = [.renderTarget, .shaderRead]
+        // color - multi-sample texture
+        let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(ww), height:Int(hh), mipmapped:false)
+        textureDescriptor.mipmapLevelCount = 1;
+        textureDescriptor.textureType = .type2DMultisample
+        textureDescriptor.sampleCount = view.sampleCount
+        textureDescriptor.usage = .renderTarget
+        finalRenderPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:textureDescriptor)
+
+        // color - point-sample resolve texture
+        let resolveTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(ww), height:Int(hh), mipmapped:true)
+        finalRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture = view.device!.makeTexture(descriptor:resolveTextureDescriptor)
 
         // depth
-        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float, width:Int(view.bounds.size.width), height:Int(view.bounds.size.height), mipmapped:false)
+        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float, width:Int(ww), height:Int(hh), mipmapped:false)
+        depthTextureDescriptor.mipmapLevelCount = 1;
+        depthTextureDescriptor.textureType = .type2DMultisample
+        depthTextureDescriptor.sampleCount = view.sampleCount
         depthTextureDescriptor.usage = .renderTarget
-
-        renderToTexturePassDescriptor.colorAttachments[ 0 ].texture = view.device?.makeTexture(descriptor:rgbaTextureDescriptor)
-        renderToTexturePassDescriptor.depthAttachment.texture       = view.device?.makeTexture(descriptor:depthTextureDescriptor)
+        finalRenderPassDescriptor.depthAttachment.texture = view.device!.makeTexture(descriptor:depthTextureDescriptor)
     }
 
-    func update(view: RenderPassMetalView, drawableSize:CGSize) {
+    func update(view:EIView, drawableSize:CGSize) {
 
         // render plane
-        finalPassRenderSurface.metallicTransform.update(camera: camera, transformer: {
+        finalPassModel.metallicTransform.update(camera: camera, transformer: {
             return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far)
         })
 
         // hero model
-        heroModel.metallicTransform.update(camera: camera, transformer: {
+        model.metallicTransform.update(camera: camera, transformer: {
             return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
         })
 
         // hero backdrop
-        heroBackdrop.metallicTransform.update(camera: camera, transformer: {
+        backdropModel.metallicTransform.update(camera: camera, transformer: {
             return camera.createRenderPlaneTransform(distanceFromCamera: 0.35 * camera.far)
         })
 
@@ -149,76 +148,57 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
     public func draw(in view: MTKView) {
 
-        update(view: view as! RenderPassMetalView, drawableSize: view.bounds.size)
+        update(view: view as! EIView, drawableSize: view.bounds.size)
 
-        let commandBuffer = commandQueue.makeCommandBuffer()!
+        guard let buffer = commandQueue!.makeCommandBuffer() else {
+            fatalError("Error: Can not create command buffer")
+        }
 
+        guard let encoder = buffer.makeRenderCommandEncoder(descriptor: finalRenderPassDescriptor) else {
+            fatalError("Error: Can not create command encoder")
+        }
 
-        // render to texture
-        let renderToTextureCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderToTexturePassDescriptor)!
-
-        renderToTextureCommandEncoder.setFrontFacing(.counterClockwise)
-        renderToTextureCommandEncoder.setTriangleFillMode(.fill)
-        renderToTextureCommandEncoder.setCullMode(.none)
+        // configure encoder
+        encoder.setFrontFacing(.counterClockwise)
+        encoder.setTriangleFillMode(.fill)
+        encoder.setCullMode(.none)
+        encoder.setFragmentSamplerState(samplerState, index: 0)
 
         // hero backdrop
-        renderToTextureCommandEncoder.setRenderPipelineState(heroBackdropPipelineState)
-
-        renderToTextureCommandEncoder.setVertexBuffer(heroBackdrop.vertexMetalBuffer, offset: 0, index: 0)
-        renderToTextureCommandEncoder.setVertexBuffer(heroBackdrop.metallicTransform.metalBuffer, offset: 0, index: 1)
-        renderToTextureCommandEncoder.setFragmentTexture(heroBackdropTexture, index: 0)
-        renderToTextureCommandEncoder.drawIndexedPrimitives(
-                type: .triangle,
-                indexCount: heroBackdrop.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
-                indexType: MTLIndexType.uint16,
-                indexBuffer: heroBackdrop.vertexIndexMetalBuffer,
-                indexBufferOffset: 0)
+        encoder.EI_Configure(renderPipelineState: backdropPipelineState, model: backdropModel, textures: [ backdropTexture ])
 
         // hero model
-        renderToTextureCommandEncoder.setRenderPipelineState(heroModelPipelineState)
+        encoder.EI_Configure(renderPipelineState: pipelineState, model: model, textures: [ texture ])
 
-        renderToTextureCommandEncoder.setVertexBuffer(heroModel.vertexMetalBuffer, offset: 0, index: 0)
-        renderToTextureCommandEncoder.setVertexBuffer(heroModel.metallicTransform.metalBuffer, offset: 0, index: 1)
-        renderToTextureCommandEncoder.setFragmentTexture(heroModelTexture, index: 0)
-        renderToTextureCommandEncoder.drawIndexedPrimitives(
-                type: .triangle,
-                indexCount: heroModel.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
-                indexType: MTLIndexType.uint16,
-                indexBuffer: heroModel.vertexIndexMetalBuffer,
-                indexBufferOffset: 0)
-
-        renderToTextureCommandEncoder.endEncoding()
+        encoder.endEncoding()
 
         // final pass
-        if let finalPassDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
+        if let descriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
-            finalPassDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
-            
-            let finalPassCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: finalPassDescriptor)!
-            finalPassCommandEncoder.setRenderPipelineState(finalPassPipelineState)
+            descriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
 
-            finalPassCommandEncoder.setFrontFacing(.counterClockwise)
-            finalPassCommandEncoder.setTriangleFillMode(.fill)
-            finalPassCommandEncoder.setCullMode(.none)
+            guard let finalPassEncoder = buffer.makeRenderCommandEncoder(descriptor: descriptor) else {
+                fatalError("Error: Can not create command encoder")
+            }
 
-            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.vertexMetalBuffer, offset: 0, index:0)
-            finalPassCommandEncoder.setVertexBuffer(finalPassRenderSurface.metallicTransform.metalBuffer, offset: 0, index:1)
-        
-            finalPassCommandEncoder.setFragmentTexture(renderToTexturePassDescriptor.colorAttachments[ 0 ].texture, index:0)
-            finalPassCommandEncoder.setFragmentTexture(finalPassTexture, index:1)
+            // configure final pass encoder
+            finalPassEncoder.setFrontFacing(.counterClockwise)
+            finalPassEncoder.setTriangleFillMode(.fill)
+            finalPassEncoder.setCullMode(.none)
+            finalPassEncoder.setFragmentSamplerState(samplerState, index: 0)
 
-            finalPassCommandEncoder.drawIndexedPrimitives(
-                    type: .triangle,
-                    indexCount: finalPassRenderSurface.vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size,
-                    indexType: MTLIndexType.uint16,
-                    indexBuffer: finalPassRenderSurface.vertexIndexMetalBuffer,
-                    indexBufferOffset: 0)
+            let textures:[MTLTexture] =
+                    [
+                        finalRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture!,
+                        finalPassTexture
+                    ]
+            finalPassEncoder.EI_Configure(renderPipelineState: finalPassPipelineState, model: finalPassModel, textures: textures)
 
-            finalPassCommandEncoder.endEncoding()
+            finalPassEncoder.endEncoding()
 
 
-            commandBuffer.present(drawable)
-            commandBuffer.commit()
+            buffer.present(drawable)
+            buffer.commit()
         }
 
     }

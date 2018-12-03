@@ -43,18 +43,12 @@ vertex xyzw_n_st_rgba textureMIOVertexShader(xyz_n_st in [[ stage_in ]], constan
     
 }
 
-fragment float4 textureMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]], texture2d<float> texas [[ texture(0) ]]) {
-    
-    constexpr sampler defaultSampler;
-    
-    float4 rgba = texas.sample(defaultSampler, float2(in.st)).rgba;
-    
+fragment float4 textureMIOFragmentShader(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
+    float4 rgba = texas.sample(textureSampler, float2(in.st)).rgba;
     return rgba;
-    
 }
 
-vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]],
-                                                     constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
     
     xyzw_n_st_rgba out;
     
@@ -74,19 +68,14 @@ vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]],
 
 }
 
-fragment float4 textureTwoSidedMIOFragmentShader(xyzw_n_st_rgba in [[stage_in]],
-                                                 bool isFrontFacing [[front_facing]],
-                                                 texture2d<float> front [[texture(0)]],
-                                                 texture2d<float> back [[texture(1)]]) {
-    
-    constexpr sampler defaultSampler;
-    
+fragment float4 textureTwoSidedMIOFragmentShader(xyzw_n_st_rgba in [[stage_in]], bool isFrontFacing [[front_facing]], texture2d<float> front [[texture(0)]], texture2d<float> back [[texture(1)]], sampler textureSampler [[sampler(0)]]) {
+
     float4 rgba;
     
     if (isFrontFacing == true) {
-        rgba = front.sample(defaultSampler, float2(in.st)).rgba;
+        rgba = front.sample(textureSampler, float2(in.st)).rgba;
     } else {
-        rgba = back.sample(defaultSampler, float2(in.st)).rgba;
+        rgba = back.sample(textureSampler, float2(in.st)).rgba;
     }
     
     return rgba;

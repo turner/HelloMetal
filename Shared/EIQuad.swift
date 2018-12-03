@@ -27,10 +27,19 @@ struct EIQuad {
     var vertexMetalBuffer: MTLBuffer
     var vertexIndexMetalBuffer: MTLBuffer
     var metallicTransform: EITransform
+
     var indexCount: Int {
         return vertexIndexMetalBuffer.length / MemoryLayout<UInt16>.size
     }
-    
+
+    var primitiveType: MTLPrimitiveType {
+        return .triangle
+    }
+
+    var indexType: MTLIndexType {
+        return .uint16
+    }
+
     init(device: MTLDevice) {
         let vertexSize = MemoryLayout<Vertex>.size
         let vertexCount = self.vertices.count
@@ -41,5 +50,5 @@ struct EIQuad {
         self.metallicTransform = EITransform(device: device)
 
     }
-
+    
 }

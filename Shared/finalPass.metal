@@ -33,6 +33,11 @@ vertex InterpolatedVertex finalPassVertexShader(constant _Vertex_ *vertices [[bu
     return out;
 }
 
+fragment float4 finalPassNoOpFragmentShader(InterpolatedVertex vert [[ stage_in ]], texture2d<float> renderpass_texture [[ texture(0) ]]) {
+    constexpr sampler defaultSampler;
+    return renderpass_texture.sample(defaultSampler, vert.st).rgba;
+}
+
 fragment float4 finalPassFragmentShader(InterpolatedVertex vert [[ stage_in ]],
                                         texture2d<float> texas [[ texture(0) ]]) {
     
@@ -54,18 +59,12 @@ fragment float4 finalPassFragmentShader(InterpolatedVertex vert [[ stage_in ]],
     //    return rgba;
 }
 
-fragment float4 finalPassOverlayFragmentShader(InterpolatedVertex vert [[ stage_in ]],
-                                               texture2d<float> texas [[ texture(0) ]],
-                                               texture2d<float> overlay [[ texture(1) ]]) {
-    
-    constexpr sampler defaultSampler;
-    
-    float4 _F = overlay.sample(defaultSampler, vert.st).rgba;
-    
-    float4 _B = texas.sample(defaultSampler, vert.st).rgba;
-    
+fragment float4 finalPassOverlayFragmentShader(InterpolatedVertex vert [[ stage_in ]], texture2d<float> underlay [[ texture(0) ]], texture2d<float> overlay [[ texture(1) ]], sampler textureSampler [[sampler(0)]]) {
+
+    float4 _F =  overlay.sample(textureSampler, vert.st).rgba;
+    float4 _B = underlay.sample(textureSampler, vert.st).rgba;
+
     float4 rgba = _F + (1.0f - _F.a) * _B;
-//    float4 rgba = _B;
-    
+
     return rgba;
 }
