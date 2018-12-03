@@ -36,7 +36,6 @@
 		4F48B7D421B2D17400CAE122 /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
 		4F4E3E291DD6177B005E40AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E271DD6177B005E40AC /* Main.storyboard */; };
 		4F4E3E2B1DD6177B005E40AC /* SceneKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */; };
-		4F4E3E2E1DD6177B005E40AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E2C1DD6177B005E40AC /* LaunchScreen.storyboard */; };
 		4F4E3E331DD6178D005E40AC /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
 		4F4E3E341DD6178D005E40AC /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
 		4F4E3E351DD617AA005E40AC /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F111DBA50FA00B80FE4 /* Metal.framework */; };
@@ -44,7 +43,6 @@
 		4F4E3E371DD617B1005E40AC /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
 		4F4E3E381DD617B7005E40AC /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
 		4F4E3E3B1DD6182E005E40AC /* SceneKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */; };
-		4F4E3E3C1DD6182E005E40AC /* SceneKitMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4E3E3A1DD6182E005E40AC /* SceneKitMetalView.swift */; };
 		4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
 		4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F4E3E3F1DD618C2005E40AC /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
@@ -88,6 +86,9 @@
 		4F67346E1DEFB5B200443FEA /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4F67346F1DEFB5BF00443FEA /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
 		4F6734701DEFB67C00443FEA /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
+		4F683E1721B559C4009AA128 /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F683E1621B559C4009AA128 /* SceneKitViewController.swift */; };
+		4F683E1821B559E1009AA128 /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
+		4F683E1921B559E1009AA128 /* EIMeshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMeshExtensions.swift */; };
 		4F72703E1DC368780039E130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703C1DC368780039E130 /* Main.storyboard */; };
 		4F7270401DC368780039E130 /* Hello.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703F1DC368780039E130 /* Hello.xcassets */; };
 		4F7270491DC368C80039E130 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
@@ -225,10 +226,8 @@
 		4F4E3E211DD6177B005E40AC /* HelloSceneKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSceneKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F4E3E281DD6177B005E40AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SceneKit.xcassets; sourceTree = "<group>"; };
-		4F4E3E2D1DD6177B005E40AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F4E3E2F1DD6177B005E40AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitRenderer.swift; sourceTree = "<group>"; };
-		4F4E3E3A1DD6182E005E40AC /* SceneKitMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitMetalView.swift; sourceTree = "<group>"; };
 		4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloModel_IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F56AF8D1DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Model_IO.xcassets; sourceTree = "<group>"; };
@@ -242,6 +241,7 @@
 		4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Textures.xcassets; path = Shared/Textures.xcassets; sourceTree = "<group>"; };
 		4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderPassRenderer.swift; sourceTree = "<group>"; };
 		4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = model_io_lit_texture.metal; path = Shared/model_io_lit_texture.metal; sourceTree = "<group>"; };
+		4F683E1621B559C4009AA128 /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		4F7270361DC368780039E130 /* Hello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F72703D1DC368780039E130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F72703F1DC368780039E130 /* Hello.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Hello.xcassets; sourceTree = "<group>"; };
@@ -413,11 +413,10 @@
 		4F4E3E221DD6177B005E40AC /* HelloSceneKit */ = {
 			isa = PBXGroup;
 			children = (
-				4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */,
-				4F4E3E3A1DD6182E005E40AC /* SceneKitMetalView.swift */,
+				4F683E1621B559C4009AA128 /* SceneKitViewController.swift */,
 				4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */,
 				4F4E3E271DD6177B005E40AC /* Main.storyboard */,
-				4F4E3E2C1DD6177B005E40AC /* LaunchScreen.storyboard */,
+				4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */,
 				4F4E3E2F1DD6177B005E40AC /* Info.plist */,
 			);
 			path = HelloSceneKit;
@@ -678,7 +677,6 @@
 				TargetAttributes = {
 					4F4E3E201DD6177B005E40AC = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = NCTVS5F8E2;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
@@ -768,7 +766,6 @@
 				4F4E3E331DD6178D005E40AC /* scenes.scnassets in Resources */,
 				4F4E3E341DD6178D005E40AC /* Textures.xcassets in Resources */,
 				4F4E3E2B1DD6177B005E40AC /* SceneKit.xcassets in Resources */,
-				4F4E3E2E1DD6177B005E40AC /* LaunchScreen.storyboard in Resources */,
 				4F4E3E291DD6177B005E40AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -847,15 +844,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F683E1821B559E1009AA128 /* EIModelProtocol.swift in Sources */,
+				4F683E1921B559E1009AA128 /* EIMeshExtensions.swift in Sources */,
 				4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */,
 				4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */,
-				4F4E3E3C1DD6182E005E40AC /* SceneKitMetalView.swift in Sources */,
 				4F4E3E3B1DD6182E005E40AC /* SceneKitRenderer.swift in Sources */,
 				4F4E3E3F1DD618C2005E40AC /* EIArcball.swift in Sources */,
 				4F4E3E401DD618C2005E40AC /* EITexture.swift in Sources */,
 				4F4E3E411DD618C2005E40AC /* RendererExtensions.swift in Sources */,
 				4F4E3E421DD618C2005E40AC /* EIMesh.swift in Sources */,
 				4F4E3E431DD618C2005E40AC /* EICamera.swift in Sources */,
+				4F683E1721B559C4009AA128 /* SceneKitViewController.swift in Sources */,
 				4F4E3E441DD618C2005E40AC /* EIMath.swift in Sources */,
 				4F4E3E451DD618C2005E40AC /* EITransform.swift in Sources */,
 				4F6734651DEFABBC00443FEA /* model_io.metal in Sources */,
@@ -1024,14 +1023,6 @@
 				4F4E3E281DD6177B005E40AC /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4F4E3E2C1DD6177B005E40AC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F4E3E2D1DD6177B005E40AC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */ = {

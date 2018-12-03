@@ -18,9 +18,6 @@ class Model_IORenderer: NSObject, MTKViewDelegate {
     var texture: MTLTexture!
     var pipelineState: MTLRenderPipelineState!
 
-    var frontTexture: MTLTexture!
-    var backTexture: MTLTexture!
-
     var cameraPlane: EIMesh!
     var cameraPlaneTexture: MTLTexture!
     var cameraPlanePipelineState: MTLRenderPipelineState!

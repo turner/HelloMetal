@@ -40,18 +40,6 @@ class Model_IOViewController: UIViewController {
         }
 
         do {
-            renderer.frontTexture = try makeTexture(device: view.device!, name: "mandrill")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-        do {
-            renderer.backTexture = try makeTexture(device: view.device!, name: "lena")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-        do {
             renderer.cameraPlaneTexture = try makeTexture(device: view.device!, name: "mobile")
         } catch {
             fatalError("Error: Can not load texture")
