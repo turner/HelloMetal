@@ -23,8 +23,7 @@ struct TransformPackage {
     float4x4 modelViewProjectionMatrix;
 };
 
-vertex xyzw_n_st_rgba openexrVertexShader(xyz_n_st in [[ stage_in ]],
-                                          constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba openEXRVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
     
     xyzw_n_st_rgba out;
     
@@ -44,13 +43,7 @@ vertex xyzw_n_st_rgba openexrVertexShader(xyz_n_st in [[ stage_in ]],
     
 }
 
-fragment half4 openexrFragmentShader(xyzw_n_st_rgba in [[ stage_in ]],
-                                     texture2d<half> texas [[ texture(0) ]]) {
-    
-    constexpr sampler defaultSampler;
-    
-    half4 rgba = texas.sample(defaultSampler, float2(in.st)).rgba;
-    
+fragment half4 openEXRFragmentShader(xyzw_n_st_rgba in [[ stage_in ]], texture2d<half> openEXRTexture [[ texture(0) ]], sampler textureSampler [[sampler(0)]]) {
+    half4 rgba = openEXRTexture.sample(textureSampler, float2(in.st)).rgba;
     return rgba;
-    
 }
