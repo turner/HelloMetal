@@ -66,12 +66,12 @@ class SceneKitRenderer: NSObject, MTKViewDelegate {
     func update(view: EIView, drawableSize:CGSize) {
 
         // render plane
-        renderPlane.metallicTransform.update(camera: camera, transformer: {
+        cameraPlane.metallicTransform.update(camera: camera, transformer: {
             return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
 
         // hero model
-        heroModel.metallicTransform.update(camera: camera, transformer: {
+        model.metallicTransform.update(camera: camera, transformer: {
 
 //            return view.arcBall.rotationMatrix
 
