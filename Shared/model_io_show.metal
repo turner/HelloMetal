@@ -23,8 +23,7 @@ struct TransformPackage {
     float4x4 modelViewProjectionMatrix;
 };
 
-vertex xyzw_n_st_rgba showMIOVertexShader(xyz_n_st in [[ stage_in ]],
-                                                constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba showMIOVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
  
     xyzw_n_st_rgba out;
     

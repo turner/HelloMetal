@@ -56,7 +56,7 @@ class LightViewController: UIViewController {
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"litTextureMIOVertexShader", fragmentShaderName:"litTextureMIOWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.model.metalVertexDescriptor)
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"litTextureMIOVertexShader", fragmentShaderName:"litTextureMIOFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.model.metalVertexDescriptor)
 
             renderer.pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
@@ -66,7 +66,7 @@ class LightViewController: UIViewController {
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.cameraPlane.metalVertexDescriptor)
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.cameraPlane.metalVertexDescriptor)
 
             renderer.cameraPlanePipelineState = try view.device!.makeRenderPipelineState(descriptor: pipelineDescriptor)
 

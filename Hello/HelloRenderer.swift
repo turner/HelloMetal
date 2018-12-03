@@ -39,7 +39,7 @@ class HelloRenderer: NSObject, MTKViewDelegate {
         }
     
         let pipelineDescriptor =
-                MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
 
         do {
             pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)

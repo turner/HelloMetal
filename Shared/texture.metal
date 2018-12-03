@@ -37,17 +37,7 @@ vertex InterpolatedVertex textureVertexShader(constant _Vertex_       *vertices 
     return out;
 }
 
-fragment float4 textureFragmentShader(InterpolatedVertex vert [[ stage_in   ]],
-                                      texture2d<float>  texas [[ texture(0) ]]) {
-    
-    constexpr sampler defaultSampler;
-    
-    float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
-    return rgba;
-    
-}
-
-fragment float4 textureWithSamplerFragmentShader(InterpolatedVertex vert [[ stage_in   ]], texture2d<float>  texas [[ texture(0) ]], sampler textureSampler [[sampler(0)]]) {
+fragment float4 textureFragmentShader(InterpolatedVertex vert [[ stage_in   ]], texture2d<float>  texas [[ texture(0) ]], sampler textureSampler [[sampler(0)]]) {
     float4 rgba = texas.sample(textureSampler, vert.st).rgba;
     return rgba;
 

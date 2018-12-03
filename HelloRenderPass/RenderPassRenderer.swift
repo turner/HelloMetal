@@ -56,7 +56,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
             
             pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
 
@@ -68,7 +68,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
             
             backdropPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
@@ -79,7 +79,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         do {
 
             let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"finalPassVertexShader", fragmentShaderName:"finalPassOverlayWithSamplerFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"finalPassVertexShader", fragmentShaderName:"finalPassOverlayFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
              
             finalPassPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch let e {
