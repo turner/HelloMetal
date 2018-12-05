@@ -10,6 +10,9 @@
 		4F0456BD1DF18B990011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
 		4F0456BE1DF18BA60011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
 		4F0456BF1DF18BB20011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
+		4F09CAFB21B7FD18002D742F /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
+		4F09CAFC21B7FD18002D742F /* EIMeshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMeshExtensions.swift */; };
+		4F09CAFE21B7FD32002D742F /* OpenEXRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09CAFD21B7FD32002D742F /* OpenEXRViewController.swift */; };
 		4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4F10A9D71DC42DC800053B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
 		4F10A9D81DC42E7600053B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
@@ -132,7 +135,6 @@
 		4FDBF5091E0C0C6C007CC7F4 /* dusk.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FDBF5081E0C0C6C007CC7F4 /* dusk.exr */; };
 		4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7BC1E0BF7CE005BEDF4 /* Main.storyboard */; };
 		4FDFA7C01E0BF7CE005BEDF4 /* openexr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */; };
-		4FDFA7C31E0BF7CE005BEDF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7C11E0BF7CE005BEDF4 /* LaunchScreen.storyboard */; };
 		4FDFA7C81E0BF84E005BEDF4 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4FDFA7C91E0BF84E005BEDF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
 		4FDFA7CA1E0BF84E005BEDF4 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
@@ -152,7 +154,6 @@
 		4FDFA7D81E0BF8AB005BEDF4 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
 		4FDFA7D91E0BF8C2005BEDF4 /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
 		4FDFA7DA1E0BF8C2005BEDF4 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
-		4FDFA7DD1E0BF97A005BEDF4 /* OpenEXRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDFA7DB1E0BF97A005BEDF4 /* OpenEXRView.swift */; };
 		4FDFA7DE1E0BF97A005BEDF4 /* OpenEXRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDFA7DC1E0BF97A005BEDF4 /* OpenEXRRenderer.swift */; };
 		4FDFA7E71E0BFAF7005BEDF4 /* libiOSOpenEXRLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDFA7E41E0BFAD5005BEDF4 /* libiOSOpenEXRLibrary.a */; };
 		4FDFA7E91E0BFB00005BEDF4 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDFA7E81E0BFB00005BEDF4 /* libz.1.2.8.tbd */; };
@@ -203,6 +204,7 @@
 
 /* Begin PBXFileReference section */
 		4F0456BB1DF18B810011E2CA /* model_io_show.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = model_io_show.metal; path = Shared/model_io_show.metal; sourceTree = "<group>"; };
+		4F09CAFD21B7FD32002D742F /* OpenEXRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenEXRViewController.swift; sourceTree = "<group>"; };
 		4F0C7E591DBE8431005F42C3 /* EIMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIMesh.swift; path = Shared/EIMesh.swift; sourceTree = "<group>"; };
 		4F10A9D61DC42DC800053B77 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shared/AppDelegate.swift; sourceTree = "<group>"; };
 		4F1645FA21A8C21D004EEB66 /* CameraPlaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPlaneViewController.swift; sourceTree = "<group>"; };
@@ -264,9 +266,7 @@
 		4FDFA7B61E0BF7CE005BEDF4 /* HelloOpenEXR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloOpenEXR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FDFA7BD1E0BF7CE005BEDF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = openexr.xcassets; sourceTree = "<group>"; };
-		4FDFA7C21E0BF7CE005BEDF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FDFA7C41E0BF7CE005BEDF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4FDFA7DB1E0BF97A005BEDF4 /* OpenEXRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEXRView.swift; sourceTree = "<group>"; };
 		4FDFA7DC1E0BF97A005BEDF4 /* OpenEXRRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEXRRenderer.swift; sourceTree = "<group>"; };
 		4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOSOpenEXRLibrary.xcodeproj; path = ../../iOSOpenEXRLibrary/iOSOpenEXRLibrary.xcodeproj; sourceTree = "<group>"; };
 		4FDFA7E81E0BFB00005BEDF4 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
@@ -503,20 +503,19 @@
 		4FDFA7B71E0BF7CE005BEDF4 /* HelloOpenEXR */ = {
 			isa = PBXGroup;
 			children = (
-				4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */,
-				4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */,
+				4F09CAFD21B7FD32002D742F /* OpenEXRViewController.swift */,
 				4FDFA7DC1E0BF97A005BEDF4 /* OpenEXRRenderer.swift */,
-				4FDFA7DB1E0BF97A005BEDF4 /* OpenEXRView.swift */,
+				4FDFA7EA1E0BFB5F005BEDF4 /* HelloOpenEXR-Bridging-Header.h */,
+				4FDBF5061E0C041E007CC7F4 /* openexr.swift */,
+				4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */,
 				4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */,
 				4FDFA7EE1E0BFDEE005BEDF4 /* red.exr */,
 				4FDFA7EF1E0BFDEE005BEDF4 /* gourds.exr */,
 				4FDBF5081E0C0C6C007CC7F4 /* dusk.exr */,
-				4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */,
-				4FDFA7EA1E0BFB5F005BEDF4 /* HelloOpenEXR-Bridging-Header.h */,
-				4FDBF5061E0C041E007CC7F4 /* openexr.swift */,
-				4FDFA7BC1E0BF7CE005BEDF4 /* Main.storyboard */,
-				4FDFA7C11E0BF7CE005BEDF4 /* LaunchScreen.storyboard */,
 				4FDFA7C41E0BF7CE005BEDF4 /* Info.plist */,
+				4FDFA7BC1E0BF7CE005BEDF4 /* Main.storyboard */,
+				4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */,
+				4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */,
 			);
 			path = HelloOpenEXR;
 			sourceTree = "<group>";
@@ -819,7 +818,6 @@
 				4FDFA7C01E0BF7CE005BEDF4 /* openexr.xcassets in Resources */,
 				4FDBF5091E0C0C6C007CC7F4 /* dusk.exr in Resources */,
 				4FDFA7F01E0BFDEE005BEDF4 /* red.exr in Resources */,
-				4FDFA7C31E0BF7CE005BEDF4 /* LaunchScreen.storyboard in Resources */,
 				4F873AE91E0D62CD002AF02D /* alias_wavefront_diagnostic.exr in Resources */,
 				4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */,
 			);
@@ -961,6 +959,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F09CAFB21B7FD18002D742F /* EIModelProtocol.swift in Sources */,
+				4F09CAFC21B7FD18002D742F /* EIMeshExtensions.swift in Sources */,
 				4FDFA7C91E0BF84E005BEDF4 /* AppDelegate.swift in Sources */,
 				4FDFA7CA1E0BF84E005BEDF4 /* EIView.swift in Sources */,
 				4FDFA7CB1E0BF84E005BEDF4 /* EIArcball.swift in Sources */,
@@ -968,7 +968,6 @@
 				4FDFA7CD1E0BF84E005BEDF4 /* RendererExtensions.swift in Sources */,
 				4FDFA7C81E0BF84E005BEDF4 /* EIMesh.swift in Sources */,
 				4FDFA7CE1E0BF84E005BEDF4 /* EICamera.swift in Sources */,
-				4FDFA7DD1E0BF97A005BEDF4 /* OpenEXRView.swift in Sources */,
 				4FDFA7CF1E0BF84E005BEDF4 /* EIMath.swift in Sources */,
 				4FDBF5071E0C041E007CC7F4 /* openexr.swift in Sources */,
 				4FDFA7D01E0BF84E005BEDF4 /* EITransform.swift in Sources */,
@@ -977,6 +976,7 @@
 				4F873AEB1E0D64FA002AF02D /* openexr.metal in Sources */,
 				4FDFA7D11E0BF84E005BEDF4 /* model_io_lit_texture.metal in Sources */,
 				4FDFA7D21E0BF84E005BEDF4 /* model_io_show.metal in Sources */,
+				4F09CAFE21B7FD32002D742F /* OpenEXRViewController.swift in Sources */,
 				4FDFA7D31E0BF84E005BEDF4 /* model_io.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1061,14 +1061,6 @@
 				4FDFA7BD1E0BF7CE005BEDF4 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4FDFA7C11E0BF7CE005BEDF4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4FDFA7C21E0BF7CE005BEDF4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		4FEE5E161DEEDF5500B47AC2 /* Main.storyboard */ = {
