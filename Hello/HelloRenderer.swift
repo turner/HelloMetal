@@ -13,9 +13,7 @@ class HelloRenderer: NSObject, MTKViewDelegate {
 
     var camera:EICamera!
     var model: EIQuad!
-    var texture:MTLTexture!
-    
-    var pipelineState:MTLRenderPipelineState!
+    var shader:EIShader!
 
     let library: MTLLibrary?
     let commandQueue:MTLCommandQueue?
@@ -23,11 +21,11 @@ class HelloRenderer: NSObject, MTKViewDelegate {
 
     init(view: MTKView, device: MTLDevice) {
 
-        guard let l = view.device!.makeDefaultLibrary() else {
+        guard let dl = view.device!.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
         }
 
-        library = l
+        library = dl
         
         guard let cq = device.makeCommandQueue() else {
             fatalError("Error: Can not create command queue")
@@ -82,7 +80,7 @@ class HelloRenderer: NSObject, MTKViewDelegate {
             encoder.setCullMode(.none)
             encoder.setFragmentSamplerState(samplerState, index: 0)
 
-            encoder.EI_Configure(renderPipelineState: pipelineState, model: model, textures: [texture])
+            encoder.EI_Configure(renderPipelineState: shader.pipelineState, model: model, textures: shader.textures)
 
             encoder.endEncoding()
 

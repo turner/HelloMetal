@@ -12,7 +12,7 @@ import GLKit
 class HelloViewController: UIViewController {
  
     var renderer:HelloRenderer!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,22 +26,9 @@ class HelloViewController: UIViewController {
 
         renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
         
-        renderer.model = EIQuad(device: view.device!);
-
-        do {
-            renderer.texture = try makeTexture(device: view.device!, name: "kids_grid_3x3")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-        let pipelineDescriptor =
-            MTLRenderPipelineDescriptor.EI_Create(library:renderer.library!, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+        renderer.model = EIQuad(device: view.device!)
         
-        do {
-            renderer.pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch let e {
-            Swift.print("\(e)")
-        }
+        renderer.shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["kids_grid_3x3"])
 
     }
     
