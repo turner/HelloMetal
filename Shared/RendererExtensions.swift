@@ -87,75 +87,11 @@ extension MTLRenderPipelineDescriptor {
         return desc
     }
 
-    convenience init(library:MTLLibrary, vertexShaderName:String, fragmentShaderName:String, sampleCount:Int, colorPixelFormat:MTLPixelFormat, vertexDescriptor:MTLVertexDescriptor?) {
-
-        self.init()
-
-        vertexFunction   = library.makeFunction(name: vertexShaderName)
-        fragmentFunction = library.makeFunction(name: fragmentShaderName)
-
-        self.sampleCount = sampleCount
-
-        colorAttachments[ 0 ].pixelFormat = colorPixelFormat
-
-        colorAttachments[ 0 ].isBlendingEnabled = true
-
-        colorAttachments[ 0 ].rgbBlendOperation = .add
-        colorAttachments[ 0 ].alphaBlendOperation = .add
-
-        colorAttachments[ 0 ].sourceRGBBlendFactor = .one
-        colorAttachments[ 0 ].sourceAlphaBlendFactor = .one
-
-        colorAttachments[ 0 ].destinationRGBBlendFactor = .oneMinusSourceAlpha
-        colorAttachments[ 0 ].destinationAlphaBlendFactor = .oneMinusSourceAlpha
-
-        depthAttachmentPixelFormat = .depth32Float
-
-        if (nil != vertexDescriptor) {
-            self.vertexDescriptor = vertexDescriptor
-        }
-
-    }
-
 }
 
 extension MTLRenderPassDescriptor {
 
-    convenience init(clearColor:MTLClearColor, clearDepth: Double) {
-
-        self.init()
-
-        // color
-        colorAttachments[ 0 ] = MTLRenderPassColorAttachmentDescriptor()
-        colorAttachments[ 0 ].storeAction = .store
-        colorAttachments[ 0 ].loadAction = .clear
-        colorAttachments[ 0 ].clearColor = clearColor
-
-        // depth
-        depthAttachment = MTLRenderPassDepthAttachmentDescriptor()
-        depthAttachment.storeAction = .dontCare
-        depthAttachment.loadAction = .clear
-        depthAttachment.clearDepth = clearDepth;
-
-    }
-
-    public func EI_configure(clearColor:MTLClearColor, clearDepth: Double) {
-
-        // color
-        colorAttachments[ 0 ] = MTLRenderPassColorAttachmentDescriptor()
-        colorAttachments[ 0 ].storeAction = .store
-        colorAttachments[ 0 ].loadAction = .clear
-        colorAttachments[ 0 ].clearColor = clearColor
-
-        // depth
-        depthAttachment = MTLRenderPassDepthAttachmentDescriptor()
-        depthAttachment.storeAction = .dontCare
-        depthAttachment.loadAction = .clear
-        depthAttachment.clearDepth = clearDepth;
-
-    }
-
-    public func EI_renderpass_configure(clearColor:MTLClearColor, clearDepth: Double) {
+    public func EI_Configure(clearColor:MTLClearColor, clearDepth: Double) {
 
         // color
         colorAttachments[ 0 ] = MTLRenderPassColorAttachmentDescriptor()

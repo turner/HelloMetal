@@ -1,5 +1,5 @@
 //
-//  EIQuadExtensions.swift
+//  EIQuad+EIModelProtocol.swift
 //  Hello
 //
 //  Created by Douglass Turner on 12/2/18.

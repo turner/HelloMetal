@@ -88,7 +88,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
 
         finalRenderPassDescriptor = MTLRenderPassDescriptor()
-        finalRenderPassDescriptor.EI_renderpass_configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
+        finalRenderPassDescriptor.EI_Configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
 
     }
 
