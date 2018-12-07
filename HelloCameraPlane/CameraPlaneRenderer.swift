@@ -92,7 +92,6 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
         update(view: view as! EIView, drawableSize: view.bounds.size)
 
-        // final pass
         if let passDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
             guard let buffer = commandQueue!.makeCommandBuffer() else {
@@ -108,7 +107,7 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
             encoder.setCullMode(.none)
             encoder.setFragmentSamplerState(samplerState, index: 0)
 
-            // render plane
+            // camera plane
             encoder.EI_Configure(renderPipelineState: cameraPlanePipelineState, model: cameraPlane, textures: [cameraPlaneTexture])
 
             // hero model
