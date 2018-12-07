@@ -202,6 +202,13 @@ class EIMesh {
         return EIMesh(device:device, sceneName:sceneName, nodeName:nodeName)
     }
     
+    public mutating func update(camera:EICamera, arcBall:EIArcball, transform: GLKMatrix4) {
+        metallicTransform.update(camera: camera, transformer: {
+            arcBall.rotationMatrix * transform
+        })
+        
+    }
+
 }
 
 

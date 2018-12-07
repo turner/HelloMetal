@@ -1,6 +1,6 @@
 //
 //  EIShader.swift
-//  Hello
+//  HelloMetal
 //
 //  Created by Douglass Turner on 12/7/18.
 //  Copyright © 2018 Elastic Image Software. All rights reserved.
@@ -13,7 +13,7 @@ struct EIShader {
     var textures = [MTLTexture]()
     
     init(view:EIView, library: MTLLibrary, vertex:String, fragment:String, textureNames:[String]) {
-
+        
         for i in 0..<textureNames.count {
             do {
                 let texture = try makeTexture(device: view.device!, name: textureNames[ i ])
@@ -30,6 +30,6 @@ struct EIShader {
         } catch {
             fatalError("Error: Can not load texture")
         }
-
+        
     }
 }

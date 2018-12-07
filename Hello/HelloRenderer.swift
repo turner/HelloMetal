@@ -12,7 +12,7 @@ import GLKit
 class HelloRenderer: NSObject, MTKViewDelegate {
 
     var camera:EICamera!
-    var model: EIQuad!
+    var model: EIModel!
     var shader:EIShader!
 
     let library: MTLLibrary?
@@ -51,11 +51,7 @@ class HelloRenderer: NSObject, MTKViewDelegate {
     }
 
     func update(view: EIView, drawableSize:CGSize) {
-
-        model.metallicTransform.update(camera: camera, transformer: {
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
-        })
-
+        model.update(camera: camera, arcball: view.arcBall)
     }
 
     public func draw(in view: MTKView) {
@@ -80,8 +76,9 @@ class HelloRenderer: NSObject, MTKViewDelegate {
             encoder.setCullMode(.none)
             encoder.setFragmentSamplerState(samplerState, index: 0)
 
-            encoder.EI_Configure(renderPipelineState: shader.pipelineState, model: model, textures: shader.textures)
-
+            // model encode
+            model.encode(encoder: encoder)
+        
             encoder.endEncoding()
 
             buffer.present(drawable)
