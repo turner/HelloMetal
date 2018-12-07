@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4FEE5E0F1DEEDF5500B47AC2"
-               BuildableName = "HelloLight.app"
-               BlueprintName = "HelloLight"
+               BlueprintIdentifier = "4F64B3671DC3FD36005BD8B1"
+               BuildableName = "HelloRenderPass.app"
+               BlueprintName = "HelloRenderPass"
                ReferencedContainer = "container:HelloMetal.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -70,23 +70,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4FDFA7B51E0BF7CE005BEDF4"
-               BuildableName = "HelloOpenEXR.app"
-               BlueprintName = "HelloOpenEXR"
-               ReferencedContainer = "container:HelloMetal.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4F64B3671DC3FD36005BD8B1"
-               BuildableName = "HelloRenderPass.app"
-               BlueprintName = "HelloRenderPass"
+               BlueprintIdentifier = "4FEE5E0F1DEEDF5500B47AC2"
+               BuildableName = "HelloLight.app"
+               BlueprintName = "HelloLight"
                ReferencedContainer = "container:HelloMetal.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -101,6 +87,20 @@
                BlueprintIdentifier = "4F4E3E201DD6177B005E40AC"
                BuildableName = "HelloSceneKit.app"
                BlueprintName = "HelloSceneKit"
+               ReferencedContainer = "container:HelloMetal.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4FDFA7B51E0BF7CE005BEDF4"
+               BuildableName = "HelloOpenEXR.app"
+               BlueprintName = "HelloOpenEXR"
                ReferencedContainer = "container:HelloMetal.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

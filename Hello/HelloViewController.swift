@@ -34,16 +34,15 @@ class HelloViewController: UIViewController {
             fatalError("Error: Can not load texture")
         }
 
+        let pipelineDescriptor =
+            MTLRenderPipelineDescriptor.EI_Create(library:renderer.library!, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+        
+        do {
+            renderer.pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
+        } catch let e {
+            Swift.print("\(e)")
+        }
+
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

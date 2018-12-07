@@ -17,11 +17,18 @@ class HelloRenderer: NSObject, MTKViewDelegate {
     
     var pipelineState:MTLRenderPipelineState!
 
+    let library: MTLLibrary?
     let commandQueue:MTLCommandQueue?
     let samplerState: MTLSamplerState?
 
     init(view: MTKView, device: MTLDevice) {
 
+        guard let l = view.device!.makeDefaultLibrary() else {
+            fatalError("Error: Can not create default library")
+        }
+
+        library = l
+        
         guard let cq = device.makeCommandQueue() else {
             fatalError("Error: Can not create command queue")
         }
@@ -34,18 +41,6 @@ class HelloRenderer: NSObject, MTKViewDelegate {
 
         samplerState = ss
 
-        guard let library = device.makeDefaultLibrary() else {
-            fatalError("Error: Can not create default library")
-        }
-    
-        let pipelineDescriptor =
-                MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
-
-        do {
-            pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch let e {
-            Swift.print("\(e)")
-        }
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {

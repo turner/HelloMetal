@@ -11,7 +11,7 @@
 		4F0456BE1DF18BA60011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
 		4F0456BF1DF18BB20011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
 		4F09CAFB21B7FD18002D742F /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
-		4F09CAFC21B7FD18002D742F /* EIMeshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMeshExtensions.swift */; };
+		4F09CAFC21B7FD18002D742F /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
 		4F09CAFE21B7FD32002D742F /* OpenEXRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09CAFD21B7FD32002D742F /* OpenEXRViewController.swift */; };
 		4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4F10A9D71DC42DC800053B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
@@ -57,10 +57,10 @@
 		4F4E3E451DD618C2005E40AC /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */; };
-		4F5C8EA921B431E8000CB185 /* EIQuadExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuadExtensions.swift */; };
-		4F5C8EAA21B43336000CB185 /* EIQuadExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuadExtensions.swift */; };
-		4F5C8EAB21B4335D000CB185 /* EIQuadExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuadExtensions.swift */; };
-		4F5C8EAC21B43405000CB185 /* EIMeshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMeshExtensions.swift */; };
+		4F5C8EA921B431E8000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
+		4F5C8EAA21B43336000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
+		4F5C8EAB21B4335D000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
+		4F5C8EAC21B43405000CB185 /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
 		4F64B3701DC3FD36005BD8B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B36E1DC3FD36005BD8B1 /* Main.storyboard */; };
 		4F64B3721DC3FD36005BD8B1 /* RenderPass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */; };
 		4F64B37C1DC40406005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
@@ -90,7 +90,7 @@
 		4F6734701DEFB67C00443FEA /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
 		4F683E1721B559C4009AA128 /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F683E1621B559C4009AA128 /* SceneKitViewController.swift */; };
 		4F683E1821B559E1009AA128 /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
-		4F683E1921B559E1009AA128 /* EIMeshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMeshExtensions.swift */; };
+		4F683E1921B559E1009AA128 /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
 		4F72703E1DC368780039E130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703C1DC368780039E130 /* Main.storyboard */; };
 		4F7270401DC368780039E130 /* Hello.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703F1DC368780039E130 /* Hello.xcassets */; };
 		4F7270491DC368C80039E130 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
@@ -116,7 +116,7 @@
 		4F7270A31DC373690039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4F79540821B46B4100E4A25E /* LightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F79540721B46B4100E4A25E /* LightViewController.swift */; };
 		4F79540921B46BEB00E4A25E /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
-		4F79540A21B46BEB00E4A25E /* EIMeshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMeshExtensions.swift */; };
+		4F79540A21B46BEB00E4A25E /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
 		4F80A4991DEB86420082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F80A49A1DEB86550082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F80A49B1DEB865E0082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
@@ -233,8 +233,8 @@
 		4F56AF8D1DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Model_IO.xcassets; sourceTree = "<group>"; };
 		4F56AF941DBAF08E00E396E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F5C8EA621B431D3000CB185 /* EIMeshExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIMeshExtensions.swift; sourceTree = "<group>"; };
-		4F5C8EA821B431E8000CB185 /* EIQuadExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIQuadExtensions.swift; sourceTree = "<group>"; };
+		4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIMesh+EIModelProtocol.swift"; sourceTree = "<group>"; };
+		4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIQuad+EIModelProtocol.swift"; sourceTree = "<group>"; };
 		4F64B3681DC3FD36005BD8B1 /* HelloRenderPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloRenderPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F64B36F1DC3FD36005BD8B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RenderPass.xcassets; sourceTree = "<group>"; };
@@ -383,14 +383,14 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */,
+				4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */,
+				4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */,
+				4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */,
 				4F10A9D61DC42DC800053B77 /* AppDelegate.swift */,
 				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
-				4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */,
-				4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */,
 				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
-				4F5C8EA821B431E8000CB185 /* EIQuadExtensions.swift */,
 				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
-				4F5C8EA621B431D3000CB185 /* EIMeshExtensions.swift */,
 				4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */,
 				4FFA63ED1DC3773C002F8E34 /* EITexture.swift */,
 				4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */,
@@ -842,7 +842,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F683E1821B559E1009AA128 /* EIModelProtocol.swift in Sources */,
-				4F683E1921B559E1009AA128 /* EIMeshExtensions.swift in Sources */,
+				4F683E1921B559E1009AA128 /* EIMesh+EIModelProtocol.swift in Sources */,
 				4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */,
 				4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */,
 				4F4E3E3B1DD6182E005E40AC /* SceneKitRenderer.swift in Sources */,
@@ -864,7 +864,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F5C8EAC21B43405000CB185 /* EIMeshExtensions.swift in Sources */,
+				4F5C8EAC21B43405000CB185 /* EIMesh+EIModelProtocol.swift in Sources */,
 				4F48B7D421B2D17400CAE122 /* EIModelProtocol.swift in Sources */,
 				4F10A9DA1DC42E8D00053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */,
@@ -888,7 +888,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F5C8EAB21B4335D000CB185 /* EIQuadExtensions.swift in Sources */,
+				4F5C8EAB21B4335D000CB185 /* EIQuad+EIModelProtocol.swift in Sources */,
 				4F48B7D321B2D16A00CAE122 /* EIModelProtocol.swift in Sources */,
 				4F10A9D91DC42E8600053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */,
@@ -914,7 +914,7 @@
 			files = (
 				4F10A9D71DC42DC800053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3AF1DC43067006B6213 /* EIView.swift in Sources */,
-				4F5C8EA921B431E8000CB185 /* EIQuadExtensions.swift in Sources */,
+				4F5C8EA921B431E8000CB185 /* EIQuad+EIModelProtocol.swift in Sources */,
 				4F7270551DC369090039E130 /* HelloRenderer.swift in Sources */,
 				4F48B7CF21B2CDDB00CAE122 /* EIModelProtocol.swift in Sources */,
 				4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */,
@@ -935,7 +935,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F5C8EAA21B43336000CB185 /* EIQuadExtensions.swift in Sources */,
+				4F5C8EAA21B43336000CB185 /* EIQuad+EIModelProtocol.swift in Sources */,
 				4F48B7D221B2D16000CAE122 /* EIModelProtocol.swift in Sources */,
 				4F10A9D81DC42E7600053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B01DC43680006B6213 /* EIView.swift in Sources */,
@@ -960,7 +960,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F09CAFB21B7FD18002D742F /* EIModelProtocol.swift in Sources */,
-				4F09CAFC21B7FD18002D742F /* EIMeshExtensions.swift in Sources */,
+				4F09CAFC21B7FD18002D742F /* EIMesh+EIModelProtocol.swift in Sources */,
 				4FDFA7C91E0BF84E005BEDF4 /* AppDelegate.swift in Sources */,
 				4FDFA7CA1E0BF84E005BEDF4 /* EIView.swift in Sources */,
 				4FDFA7CB1E0BF84E005BEDF4 /* EIArcball.swift in Sources */,
@@ -988,7 +988,7 @@
 				4F79540821B46B4100E4A25E /* LightViewController.swift in Sources */,
 				4FEE5E271DEEE03B00B47AC2 /* EIView.swift in Sources */,
 				4F79540921B46BEB00E4A25E /* EIModelProtocol.swift in Sources */,
-				4F79540A21B46BEB00E4A25E /* EIMeshExtensions.swift in Sources */,
+				4F79540A21B46BEB00E4A25E /* EIMesh+EIModelProtocol.swift in Sources */,
 				4FEE5E261DEEE03B00B47AC2 /* AppDelegate.swift in Sources */,
 				4FEE5E341DEEE0F400B47AC2 /* LightRenderer.swift in Sources */,
 				4FEE5E281DEEE03B00B47AC2 /* EIArcball.swift in Sources */,
