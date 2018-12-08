@@ -23,8 +23,12 @@ struct EIModel {
     public mutating func update(camera:EICamera, arcball:EIArcball) {
         model.update(camera: camera, arcBall: arcball, transformer: transformer)
     }
-    
+
     public func encode(encoder:MTLRenderCommandEncoder) {
         encoder.EI_Configure(renderPipelineState: shader.pipelineState, model: model, textures: shader.textures)
+    }
+
+    public func renderPassEncode(encoder:MTLRenderCommandEncoder, textures:[MTLTexture]) {
+        encoder.EI_Configure(renderPipelineState: shader.pipelineState, model: model, textures: textures)
     }
 }
