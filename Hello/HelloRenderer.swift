@@ -13,7 +13,6 @@ class HelloRenderer: NSObject, MTKViewDelegate {
 
     var camera:EICamera!
     var model: EIModel!
-    var shader:EIShader!
 
     let library: MTLLibrary?
     let commandQueue:MTLCommandQueue?

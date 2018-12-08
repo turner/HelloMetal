@@ -50,11 +50,4 @@ struct EIQuad {
         self.metallicTransform = EITransform(device: device)
 
     }
-    
-    public mutating func update(camera:EICamera, arcBall:EIArcball, transform: GLKMatrix4) {
-        metallicTransform.update(camera: camera, transformer: {
-            arcBall.rotationMatrix * transform
-        })
-
-    }
 }

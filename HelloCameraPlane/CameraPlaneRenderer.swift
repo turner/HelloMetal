@@ -11,58 +11,34 @@ import GLKit
 
 class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
-    var camera: EICamera!
+    var camera:EICamera!
+    var model: EIModel!
+    var cameraPlane: EIModel!
 
-    // hero model
-    var model: EIQuad!
-    var texture: MTLTexture!
-    var pipelineState: MTLRenderPipelineState!
-
-    var cameraPlane: EIQuad!
-    var cameraPlaneTexture: MTLTexture!
-    var cameraPlanePipelineState: MTLRenderPipelineState!
-
+    let library: MTLLibrary?
+    let commandQueue:MTLCommandQueue?
     let samplerState: MTLSamplerState?
-    let commandQueue: MTLCommandQueue?
 
     init(view: MTKView, device: MTLDevice) {
 
-        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
-            fatalError("Error: Can not create sampler state")
-        }
-        
-        samplerState = ss
-        
-        guard let cq = device.makeCommandQueue() else {
-            fatalError("Error: Can not create command queue")
-        }
-        
-        commandQueue = cq
-
-        guard let library = device.makeDefaultLibrary() else {
+        guard let dl = view.device!.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
         }
 
-        do {
+        library = dl
 
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
-
-            pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch let e {
-            Swift.print("\(e)")
+        guard let cq = device.makeCommandQueue() else {
+            fatalError("Error: Can not create command queue")
         }
 
-        do {
+        commandQueue = cq
 
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
-
-            cameraPlanePipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch let e {
-            Swift.print("\(e)")
+        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+            fatalError("Error: Can not create sampler state ")
         }
-        
+
+        samplerState = ss
+
     }
 
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
@@ -82,17 +58,18 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
         })
 
         // hero model
-        model.metallicTransform.update(camera: camera, transformer: {
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
-        })
-        
+        model.update(camera: camera, arcball: view.arcBall)
+
     }
 
     public func draw(in view: MTKView) {
 
         update(view: view as! EIView, drawableSize: view.bounds.size)
 
+        // final pass
         if let passDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
+
+            passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.5, 0.5, 0.5, 1.0)
 
             guard let buffer = commandQueue!.makeCommandBuffer() else {
                 fatalError("Error: Can not create command buffer")
@@ -107,11 +84,11 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
             encoder.setCullMode(.none)
             encoder.setFragmentSamplerState(samplerState, index: 0)
 
-            // camera plane
-            encoder.EI_Configure(renderPipelineState: cameraPlanePipelineState, model: cameraPlane, textures: [cameraPlaneTexture])
+            // camerPlane encode
+            cameraPlane.encode(encoder: encoder)
 
-            // hero model
-            encoder.EI_Configure(renderPipelineState: pipelineState, model: model, textures: [texture])
+            // model encode
+            model.encode(encoder: encoder)
 
             encoder.endEncoding()
 

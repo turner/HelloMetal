@@ -15,5 +15,5 @@ protocol EIModelProtocol {
     func getIndexCount() -> Int
     func getIndexType() -> MTLIndexType
     func getIndexBuffer() -> MTLBuffer
-    mutating func update(camera:EICamera, arcBall:EIArcball, transform: GLKMatrix4)
+    mutating func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4)
 }

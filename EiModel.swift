@@ -11,17 +11,17 @@ import GLKit
 struct EIModel {
     
     var model:EIModelProtocol
-    var transform:GLKMatrix4
     var shader:EIShader
-
-    init(model:EIModelProtocol, shader:EIShader, transform:GLKMatrix4) {
+    let transformer:() -> GLKMatrix4
+    
+    init(model:EIModelProtocol, shader:EIShader, transformer:@escaping () -> GLKMatrix4) {
         self.model = model
         self.shader = shader
-        self.transform = transform
+        self.transformer = transformer
     }
     
     public mutating func update(camera:EICamera, arcball:EIArcball) {
-        model.update(camera: camera, arcBall: arcball, transform: self.transform)
+        model.update(camera: camera, arcBall: arcball, transformer: transformer)
     }
     
     public func encode(encoder:MTLRenderCommandEncoder) {

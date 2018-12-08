@@ -26,22 +26,15 @@ class CameraPlaneViewController: UIViewController {
 
         renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        renderer.model = EIQuad(device: view.device!);
 
-        renderer.cameraPlane = EIQuad(device: view.device!);
+        var shader:[EIShader]
 
-        do {
-            renderer.texture = try makeTexture(device: view.device!, name: "diagnostic")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
+        // hero
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["diagnostic"])
+        renderer.model = EIModel(model:EIQuad(device: view.device!), shader:shader, transform:GLKMatrix4MakeScale(150, 150, 1))
 
-        do {
-            renderer.cameraPlaneTexture = try makeTexture(device: view.device!, name: "mobile")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-    }
+        // cameraPlane
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["mobile"])
+        renderer.cameraPlane = EIModel(model:EIQuad(device: view.device!), shader:shader, transform:GLKMatrix4Identity)
 
 }
