@@ -18,7 +18,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
     var finalPassModel: EIModel!
 
     // render to texture
-    var finalRenderPassDescriptor: MTLRenderPassDescriptor
+    var renderToTextureRenderPassDescriptor: MTLRenderPassDescriptor
 
     let library: MTLLibrary?
     let commandQueue:MTLCommandQueue?
@@ -44,8 +44,8 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
 
         samplerState = ss
 
-        finalRenderPassDescriptor = MTLRenderPassDescriptor()
-        finalRenderPassDescriptor.EI_Configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
+        renderToTextureRenderPassDescriptor = MTLRenderPassDescriptor()
+        renderToTextureRenderPassDescriptor.EI_Configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
 
     }
 
@@ -69,11 +69,11 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         textureDescriptor.textureType = .type2DMultisample
         textureDescriptor.sampleCount = view.sampleCount
         textureDescriptor.usage = .renderTarget
-        finalRenderPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:textureDescriptor)
+        renderToTextureRenderPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:textureDescriptor)
 
         // color - point-sample resolve texture
         let resolveTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(ww), height:Int(hh), mipmapped:true)
-        finalRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture = view.device!.makeTexture(descriptor:resolveTextureDescriptor)
+        renderToTextureRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture = view.device!.makeTexture(descriptor:resolveTextureDescriptor)
 
         // depth
         let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float, width:Int(ww), height:Int(hh), mipmapped:false)
@@ -81,7 +81,7 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         depthTextureDescriptor.textureType = .type2DMultisample
         depthTextureDescriptor.sampleCount = view.sampleCount
         depthTextureDescriptor.usage = .renderTarget
-        finalRenderPassDescriptor.depthAttachment.texture = view.device!.makeTexture(descriptor:depthTextureDescriptor)
+        renderToTextureRenderPassDescriptor.depthAttachment.texture = view.device!.makeTexture(descriptor:depthTextureDescriptor)
     }
 
     func update(view:EIView, drawableSize:CGSize) {
@@ -105,49 +105,49 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
             fatalError("Error: Can not create command buffer")
         }
 
-        guard let encoder = buffer.makeRenderCommandEncoder(descriptor: finalRenderPassDescriptor) else {
+        guard let renderToTextureEncoder = buffer.makeRenderCommandEncoder(descriptor: renderToTextureRenderPassDescriptor) else {
             fatalError("Error: Can not create command encoder")
         }
 
         // configure encoder
-        encoder.setFrontFacing(.counterClockwise)
-        encoder.setTriangleFillMode(.fill)
-        encoder.setCullMode(.none)
-        encoder.setFragmentSamplerState(samplerState, index: 0)
+        renderToTextureEncoder.setFrontFacing(.counterClockwise)
+        renderToTextureEncoder.setTriangleFillMode(.fill)
+        renderToTextureEncoder.setCullMode(.none)
+        renderToTextureEncoder.setFragmentSamplerState(samplerState, index: 0)
 
         // camerPlane encode
-        cameraPlane.encode(encoder: encoder)
+        cameraPlane.encode(encoder: renderToTextureEncoder)
 
         // model encode
-        model.encode(encoder: encoder)
+        model.encode(encoder: renderToTextureEncoder)
 
-        encoder.endEncoding()
+        renderToTextureEncoder.endEncoding()
 
         // final pass
         if let descriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
 
             descriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
 
-            guard let finalPassEncoder = buffer.makeRenderCommandEncoder(descriptor: descriptor) else {
+            guard let encoder = buffer.makeRenderCommandEncoder(descriptor: descriptor) else {
                 fatalError("Error: Can not create command encoder")
             }
 
             // configure final pass encoder
-            finalPassEncoder.setFrontFacing(.counterClockwise)
-            finalPassEncoder.setTriangleFillMode(.fill)
-            finalPassEncoder.setCullMode(.none)
-            finalPassEncoder.setFragmentSamplerState(samplerState, index: 0)
+            encoder.setFrontFacing(.counterClockwise)
+            encoder.setTriangleFillMode(.fill)
+            encoder.setCullMode(.none)
+            encoder.setFragmentSamplerState(samplerState, index: 0)
 
             let textures:[MTLTexture] =
                     [
-                        finalRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture!,
+                        renderToTextureRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture!,
                         finalPassModel.shader.textures[ 0 ]
                     ]
 
             // finalPassModel encode
-            finalPassModel.renderPassEncode(encoder: finalPassEncoder, textures: textures)
+            finalPassModel.renderPassEncode(encoder: encoder, textures: textures)
 
-            finalPassEncoder.endEncoding()
+            encoder.endEncoding()
 
             buffer.present(drawable)
             buffer.commit()
