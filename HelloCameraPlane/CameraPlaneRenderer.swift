@@ -12,6 +12,7 @@ import GLKit
 class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
     var camera:EICamera!
+    
     var model: EIModel!
     var cameraPlane: EIModel!
 
@@ -52,10 +53,8 @@ class CameraPlaneRenderer: NSObject, MTKViewDelegate {
 
     func update(view:EIView, drawableSize:CGSize) {
 
-        // render plane
-        cameraPlane.metallicTransform.update(camera: camera, transformer: {
-            return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far)
-        })
+        // camera plane
+        cameraPlane.update(camera: camera, arcball: view.arcBall)
 
         // hero model
         model.update(camera: camera, arcball: view.arcBall)

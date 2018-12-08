@@ -12,6 +12,7 @@ import GLKit
 class HelloRenderer: NSObject, MTKViewDelegate {
 
     var camera:EICamera!
+    
     var model: EIModel!
 
     let library: MTLLibrary?

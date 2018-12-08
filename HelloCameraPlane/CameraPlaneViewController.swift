@@ -27,14 +27,20 @@ class CameraPlaneViewController: UIViewController {
         renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
 
-        var shader:[EIShader]
+        var shader:EIShader
 
         // hero
         shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["diagnostic"])
-        renderer.model = EIModel(model:EIQuad(device: view.device!), shader:shader, transform:GLKMatrix4MakeScale(150, 150, 1))
+        renderer.model = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
+            return GLKMatrix4MakeScale(150, 150, 1)
+        })
 
         // cameraPlane
+        
         shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["mobile"])
-        renderer.cameraPlane = EIModel(model:EIQuad(device: view.device!), shader:shader, transform:GLKMatrix4Identity)
-
+        
+        renderer.cameraPlane = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
+            return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far)
+        })
+    }
 }
