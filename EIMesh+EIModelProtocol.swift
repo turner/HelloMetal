@@ -36,7 +36,7 @@ extension EIMesh : EIModelProtocol {
     
     public mutating func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4) {
         metallicTransform.update(camera: camera, transformer: {
-            arcBall.rotationMatrix * transformer()
+            transformer()
         })
         
     }

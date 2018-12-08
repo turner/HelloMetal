@@ -29,7 +29,7 @@ class HelloViewController: UIViewController {
         let shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["kids_grid_3x3"])
         
         renderer.model = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
-            return GLKMatrix4MakeScale(150, 150, 1)
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
         })
     }
     

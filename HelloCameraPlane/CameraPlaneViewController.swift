@@ -32,7 +32,7 @@ class CameraPlaneViewController: UIViewController {
         // hero
         shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["diagnostic"])
         renderer.model = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
-            return GLKMatrix4MakeScale(150, 150, 1)
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
         })
 
         // cameraPlane
