@@ -69,6 +69,11 @@
 		4F509BE321BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
 		4F509BE421BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
 		4F509BE521BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
+		4F54D35221BDB8C500BA4321 /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
+		4F54D35321BDB8C500BA4321 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
+		4F54D35521BDC35500BA4321 /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
+		4F54D35621BDC35500BA4321 /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
+		4F54D35721BDC35500BA4321 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */; };
 		4F5C8EA921B431E8000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
@@ -152,7 +157,6 @@
 		4FDF1AEB21BD6EE000562499 /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AE621BD6EE000562499 /* RenderEngine.swift */; };
 		4FDF1AEC21BD6EE000562499 /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AE621BD6EE000562499 /* RenderEngine.swift */; };
 		4FDF1AED21BD6EE000562499 /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AE621BD6EE000562499 /* RenderEngine.swift */; };
-		4FDF1AF121BD75DC00562499 /* RenderEngine_Model_IO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AF021BD75DC00562499 /* RenderEngine_Model_IO.swift */; };
 		4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7BC1E0BF7CE005BEDF4 /* Main.storyboard */; };
 		4FDFA7C01E0BF7CE005BEDF4 /* openexr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */; };
 		4FDFA7C81E0BF84E005BEDF4 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
@@ -284,7 +288,6 @@
 		4FDBF5061E0C041E007CC7F4 /* openexr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = openexr.swift; sourceTree = "<group>"; };
 		4FDBF5081E0C0C6C007CC7F4 /* dusk.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = dusk.exr; sourceTree = "<group>"; };
 		4FDF1AE621BD6EE000562499 /* RenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderEngine.swift; sourceTree = "<group>"; };
-		4FDF1AF021BD75DC00562499 /* RenderEngine_Model_IO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderEngine_Model_IO.swift; sourceTree = "<group>"; };
 		4FDFA7B61E0BF7CE005BEDF4 /* HelloOpenEXR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloOpenEXR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FDFA7BD1E0BF7CE005BEDF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = openexr.xcassets; sourceTree = "<group>"; };
@@ -449,7 +452,6 @@
 		4F56AF871DBAF08E00E396E7 /* HelloModel_IO */ = {
 			isa = PBXGroup;
 			children = (
-				4FDF1AF021BD75DC00562499 /* RenderEngine_Model_IO.swift */,
 				4FC28A3D21B16AAF0041947C /* Model_IOViewController.swift */,
 				4FDB16751DBD658C0025465A /* Model_IORenderer.swift */,
 				4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */,
@@ -896,7 +898,6 @@
 				4F48B7D421B2D17400CAE122 /* EIModelProtocol.swift in Sources */,
 				4F10A9DA1DC42E8D00053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */,
-				4FDF1AF121BD75DC00562499 /* RenderEngine_Model_IO.swift in Sources */,
 				4FDB16771DBD658C0025465A /* Model_IORenderer.swift in Sources */,
 				4FFA63F61DC377DC002F8E34 /* EITexture.swift in Sources */,
 				4FFA63F71DC377DC002F8E34 /* RendererExtensions.swift in Sources */,
@@ -971,6 +972,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F54D35521BDC35500BA4321 /* model_io_lit_texture.metal in Sources */,
+				4F54D35621BDC35500BA4321 /* model_io_show.metal in Sources */,
+				4F54D35721BDC35500BA4321 /* model_io.metal in Sources */,
+				4F54D35221BDB8C500BA4321 /* EIMesh+EIModelProtocol.swift in Sources */,
+				4F54D35321BDB8C500BA4321 /* EIMesh.swift in Sources */,
 				4F5C8EAA21B43336000CB185 /* EIQuad+EIModelProtocol.swift in Sources */,
 				4F509BD821BB29900090CCB9 /* EiModel.swift in Sources */,
 				4F48B7D221B2D16000CAE122 /* EIModelProtocol.swift in Sources */,

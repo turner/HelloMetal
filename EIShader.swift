@@ -12,7 +12,7 @@ struct EIShader {
     var pipelineState:MTLRenderPipelineState
     var textures = [MTLTexture]()
     
-    init(view:EIView, library: MTLLibrary, vertex:String, fragment:String, textureNames:[String]) {
+    init(view:EIView, library: MTLLibrary, vertex:String, fragment:String, textureNames:[String], vertexDescriptor:MTLVertexDescriptor?) {
         
         for i in 0..<textureNames.count {
             do {
@@ -24,7 +24,7 @@ struct EIShader {
         }
         
         let pipelineDescriptor =
-            MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:vertex, fragmentShaderName:fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
+            MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:vertex, fragmentShaderName:fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:vertexDescriptor)
         do {
             pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch {

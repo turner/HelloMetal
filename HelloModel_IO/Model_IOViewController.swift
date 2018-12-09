@@ -26,9 +26,9 @@ class Model_IOViewController: UIViewController {
 
         renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        // heroModel = EIMesh.plane(device: view.device!, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
-        // heroModel = EIMesh.sphere(device: view.device!, xRadius: 150, yRadius: 150, zRadius: 150, uTesselation: 32, vTesselation: 32)
-        renderer.model = EIMesh.cube(device: view.device!, xExtent: 200, yExtent: 100, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+        renderer.model = EIMesh.plane(device: view.device!, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
+//        renderer.model = EIMesh.sphere(device: view.device!, xRadius: 150, yRadius: 150, zRadius: 150, uTesselation: 32, vTesselation: 32)
+//        renderer.model = EIMesh.cube(device: view.device!, xExtent: 200, yExtent: 100, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
 
         // camera plane
         renderer.cameraPlane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)

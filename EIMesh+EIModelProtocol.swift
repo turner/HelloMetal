@@ -34,7 +34,7 @@ extension EIMesh : EIModelProtocol {
         return vertexIndexMetalBuffer
     }
     
-    public mutating func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4) {
+    public func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4) {
         metallicTransform.update(camera: camera, transformer: {
             transformer()
         })

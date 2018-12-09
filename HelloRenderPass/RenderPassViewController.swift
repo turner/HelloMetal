@@ -29,19 +29,19 @@ class RenderPassViewController: UIViewController {
         var shader:EIShader
 
         // hero
-        shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["kids_grid_3x3_translucent"])
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["kids_grid_3x3_translucent"], vertexDescriptor: nil)
         renderer.model = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
             return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
         })
 
         // camera plane
-        shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["mobile"])
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["mobile"], vertexDescriptor: nil)
         renderer.cameraPlane = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.35 * self.renderer.camera.far)
         })
 
         // final pass
-        shader = EIShader(view:view, library:renderer.library!, vertex:"finalPassVertexShader", fragment:"finalPassOverlayFragmentShader", textureNames:["mobile-overlay"])
+        shader = EIShader(view:view, library:renderer.library!, vertex:"finalPassVertexShader", fragment:"finalPassOverlayFragmentShader", textureNames:["mobile-overlay"], vertexDescriptor: nil)
         renderer.finalPassModel = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far)
         })
