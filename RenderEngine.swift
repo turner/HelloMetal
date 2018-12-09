@@ -16,6 +16,7 @@ class RendererEngine: NSObject, MTKViewDelegate {
     var models:[EIModel] = [EIModel]()
     
     let library: MTLLibrary?
+    let depthStencilState: MTLDepthStencilState?
     let commandQueue:MTLCommandQueue?
     let samplerState: MTLSamplerState?
 
@@ -26,7 +27,17 @@ class RendererEngine: NSObject, MTKViewDelegate {
         }
         
         library = dl
+ 
+        let depthStencilDescriptor = MTLDepthStencilDescriptor()
+        depthStencilDescriptor.depthCompareFunction = .less
+        depthStencilDescriptor.isDepthWriteEnabled = true
         
+        guard let dss = device.makeDepthStencilState(descriptor: depthStencilDescriptor) else {
+            fatalError("Error: Can not create depth stencil state")
+        }
+        
+        depthStencilState = dss
+
         guard let cq = device.makeCommandQueue() else {
             fatalError("Error: Can not create command queue")
         }
@@ -74,6 +85,7 @@ class RendererEngine: NSObject, MTKViewDelegate {
                 fatalError("Error: Can not create command encoder")
             }
             
+            encoder.setDepthStencilState(depthStencilState)
             encoder.setFrontFacing(.counterClockwise)
             encoder.setTriangleFillMode(.fill)
             encoder.setCullMode(.none)

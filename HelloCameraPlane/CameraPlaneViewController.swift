@@ -40,10 +40,8 @@ class CameraPlaneViewController: UIViewController {
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far)
         })
 
-        // NOTE: Rendering is order dependent.
-        //       First draw background cameraPlane then draw model
-        renderer.models.append(cameraPlane)
         renderer.models.append(model)
+        renderer.models.append(cameraPlane)
 
     }
 }
