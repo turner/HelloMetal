@@ -45,7 +45,6 @@
 		4F4E3E361DD617AA005E40AC /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */; };
 		4F4E3E371DD617B1005E40AC /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
 		4F4E3E381DD617B7005E40AC /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
-		4F4E3E3B1DD6182E005E40AC /* SceneKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */; };
 		4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
 		4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F4E3E3F1DD618C2005E40AC /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
@@ -250,7 +249,6 @@
 		4F4E3E281DD6177B005E40AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SceneKit.xcassets; sourceTree = "<group>"; };
 		4F4E3E2F1DD6177B005E40AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitRenderer.swift; sourceTree = "<group>"; };
 		4F509BD621BB29900090CCB9 /* EiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EiModel.swift; sourceTree = "<group>"; };
 		4F509BDE21BB29CF0090CCB9 /* EIShader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIShader.swift; sourceTree = "<group>"; };
 		4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloModel_IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -437,7 +435,6 @@
 			isa = PBXGroup;
 			children = (
 				4F683E1621B559C4009AA128 /* SceneKitViewController.swift */,
-				4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */,
 				4F4E3E271DD6177B005E40AC /* Main.storyboard */,
 				4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */,
 				4F4E3E2F1DD6177B005E40AC /* Info.plist */,
@@ -865,7 +862,6 @@
 				4F683E1921B559E1009AA128 /* EIMesh+EIModelProtocol.swift in Sources */,
 				4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */,
 				4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */,
-				4F4E3E3B1DD6182E005E40AC /* SceneKitRenderer.swift in Sources */,
 				4F4E3E3F1DD618C2005E40AC /* EIArcball.swift in Sources */,
 				4F4E3E401DD618C2005E40AC /* EITexture.swift in Sources */,
 				4F4E3E411DD618C2005E40AC /* RendererExtensions.swift in Sources */,
