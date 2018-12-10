@@ -28,12 +28,18 @@ class CameraPlaneViewController: UIViewController {
 
         var shader:EIShader
         
-        // hero
-        let hq = EIQuad(device: view.device!)
-        shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["diagnostic"], vertexDescriptor: nil)
-
-        let hero = EIModel(model:hq, shader:shader, transformer:{
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
+        // hero - EIQuad
+//        let hq = EIQuad(device: view.device!)
+//        shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["kids_grid_3x3_translucent"], vertexDescriptor: nil)
+//        let hero = EIModel(model:hq, shader:shader, transformer:{
+//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
+//        })
+        
+        // hero - EIMesh
+        let hm = EIMesh.plane(device: view.device!, xExtent: 256, zExtent: 256, xTesselation: 32, zTesselation: 32)
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["kids_grid_3x3_translucent"], vertexDescriptor: hm.metalVertexDescriptor)
+        let hero = EIModel(model:hm, shader:shader, transformer:{
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
         
         // cameraPlane
@@ -53,8 +59,9 @@ class CameraPlaneViewController: UIViewController {
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
 
-        renderer.models.append(hero)
+        
         renderer.models.append(cameraPlane)
+        renderer.models.append(hero)
 
     }
 }
