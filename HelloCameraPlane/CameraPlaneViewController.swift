@@ -59,7 +59,9 @@ class CameraPlaneViewController: UIViewController {
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
 
-        
+        // NOTE: When here uses translucent texture. rendering IS ORDER DEPENDENT.
+        //       Render opacque objects first - cameraPlane
+        //       then translucent object - hero with kids_grid_3x3_translucent
         renderer.models.append(cameraPlane)
         renderer.models.append(hero)
 
