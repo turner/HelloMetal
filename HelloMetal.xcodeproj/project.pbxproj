@@ -143,7 +143,6 @@
 		4F873AEB1E0D64FA002AF02D /* openexr.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F873AE61E0D6126002AF02D /* openexr.metal */; };
 		4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4FC28A3E21B16AAF0041947C /* Model_IOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC28A3D21B16AAF0041947C /* Model_IOViewController.swift */; };
-		4FDB16771DBD658C0025465A /* Model_IORenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16751DBD658C0025465A /* Model_IORenderer.swift */; };
 		4FDB16791DBD66BA0025465A /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4FDB167A1DBD66BA0025465A /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4FDB167B1DBD66BA0025465A /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
@@ -284,7 +283,6 @@
 		4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = scenes.scnassets; sourceTree = "<group>"; };
 		4FBF51CC1DC02B6200444668 /* model_io.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = model_io.metal; path = Shared/model_io.metal; sourceTree = "<group>"; };
 		4FC28A3D21B16AAF0041947C /* Model_IOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_IOViewController.swift; sourceTree = "<group>"; };
-		4FDB16751DBD658C0025465A /* Model_IORenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model_IORenderer.swift; sourceTree = "<group>"; };
 		4FDBF5061E0C041E007CC7F4 /* openexr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = openexr.swift; sourceTree = "<group>"; };
 		4FDBF5081E0C0C6C007CC7F4 /* dusk.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = dusk.exr; sourceTree = "<group>"; };
 		4FDF1AE621BD6EE000562499 /* RenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderEngine.swift; sourceTree = "<group>"; };
@@ -453,7 +451,6 @@
 			isa = PBXGroup;
 			children = (
 				4FC28A3D21B16AAF0041947C /* Model_IOViewController.swift */,
-				4FDB16751DBD658C0025465A /* Model_IORenderer.swift */,
 				4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */,
 				4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */,
 				4F56AF941DBAF08E00E396E7 /* Info.plist */,
@@ -898,7 +895,6 @@
 				4F48B7D421B2D17400CAE122 /* EIModelProtocol.swift in Sources */,
 				4F10A9DA1DC42E8D00053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */,
-				4FDB16771DBD658C0025465A /* Model_IORenderer.swift in Sources */,
 				4FFA63F61DC377DC002F8E34 /* EITexture.swift in Sources */,
 				4FFA63F71DC377DC002F8E34 /* RendererExtensions.swift in Sources */,
 				4FFA63F81DC377DC002F8E34 /* EIQuad.swift in Sources */,

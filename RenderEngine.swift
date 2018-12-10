@@ -58,7 +58,7 @@ class RendererEngine: NSObject, MTKViewDelegate {
     
     func reshape (view: EIView) {
         view.arcBall.reshape(viewBounds: view.bounds)
-        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 200, far: 8000)
+        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width / view.bounds.size.height), near: 100, far: 8000)
     }
     
     func update(view: EIView, drawableSize:CGSize) {
