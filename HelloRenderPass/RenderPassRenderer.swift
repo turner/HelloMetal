@@ -105,6 +105,10 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
             fatalError("Error: Can not create command buffer")
         }
 
+        
+        
+        
+        // ::::::::::::::::::::::::::::: begin ping pass :::::::::::::::::::::::::::::
         guard let renderToTextureEncoder = buffer.makeRenderCommandEncoder(descriptor: renderToTextureRenderPassDescriptor) else {
             fatalError("Error: Can not create command encoder")
         }
@@ -122,36 +126,51 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         model.encode(encoder: renderToTextureEncoder)
 
         renderToTextureEncoder.endEncoding()
-
-        // final pass
-        if let descriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
-
-            descriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
-
-            guard let encoder = buffer.makeRenderCommandEncoder(descriptor: descriptor) else {
-                fatalError("Error: Can not create command encoder")
-            }
-
-            // configure final pass encoder
-            encoder.setFrontFacing(.counterClockwise)
-            encoder.setTriangleFillMode(.fill)
-            encoder.setCullMode(.none)
-            encoder.setFragmentSamplerState(samplerState, index: 0)
-
-            let textures:[MTLTexture] =
-                    [
-                        renderToTextureRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture!,
-                        finalPassModel.shader.textures[ 0 ]
-                    ]
-
-            // finalPassModel encode
-            finalPassModel.renderPassEncode(encoder: encoder, textures: textures)
-
-            encoder.endEncoding()
-
-            buffer.present(drawable)
-            buffer.commit()
+        // ::::::::::::::::::::::::::::: end ping pass :::::::::::::::::::::::::::::
+        
+        
+        
+        
+        
+        
+        // ::::::::::::::::::::::::::::: begin pong pass :::::::::::::::::::::::::::::
+        guard let descriptor = view.currentRenderPassDescriptor else {
+            fatalError("Error: Can not create command buffer")
         }
+
+        guard let drawable = view.currentDrawable else {
+            fatalError("Error: Can not create command buffer")
+        }
+
+        descriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
+        
+        guard let encoder = buffer.makeRenderCommandEncoder(descriptor: descriptor) else {
+            fatalError("Error: Can not create command encoder")
+        }
+        
+        encoder.setFrontFacing(.counterClockwise)
+        encoder.setTriangleFillMode(.fill)
+        encoder.setCullMode(.none)
+        encoder.setFragmentSamplerState(samplerState, index: 0)
+        
+        let textures:[MTLTexture] =
+            [
+                renderToTextureRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture!,
+                finalPassModel.shader.textures[ 0 ]
+        ]
+        
+        // finalPassModel encode
+        finalPassModel.renderPassEncode(encoder: encoder, textures: textures)
+        
+        encoder.endEncoding()
+        // ::::::::::::::::::::::::::::: end pong pass :::::::::::::::::::::::::::::
+        
+        
+        
+        
+        
+        buffer.present(drawable)
+        buffer.commit()
 
     }
 
