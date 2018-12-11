@@ -138,10 +138,6 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
             fatalError("Error: Can not create command buffer")
         }
 
-        guard let drawable = view.currentDrawable else {
-            fatalError("Error: Can not create command buffer")
-        }
-
         descriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
         
         guard let encoder = buffer.makeRenderCommandEncoder(descriptor: descriptor) else {
@@ -166,9 +162,10 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         // ::::::::::::::::::::::::::::: end pong pass :::::::::::::::::::::::::::::
         
         
-        
-        
-        
+        guard let drawable = view.currentDrawable else {
+            fatalError("Error: Can not create command buffer")
+        }
+
         buffer.present(drawable)
         buffer.commit()
 
