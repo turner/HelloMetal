@@ -30,7 +30,9 @@ class OpenEXRViewController: UIViewController {
 
         // hero
         let heroMesh = EIMesh.plane(device: view.device!, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
-        shader = EIShader(view:view, library:renderer.library!, vertex:"openEXRVertexShader", fragment:"openEXRFragmentShader", textureNames:["alias_wavefront_diagnostic.exr"], vertexDescriptor: heroMesh.metalVertexDescriptor)
+        
+        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"alias_wavefront_diagnostic.exr")
+        shader = EIShader(view:view, library:renderer.library!, vertex:"openEXRVertexShader", fragment:"openEXRFragmentShader", openEXRTexture:openEXRTexture, vertexDescriptor: heroMesh.metalVertexDescriptor)
 
         let hero = EIModel(model:heroMesh, shader:shader, transformer:{
             return view.arcBall.rotationMatrix * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
@@ -48,10 +50,6 @@ class OpenEXRViewController: UIViewController {
         renderer.models.append(hero)
         renderer.models.append(cameraPlane)
 
-    }
-
-    func DEPRICATED_eiViewDidLoad(_ view:EIView) {
-        let openEXRTexture = textureFromOpenEXR(device: view.device!, name: "alias_wavefront_diagnostic.exr")
     }
 
 }
