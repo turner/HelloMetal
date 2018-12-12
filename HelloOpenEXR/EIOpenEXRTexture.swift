@@ -13,13 +13,13 @@ struct EIOpenEXRTexture {
     
     init(device: MTLDevice, name:String) {
         
-        let url = Bundle.main.url(forResource:name, withExtension:nil)
-        let path = url?.path
-        
+        guard let url = Bundle.main.url(forResource:name, withExtension:nil) else {
+            fatalError("Error: Can not find OpenEXR texture \(name)")
+        }
+
         let wp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
         let hp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
-        let theBits:UnsafePointer<CUnsignedShort>
-        theBits = pokeOpenEXR(path, wp, hp)
+        let theBits:UnsafePointer<CUnsignedShort> = pokeOpenEXR(url.path, wp, hp)
         
         //    let length = 4 * width * height
         //    let buffer = UnsafeBufferPointer(start: theBits, count: length);
