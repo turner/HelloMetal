@@ -109,23 +109,24 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         
         
         // ::::::::::::::::::::::::::::: begin ping pass :::::::::::::::::::::::::::::
-        guard let renderToTextureEncoder = buffer.makeRenderCommandEncoder(descriptor: renderToTextureRenderPassDescriptor) else {
+        let pingDescriptor = renderToTextureRenderPassDescriptor
+        guard let pingEncoder = buffer.makeRenderCommandEncoder(descriptor: pingDescriptor) else {
             fatalError("Error: Can not create command encoder")
         }
 
         // configure encoder
-        renderToTextureEncoder.setFrontFacing(.counterClockwise)
-        renderToTextureEncoder.setTriangleFillMode(.fill)
-        renderToTextureEncoder.setCullMode(.none)
-        renderToTextureEncoder.setFragmentSamplerState(samplerState, index: 0)
+        pingEncoder.setFrontFacing(.counterClockwise)
+        pingEncoder.setTriangleFillMode(.fill)
+        pingEncoder.setCullMode(.none)
+        pingEncoder.setFragmentSamplerState(samplerState, index: 0)
 
         // camerPlane encode
-        cameraPlane.encode(encoder: renderToTextureEncoder)
+        cameraPlane.encode(encoder: pingEncoder)
 
         // model encode
-        model.encode(encoder: renderToTextureEncoder)
+        model.encode(encoder: pingEncoder)
 
-        renderToTextureEncoder.endEncoding()
+        pingEncoder.endEncoding()
         // ::::::::::::::::::::::::::::: end ping pass :::::::::::::::::::::::::::::
         
         
@@ -134,31 +135,29 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         
         
         // ::::::::::::::::::::::::::::: begin pong pass :::::::::::::::::::::::::::::
-        guard let descriptor = view.currentRenderPassDescriptor else {
-            fatalError("Error: Can not create command buffer")
-        }
-
-        descriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
-        
-        guard let encoder = buffer.makeRenderCommandEncoder(descriptor: descriptor) else {
+        let pongDescriptor = view.currentRenderPassDescriptor!
+        guard let pongEncoder = buffer.makeRenderCommandEncoder(descriptor: pongDescriptor) else {
             fatalError("Error: Can not create command encoder")
         }
-        
-        encoder.setFrontFacing(.counterClockwise)
-        encoder.setTriangleFillMode(.fill)
-        encoder.setCullMode(.none)
-        encoder.setFragmentSamplerState(samplerState, index: 0)
-        
+
+        // configure encoder
+        pongEncoder.setFrontFacing(.counterClockwise)
+        pongEncoder.setTriangleFillMode(.fill)
+        pongEncoder.setCullMode(.none)
+        pongEncoder.setFragmentSamplerState(samplerState, index: 0)
+
+        // texture(0) is the render-to-texture results
+        // texture(1) is a cool effect to show off compositing
         let textures:[MTLTexture] =
             [
-                renderToTextureRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture!,
+                pingDescriptor.colorAttachments[ 0 ].resolveTexture!,
                 finalPassModel.shader.textures[ 0 ]
         ]
         
-        // finalPassModel encode
-        finalPassModel.renderPassEncode(encoder: encoder, textures: textures)
+        // finalPassModel encode - This surface is texture mapped with the render-to-texture texture of the "ping" pass
+        finalPassModel.renderPassEncode(encoder: pongEncoder, textures: textures)
         
-        encoder.endEncoding()
+        pongEncoder.endEncoding()
         // ::::::::::::::::::::::::::::: end pong pass :::::::::::::::::::::::::::::
         
         
