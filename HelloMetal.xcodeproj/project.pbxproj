@@ -142,6 +142,7 @@
 		4F873AEB1E0D64FA002AF02D /* openexr.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F873AE61E0D6126002AF02D /* openexr.metal */; };
 		4FBCB52D21C1B5E500C4DA3A /* EIOpenEXRTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCB52C21C1B5E500C4DA3A /* EIOpenEXRTexture.swift */; };
 		4FBCB52F21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCB52E21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift */; };
+		4FBCB53121C1BC2600C4DA3A /* mandrill.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FBCB53021C1BC2600C4DA3A /* mandrill.exr */; };
 		4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4FC28A3E21B16AAF0041947C /* Model_IOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC28A3D21B16AAF0041947C /* Model_IOViewController.swift */; };
 		4FDB16791DBD66BA0025465A /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
@@ -280,6 +281,7 @@
 		4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = scenes.scnassets; sourceTree = "<group>"; };
 		4FBCB52C21C1B5E500C4DA3A /* EIOpenEXRTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIOpenEXRTexture.swift; sourceTree = "<group>"; };
 		4FBCB52E21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIShader+EIOpenEXRTexture.swift"; sourceTree = "<group>"; };
+		4FBCB53021C1BC2600C4DA3A /* mandrill.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandrill.exr; sourceTree = "<group>"; };
 		4FBF51CC1DC02B6200444668 /* model_io.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = model_io.metal; path = Shared/model_io.metal; sourceTree = "<group>"; };
 		4FC28A3D21B16AAF0041947C /* Model_IOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_IOViewController.swift; sourceTree = "<group>"; };
 		4FDBF5081E0C0C6C007CC7F4 /* dusk.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = dusk.exr; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 		4FDFA7B71E0BF7CE005BEDF4 /* HelloOpenEXR */ = {
 			isa = PBXGroup;
 			children = (
+				4FBCB53021C1BC2600C4DA3A /* mandrill.exr */,
 				4F09CAFD21B7FD32002D742F /* OpenEXRViewController.swift */,
 				4FBCB52E21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift */,
 				4FBCB52C21C1B5E500C4DA3A /* EIOpenEXRTexture.swift */,
@@ -837,6 +840,7 @@
 				4FDFA7F01E0BFDEE005BEDF4 /* red.exr in Resources */,
 				4F873AE91E0D62CD002AF02D /* alias_wavefront_diagnostic.exr in Resources */,
 				4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */,
+				4FBCB53121C1BC2600C4DA3A /* mandrill.exr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
