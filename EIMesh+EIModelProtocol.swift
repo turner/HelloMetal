@@ -7,7 +7,7 @@
 //
 
 import Metal
-
+import GLKit
 extension EIMesh : EIModelProtocol {
     
     func getVertexMetalBuffer() -> MTLBuffer {
@@ -34,4 +34,11 @@ extension EIMesh : EIModelProtocol {
         return vertexIndexMetalBuffer
     }
     
+    public func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4) {
+        metallicTransform.update(camera: camera, transformer: {
+            transformer()
+        })
+        
+    }
+
 }

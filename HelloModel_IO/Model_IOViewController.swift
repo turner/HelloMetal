@@ -11,7 +11,7 @@ import GLKit
 
 class Model_IOViewController: UIViewController {
 
-    var renderer:Model_IORenderer!
+    var renderer:RendererEngine!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,68 +21,32 @@ class Model_IOViewController: UIViewController {
 
     func eiViewDidLoad(_ view:EIView) {
 
-        renderer = Model_IORenderer(view: view, device: view.device!)
+        renderer = RendererEngine(view: view, device: view.device!)
         view.delegate = renderer
 
         renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        // heroModel = EIMesh.plane(device: view.device!, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
-        // heroModel = EIMesh.sphere(device: view.device!, xRadius: 150, yRadius: 150, zRadius: 150, uTesselation: 32, vTesselation: 32)
-        renderer.model = EIMesh.cube(device: view.device!, xExtent: 200, yExtent: 100, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+        var shader:EIShader
+
+        // hero
+        let cube = EIMesh.cube(device: view.device!, xExtent: 200, yExtent: 100, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mandrill"], vertexDescriptor: cube.metalVertexDescriptor)
+
+        let hero = EIModel(model:cube, shader:shader, transformer:{
+            return view.arcBall.rotationMatrix
+        })
 
         // camera plane
-        renderer.cameraPlane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
+        let plane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: plane.metalVertexDescriptor)
 
-        do {
-            renderer.texture = try makeTexture(device: view.device!, name: "mandrill")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
+        let cameraPlane = EIModel(model:plane, shader:shader, transformer:{
+            return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
+        })
 
-        do {
-            renderer.cameraPlaneTexture = try makeTexture(device: view.device!, name: "mobile")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-        guard let library = view.device!.makeDefaultLibrary() else {
-            fatalError("Error: Can not create default library")
-        }
-
-        do {
-
-            // vertexShaderName:"litTextureMIOVertexShader",
-            // fragmentShaderName:"litTextureMIOFragmentShader",
-
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.model.metalVertexDescriptor)
-
-            renderer.pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch let e {
-            Swift.print("\(e)")
-        }
-
-        do {
-
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.cameraPlane.metalVertexDescriptor)
-
-            renderer.cameraPlanePipelineState = try view.device!.makeRenderPipelineState(descriptor: pipelineDescriptor)
-
-        } catch let e {
-            Swift.print("\(e)")
-        }
+        renderer.models.append(hero)
+        renderer.models.append(cameraPlane)
 
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

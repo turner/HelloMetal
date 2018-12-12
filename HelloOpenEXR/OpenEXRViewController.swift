@@ -11,7 +11,7 @@ import GLKit
 
 class OpenEXRViewController: UIViewController {
 
-    var renderer:OpenEXRRenderer!
+    var renderer:RendererEngine!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,51 +21,35 @@ class OpenEXRViewController: UIViewController {
 
     func eiViewDidLoad(_ view:EIView) {
 
-        renderer = OpenEXRRenderer(view: view, device: view.device!)
+        renderer = RendererEngine(view: view, device: view.device!)
         view.delegate = renderer
 
         renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 500)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        renderer.model = EIMesh.plane(device: view.device!, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
+        var shader:EIShader
 
-//        renderer.model = EIMesh.sceneMesh(device: view.device!, sceneName:"scenes.scnassets/teapot.scn", nodeName:"teapotIdentity")
-//        renderer.model = EIMesh.sceneMesh(device: view.device!, sceneName:"scenes.scnassets/head.scn", nodeName:"headIdentity")
-//        renderer.model = EIMesh.sceneMesh(device: view.device!, sceneName:"scenes.scnassets/bear.scn", nodeName:"bearIdentity")
+        // hero
+        let heroMesh = EIMesh.plane(device: view.device!, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
+        
+//        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"alias_wavefront_diagnostic.exr")
+        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"mandrill.exr")
+        shader = EIShader(view:view, library:renderer.library!, vertex:"openEXRVertexShader", fragment:"openEXRFragmentShader", openEXRTexture:openEXRTexture, vertexDescriptor: heroMesh.metalVertexDescriptor)
 
-        renderer.cameraPlane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
+        let hero = EIModel(model:heroMesh, shader:shader, transformer:{
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
+        })
 
-        renderer.texture = textureFromOpenEXR(device: view.device!, name: "alias_wavefront_diagnostic.exr")
 
-        do {
-            renderer.cameraPlaneTexture = try makeTexture(device: view.device!, name: "mobile")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
+        // camera plane
+        let cameraPlaneMesh = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: cameraPlaneMesh.metalVertexDescriptor)
 
-        guard let library = view.device!.makeDefaultLibrary() else {
-            fatalError("Error: Can not create default library")
-        }
+        let cameraPlane = EIModel(model:cameraPlaneMesh, shader:shader, transformer:{
+            return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
+        })
 
-        do {
-
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"openEXRVertexShader", fragmentShaderName:"openEXRFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.model.metalVertexDescriptor)
-
-            renderer.pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch let e {
-            Swift.print("\(e)")
-        }
-
-        do {
-
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureMIOVertexShader", fragmentShaderName:"textureMIOFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.cameraPlane.metalVertexDescriptor)
-
-            renderer.cameraPlanePipelineState = try view.device!.makeRenderPipelineState(descriptor: pipelineDescriptor)
-
-        } catch let e {
-            Swift.print("\(e)")
-        }
+        renderer.models.append(hero)
+        renderer.models.append(cameraPlane)
 
     }
 

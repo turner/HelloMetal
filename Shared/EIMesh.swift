@@ -20,20 +20,22 @@ class EIMesh {
 
     var metallicTransform: EITransform
 
+    var vertexMetalBuffer:MTLBuffer
+
+    var vertexIndexMetalBuffer:MTLBuffer
+
+    var indexCount:Int
+
+    var primitiveType:MTLPrimitiveType
+
+    var indexType:MTLIndexType
+
+
     var modelIOMeshMetallic: MDLMesh
     var modelIOMesh:MDLMesh
     var metalMesh: MTKMesh
 
     var metalVertexDescriptor:MTLVertexDescriptor
-
-    var vertexMetalBuffer:MTLBuffer
-    var vertexIndexMetalBuffer:MTLBuffer
-
-    var primitiveType:MTLPrimitiveType
-
-    var indexCount:Int
-
-    var indexType:MTLIndexType
 
     private init(device:MTLDevice, mdlMeshProvider:() -> MDLMesh) {
 
@@ -201,7 +203,7 @@ class EIMesh {
     class func sceneMesh(device:MTLDevice, sceneName:String, nodeName:String) -> EIMesh {
         return EIMesh(device:device, sceneName:sceneName, nodeName:nodeName)
     }
-    
+
 }
 
 

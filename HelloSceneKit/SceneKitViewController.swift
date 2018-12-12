@@ -11,7 +11,7 @@ import GLKit
 
 class SceneKitViewController: UIViewController {
 
-    var renderer:SceneKitRenderer!
+    var renderer:RendererEngine!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,63 +21,46 @@ class SceneKitViewController: UIViewController {
 
     func eiViewDidLoad(_ view:EIView) {
 
-        renderer = SceneKitRenderer(view: view, device: view.device!)
+        renderer = RendererEngine(view: view, device: view.device!)
         view.delegate = renderer
 
         renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-//        renderer.model = EIMesh.sceneMesh(device:device, sceneName:"scenes.scnassets/teapot.scn", nodeName:"teapotIdentity")
+        var shader:EIShader
 
-        renderer.model = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/high-res-head-no-groups.scn", nodeName:"highResHeadIdentity")
+        // hero
+
+        // hi-res head
+        let   heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/high-res-head-no-groups.scn", nodeName:"highResHeadIdentity")
+
+        // teapot
+//        let heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/teapot.scn",                  nodeName:"teapotIdentity")
+
+        shader = EIShader(view:view, library:renderer.library!, vertex:"showMIOVertexShader", fragment:"showMIOFragmentShader", textureNames:[], vertexDescriptor: heroMesh.metalVertexDescriptor)
+
+        let hero = EIModel(model:heroMesh, shader:shader, transformer:{
+
+            // default
+//            return view.arcBall.rotationMatrix
+
+            // scale for head (hi-res)
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(750, 750, 750) * GLKMatrix4MakeTranslation(0.0, 0.075, 0.101)
+
+            // scale for teapot
+//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
+        })
+
 
         // camera plane
-        renderer.cameraPlane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
+        let cameraPlaneMesh = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: cameraPlaneMesh.metalVertexDescriptor)
 
-        do {
-            renderer.frontTexture = try makeTexture(device: view.device!, name: "blue_grey")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
+        let cameraPlane = EIModel(model:cameraPlaneMesh, shader:shader, transformer:{
+            return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
+        })
 
-        do {
-            renderer.backTexture = try makeTexture(device: view.device!, name: "show_st")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-        do {
-            renderer.cameraPlaneTexture = try makeTexture(device: view.device!, name: "mobile")
-        } catch {
-            fatalError("Error: Can not load texture")
-        }
-
-        guard let library = view.device!.makeDefaultLibrary() else {
-            fatalError("Error: Can not create default library")
-        }
-
-        do {
-
-            // vertexShaderName:"textureTwoSidedMIOVertexShader",
-            // fragmentShaderName:"textureTwoSidedMIOFragmentShader",
-
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"showMIOVertexShader", fragmentShaderName:"showMIOFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.model.metalVertexDescriptor)
-
-            renderer.pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch let e {
-            Swift.print("\(e)")
-        }
-
-        do {
-
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureTwoSidedMIOVertexShader", fragmentShaderName:"textureTwoSidedMIOFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: renderer.cameraPlane.metalVertexDescriptor)
-
-            renderer.cameraPlanePipelineState = try view.device!.makeRenderPipelineState(descriptor: pipelineDescriptor)
-
-        } catch let e {
-            Swift.print("\(e)")
-        }
+        renderer.models.append(hero)
+        renderer.models.append(cameraPlane)
 
     }
 

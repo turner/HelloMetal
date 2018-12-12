@@ -7,7 +7,7 @@
 //
 
 import MetalKit
-
+import GLKit
 protocol EIModelProtocol {
     func getVertexMetalBuffer() -> MTLBuffer
     func getMetallicTransformMetalBuffer() -> MTLBuffer
@@ -15,4 +15,5 @@ protocol EIModelProtocol {
     func getIndexCount() -> Int
     func getIndexType() -> MTLIndexType
     func getIndexBuffer() -> MTLBuffer
+    mutating func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4)
 }

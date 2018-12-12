@@ -11,84 +11,41 @@ import GLKit
 
 class RenderPassRenderer: NSObject, MTKViewDelegate {
 
-    var camera: EICamera!
+    var camera:EICamera!
 
-    // hero model
-    var model: EIQuad!
-    var texture: MTLTexture!
-    var pipelineState: MTLRenderPipelineState!
-
-    // hero backdrop
-    var backdropModel: EIQuad!
-    var backdropTexture: MTLTexture!
-    var backdropPipelineState: MTLRenderPipelineState!
-
-    // final pass
-    var finalPassModel: EIQuad!
-    var finalPassTexture: MTLTexture!
-    var finalPassPipelineState: MTLRenderPipelineState!
+    var model: EIModel!
+    var cameraPlane: EIModel!
+    var finalPassModel: EIModel!
 
     // render to texture
-    var finalRenderPassDescriptor: MTLRenderPassDescriptor
+    var renderToTextureRenderPassDescriptor: MTLRenderPassDescriptor
 
-    let commandQueue: MTLCommandQueue?
+    let library: MTLLibrary?
+    let commandQueue:MTLCommandQueue?
     let samplerState: MTLSamplerState?
 
     init(view: MTKView, device: MTLDevice) {
 
-        guard let cq = device.makeCommandQueue() else {
-            fatalError("Error: Can not create command queue")
-        }
-        
-        commandQueue = cq
-        
-        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
-            fatalError("Error: Can not create sampler state")
-        }
-        
-        samplerState = ss
-
-        guard let library = device.makeDefaultLibrary() else {
+        guard let dl = view.device!.makeDefaultLibrary() else {
             fatalError("Error: Can not create default library")
         }
 
-        // hero pipline state
-        do {
+        library = dl
 
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
-            
-            pipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
-
-        } catch let e {
-            Swift.print("\(e)")
+        guard let cq = device.makeCommandQueue() else {
+            fatalError("Error: Can not create command queue")
         }
 
-        // backdrop pipeline state
-        do {
+        commandQueue = cq
 
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"textureVertexShader", fragmentShaderName:"textureFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
-            
-            backdropPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch let e {
-            Swift.print("\(e)")
+        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+            fatalError("Error: Can not create sampler state ")
         }
 
-        // final pass pipline statate
-        do {
+        samplerState = ss
 
-            let pipelineDescriptor =
-                    MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:"finalPassVertexShader", fragmentShaderName:"finalPassOverlayFragmentShader", sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor: nil)
-             
-            finalPassPipelineState = try device.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch let e {
-            Swift.print("\(e)")
-        }
-
-
-        finalRenderPassDescriptor = MTLRenderPassDescriptor()
-        finalRenderPassDescriptor.EI_Configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
+        renderToTextureRenderPassDescriptor = MTLRenderPassDescriptor()
+        renderToTextureRenderPassDescriptor.EI_Configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
 
     }
 
@@ -112,11 +69,11 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         textureDescriptor.textureType = .type2DMultisample
         textureDescriptor.sampleCount = view.sampleCount
         textureDescriptor.usage = .renderTarget
-        finalRenderPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:textureDescriptor)
+        renderToTextureRenderPassDescriptor.colorAttachments[ 0 ].texture = view.device!.makeTexture(descriptor:textureDescriptor)
 
         // color - point-sample resolve texture
         let resolveTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(ww), height:Int(hh), mipmapped:true)
-        finalRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture = view.device!.makeTexture(descriptor:resolveTextureDescriptor)
+        renderToTextureRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture = view.device!.makeTexture(descriptor:resolveTextureDescriptor)
 
         // depth
         let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float, width:Int(ww), height:Int(hh), mipmapped:false)
@@ -124,25 +81,19 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         depthTextureDescriptor.textureType = .type2DMultisample
         depthTextureDescriptor.sampleCount = view.sampleCount
         depthTextureDescriptor.usage = .renderTarget
-        finalRenderPassDescriptor.depthAttachment.texture = view.device!.makeTexture(descriptor:depthTextureDescriptor)
+        renderToTextureRenderPassDescriptor.depthAttachment.texture = view.device!.makeTexture(descriptor:depthTextureDescriptor)
     }
 
     func update(view:EIView, drawableSize:CGSize) {
 
-        // render plane
-        finalPassModel.metallicTransform.update(camera: camera, transformer: {
-            return camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * camera.far)
-        })
+        // camera plane
+        cameraPlane.update(camera: camera, arcball: view.arcBall)
 
         // hero model
-        model.metallicTransform.update(camera: camera, transformer: {
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
-        })
+        model.update(camera: camera, arcball: view.arcBall)
 
-        // hero backdrop
-        backdropModel.metallicTransform.update(camera: camera, transformer: {
-            return camera.createRenderPlaneTransform(distanceFromCamera: 0.35 * camera.far)
-        })
+        // final pass
+        finalPassModel.update(camera: camera, arcball: view.arcBall)
 
     }
 
@@ -154,52 +105,68 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
             fatalError("Error: Can not create command buffer")
         }
 
-        guard let encoder = buffer.makeRenderCommandEncoder(descriptor: finalRenderPassDescriptor) else {
+        
+        
+        
+        // ::::::::::::::::::::::::::::: begin ping pass :::::::::::::::::::::::::::::
+        let pingDescriptor = renderToTextureRenderPassDescriptor
+        guard let pingEncoder = buffer.makeRenderCommandEncoder(descriptor: pingDescriptor) else {
             fatalError("Error: Can not create command encoder")
         }
 
         // configure encoder
-        encoder.setFrontFacing(.counterClockwise)
-        encoder.setTriangleFillMode(.fill)
-        encoder.setCullMode(.none)
-        encoder.setFragmentSamplerState(samplerState, index: 0)
+        pingEncoder.setFrontFacing(.counterClockwise)
+        pingEncoder.setTriangleFillMode(.fill)
+        pingEncoder.setCullMode(.none)
+        pingEncoder.setFragmentSamplerState(samplerState, index: 0)
 
-        // hero backdrop
-        encoder.EI_Configure(renderPipelineState: backdropPipelineState, model: backdropModel, textures: [ backdropTexture ])
+        // camerPlane encode
+        cameraPlane.encode(encoder: pingEncoder)
 
-        // hero model
-        encoder.EI_Configure(renderPipelineState: pipelineState, model: model, textures: [ texture ])
+        // model encode
+        model.encode(encoder: pingEncoder)
 
-        encoder.endEncoding()
-
-        // final pass
-        if let descriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
-
-            descriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(1, 1, 1, 1)
-
-            guard let finalPassEncoder = buffer.makeRenderCommandEncoder(descriptor: descriptor) else {
-                fatalError("Error: Can not create command encoder")
-            }
-
-            // configure final pass encoder
-            finalPassEncoder.setFrontFacing(.counterClockwise)
-            finalPassEncoder.setTriangleFillMode(.fill)
-            finalPassEncoder.setCullMode(.none)
-            finalPassEncoder.setFragmentSamplerState(samplerState, index: 0)
-
-            let textures:[MTLTexture] =
-                    [
-                        finalRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture!,
-                        finalPassTexture
-                    ]
-            finalPassEncoder.EI_Configure(renderPipelineState: finalPassPipelineState, model: finalPassModel, textures: textures)
-
-            finalPassEncoder.endEncoding()
-
-
-            buffer.present(drawable)
-            buffer.commit()
+        pingEncoder.endEncoding()
+        // ::::::::::::::::::::::::::::: end ping pass :::::::::::::::::::::::::::::
+        
+        
+        
+        
+        
+        
+        // ::::::::::::::::::::::::::::: begin pong pass :::::::::::::::::::::::::::::
+        let pongDescriptor = view.currentRenderPassDescriptor!
+        guard let pongEncoder = buffer.makeRenderCommandEncoder(descriptor: pongDescriptor) else {
+            fatalError("Error: Can not create command encoder")
         }
+
+        // configure encoder
+        pongEncoder.setFrontFacing(.counterClockwise)
+        pongEncoder.setTriangleFillMode(.fill)
+        pongEncoder.setCullMode(.none)
+        pongEncoder.setFragmentSamplerState(samplerState, index: 0)
+
+        // texture(0) is the render-to-texture results
+        // texture(1) is a cool effect to show off compositing
+        let textures:[MTLTexture] =
+            [
+                pingDescriptor.colorAttachments[ 0 ].resolveTexture!,
+                finalPassModel.shader.textures[ 0 ]
+        ]
+        
+        // finalPassModel encode - This surface is texture mapped with the render-to-texture texture of the "ping" pass
+        finalPassModel.renderPassEncode(encoder: pongEncoder, textures: textures)
+        
+        pongEncoder.endEncoding()
+        // ::::::::::::::::::::::::::::: end pong pass :::::::::::::::::::::::::::::
+        
+        
+        guard let drawable = view.currentDrawable else {
+            fatalError("Error: Can not create command buffer")
+        }
+
+        buffer.present(drawable)
+        buffer.commit()
 
     }
 

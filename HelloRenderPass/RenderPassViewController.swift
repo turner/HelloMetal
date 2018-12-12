@@ -26,45 +26,27 @@ class RenderPassViewController: UIViewController {
 
         renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
 
-        // model
-        renderer.model = EIQuad(device: view.device!)
+        var shader:EIShader
 
-        do {
-            renderer.texture = try makeTexture(device: view.device!, name: "kids_grid_3x3_translucent")
-        } catch {
-            fatalError("Error: Can not load model texture")
-        }
+        // hero
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["kids_grid_3x3_translucent"], vertexDescriptor: nil)
+        renderer.model = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
+        })
 
-        // backdrop
-        renderer.backdropModel = EIQuad(device: view.device!)
+        // camera plane
+        shader = EIShader(view:view, library:renderer.library!, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["mobile"], vertexDescriptor: nil)
+        renderer.cameraPlane = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
+            return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.35 * self.renderer.camera.far)
+        })
 
-        do {
-            renderer.backdropTexture = try makeTexture(device: view.device!, name: "mobile")
-        } catch {
-            fatalError("Error: Can not load backdrop texture")
-        }
-
-
-        // final pass render surface
-        renderer.finalPassModel = EIQuad(device: view.device!)
-
-        do {
-            renderer.finalPassTexture = try makeTexture(device: view.device!, name: "mobile-overlay")
-        } catch {
-            fatalError("Error: Can not load render pass texture")
-        }
+        // final pass
+        shader = EIShader(view:view, library:renderer.library!, vertex:"finalPassVertexShader", fragment:"finalPassOverlayFragmentShader", textureNames:["mobile-overlay"], vertexDescriptor: nil)
+        renderer.finalPassModel = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
+            return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far)
+        })
 
 
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

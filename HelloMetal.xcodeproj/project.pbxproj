@@ -45,7 +45,6 @@
 		4F4E3E361DD617AA005E40AC /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */; };
 		4F4E3E371DD617B1005E40AC /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
 		4F4E3E381DD617B7005E40AC /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
-		4F4E3E3B1DD6182E005E40AC /* SceneKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */; };
 		4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
 		4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F4E3E3F1DD618C2005E40AC /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
@@ -55,6 +54,25 @@
 		4F4E3E431DD618C2005E40AC /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4F4E3E441DD618C2005E40AC /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
 		4F4E3E451DD618C2005E40AC /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
+		4F509BD721BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
+		4F509BD821BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
+		4F509BD921BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
+		4F509BDA21BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
+		4F509BDB21BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
+		4F509BDC21BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
+		4F509BDD21BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
+		4F509BDF21BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
+		4F509BE021BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
+		4F509BE121BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
+		4F509BE221BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
+		4F509BE321BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
+		4F509BE421BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
+		4F509BE521BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
+		4F54D35221BDB8C500BA4321 /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
+		4F54D35321BDB8C500BA4321 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
+		4F54D35521BDC35500BA4321 /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
+		4F54D35621BDC35500BA4321 /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
+		4F54D35721BDC35500BA4321 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */; };
 		4F5C8EA921B431E8000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
@@ -101,10 +119,8 @@
 		4F72704F1DC368C80039E130 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
 		4F7270501DC368C80039E130 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F7270511DC368C80039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
-		4F7270551DC369090039E130 /* HelloRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270531DC369090039E130 /* HelloRenderer.swift */; };
 		4F72708B1DC372410039E130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7270891DC372410039E130 /* Main.storyboard */; };
 		4F72708D1DC372410039E130 /* CameraPlane.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F72708C1DC372410039E130 /* CameraPlane.xcassets */; };
-		4F7270981DC372F50039E130 /* CameraPlaneRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7270961DC372F50039E130 /* CameraPlaneRenderer.swift */; };
 		4F72709B1DC373680039E130 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4F72709C1DC373680039E130 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4F72709D1DC373680039E130 /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
@@ -124,15 +140,23 @@
 		4F80A49D1DEB866F0082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F873AE91E0D62CD002AF02D /* alias_wavefront_diagnostic.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */; };
 		4F873AEB1E0D64FA002AF02D /* openexr.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F873AE61E0D6126002AF02D /* openexr.metal */; };
+		4FBCB52D21C1B5E500C4DA3A /* EIOpenEXRTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCB52C21C1B5E500C4DA3A /* EIOpenEXRTexture.swift */; };
+		4FBCB52F21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCB52E21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift */; };
+		4FBCB53121C1BC2600C4DA3A /* mandrill.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FBCB53021C1BC2600C4DA3A /* mandrill.exr */; };
 		4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4FC28A3E21B16AAF0041947C /* Model_IOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC28A3D21B16AAF0041947C /* Model_IOViewController.swift */; };
-		4FDB16771DBD658C0025465A /* Model_IORenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB16751DBD658C0025465A /* Model_IORenderer.swift */; };
 		4FDB16791DBD66BA0025465A /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4FDB167A1DBD66BA0025465A /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4FDB167B1DBD66BA0025465A /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
 		4FDB167D1DBD66BA0025465A /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
-		4FDBF5071E0C041E007CC7F4 /* openexr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBF5061E0C041E007CC7F4 /* openexr.swift */; };
 		4FDBF5091E0C0C6C007CC7F4 /* dusk.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FDBF5081E0C0C6C007CC7F4 /* dusk.exr */; };
+		4FDF1AE721BD6EE000562499 /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AE621BD6EE000562499 /* RenderEngine.swift */; };
+		4FDF1AE821BD6EE000562499 /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AE621BD6EE000562499 /* RenderEngine.swift */; };
+		4FDF1AE921BD6EE000562499 /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AE621BD6EE000562499 /* RenderEngine.swift */; };
+		4FDF1AEA21BD6EE000562499 /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AE621BD6EE000562499 /* RenderEngine.swift */; };
+		4FDF1AEB21BD6EE000562499 /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AE621BD6EE000562499 /* RenderEngine.swift */; };
+		4FDF1AEC21BD6EE000562499 /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AE621BD6EE000562499 /* RenderEngine.swift */; };
+		4FDF1AED21BD6EE000562499 /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1AE621BD6EE000562499 /* RenderEngine.swift */; };
 		4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7BC1E0BF7CE005BEDF4 /* Main.storyboard */; };
 		4FDFA7C01E0BF7CE005BEDF4 /* openexr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */; };
 		4FDFA7C81E0BF84E005BEDF4 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
@@ -154,7 +178,6 @@
 		4FDFA7D81E0BF8AB005BEDF4 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
 		4FDFA7D91E0BF8C2005BEDF4 /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
 		4FDFA7DA1E0BF8C2005BEDF4 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
-		4FDFA7DE1E0BF97A005BEDF4 /* OpenEXRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDFA7DC1E0BF97A005BEDF4 /* OpenEXRRenderer.swift */; };
 		4FDFA7E71E0BFAF7005BEDF4 /* libiOSOpenEXRLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDFA7E41E0BFAD5005BEDF4 /* libiOSOpenEXRLibrary.a */; };
 		4FDFA7E91E0BFB00005BEDF4 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDFA7E81E0BFB00005BEDF4 /* libz.1.2.8.tbd */; };
 		4FDFA7EC1E0BFB60005BEDF4 /* pokeOpenEXR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */; };
@@ -174,7 +197,6 @@
 		4FEE5E2B1DEEE03B00B47AC2 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4FEE5E2C1DEEE03B00B47AC2 /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
 		4FEE5E2E1DEEE03B00B47AC2 /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
-		4FEE5E341DEEE0F400B47AC2 /* LightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */; };
 		4FF465C121A9BAFD00CA57F4 /* RenderPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */; };
 		4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
 		4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */; };
@@ -228,7 +250,8 @@
 		4F4E3E281DD6177B005E40AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SceneKit.xcassets; sourceTree = "<group>"; };
 		4F4E3E2F1DD6177B005E40AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitRenderer.swift; sourceTree = "<group>"; };
+		4F509BD621BB29900090CCB9 /* EiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EiModel.swift; sourceTree = "<group>"; };
+		4F509BDE21BB29CF0090CCB9 /* EIShader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIShader.swift; sourceTree = "<group>"; };
 		4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloModel_IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F56AF8D1DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Model_IO.xcassets; sourceTree = "<group>"; };
@@ -247,27 +270,26 @@
 		4F72703D1DC368780039E130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F72703F1DC368780039E130 /* Hello.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Hello.xcassets; sourceTree = "<group>"; };
 		4F7270441DC368780039E130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F7270531DC369090039E130 /* HelloRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloRenderer.swift; sourceTree = "<group>"; };
 		4F7270831DC372410039E130 /* HelloCameraPlane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCameraPlane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F72708A1DC372410039E130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F72708C1DC372410039E130 /* CameraPlane.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CameraPlane.xcassets; sourceTree = "<group>"; };
 		4F7270911DC372410039E130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F7270961DC372F50039E130 /* CameraPlaneRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPlaneRenderer.swift; sourceTree = "<group>"; };
 		4F79540721B46B4100E4A25E /* LightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewController.swift; sourceTree = "<group>"; };
 		4F80A4981DEB86420082EE39 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		4F873AE61E0D6126002AF02D /* openexr.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = openexr.metal; path = Shared/openexr.metal; sourceTree = "<group>"; };
 		4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = alias_wavefront_diagnostic.exr; sourceTree = "<group>"; };
 		4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = scenes.scnassets; sourceTree = "<group>"; };
+		4FBCB52C21C1B5E500C4DA3A /* EIOpenEXRTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIOpenEXRTexture.swift; sourceTree = "<group>"; };
+		4FBCB52E21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIShader+EIOpenEXRTexture.swift"; sourceTree = "<group>"; };
+		4FBCB53021C1BC2600C4DA3A /* mandrill.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandrill.exr; sourceTree = "<group>"; };
 		4FBF51CC1DC02B6200444668 /* model_io.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = model_io.metal; path = Shared/model_io.metal; sourceTree = "<group>"; };
 		4FC28A3D21B16AAF0041947C /* Model_IOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_IOViewController.swift; sourceTree = "<group>"; };
-		4FDB16751DBD658C0025465A /* Model_IORenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model_IORenderer.swift; sourceTree = "<group>"; };
-		4FDBF5061E0C041E007CC7F4 /* openexr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = openexr.swift; sourceTree = "<group>"; };
 		4FDBF5081E0C0C6C007CC7F4 /* dusk.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = dusk.exr; sourceTree = "<group>"; };
+		4FDF1AE621BD6EE000562499 /* RenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderEngine.swift; sourceTree = "<group>"; };
 		4FDFA7B61E0BF7CE005BEDF4 /* HelloOpenEXR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloOpenEXR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FDFA7BD1E0BF7CE005BEDF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FDFA7BF1E0BF7CE005BEDF4 /* openexr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = openexr.xcassets; sourceTree = "<group>"; };
 		4FDFA7C41E0BF7CE005BEDF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4FDFA7DC1E0BF97A005BEDF4 /* OpenEXRRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEXRRenderer.swift; sourceTree = "<group>"; };
 		4FDFA7DF1E0BFAD5005BEDF4 /* iOSOpenEXRLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOSOpenEXRLibrary.xcodeproj; path = ../../iOSOpenEXRLibrary/iOSOpenEXRLibrary.xcodeproj; sourceTree = "<group>"; };
 		4FDFA7E81E0BFB00005BEDF4 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
 		4FDFA7EA1E0BFB5F005BEDF4 /* HelloOpenEXR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloOpenEXR-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -278,7 +300,6 @@
 		4FEE5E171DEEDF5500B47AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Light.xcassets; sourceTree = "<group>"; };
 		4FEE5E1E1DEEDF5500B47AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightRenderer.swift; sourceTree = "<group>"; };
 		4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderPassViewController.swift; sourceTree = "<group>"; };
 		4FFA63ED1DC3773C002F8E34 /* EITexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EITexture.swift; path = Shared/EITexture.swift; sourceTree = "<group>"; };
 		4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RendererExtensions.swift; path = Shared/RendererExtensions.swift; sourceTree = "<group>"; };
@@ -383,16 +404,19 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */,
+				4F509BDE21BB29CF0090CCB9 /* EIShader.swift */,
+				4FFA63ED1DC3773C002F8E34 /* EITexture.swift */,
+				4FDF1AE621BD6EE000562499 /* RenderEngine.swift */,
+				4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */,
 				4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */,
 				4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */,
-				4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */,
-				4F10A9D61DC42DC800053B77 /* AppDelegate.swift */,
-				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
+				4F509BD621BB29900090CCB9 /* EiModel.swift */,
 				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
 				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
+				4FFA63EE1DC3773C002F8E34 /* RendererExtensions.swift */,
+				4F10A9D61DC42DC800053B77 /* AppDelegate.swift */,
+				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
 				4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */,
-				4FFA63ED1DC3773C002F8E34 /* EITexture.swift */,
 				4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */,
 				4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */,
 				4F2F1F911DBA599900B80FE4 /* EITransform.swift */,
@@ -413,7 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				4F683E1621B559C4009AA128 /* SceneKitViewController.swift */,
-				4F4E3E391DD6182D005E40AC /* SceneKitRenderer.swift */,
 				4F4E3E271DD6177B005E40AC /* Main.storyboard */,
 				4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */,
 				4F4E3E2F1DD6177B005E40AC /* Info.plist */,
@@ -425,7 +448,6 @@
 			isa = PBXGroup;
 			children = (
 				4FC28A3D21B16AAF0041947C /* Model_IOViewController.swift */,
-				4FDB16751DBD658C0025465A /* Model_IORenderer.swift */,
 				4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */,
 				4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */,
 				4F56AF941DBAF08E00E396E7 /* Info.plist */,
@@ -449,7 +471,6 @@
 			isa = PBXGroup;
 			children = (
 				4F3DFC6221A773820096BDD6 /* HelloViewController.swift */,
-				4F7270531DC369090039E130 /* HelloRenderer.swift */,
 				4F72703C1DC368780039E130 /* Main.storyboard */,
 				4F72703F1DC368780039E130 /* Hello.xcassets */,
 				4F7270441DC368780039E130 /* Info.plist */,
@@ -461,7 +482,6 @@
 			isa = PBXGroup;
 			children = (
 				4F1645FA21A8C21D004EEB66 /* CameraPlaneViewController.swift */,
-				4F7270961DC372F50039E130 /* CameraPlaneRenderer.swift */,
 				4F7270891DC372410039E130 /* Main.storyboard */,
 				4F72708C1DC372410039E130 /* CameraPlane.xcassets */,
 				4F7270911DC372410039E130 /* Info.plist */,
@@ -503,11 +523,12 @@
 		4FDFA7B71E0BF7CE005BEDF4 /* HelloOpenEXR */ = {
 			isa = PBXGroup;
 			children = (
+				4FBCB53021C1BC2600C4DA3A /* mandrill.exr */,
 				4F09CAFD21B7FD32002D742F /* OpenEXRViewController.swift */,
-				4FDFA7DC1E0BF97A005BEDF4 /* OpenEXRRenderer.swift */,
-				4FDFA7EA1E0BFB5F005BEDF4 /* HelloOpenEXR-Bridging-Header.h */,
-				4FDBF5061E0C041E007CC7F4 /* openexr.swift */,
+				4FBCB52E21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift */,
+				4FBCB52C21C1B5E500C4DA3A /* EIOpenEXRTexture.swift */,
 				4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */,
+				4FDFA7EA1E0BFB5F005BEDF4 /* HelloOpenEXR-Bridging-Header.h */,
 				4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */,
 				4FDFA7EE1E0BFDEE005BEDF4 /* red.exr */,
 				4FDFA7EF1E0BFDEE005BEDF4 /* gourds.exr */,
@@ -532,7 +553,6 @@
 			isa = PBXGroup;
 			children = (
 				4F79540721B46B4100E4A25E /* LightViewController.swift */,
-				4FEE5E321DEEE0F400B47AC2 /* LightRenderer.swift */,
 				4FEE5E161DEEDF5500B47AC2 /* Main.storyboard */,
 				4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */,
 				4FEE5E1E1DEEDF5500B47AC2 /* Info.plist */,
@@ -820,6 +840,7 @@
 				4FDFA7F01E0BFDEE005BEDF4 /* red.exr in Resources */,
 				4F873AE91E0D62CD002AF02D /* alias_wavefront_diagnostic.exr in Resources */,
 				4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */,
+				4FBCB53121C1BC2600C4DA3A /* mandrill.exr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,17 +866,19 @@
 				4F683E1921B559E1009AA128 /* EIMesh+EIModelProtocol.swift in Sources */,
 				4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */,
 				4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */,
-				4F4E3E3B1DD6182E005E40AC /* SceneKitRenderer.swift in Sources */,
 				4F4E3E3F1DD618C2005E40AC /* EIArcball.swift in Sources */,
 				4F4E3E401DD618C2005E40AC /* EITexture.swift in Sources */,
 				4F4E3E411DD618C2005E40AC /* RendererExtensions.swift in Sources */,
+				4F509BDC21BB29900090CCB9 /* EiModel.swift in Sources */,
 				4F4E3E421DD618C2005E40AC /* EIMesh.swift in Sources */,
 				4F4E3E431DD618C2005E40AC /* EICamera.swift in Sources */,
 				4F683E1721B559C4009AA128 /* SceneKitViewController.swift in Sources */,
 				4F4E3E441DD618C2005E40AC /* EIMath.swift in Sources */,
+				4FDF1AEC21BD6EE000562499 /* RenderEngine.swift in Sources */,
 				4F4E3E451DD618C2005E40AC /* EITransform.swift in Sources */,
 				4F6734651DEFABBC00443FEA /* model_io.metal in Sources */,
 				4F0456BE1DF18BA60011E2CA /* model_io_show.metal in Sources */,
+				4F509BE421BB29CF0090CCB9 /* EIShader.swift in Sources */,
 				4F67346F1DEFB5BF00443FEA /* model_io_lit_texture.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -865,18 +888,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F5C8EAC21B43405000CB185 /* EIMesh+EIModelProtocol.swift in Sources */,
+				4F509BDA21BB29900090CCB9 /* EiModel.swift in Sources */,
 				4F48B7D421B2D17400CAE122 /* EIModelProtocol.swift in Sources */,
 				4F10A9DA1DC42E8D00053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */,
-				4FDB16771DBD658C0025465A /* Model_IORenderer.swift in Sources */,
 				4FFA63F61DC377DC002F8E34 /* EITexture.swift in Sources */,
 				4FFA63F71DC377DC002F8E34 /* RendererExtensions.swift in Sources */,
 				4FFA63F81DC377DC002F8E34 /* EIQuad.swift in Sources */,
 				4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */,
 				4FDB16791DBD66BA0025465A /* EIArcball.swift in Sources */,
+				4F509BE221BB29CF0090CCB9 /* EIShader.swift in Sources */,
 				4FDB167A1DBD66BA0025465A /* EICamera.swift in Sources */,
 				4FDB167B1DBD66BA0025465A /* EIMath.swift in Sources */,
 				4FDB167D1DBD66BA0025465A /* EITransform.swift in Sources */,
+				4FDF1AEA21BD6EE000562499 /* RenderEngine.swift in Sources */,
 				4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */,
 				4F0456BD1DF18B990011E2CA /* model_io_show.metal in Sources */,
 				4FC28A3E21B16AAF0041947C /* Model_IOViewController.swift in Sources */,
@@ -889,6 +914,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F5C8EAB21B4335D000CB185 /* EIQuad+EIModelProtocol.swift in Sources */,
+				4F509BD921BB29900090CCB9 /* EiModel.swift in Sources */,
 				4F48B7D321B2D16A00CAE122 /* EIModelProtocol.swift in Sources */,
 				4F10A9D91DC42E8600053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */,
@@ -898,9 +924,11 @@
 				4F64B3961DC40671005BD8B1 /* EIArcball.swift in Sources */,
 				4F64B3971DC40671005BD8B1 /* EICamera.swift in Sources */,
 				4F64B3981DC40671005BD8B1 /* EIMath.swift in Sources */,
+				4F509BE121BB29CF0090CCB9 /* EIShader.swift in Sources */,
 				4F64B3991DC40671005BD8B1 /* EIQuad.swift in Sources */,
 				4F64B39A1DC40671005BD8B1 /* EITransform.swift in Sources */,
 				4F64B39C1DC406CF005BD8B1 /* hello.metal in Sources */,
+				4FDF1AE921BD6EE000562499 /* RenderEngine.swift in Sources */,
 				4F64B39D1DC406CF005BD8B1 /* showST.metal in Sources */,
 				4F64B39E1DC406CF005BD8B1 /* texture.metal in Sources */,
 				4F64B39B1DC40671005BD8B1 /* finalPass.metal in Sources */,
@@ -913,9 +941,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F10A9D71DC42DC800053B77 /* AppDelegate.swift in Sources */,
+				4F509BD721BB29900090CCB9 /* EiModel.swift in Sources */,
 				4F1CA3AF1DC43067006B6213 /* EIView.swift in Sources */,
 				4F5C8EA921B431E8000CB185 /* EIQuad+EIModelProtocol.swift in Sources */,
-				4F7270551DC369090039E130 /* HelloRenderer.swift in Sources */,
 				4F48B7CF21B2CDDB00CAE122 /* EIModelProtocol.swift in Sources */,
 				4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */,
 				4F7270491DC368C80039E130 /* EIArcball.swift in Sources */,
@@ -924,9 +952,11 @@
 				4F3DFC6321A773820096BDD6 /* HelloViewController.swift in Sources */,
 				4FFA63F01DC3773C002F8E34 /* RendererExtensions.swift in Sources */,
 				4F72704C1DC368C80039E130 /* EIQuad.swift in Sources */,
+				4FDF1AE721BD6EE000562499 /* RenderEngine.swift in Sources */,
 				4F72704D1DC368C80039E130 /* EITransform.swift in Sources */,
 				4F72704F1DC368C80039E130 /* hello.metal in Sources */,
 				4F7270501DC368C80039E130 /* showST.metal in Sources */,
+				4F509BDF21BB29CF0090CCB9 /* EIShader.swift in Sources */,
 				4F7270511DC368C80039E130 /* texture.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -935,19 +965,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F54D35521BDC35500BA4321 /* model_io_lit_texture.metal in Sources */,
+				4F54D35621BDC35500BA4321 /* model_io_show.metal in Sources */,
+				4F54D35721BDC35500BA4321 /* model_io.metal in Sources */,
+				4F54D35221BDB8C500BA4321 /* EIMesh+EIModelProtocol.swift in Sources */,
+				4F54D35321BDB8C500BA4321 /* EIMesh.swift in Sources */,
 				4F5C8EAA21B43336000CB185 /* EIQuad+EIModelProtocol.swift in Sources */,
+				4F509BD821BB29900090CCB9 /* EiModel.swift in Sources */,
 				4F48B7D221B2D16000CAE122 /* EIModelProtocol.swift in Sources */,
 				4F10A9D81DC42E7600053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B01DC43680006B6213 /* EIView.swift in Sources */,
 				4F1645FB21A8C21D004EEB66 /* CameraPlaneViewController.swift in Sources */,
-				4F7270981DC372F50039E130 /* CameraPlaneRenderer.swift in Sources */,
 				4FFA63F21DC377BA002F8E34 /* EITexture.swift in Sources */,
 				4FFA63F31DC377BA002F8E34 /* RendererExtensions.swift in Sources */,
 				4F72709B1DC373680039E130 /* EIArcball.swift in Sources */,
 				4F72709C1DC373680039E130 /* EICamera.swift in Sources */,
+				4F509BE021BB29CF0090CCB9 /* EIShader.swift in Sources */,
 				4F72709D1DC373680039E130 /* EIMath.swift in Sources */,
 				4F72709E1DC373690039E130 /* EIQuad.swift in Sources */,
 				4F72709F1DC373690039E130 /* EITransform.swift in Sources */,
+				4FDF1AE821BD6EE000562499 /* RenderEngine.swift in Sources */,
 				4F7270A01DC373690039E130 /* finalPass.metal in Sources */,
 				4F7270A11DC373690039E130 /* hello.metal in Sources */,
 				4F7270A21DC373690039E130 /* showST.metal in Sources */,
@@ -961,23 +998,26 @@
 			files = (
 				4F09CAFB21B7FD18002D742F /* EIModelProtocol.swift in Sources */,
 				4F09CAFC21B7FD18002D742F /* EIMesh+EIModelProtocol.swift in Sources */,
+				4FBCB52F21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift in Sources */,
 				4FDFA7C91E0BF84E005BEDF4 /* AppDelegate.swift in Sources */,
 				4FDFA7CA1E0BF84E005BEDF4 /* EIView.swift in Sources */,
+				4F509BE521BB29CF0090CCB9 /* EIShader.swift in Sources */,
 				4FDFA7CB1E0BF84E005BEDF4 /* EIArcball.swift in Sources */,
 				4FDFA7CC1E0BF84E005BEDF4 /* EITexture.swift in Sources */,
 				4FDFA7CD1E0BF84E005BEDF4 /* RendererExtensions.swift in Sources */,
 				4FDFA7C81E0BF84E005BEDF4 /* EIMesh.swift in Sources */,
+				4FDF1AED21BD6EE000562499 /* RenderEngine.swift in Sources */,
 				4FDFA7CE1E0BF84E005BEDF4 /* EICamera.swift in Sources */,
 				4FDFA7CF1E0BF84E005BEDF4 /* EIMath.swift in Sources */,
-				4FDBF5071E0C041E007CC7F4 /* openexr.swift in Sources */,
+				4F509BDD21BB29900090CCB9 /* EiModel.swift in Sources */,
 				4FDFA7D01E0BF84E005BEDF4 /* EITransform.swift in Sources */,
-				4FDFA7DE1E0BF97A005BEDF4 /* OpenEXRRenderer.swift in Sources */,
 				4FDFA7EC1E0BFB60005BEDF4 /* pokeOpenEXR.cpp in Sources */,
 				4F873AEB1E0D64FA002AF02D /* openexr.metal in Sources */,
 				4FDFA7D11E0BF84E005BEDF4 /* model_io_lit_texture.metal in Sources */,
 				4FDFA7D21E0BF84E005BEDF4 /* model_io_show.metal in Sources */,
 				4F09CAFE21B7FD32002D742F /* OpenEXRViewController.swift in Sources */,
 				4FDFA7D31E0BF84E005BEDF4 /* model_io.metal in Sources */,
+				4FBCB52D21C1B5E500C4DA3A /* EIOpenEXRTexture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -990,16 +1030,18 @@
 				4F79540921B46BEB00E4A25E /* EIModelProtocol.swift in Sources */,
 				4F79540A21B46BEB00E4A25E /* EIMesh+EIModelProtocol.swift in Sources */,
 				4FEE5E261DEEE03B00B47AC2 /* AppDelegate.swift in Sources */,
-				4FEE5E341DEEE0F400B47AC2 /* LightRenderer.swift in Sources */,
 				4FEE5E281DEEE03B00B47AC2 /* EIArcball.swift in Sources */,
 				4FEE5E291DEEE03B00B47AC2 /* EITexture.swift in Sources */,
+				4F509BDB21BB29900090CCB9 /* EiModel.swift in Sources */,
 				4FEE5E2A1DEEE03B00B47AC2 /* RendererExtensions.swift in Sources */,
 				4F6734661DEFAD3300443FEA /* EIMesh.swift in Sources */,
 				4FEE5E2B1DEEE03B00B47AC2 /* EICamera.swift in Sources */,
 				4FEE5E2C1DEEE03B00B47AC2 /* EIMath.swift in Sources */,
+				4FDF1AEB21BD6EE000562499 /* RenderEngine.swift in Sources */,
 				4FEE5E2E1DEEE03B00B47AC2 /* EITransform.swift in Sources */,
 				4F67346E1DEFB5B200443FEA /* model_io.metal in Sources */,
 				4F0456BF1DF18BB20011E2CA /* model_io_show.metal in Sources */,
+				4F509BE321BB29CF0090CCB9 /* EIShader.swift in Sources */,
 				4F67346D1DEFB00B00443FEA /* model_io_lit_texture.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
