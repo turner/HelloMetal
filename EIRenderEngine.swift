@@ -1,5 +1,5 @@
 //
-//  RenderEngine.swift
+//  EIRenderEngine.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 12/9/18.
@@ -9,7 +9,7 @@
 import MetalKit
 import GLKit
 
-class RendererEngine: NSObject, MTKViewDelegate {
+class EIRendererEngine: NSObject, MTKViewDelegate {
     
     var camera:EICamera!
     
