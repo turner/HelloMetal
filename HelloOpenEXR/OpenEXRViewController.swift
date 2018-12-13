@@ -11,7 +11,7 @@ import GLKit
 
 class OpenEXRViewController: UIViewController {
 
-    var renderer:RendererEngine!
+    var renderer:EIRendererEngine!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class OpenEXRViewController: UIViewController {
 
     func eiViewDidLoad(_ view:EIView) {
 
-        renderer = RendererEngine(view: view, device: view.device!)
+        renderer = EIRendererEngine(view: view, device: view.device!)
         view.delegate = renderer
 
         renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 500)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
