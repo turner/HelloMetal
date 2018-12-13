@@ -434,14 +434,9 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4F82651121C2863B001F9DE2 /* MTLSamplerDescriptor+MipMap.swift */,
-				4F82650921C285E3001F9DE2 /* MTLRenderCommandEncoder+EI_Configure.swift */,
-				4F82650121C28595001F9DE2 /* MTLRenderPipelineDescriptor+EI_Create.swift */,
-				4F8264F921C284A9001F9DE2 /* MTLRenderPassDescriptor+EI_Configure.swift */,
-				4F8264F121C2842F001F9DE2 /* MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift */,
+				4FDF1AE621BD6EE000562499 /* RenderEngine.swift */,
 				4F509BDE21BB29CF0090CCB9 /* EIShader.swift */,
 				4FFA63ED1DC3773C002F8E34 /* EITexture.swift */,
-				4FDF1AE621BD6EE000562499 /* RenderEngine.swift */,
 				4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */,
 				4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */,
 				4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */,
@@ -454,6 +449,11 @@
 				4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */,
 				4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */,
 				4F2F1F911DBA599900B80FE4 /* EITransform.swift */,
+				4F82651121C2863B001F9DE2 /* MTLSamplerDescriptor+MipMap.swift */,
+				4F82650921C285E3001F9DE2 /* MTLRenderCommandEncoder+EI_Configure.swift */,
+				4F82650121C28595001F9DE2 /* MTLRenderPipelineDescriptor+EI_Create.swift */,
+				4F8264F921C284A9001F9DE2 /* MTLRenderPassDescriptor+EI_Configure.swift */,
+				4F8264F121C2842F001F9DE2 /* MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift */,
 				4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */,
 				4F873AE61E0D6126002AF02D /* openexr.metal */,
 				4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */,
