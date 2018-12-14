@@ -14,12 +14,18 @@ struct EIModel {
     var shader:EIShader
     var transformer:() -> GLKMatrix4
     
+    init(model:EIModelProtocol, shader:EIShader) {
+        self.model = model
+        self.shader = shader
+        self.transformer = { return GLKMatrix4Identity }
+    }
+    
     init(model:EIModelProtocol, shader:EIShader, transformer:@escaping () -> GLKMatrix4) {
         self.model = model
         self.shader = shader
         self.transformer = transformer
     }
-    
+
     public mutating func update(camera:EICamera, arcball:EIArcball) {
         model.update(camera: camera, arcBall: arcball, transformer: transformer)
     }
