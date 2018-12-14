@@ -16,11 +16,9 @@ class EIRenderPassEngine : EIRendererEngine {
 
         super.init(view: view, device: device)
         
-        let shader =
-            EIShader(view:view, library:view.defaultLibrary, vertex:"finalPassVertexShader", fragment:"finalPassOverlayFragmentShader", textureNames:["mobile-overlay"], vertexDescriptor: nil)
-        
-        finalPassModel =
-            EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
+        let shader = EIShader(view:view, library:view.defaultLibrary, vertex:"finalPassVertexShader", fragment:"finalPassOverlayFragmentShader", textureNames:["mobile-overlay"], vertexDescriptor: nil)
+
+        finalPassModel = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{ [unowned self] in
             return self.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.camera.far)
         })
         

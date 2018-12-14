@@ -50,7 +50,7 @@ class CameraPlaneViewController: UIViewController {
         let plane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
         shader = EIShader(view:view, library:view.defaultLibrary, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: plane.metalVertexDescriptor)
 
-        let cameraPlane = EIModel(model:plane, shader:shader, transformer:{
+        let cameraPlane = EIModel(model:plane, shader:shader, transformer:{ [unowned self] in
 
             // EIQuad
 //            return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far)

@@ -36,7 +36,7 @@ class RenderPassViewController: UIViewController {
 
         // camera plane
         shader = EIShader(view:view, library:view.defaultLibrary, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["mobile"], vertexDescriptor: nil)
-        let cameraPlane = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
+        let cameraPlane = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{ [unowned self] in
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.35 * self.renderer.camera.far)
         })
 
