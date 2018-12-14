@@ -30,7 +30,7 @@ class Model_IOViewController: UIViewController {
 
         // hero
         let cube = EIMesh.cube(device: view.device!, xExtent: 200, yExtent: 100, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
-        shader = EIShader(view:view, library:renderer.library!, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mandrill"], vertexDescriptor: cube.metalVertexDescriptor)
+        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mandrill"], vertexDescriptor: cube.metalVertexDescriptor)
 
         let hero = EIModel(model:cube, shader:shader, transformer:{
             return view.arcBall.rotationMatrix
@@ -38,9 +38,9 @@ class Model_IOViewController: UIViewController {
 
         // camera plane
         let plane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
-        shader = EIShader(view:view, library:renderer.library!, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: plane.metalVertexDescriptor)
+        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: plane.metalVertexDescriptor)
 
-        let cameraPlane = EIModel(model:plane, shader:shader, transformer:{
+        let cameraPlane = EIModel(model:plane, shader:shader, transformer:{ [unowned self] in
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
 

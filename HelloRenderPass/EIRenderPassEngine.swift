@@ -1,64 +1,41 @@
 //
-//  RenderPassRenderer.swift
-//  HelloMetal
+//  EIRenderPassEngine.swift
+//  HelloRenderPass
 //
-//  Created by Douglass Turner on 9/11/16.
-//  Copyright © 2016 Elastic Image Software. All rights reserved.
+//  Created by Douglass Turner on 12/13/18.
+//  Copyright © 2018 Elastic Image Software. All rights reserved.
 //
 
 import MetalKit
 import GLKit
+class EIRenderPassEngine : EIRendererEngine {
+    
+    var finalPassModel:EIModel!
+    var renderToTextureRenderPassDescriptor: MTLRenderPassDescriptor!
 
-class RenderPassRenderer: NSObject, MTKViewDelegate {
+    override init(view: EIView, device: MTLDevice) {
+        
+        let shader = EIShader(view:view, library:view.defaultLibrary, vertex:"finalPassVertexShader", fragment:"finalPassOverlayFragmentShader", textureNames:["mobile-overlay"], vertexDescriptor: nil)
+        
+        finalPassModel = EIModel(model:EIQuad(device: view.device!), shader:shader)
 
-    var camera:EICamera!
-
-    var model: EIModel!
-    var cameraPlane: EIModel!
-    var finalPassModel: EIModel!
-
-    // render to texture
-    var renderToTextureRenderPassDescriptor: MTLRenderPassDescriptor
-
-    let library: MTLLibrary?
-    let commandQueue:MTLCommandQueue?
-    let samplerState: MTLSamplerState?
-
-    init(view: MTKView, device: MTLDevice) {
-
-        guard let dl = view.device!.makeDefaultLibrary() else {
-            fatalError("Error: Can not create default library")
+        super.init(view: view, device: device)
+        
+        finalPassModel.transformer = { [unowned self] in
+            return self.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.camera.far)
         }
-
-        library = dl
-
-        guard let cq = device.makeCommandQueue() else {
-            fatalError("Error: Can not create command queue")
-        }
-
-        commandQueue = cq
-
-        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
-            fatalError("Error: Can not create sampler state ")
-        }
-
-        samplerState = ss
 
         renderToTextureRenderPassDescriptor = MTLRenderPassDescriptor()
         renderToTextureRenderPassDescriptor.EI_Configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
 
     }
 
-    public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        reshape(view:view as! EIView)
-    }
-
-    func reshape (view:EIView) {
+    override func reshape (view:EIView) {
 
         view.arcBall.reshape(viewBounds: view.bounds)
 
         camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width/view.bounds.size.height), near:200, far: 8000)
-        
+
         let scaleFactor = UIScreen.main.scale
         let ww = scaleFactor * view.bounds.size.width
         let hh = scaleFactor * view.bounds.size.height
@@ -84,20 +61,14 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         renderToTextureRenderPassDescriptor.depthAttachment.texture = view.device!.makeTexture(descriptor:depthTextureDescriptor)
     }
 
-    func update(view:EIView, drawableSize:CGSize) {
+    override func update(view: EIView, drawableSize:CGSize) {
 
-        // camera plane
-        cameraPlane.update(camera: camera, arcball: view.arcBall)
+        super.update(view: view, drawableSize: drawableSize)
 
-        // hero model
-        model.update(camera: camera, arcball: view.arcBall)
-
-        // final pass
         finalPassModel.update(camera: camera, arcball: view.arcBall)
-
     }
 
-    public func draw(in view: MTKView) {
+    override public func draw(in view: MTKView) {
 
         update(view: view as! EIView, drawableSize: view.bounds.size)
 
@@ -106,10 +77,8 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         }
 
         
-        
-        
         // ::::::::::::::::::::::::::::: begin ping pass :::::::::::::::::::::::::::::
-        let pingDescriptor = renderToTextureRenderPassDescriptor
+        let pingDescriptor = renderToTextureRenderPassDescriptor!
         guard let pingEncoder = buffer.makeRenderCommandEncoder(descriptor: pingDescriptor) else {
             fatalError("Error: Can not create command encoder")
         }
@@ -120,19 +89,13 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         pingEncoder.setCullMode(.none)
         pingEncoder.setFragmentSamplerState(samplerState, index: 0)
 
-        // camerPlane encode
-        cameraPlane.encode(encoder: pingEncoder)
-
-        // model encode
-        model.encode(encoder: pingEncoder)
+        for model in models {
+            model.encode(encoder: pingEncoder)
+        }
 
         pingEncoder.endEncoding()
         // ::::::::::::::::::::::::::::: end ping pass :::::::::::::::::::::::::::::
-        
-        
-        
-        
-        
+
         
         // ::::::::::::::::::::::::::::: begin pong pass :::::::::::::::::::::::::::::
         let pongDescriptor = view.currentRenderPassDescriptor!
@@ -149,16 +112,17 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         // texture(0) is the render-to-texture results
         // texture(1) is a cool effect to show off compositing
         let textures:[MTLTexture] =
-            [
-                pingDescriptor.colorAttachments[ 0 ].resolveTexture!,
-                finalPassModel.shader.textures[ 0 ]
-        ]
-        
+                [
+                    pingDescriptor.colorAttachments[ 0 ].resolveTexture!,
+                    finalPassModel.shader.textures[ 0 ]
+                ]
+
         // finalPassModel encode - This surface is texture mapped with the render-to-texture texture of the "ping" pass
         finalPassModel.renderPassEncode(encoder: pongEncoder, textures: textures)
-        
+
         pongEncoder.endEncoding()
         // ::::::::::::::::::::::::::::: end pong pass :::::::::::::::::::::::::::::
+
         
         
         guard let drawable = view.currentDrawable else {
@@ -169,5 +133,4 @@ class RenderPassRenderer: NSObject, MTKViewDelegate {
         buffer.commit()
 
     }
-
 }

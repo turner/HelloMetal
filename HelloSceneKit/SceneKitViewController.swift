@@ -36,7 +36,7 @@ class SceneKitViewController: UIViewController {
         // teapot
 //        let heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/teapot.scn",                  nodeName:"teapotIdentity")
 
-        shader = EIShader(view:view, library:renderer.library!, vertex:"showMIOVertexShader", fragment:"showMIOFragmentShader", textureNames:[], vertexDescriptor: heroMesh.metalVertexDescriptor)
+        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"showMIOVertexShader", fragment:"showMIOFragmentShader", textureNames:[], vertexDescriptor: heroMesh.metalVertexDescriptor)
 
         let hero = EIModel(model:heroMesh, shader:shader, transformer:{
 
@@ -53,9 +53,9 @@ class SceneKitViewController: UIViewController {
 
         // camera plane
         let cameraPlaneMesh = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
-        shader = EIShader(view:view, library:renderer.library!, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: cameraPlaneMesh.metalVertexDescriptor)
+        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: cameraPlaneMesh.metalVertexDescriptor)
 
-        let cameraPlane = EIModel(model:cameraPlaneMesh, shader:shader, transformer:{
+        let cameraPlane = EIModel(model:cameraPlaneMesh, shader:shader, transformer:{ [unowned self] in
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
 

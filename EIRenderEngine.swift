@@ -15,18 +15,12 @@ class EIRendererEngine: NSObject, MTKViewDelegate {
     
     var models:[EIModel] = [EIModel]()
     
-    let library: MTLLibrary?
     let depthStencilState: MTLDepthStencilState?
     let commandQueue:MTLCommandQueue?
     let samplerState: MTLSamplerState?
-
-    init(view: MTKView, device: MTLDevice) {
-        
-        guard let dl = view.device!.makeDefaultLibrary() else {
-            fatalError("Error: Can not create default library")
-        }
-        
-        library = dl
+    let view:MTKView
+    
+    init(view: EIView, device: MTLDevice) {
  
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
         depthStencilDescriptor.depthCompareFunction = .less
@@ -50,6 +44,7 @@ class EIRendererEngine: NSObject, MTKViewDelegate {
         
         samplerState = ss
         
+        self.view = view
     }
     
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {

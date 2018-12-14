@@ -76,6 +76,7 @@
 		4F54D35721BDC35500BA4321 /* model_io.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF51CC1DC02B6200444668 /* model_io.metal */; };
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */; };
+		4F58EE4B21C3214600B28547 /* EIRenderPassEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58EE4A21C3214600B28547 /* EIRenderPassEngine.swift */; };
 		4F5C8EA921B431E8000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
 		4F5C8EAA21B43336000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
 		4F5C8EAB21B4335D000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
@@ -86,7 +87,6 @@
 		4F64B37E1DC4041A005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
 		4F64B37F1DC40420005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
 		4F64B3801DC4042A005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
-		4F64B3841DC40535005BD8B1 /* RenderPassRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */; };
 		4F64B3921DC40671005BD8B1 /* EITexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFA63ED1DC3773C002F8E34 /* EITexture.swift */; };
 		4F64B3961DC40671005BD8B1 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
 		4F64B3971DC40671005BD8B1 /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
@@ -285,6 +285,7 @@
 		4F56AF8D1DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Model_IO.xcassets; sourceTree = "<group>"; };
 		4F56AF941DBAF08E00E396E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F58EE4A21C3214600B28547 /* EIRenderPassEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIRenderPassEngine.swift; sourceTree = "<group>"; };
 		4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIMesh+EIModelProtocol.swift"; sourceTree = "<group>"; };
 		4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIQuad+EIModelProtocol.swift"; sourceTree = "<group>"; };
 		4F64B3681DC3FD36005BD8B1 /* HelloRenderPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloRenderPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,7 +293,6 @@
 		4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RenderPass.xcassets; sourceTree = "<group>"; };
 		4F64B3761DC3FD36005BD8B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Textures.xcassets; path = Shared/Textures.xcassets; sourceTree = "<group>"; };
-		4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderPassRenderer.swift; sourceTree = "<group>"; };
 		4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = model_io_lit_texture.metal; path = Shared/model_io_lit_texture.metal; sourceTree = "<group>"; };
 		4F683E1621B559C4009AA128 /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		4F7270361DC368780039E130 /* Hello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hello.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -434,6 +434,7 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
 				4FDF1AE621BD6EE000562499 /* EIRenderEngine.swift */,
 				4F509BDE21BB29CF0090CCB9 /* EIShader.swift */,
 				4FFA63ED1DC3773C002F8E34 /* EITexture.swift */,
@@ -444,7 +445,6 @@
 				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
 				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
 				4F10A9D61DC42DC800053B77 /* AppDelegate.swift */,
-				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
 				4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */,
 				4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */,
 				4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */,
@@ -492,8 +492,8 @@
 		4F64B3691DC3FD36005BD8B1 /* HelloRenderPass */ = {
 			isa = PBXGroup;
 			children = (
+				4F58EE4A21C3214600B28547 /* EIRenderPassEngine.swift */,
 				4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */,
-				4F64B3821DC40535005BD8B1 /* RenderPassRenderer.swift */,
 				4F64B36E1DC3FD36005BD8B1 /* Main.storyboard */,
 				4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */,
 				4F64B3761DC3FD36005BD8B1 /* Info.plist */,
@@ -959,8 +959,8 @@
 				4F82650C21C285E3001F9DE2 /* MTLRenderCommandEncoder+EI_Configure.swift in Sources */,
 				4F10A9D91DC42E8600053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */,
-				4F64B3841DC40535005BD8B1 /* RenderPassRenderer.swift in Sources */,
 				4F64B3921DC40671005BD8B1 /* EITexture.swift in Sources */,
+				4F58EE4B21C3214600B28547 /* EIRenderPassEngine.swift in Sources */,
 				4F64B3961DC40671005BD8B1 /* EIArcball.swift in Sources */,
 				4F64B3971DC40671005BD8B1 /* EICamera.swift in Sources */,
 				4F64B3981DC40671005BD8B1 /* EIMath.swift in Sources */,

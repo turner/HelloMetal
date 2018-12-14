@@ -34,7 +34,7 @@ class OpenEXRViewController: UIViewController {
 //        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"alias_wavefront_diagnostic.exr")
 //        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"mandrill.exr")
         let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"candycane-translucent.exr")
-        shader = EIShader(view:view, library:renderer.library!, vertex:"openEXRVertexShader", fragment:"openEXRFragmentShader", openEXRTexture:openEXRTexture, vertexDescriptor: heroMesh.metalVertexDescriptor)
+        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"openEXRVertexShader", fragment:"openEXRFragmentShader", openEXRTexture:openEXRTexture, vertexDescriptor: heroMesh.metalVertexDescriptor)
 
         let hero = EIModel(model:heroMesh, shader:shader, transformer:{
             return view.arcBall.rotationMatrix * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
@@ -43,9 +43,9 @@ class OpenEXRViewController: UIViewController {
 
         // camera plane
         let cameraPlaneMesh = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
-        shader = EIShader(view:view, library:renderer.library!, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: cameraPlaneMesh.metalVertexDescriptor)
+        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: cameraPlaneMesh.metalVertexDescriptor)
 
-        let cameraPlane = EIModel(model:cameraPlaneMesh, shader:shader, transformer:{
+        let cameraPlane = EIModel(model:cameraPlaneMesh, shader:shader, transformer:{ [unowned self] in
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
 
