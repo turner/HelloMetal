@@ -31,11 +31,9 @@ class EIRenderPassEngine : EIRendererEngine {
     }
 
     override func reshape (view:EIView) {
-
-        view.arcBall.reshape(viewBounds: view.bounds)
-
-        camera.setProjection(fovYDegrees:Float(35), aspectRatioWidthOverHeight:Float(view.bounds.size.width/view.bounds.size.height), near:200, far: 8000)
-
+        
+        super.reshape(view: view)
+        
         let scaleFactor = UIScreen.main.scale
         let ww = scaleFactor * view.bounds.size.width
         let hh = scaleFactor * view.bounds.size.height
