@@ -15,8 +15,12 @@ class EIRenderPassEngine : EIRendererEngine {
 
     override init(view: EIView, device: MTLDevice) {
         
-        let shader = EIShader(view:view, library:view.defaultLibrary, vertex:"finalPassVertexShader", fragment:"finalPassOverlayFragmentShader", textureNames:["mobile-overlay"], vertexDescriptor: nil)
+        // no-op pass-through shader. just reproduce the results of the render to texture pass.
+        let shader = EIShader(view:view, library:view.defaultLibrary, vertex:"renderpass_vertex", fragment:"renderpass_fragment", textureNames:[], vertexDescriptor: nil)
         
+        // overlay a texture atop the results of the render to texture pass.
+//        let shader = EIShader(view:view, library:view.defaultLibrary, vertex:"renderpass_vertex", fragment:"renderpass_overlay_fragment", textureNames:["mobile-overlay"], vertexDescriptor: nil)
+
         finalPassModel = EIModel(model:EIQuad(device: view.device!), shader:shader)
 
         super.init(view: view, device: device)
@@ -109,12 +113,17 @@ class EIRenderPassEngine : EIRendererEngine {
 
         // texture(0) is the render-to-texture results
         // texture(1) is a cool effect to show off compositing
-        let textures:[MTLTexture] =
-                [
-                    pingDescriptor.colorAttachments[ 0 ].resolveTexture!,
-                    finalPassModel.shader.textures[ 0 ]
-                ]
 
+        var textures:[MTLTexture] = []
+        
+        // results of the render to texture in "ping" pass
+        textures.append(pingDescriptor.colorAttachments[ 0 ].resolveTexture!)
+        
+        // append any effects textures to the array
+        if (finalPassModel.shader.textures.count > 0) {
+            textures.append(finalPassModel.shader.textures[ 0 ])
+        }
+        
         // finalPassModel encode - This surface is texture mapped with the render-to-texture texture of the "ping" pass
         finalPassModel.renderPassEncode(encoder: pongEncoder, textures: textures)
 
