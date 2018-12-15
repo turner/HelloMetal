@@ -33,7 +33,8 @@ class OpenEXRViewController: UIViewController {
         
 //        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"alias_wavefront_diagnostic.exr")
 //        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"mandrill.exr")
-        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"candycane-translucent.exr")
+//        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"candycane-translucent.exr")
+        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"kids_grid_3x3_translucent.exr")
         shader = EIShader(view:view, library:view.defaultLibrary, vertex:"openEXRVertexShader", fragment:"openEXRFragmentShader", openEXRTexture:openEXRTexture, vertexDescriptor: heroMesh.metalVertexDescriptor)
 
         let hero = EIModel(model:heroMesh, shader:shader, transformer:{

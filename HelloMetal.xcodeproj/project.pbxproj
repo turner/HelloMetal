@@ -34,6 +34,7 @@
 		4F1CA3B01DC43680006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
+		4F2247D221C5864000835ECC /* kids_grid_3x3_translucent.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4F2247D121C5864000835ECC /* kids_grid_3x3_translucent.exr */; };
 		4F3DFC6321A773820096BDD6 /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFC6221A773820096BDD6 /* HelloViewController.swift */; };
 		4F48B7CF21B2CDDB00CAE122 /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
 		4F48B7D221B2D16000CAE122 /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
@@ -261,6 +262,7 @@
 		4F1A0B3621C1CD9B007C32A9 /* candycane.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = candycane.exr; sourceTree = "<group>"; };
 		4F1A0B3821C1CEB4007C32A9 /* candycane-translucent.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = "candycane-translucent.exr"; sourceTree = "<group>"; };
 		4F1CA3AE1DC43067006B6213 /* EIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIView.swift; path = Shared/EIView.swift; sourceTree = "<group>"; };
+		4F2247D121C5864000835ECC /* kids_grid_3x3_translucent.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = kids_grid_3x3_translucent.exr; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
@@ -562,6 +564,7 @@
 				4FBCB52C21C1B5E500C4DA3A /* EIOpenEXRTexture.swift */,
 				4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */,
 				4FDFA7EA1E0BFB5F005BEDF4 /* HelloOpenEXR-Bridging-Header.h */,
+				4F2247D121C5864000835ECC /* kids_grid_3x3_translucent.exr */,
 				4F1A0B3821C1CEB4007C32A9 /* candycane-translucent.exr */,
 				4F1A0B3621C1CD9B007C32A9 /* candycane.exr */,
 				4FBCB53021C1BC2600C4DA3A /* mandrill.exr */,
@@ -868,6 +871,7 @@
 				4FDFA7D91E0BF8C2005BEDF4 /* scenes.scnassets in Resources */,
 				4FDFA7DA1E0BF8C2005BEDF4 /* Textures.xcassets in Resources */,
 				4FDFA7C01E0BF7CE005BEDF4 /* openexr.xcassets in Resources */,
+				4F2247D221C5864000835ECC /* kids_grid_3x3_translucent.exr in Resources */,
 				4F873AE91E0D62CD002AF02D /* alias_wavefront_diagnostic.exr in Resources */,
 				4F1A0B3921C1CEB4007C32A9 /* candycane-translucent.exr in Resources */,
 				4FDFA7BE1E0BF7CE005BEDF4 /* Main.storyboard in Resources */,
