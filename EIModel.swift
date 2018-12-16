@@ -1,5 +1,5 @@
 //
-//  EiModel.swift
+//  EIModel.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 12/7/18.
@@ -10,17 +10,17 @@ import Metal
 import GLKit
 struct EIModel {
     
-    var model:EIModelProtocol
+    var model:EIMetalProtocol
     var shader:EIShader
     var transformer:() -> GLKMatrix4
     
-    init(model:EIModelProtocol, shader:EIShader) {
+    init(model:EIMetalProtocol, shader:EIShader) {
         self.model = model
         self.shader = shader
         self.transformer = { return GLKMatrix4Identity }
     }
     
-    init(model:EIModelProtocol, shader:EIShader, transformer:@escaping () -> GLKMatrix4) {
+    init(model:EIMetalProtocol, shader:EIShader, transformer:@escaping () -> GLKMatrix4) {
         self.model = model
         self.shader = shader
         self.transformer = transformer

@@ -1,5 +1,5 @@
 //
-//  EIModelProtocol.swift
+//  EIMetalProtocol.swift
 //  Hello
 //
 //  Created by Douglass Turner on 12/1/18.
@@ -8,7 +8,7 @@
 
 import MetalKit
 import GLKit
-protocol EIModelProtocol {
+protocol EIMetalProtocol {
     func getVertexMetalBuffer() -> MTLBuffer
     func getMetallicTransformMetalBuffer() -> MTLBuffer
     func getPrimitiveType() -> MTLPrimitiveType

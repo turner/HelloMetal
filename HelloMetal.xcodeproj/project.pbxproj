@@ -10,8 +10,8 @@
 		4F0456BD1DF18B990011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
 		4F0456BE1DF18BA60011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
 		4F0456BF1DF18BB20011E2CA /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
-		4F09CAFB21B7FD18002D742F /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
-		4F09CAFC21B7FD18002D742F /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
+		4F09CAFB21B7FD18002D742F /* EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIMetalProtocol.swift */; };
+		4F09CAFC21B7FD18002D742F /* EIMesh+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIMetalProtocol.swift */; };
 		4F09CAFE21B7FD32002D742F /* OpenEXRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09CAFD21B7FD32002D742F /* OpenEXRViewController.swift */; };
 		4F0C7E5B1DBE8518005F42C3 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4F10A9D71DC42DC800053B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10A9D61DC42DC800053B77 /* AppDelegate.swift */; };
@@ -36,10 +36,10 @@
 		4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F2247D221C5864000835ECC /* kids_grid_3x3_translucent.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4F2247D121C5864000835ECC /* kids_grid_3x3_translucent.exr */; };
 		4F3DFC6321A773820096BDD6 /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFC6221A773820096BDD6 /* HelloViewController.swift */; };
-		4F48B7CF21B2CDDB00CAE122 /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
-		4F48B7D221B2D16000CAE122 /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
-		4F48B7D321B2D16A00CAE122 /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
-		4F48B7D421B2D17400CAE122 /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
+		4F48B7CF21B2CDDB00CAE122 /* EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIMetalProtocol.swift */; };
+		4F48B7D221B2D16000CAE122 /* EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIMetalProtocol.swift */; };
+		4F48B7D321B2D16A00CAE122 /* EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIMetalProtocol.swift */; };
+		4F48B7D421B2D17400CAE122 /* EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIMetalProtocol.swift */; };
 		4F4E3E291DD6177B005E40AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E271DD6177B005E40AC /* Main.storyboard */; };
 		4F4E3E2B1DD6177B005E40AC /* SceneKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */; };
 		4F4E3E331DD6178D005E40AC /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
@@ -56,13 +56,13 @@
 		4F4E3E431DD618C2005E40AC /* EICamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */; };
 		4F4E3E441DD618C2005E40AC /* EIMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */; };
 		4F4E3E451DD618C2005E40AC /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
-		4F509BD721BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
-		4F509BD821BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
-		4F509BD921BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
-		4F509BDA21BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
-		4F509BDB21BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
-		4F509BDC21BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
-		4F509BDD21BB29900090CCB9 /* EiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EiModel.swift */; };
+		4F509BD721BB29900090CCB9 /* EIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EIModel.swift */; };
+		4F509BD821BB29900090CCB9 /* EIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EIModel.swift */; };
+		4F509BD921BB29900090CCB9 /* EIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EIModel.swift */; };
+		4F509BDA21BB29900090CCB9 /* EIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EIModel.swift */; };
+		4F509BDB21BB29900090CCB9 /* EIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EIModel.swift */; };
+		4F509BDC21BB29900090CCB9 /* EIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EIModel.swift */; };
+		4F509BDD21BB29900090CCB9 /* EIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD621BB29900090CCB9 /* EIModel.swift */; };
 		4F509BDF21BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
 		4F509BE021BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
 		4F509BE121BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
@@ -70,7 +70,7 @@
 		4F509BE321BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
 		4F509BE421BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
 		4F509BE521BB29CF0090CCB9 /* EIShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BDE21BB29CF0090CCB9 /* EIShader.swift */; };
-		4F54D35221BDB8C500BA4321 /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
+		4F54D35221BDB8C500BA4321 /* EIMesh+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIMetalProtocol.swift */; };
 		4F54D35321BDB8C500BA4321 /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4F54D35521BDC35500BA4321 /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
 		4F54D35621BDC35500BA4321 /* model_io_show.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F0456BB1DF18B810011E2CA /* model_io_show.metal */; };
@@ -78,10 +78,10 @@
 		4F56AF8E1DBAF08E00E396E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8C1DBAF08E00E396E7 /* Main.storyboard */; };
 		4F56AF901DBAF08E00E396E7 /* Model_IO.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */; };
 		4F58EE4B21C3214600B28547 /* EIRenderPassEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F58EE4A21C3214600B28547 /* EIRenderPassEngine.swift */; };
-		4F5C8EA921B431E8000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
-		4F5C8EAA21B43336000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
-		4F5C8EAB21B4335D000CB185 /* EIQuad+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */; };
-		4F5C8EAC21B43405000CB185 /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
+		4F5C8EA921B431E8000CB185 /* EIQuad+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIMetalProtocol.swift */; };
+		4F5C8EAA21B43336000CB185 /* EIQuad+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIMetalProtocol.swift */; };
+		4F5C8EAB21B4335D000CB185 /* EIQuad+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA821B431E8000CB185 /* EIQuad+EIMetalProtocol.swift */; };
+		4F5C8EAC21B43405000CB185 /* EIMesh+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIMetalProtocol.swift */; };
 		4F64B3701DC3FD36005BD8B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B36E1DC3FD36005BD8B1 /* Main.storyboard */; };
 		4F64B3721DC3FD36005BD8B1 /* RenderPass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */; };
 		4F64B37C1DC40406005BD8B1 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */; };
@@ -108,8 +108,8 @@
 		4F67346F1DEFB5BF00443FEA /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
 		4F6734701DEFB67C00443FEA /* model_io_lit_texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */; };
 		4F683E1721B559C4009AA128 /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F683E1621B559C4009AA128 /* SceneKitViewController.swift */; };
-		4F683E1821B559E1009AA128 /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
-		4F683E1921B559E1009AA128 /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
+		4F683E1821B559E1009AA128 /* EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIMetalProtocol.swift */; };
+		4F683E1921B559E1009AA128 /* EIMesh+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIMetalProtocol.swift */; };
 		4F72703E1DC368780039E130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703C1DC368780039E130 /* Main.storyboard */; };
 		4F7270401DC368780039E130 /* Hello.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F72703F1DC368780039E130 /* Hello.xcassets */; };
 		4F7270491DC368C80039E130 /* EIArcball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */; };
@@ -132,8 +132,8 @@
 		4F7270A21DC373690039E130 /* showST.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F921DBA599900B80FE4 /* showST.metal */; };
 		4F7270A31DC373690039E130 /* texture.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F931DBA599900B80FE4 /* texture.metal */; };
 		4F79540821B46B4100E4A25E /* LightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F79540721B46B4100E4A25E /* LightViewController.swift */; };
-		4F79540921B46BEB00E4A25E /* EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */; };
-		4F79540A21B46BEB00E4A25E /* EIMesh+EIModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */; };
+		4F79540921B46BEB00E4A25E /* EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B7CE21B2CDDB00CAE122 /* EIMetalProtocol.swift */; };
+		4F79540A21B46BEB00E4A25E /* EIMesh+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8EA621B431D3000CB185 /* EIMesh+EIMetalProtocol.swift */; };
 		4F80A4991DEB86420082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F80A49A1DEB86550082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F80A49B1DEB865E0082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
@@ -276,20 +276,20 @@
 		4F2F1F921DBA599900B80FE4 /* showST.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = showST.metal; path = Shared/showST.metal; sourceTree = "<group>"; };
 		4F2F1F931DBA599900B80FE4 /* texture.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = texture.metal; path = Shared/texture.metal; sourceTree = "<group>"; };
 		4F3DFC6221A773820096BDD6 /* HelloViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloViewController.swift; sourceTree = "<group>"; };
-		4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIModelProtocol.swift; sourceTree = "<group>"; };
+		4F48B7CE21B2CDDB00CAE122 /* EIMetalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIMetalProtocol.swift; sourceTree = "<group>"; };
 		4F4E3E211DD6177B005E40AC /* HelloSceneKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSceneKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F4E3E281DD6177B005E40AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SceneKit.xcassets; sourceTree = "<group>"; };
 		4F4E3E2F1DD6177B005E40AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F509BD621BB29900090CCB9 /* EiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EiModel.swift; sourceTree = "<group>"; };
+		4F509BD621BB29900090CCB9 /* EIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIModel.swift; sourceTree = "<group>"; };
 		4F509BDE21BB29CF0090CCB9 /* EIShader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIShader.swift; sourceTree = "<group>"; };
 		4F56AF861DBAF08E00E396E7 /* HelloModel_IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloModel_IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F56AF8D1DBAF08E00E396E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F56AF8F1DBAF08E00E396E7 /* Model_IO.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Model_IO.xcassets; sourceTree = "<group>"; };
 		4F56AF941DBAF08E00E396E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F58EE4A21C3214600B28547 /* EIRenderPassEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIRenderPassEngine.swift; sourceTree = "<group>"; };
-		4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIMesh+EIModelProtocol.swift"; sourceTree = "<group>"; };
-		4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIQuad+EIModelProtocol.swift"; sourceTree = "<group>"; };
+		4F5C8EA621B431D3000CB185 /* EIMesh+EIMetalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIMesh+EIMetalProtocol.swift"; sourceTree = "<group>"; };
+		4F5C8EA821B431E8000CB185 /* EIQuad+EIMetalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIQuad+EIMetalProtocol.swift"; sourceTree = "<group>"; };
 		4F64B3681DC3FD36005BD8B1 /* HelloRenderPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloRenderPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F64B36F1DC3FD36005BD8B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F64B3711DC3FD36005BD8B1 /* RenderPass.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RenderPass.xcassets; sourceTree = "<group>"; };
@@ -439,12 +439,12 @@
 				4FDF1AE621BD6EE000562499 /* EIRenderEngine.swift */,
 				4F509BDE21BB29CF0090CCB9 /* EIShader.swift */,
 				4FFA63ED1DC3773C002F8E34 /* EITexture.swift */,
-				4F48B7CE21B2CDDB00CAE122 /* EIModelProtocol.swift */,
-				4F509BD621BB29900090CCB9 /* EiModel.swift */,
+				4F48B7CE21B2CDDB00CAE122 /* EIMetalProtocol.swift */,
+				4F509BD621BB29900090CCB9 /* EIModel.swift */,
 				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
 				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
-				4F5C8EA821B431E8000CB185 /* EIQuad+EIModelProtocol.swift */,
-				4F5C8EA621B431D3000CB185 /* EIMesh+EIModelProtocol.swift */,
+				4F5C8EA821B431E8000CB185 /* EIQuad+EIMetalProtocol.swift */,
+				4F5C8EA621B431D3000CB185 /* EIMesh+EIMetalProtocol.swift */,
 				4F82651121C2863B001F9DE2 /* MTLSamplerDescriptor+MipMap.swift */,
 				4F82650921C285E3001F9DE2 /* MTLRenderCommandEncoder+EI_Configure.swift */,
 				4F82650121C28595001F9DE2 /* MTLRenderPipelineDescriptor+EI_Create.swift */,
@@ -898,15 +898,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F683E1821B559E1009AA128 /* EIModelProtocol.swift in Sources */,
+				4F683E1821B559E1009AA128 /* EIMetalProtocol.swift in Sources */,
 				4F82650721C28595001F9DE2 /* MTLRenderPipelineDescriptor+EI_Create.swift in Sources */,
-				4F683E1921B559E1009AA128 /* EIMesh+EIModelProtocol.swift in Sources */,
+				4F683E1921B559E1009AA128 /* EIMesh+EIMetalProtocol.swift in Sources */,
 				4F82651721C2863B001F9DE2 /* MTLSamplerDescriptor+MipMap.swift in Sources */,
 				4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */,
 				4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */,
 				4F4E3E3F1DD618C2005E40AC /* EIArcball.swift in Sources */,
 				4F4E3E401DD618C2005E40AC /* EITexture.swift in Sources */,
-				4F509BDC21BB29900090CCB9 /* EiModel.swift in Sources */,
+				4F509BDC21BB29900090CCB9 /* EIModel.swift in Sources */,
 				4F4E3E421DD618C2005E40AC /* EIMesh.swift in Sources */,
 				4F4E3E431DD618C2005E40AC /* EICamera.swift in Sources */,
 				4F683E1721B559C4009AA128 /* SceneKitViewController.swift in Sources */,
@@ -927,9 +927,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F5C8EAC21B43405000CB185 /* EIMesh+EIModelProtocol.swift in Sources */,
-				4F509BDA21BB29900090CCB9 /* EiModel.swift in Sources */,
-				4F48B7D421B2D17400CAE122 /* EIModelProtocol.swift in Sources */,
+				4F5C8EAC21B43405000CB185 /* EIMesh+EIMetalProtocol.swift in Sources */,
+				4F509BDA21BB29900090CCB9 /* EIModel.swift in Sources */,
+				4F48B7D421B2D17400CAE122 /* EIMetalProtocol.swift in Sources */,
 				4F82650D21C285E3001F9DE2 /* MTLRenderCommandEncoder+EI_Configure.swift in Sources */,
 				4F10A9DA1DC42E8D00053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */,
@@ -957,9 +957,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F5C8EAB21B4335D000CB185 /* EIQuad+EIModelProtocol.swift in Sources */,
-				4F509BD921BB29900090CCB9 /* EiModel.swift in Sources */,
-				4F48B7D321B2D16A00CAE122 /* EIModelProtocol.swift in Sources */,
+				4F5C8EAB21B4335D000CB185 /* EIQuad+EIMetalProtocol.swift in Sources */,
+				4F509BD921BB29900090CCB9 /* EIModel.swift in Sources */,
+				4F48B7D321B2D16A00CAE122 /* EIMetalProtocol.swift in Sources */,
 				4F82650C21C285E3001F9DE2 /* MTLRenderCommandEncoder+EI_Configure.swift in Sources */,
 				4F10A9D91DC42E8600053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */,
@@ -990,11 +990,11 @@
 			files = (
 				4F10A9D71DC42DC800053B77 /* AppDelegate.swift in Sources */,
 				4F82650221C28595001F9DE2 /* MTLRenderPipelineDescriptor+EI_Create.swift in Sources */,
-				4F509BD721BB29900090CCB9 /* EiModel.swift in Sources */,
+				4F509BD721BB29900090CCB9 /* EIModel.swift in Sources */,
 				4F82651221C2863B001F9DE2 /* MTLSamplerDescriptor+MipMap.swift in Sources */,
 				4F1CA3AF1DC43067006B6213 /* EIView.swift in Sources */,
-				4F5C8EA921B431E8000CB185 /* EIQuad+EIModelProtocol.swift in Sources */,
-				4F48B7CF21B2CDDB00CAE122 /* EIModelProtocol.swift in Sources */,
+				4F5C8EA921B431E8000CB185 /* EIQuad+EIMetalProtocol.swift in Sources */,
+				4F48B7CF21B2CDDB00CAE122 /* EIMetalProtocol.swift in Sources */,
 				4FFA63EF1DC3773C002F8E34 /* EITexture.swift in Sources */,
 				4F7270491DC368C80039E130 /* EIArcball.swift in Sources */,
 				4F72704A1DC368C80039E130 /* EICamera.swift in Sources */,
@@ -1020,12 +1020,12 @@
 				4F54D35521BDC35500BA4321 /* model_io_lit_texture.metal in Sources */,
 				4F54D35621BDC35500BA4321 /* model_io_show.metal in Sources */,
 				4F54D35721BDC35500BA4321 /* model_io.metal in Sources */,
-				4F54D35221BDB8C500BA4321 /* EIMesh+EIModelProtocol.swift in Sources */,
+				4F54D35221BDB8C500BA4321 /* EIMesh+EIMetalProtocol.swift in Sources */,
 				4F54D35321BDB8C500BA4321 /* EIMesh.swift in Sources */,
-				4F5C8EAA21B43336000CB185 /* EIQuad+EIModelProtocol.swift in Sources */,
+				4F5C8EAA21B43336000CB185 /* EIQuad+EIMetalProtocol.swift in Sources */,
 				4F8264FB21C284A9001F9DE2 /* MTLRenderPassDescriptor+EI_Configure.swift in Sources */,
-				4F509BD821BB29900090CCB9 /* EiModel.swift in Sources */,
-				4F48B7D221B2D16000CAE122 /* EIModelProtocol.swift in Sources */,
+				4F509BD821BB29900090CCB9 /* EIModel.swift in Sources */,
+				4F48B7D221B2D16000CAE122 /* EIMetalProtocol.swift in Sources */,
 				4F10A9D81DC42E7600053B77 /* AppDelegate.swift in Sources */,
 				4F82650321C28595001F9DE2 /* MTLRenderPipelineDescriptor+EI_Create.swift in Sources */,
 				4F82651321C2863B001F9DE2 /* MTLSamplerDescriptor+MipMap.swift in Sources */,
@@ -1053,8 +1053,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F82651821C2863B001F9DE2 /* MTLSamplerDescriptor+MipMap.swift in Sources */,
-				4F09CAFB21B7FD18002D742F /* EIModelProtocol.swift in Sources */,
-				4F09CAFC21B7FD18002D742F /* EIMesh+EIModelProtocol.swift in Sources */,
+				4F09CAFB21B7FD18002D742F /* EIMetalProtocol.swift in Sources */,
+				4F09CAFC21B7FD18002D742F /* EIMesh+EIMetalProtocol.swift in Sources */,
 				4FBCB52F21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift in Sources */,
 				4FDFA7C91E0BF84E005BEDF4 /* AppDelegate.swift in Sources */,
 				4FDFA7CA1E0BF84E005BEDF4 /* EIView.swift in Sources */,
@@ -1069,7 +1069,7 @@
 				4FDFA7CE1E0BF84E005BEDF4 /* EICamera.swift in Sources */,
 				4F8264F821C2842F001F9DE2 /* MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift in Sources */,
 				4FDFA7CF1E0BF84E005BEDF4 /* EIMath.swift in Sources */,
-				4F509BDD21BB29900090CCB9 /* EiModel.swift in Sources */,
+				4F509BDD21BB29900090CCB9 /* EIModel.swift in Sources */,
 				4FDFA7D01E0BF84E005BEDF4 /* EITransform.swift in Sources */,
 				4FDFA7EC1E0BFB60005BEDF4 /* pokeOpenEXR.cpp in Sources */,
 				4F873AEB1E0D64FA002AF02D /* openexr.metal in Sources */,
@@ -1089,12 +1089,12 @@
 				4F82650621C28595001F9DE2 /* MTLRenderPipelineDescriptor+EI_Create.swift in Sources */,
 				4FEE5E271DEEE03B00B47AC2 /* EIView.swift in Sources */,
 				4F82651621C2863B001F9DE2 /* MTLSamplerDescriptor+MipMap.swift in Sources */,
-				4F79540921B46BEB00E4A25E /* EIModelProtocol.swift in Sources */,
-				4F79540A21B46BEB00E4A25E /* EIMesh+EIModelProtocol.swift in Sources */,
+				4F79540921B46BEB00E4A25E /* EIMetalProtocol.swift in Sources */,
+				4F79540A21B46BEB00E4A25E /* EIMesh+EIMetalProtocol.swift in Sources */,
 				4FEE5E261DEEE03B00B47AC2 /* AppDelegate.swift in Sources */,
 				4FEE5E281DEEE03B00B47AC2 /* EIArcball.swift in Sources */,
 				4FEE5E291DEEE03B00B47AC2 /* EITexture.swift in Sources */,
-				4F509BDB21BB29900090CCB9 /* EiModel.swift in Sources */,
+				4F509BDB21BB29900090CCB9 /* EIModel.swift in Sources */,
 				4F6734661DEFAD3300443FEA /* EIMesh.swift in Sources */,
 				4FEE5E2B1DEEE03B00B47AC2 /* EICamera.swift in Sources */,
 				4FEE5E2C1DEEE03B00B47AC2 /* EIMath.swift in Sources */,

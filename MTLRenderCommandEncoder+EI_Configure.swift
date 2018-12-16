@@ -10,7 +10,7 @@ import MetalKit
 
 extension MTLRenderCommandEncoder {
     
-    func EI_Configure(renderPipelineState:MTLRenderPipelineState, model:EIModelProtocol, textures:[MTLTexture]) {
+    func EI_Configure(renderPipelineState:MTLRenderPipelineState, model:EIMetalProtocol, textures:[MTLTexture]) {
         
         self.setRenderPipelineState(renderPipelineState)
         

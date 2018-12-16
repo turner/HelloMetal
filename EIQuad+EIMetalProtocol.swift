@@ -1,5 +1,5 @@
 //
-//  EIMesh+EIModelProtocol.swift
+//  EIQuad+EIMetalProtocol.swift
 //  Hello
 //
 //  Created by Douglass Turner on 12/2/18.
@@ -8,8 +8,8 @@
 
 import Metal
 import GLKit
-extension EIMesh : EIModelProtocol {
-    
+extension EIQuad : EIMetalProtocol {
+
     func getVertexMetalBuffer() -> MTLBuffer {
         return vertexMetalBuffer
     }
@@ -34,7 +34,7 @@ extension EIMesh : EIModelProtocol {
         return vertexIndexMetalBuffer
     }
     
-    public func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4) {
+    public mutating func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4) {
         metallicTransform.update(camera: camera, transformer: {
             transformer()
         })
