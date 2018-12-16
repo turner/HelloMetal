@@ -114,15 +114,8 @@ class EIRenderPassEngine : EIRendererEngine {
         // texture(0) is the render-to-texture results
         // texture(1) is a cool effect to show off compositing
 
-        var textures:[MTLTexture] = []
-        
-        // results of the render to texture in "ping" pass
-        textures.append(pingDescriptor.colorAttachments[ 0 ].resolveTexture!)
-        
-        // append any effects textures to the array
-        if (finalPassModel.shader.textures.count > 0) {
-            textures.append(finalPassModel.shader.textures[ 0 ])
-        }
+        var textures:[MTLTexture] = [ pingDescriptor.colorAttachments[ 0 ].resolveTexture! ]
+        textures.append(contentsOf:finalPassModel.shader.textures)
         
         // finalPassModel encode - This surface is texture mapped with the render-to-texture texture of the "ping" pass
         finalPassModel.renderPassEncode(encoder: pongEncoder, textures: textures)
