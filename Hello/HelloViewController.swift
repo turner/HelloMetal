@@ -26,7 +26,7 @@ class HelloViewController: UIViewController {
 
         renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
         
-        let shader = EIShader(view:view, library: view.defaultLibrary, vertex:"textureVertexShader", fragment:"textureFragmentShader", textureNames:["kids_grid_3x3"], vertexDescriptor:nil)
+        let shader = EIShader(view:view, library: view.defaultLibrary, vertex:"hello_texture_vertex", fragment:"hello_texture_fragment", textureNames:["kids_grid_3x3"], vertexDescriptor:nil)
         
         let model = EIModel(model:EIQuad(device: view.device!), shader:shader, transformer:{
             return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)

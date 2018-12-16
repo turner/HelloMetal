@@ -23,7 +23,7 @@ struct _Transforms_ {
     float4x4 modelViewProjectionMatrix;
 };
 
-vertex InterpolatedVertex showSTVertexShader(constant _Vertex_ *vertices [[buffer(0)]],
+vertex InterpolatedVertex show_st_vertex(constant _Vertex_ *vertices [[buffer(0)]],
                                    constant _Transforms_ &transforms [[buffer(1)]],
                                    uint vertexIndex [[vertex_id]]) {
     InterpolatedVertex out;
@@ -33,7 +33,7 @@ vertex InterpolatedVertex showSTVertexShader(constant _Vertex_ *vertices [[buffe
     return out;
 }
 
-fragment float4 showSTFragmentShader(InterpolatedVertex vert [[stage_in]]) {
+fragment float4 show_st_fragment(InterpolatedVertex vert [[stage_in]]) {
     
     float4 s = float4(vert.st[0], 0, 0, 1);
 //    return s;

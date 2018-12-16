@@ -33,30 +33,9 @@ vertex InterpolatedVertex renderpass_vertex(constant _Vertex_ *vertices [[buffer
     return out;
 }
 
-// a pass through shader. just reproduce what is in the renderpass_texture
+// pass through shader. just reproduce what is in the renderpass_texture
 fragment float4 renderpass_fragment(InterpolatedVertex vert [[ stage_in ]], texture2d<float> renderpass_texture [[ texture(0) ]], sampler textureSampler [[sampler(0)]]) {
     return renderpass_texture.sample(textureSampler, vert.st).rgba;
-}
-
-fragment float4 finalPassFragmentShader(InterpolatedVertex vert [[ stage_in ]],
-                                        texture2d<float> texas [[ texture(0) ]]) {
-    
-    constexpr sampler defaultSampler;
-    
-    float4 rgba = texas.sample(defaultSampler, vert.st).rgba;
-    
-    // hack
-    if (vert.st[0] < 0.5) {
-        return rgba;
-    } else {
-        float _r = 1 - rgba.r/rgba.a;
-        float _g = 1 - rgba.g/rgba.a;
-        float _b = 1 - rgba.b/rgba.a;
-        float4 cooked = float4(rgba.a * _r, rgba.a * _g, rgba.a * _b, rgba.a);
-        return cooked;
-    }
-    
-    //    return rgba;
 }
 
 fragment float4 renderpass_overlay_fragment(InterpolatedVertex vert [[ stage_in ]], texture2d<float> underlay [[ texture(0) ]], texture2d<float> overlay [[ texture(1) ]], sampler textureSampler [[sampler(0)]]) {
