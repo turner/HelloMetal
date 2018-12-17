@@ -189,6 +189,11 @@
 		4F80A49D1DEB866F0082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F873AE91E0D62CD002AF02D /* alias_wavefront_diagnostic.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */; };
 		4F873AEB1E0D64FA002AF02D /* openexr.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F873AE61E0D6126002AF02D /* openexr.metal */; };
+		4FBB552421C7DE7100FE271C /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
+		4FBB552521C7EF5100FE271C /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
+		4FBB552621C7EFD100FE271C /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
+		4FBB552721C7F01400FE271C /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
+		4FBB552821C7F03B00FE271C /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
 		4FBCB52D21C1B5E500C4DA3A /* EIOpenEXRTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCB52C21C1B5E500C4DA3A /* EIOpenEXRTexture.swift */; };
 		4FBCB52F21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCB52E21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift */; };
 		4FBCB53121C1BC2600C4DA3A /* mandrill.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FBCB53021C1BC2600C4DA3A /* mandrill.exr */; };
@@ -904,6 +909,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FBB552821C7F03B00FE271C /* EIQuad.swift in Sources */,
 				4F4E3E3D1DD618C2005E40AC /* AppDelegate.swift in Sources */,
 				4F4E3E3E1DD618C2005E40AC /* EIView.swift in Sources */,
 				4F03D6F421C7DCBA0034BA43 /* EIRenderEngine.swift in Sources */,
@@ -965,6 +971,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FBB552521C7EF5100FE271C /* EIMesh.swift in Sources */,
 				4F10A9D91DC42E8600053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */,
 				4F64B3921DC40671005BD8B1 /* EITexture.swift in Sources */,
@@ -997,6 +1004,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FBB552421C7DE7100FE271C /* EIMesh.swift in Sources */,
 				4F10A9D71DC42DC800053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3AF1DC43067006B6213 /* EIView.swift in Sources */,
 				4F03D6EF21C7DCBA0034BA43 /* EIRenderEngine.swift in Sources */,
@@ -1062,6 +1070,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FBB552721C7F01400FE271C /* EIQuad.swift in Sources */,
 				4F03D71121C7DCBA0034BA43 /* EIMesh+EIMetalProtocol.swift in Sources */,
 				4F03D71F21C7DCBA0034BA43 /* MTLRenderPassDescriptor+EI_Configure.swift in Sources */,
 				4FBCB52F21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift in Sources */,
@@ -1096,6 +1105,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FBB552621C7EFD100FE271C /* EIQuad.swift in Sources */,
 				4F79540821B46B4100E4A25E /* LightViewController.swift in Sources */,
 				4FEE5E271DEEE03B00B47AC2 /* EIView.swift in Sources */,
 				4F03D6F321C7DCBA0034BA43 /* EIRenderEngine.swift in Sources */,
