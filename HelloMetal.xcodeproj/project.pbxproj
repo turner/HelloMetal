@@ -63,7 +63,6 @@
 		4F03D70821C7DCBA0034BA43 /* MTLSamplerDescriptor+MipMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03D6CF21C7DCB90034BA43 /* MTLSamplerDescriptor+MipMap.swift */; };
 		4F03D70921C7DCBA0034BA43 /* MTLSamplerDescriptor+MipMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03D6CF21C7DCB90034BA43 /* MTLSamplerDescriptor+MipMap.swift */; };
 		4F03D70A21C7DCBA0034BA43 /* MTLSamplerDescriptor+MipMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03D6CF21C7DCB90034BA43 /* MTLSamplerDescriptor+MipMap.swift */; };
-		4F03D70B21C7DCBA0034BA43 /* EIMesh+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03D6D021C7DCB90034BA43 /* EIMesh+EIMetalProtocol.swift */; };
 		4F03D70C21C7DCBA0034BA43 /* EIMesh+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03D6D021C7DCB90034BA43 /* EIMesh+EIMetalProtocol.swift */; };
 		4F03D70D21C7DCBA0034BA43 /* EIMesh+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03D6D021C7DCB90034BA43 /* EIMesh+EIMetalProtocol.swift */; };
 		4F03D70E21C7DCBA0034BA43 /* EIMesh+EIMetalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03D6D021C7DCB90034BA43 /* EIMesh+EIMetalProtocol.swift */; };
@@ -189,7 +188,6 @@
 		4F80A49D1DEB866F0082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F873AE91E0D62CD002AF02D /* alias_wavefront_diagnostic.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */; };
 		4F873AEB1E0D64FA002AF02D /* openexr.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F873AE61E0D6126002AF02D /* openexr.metal */; };
-		4FBB552421C7DE7100FE271C /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4FBB552521C7EF5100FE271C /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4FBB552621C7EFD100FE271C /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
 		4FBB552721C7F01400FE271C /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
@@ -1004,7 +1002,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FBB552421C7DE7100FE271C /* EIMesh.swift in Sources */,
 				4F10A9D71DC42DC800053B77 /* AppDelegate.swift in Sources */,
 				4F1CA3AF1DC43067006B6213 /* EIView.swift in Sources */,
 				4F03D6EF21C7DCBA0034BA43 /* EIRenderEngine.swift in Sources */,
@@ -1016,7 +1013,6 @@
 				4F3DFC6321A773820096BDD6 /* HelloViewController.swift in Sources */,
 				4F72704C1DC368C80039E130 /* EIQuad.swift in Sources */,
 				4F72704D1DC368C80039E130 /* EITransform.swift in Sources */,
-				4F03D70B21C7DCBA0034BA43 /* EIMesh+EIMetalProtocol.swift in Sources */,
 				4F03D6FD21C7DCBA0034BA43 /* EIShader.swift in Sources */,
 				4F72704F1DC368C80039E130 /* hello.metal in Sources */,
 				4F03D70421C7DCBA0034BA43 /* MTLSamplerDescriptor+MipMap.swift in Sources */,
