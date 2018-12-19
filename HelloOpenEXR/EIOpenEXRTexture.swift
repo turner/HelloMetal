@@ -14,25 +14,26 @@ struct EIOpenEXRTexture {
     init(device: MTLDevice, name:String) {
         
         guard let url = Bundle.main.url(forResource:name, withExtension:nil) else {
-            fatalError("Error: Can not find OpenEXR texture \(name)")
+            fatalError("Error: Can not find OpenEXR texture named \(name)")
         }
 
         let wp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
         let hp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
         let theBits:UnsafePointer<CUnsignedShort> = pokeOpenEXR(url.path, wp, hp)
-        
-        //    let length = 4 * width * height
-        //    let buffer = UnsafeBufferPointer(start: theBits, count: length);
-        
-        let byteCount = wp.pointee * hp.pointee * MemoryLayout<CUnsignedShort>.size * 4
-        let mtlBuffer:MTLBuffer = device.makeBuffer(bytes:theBits, length:byteCount, options:.storageModeShared)!
-        
-        let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.rgba16Float, width:wp.pointee, height:hp.pointee, mipmapped:false)
-        
-        let bytesPerPixel = MemoryLayout<CUnsignedShort>.size * 4
-        let bytesPerRow = bytesPerPixel * wp.pointee
-        
-        texture = mtlBuffer.makeTexture(descriptor:descriptor, offset: 0, bytesPerRow:bytesPerRow)!
+
+        let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba16Float, width: wp.pointee, height: hp.pointee, mipmapped: false)
+
+        guard let t = device.makeTexture(descriptor: textureDescriptor) else {
+            fatalError("Error: Can not create OpenEXR texture with file named \(name)")
+        }
+
+        texture = t
+
+        let region = MTLRegionMake2D(0, 0, wp.pointee, hp.pointee)
+
+        let bytesPerRow = wp.pointee * MemoryLayout<CUnsignedShort>.size * 4
+
+        texture.replace(region: region, mipmapLevel: 0, withBytes: theBits, bytesPerRow: bytesPerRow)
     
     }
 
