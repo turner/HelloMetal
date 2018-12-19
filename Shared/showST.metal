@@ -1,27 +1,7 @@
 
 #include <metal_stdlib>
 using namespace metal;
-
-struct _Vertex_ {
-    float3 xyz;
-    float3 n;
-    float4 rgba;
-    float2 st;
-};
-
-struct InterpolatedVertex {
-    float4 xyzw [[position]]; // required
-    float4 rgba;
-    float2 st;
-};
-
-struct _Transforms_ {
-    float4x4 normalMatrix;
-    float4x4 modelMatrix;
-    float4x4 viewMatrix;
-    float4x4 modelViewMatrix;
-    float4x4 modelViewProjectionMatrix;
-};
+#import "metal_common.h"
 
 vertex InterpolatedVertex show_st_vertex(constant _Vertex_ *vertices [[buffer(0)]],
                                    constant _Transforms_ &transforms [[buffer(1)]],
