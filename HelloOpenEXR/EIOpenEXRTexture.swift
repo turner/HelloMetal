@@ -21,6 +21,7 @@ struct EIOpenEXRTexture {
         let hp = UnsafeMutablePointer<CLong>.allocate(capacity: 1)
         let theBits:UnsafePointer<CUnsignedShort> = pokeOpenEXR(url.path, wp, hp)
 
+        // NOTE: Setting mipmapped to true DOES enable mipmap but the texture goes transparent when viewed close to edge on.
         let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba16Float, width: wp.pointee, height: hp.pointee, mipmapped: false)
 
         guard let t = device.makeTexture(descriptor: textureDescriptor) else {
