@@ -324,6 +324,8 @@
 		4F80A4981DEB86420082EE39 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		4F873AE61E0D6126002AF02D /* openexr.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = openexr.metal; path = Shared/openexr.metal; sourceTree = "<group>"; };
 		4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = alias_wavefront_diagnostic.exr; sourceTree = "<group>"; };
+		4F9C9A7821CA522A00BEAE5D /* metal_common_model_io.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = metal_common_model_io.h; path = Shared/metal_common_model_io.h; sourceTree = "<group>"; };
+		4F9C9A7921CA556900BEAE5D /* metal_common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = metal_common.h; path = Shared/metal_common.h; sourceTree = "<group>"; };
 		4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = scenes.scnassets; sourceTree = "<group>"; };
 		4FBCB52C21C1B5E500C4DA3A /* EIOpenEXRTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIOpenEXRTexture.swift; sourceTree = "<group>"; };
 		4FBCB52E21C1B75A00C4DA3A /* EIShader+EIOpenEXRTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIShader+EIOpenEXRTexture.swift"; sourceTree = "<group>"; };
@@ -445,20 +447,20 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4F03D6D021C7DCB90034BA43 /* EIMesh+EIMetalProtocol.swift */,
 				4F03D6C921C7DCB90034BA43 /* EIMetalProtocol.swift */,
-				4F03D6D121C7DCB90034BA43 /* EIModel.swift */,
 				4F03D6CD21C7DCB90034BA43 /* EIQuad+EIMetalProtocol.swift */,
+				4F03D6D021C7DCB90034BA43 /* EIMesh+EIMetalProtocol.swift */,
+				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
+				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
+				4F03D6D121C7DCB90034BA43 /* EIModel.swift */,
 				4F03D6CC21C7DCB90034BA43 /* EIRenderEngine.swift */,
+				4FFA63ED1DC3773C002F8E34 /* EITexture.swift */,
 				4F03D6CE21C7DCB90034BA43 /* EIShader.swift */,
 				4F03D6CA21C7DCB90034BA43 /* MTLRenderCommandEncoder+EI_Configure.swift */,
 				4F03D6D221C7DCBA0034BA43 /* MTLRenderPassDescriptor+EI_Configure.swift */,
 				4F03D6CB21C7DCB90034BA43 /* MTLRenderPipelineDescriptor+EI_Create.swift */,
 				4F03D6CF21C7DCB90034BA43 /* MTLSamplerDescriptor+MipMap.swift */,
 				4F03D6C821C7DCB90034BA43 /* MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift */,
-				4FFA63ED1DC3773C002F8E34 /* EITexture.swift */,
-				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
-				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
 				4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */,
 				4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */,
 				4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */,
@@ -466,14 +468,16 @@
 				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
 				4F10A9D61DC42DC800053B77 /* AppDelegate.swift */,
 				4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */,
-				4F2F1F8D1DBA599900B80FE4 /* renderpass.metal */,
-				4F873AE61E0D6126002AF02D /* openexr.metal */,
-				4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */,
-				4F0456BB1DF18B810011E2CA /* model_io_show.metal */,
-				4FBF51CC1DC02B6200444668 /* model_io.metal */,
-				4F2F1F921DBA599900B80FE4 /* showST.metal */,
+				4F9C9A7921CA556900BEAE5D /* metal_common.h */,
 				4F2F1F8E1DBA599900B80FE4 /* hello.metal */,
+				4F2F1F8D1DBA599900B80FE4 /* renderpass.metal */,
+				4F2F1F921DBA599900B80FE4 /* showST.metal */,
 				4F2F1F931DBA599900B80FE4 /* texture.metal */,
+				4F9C9A7821CA522A00BEAE5D /* metal_common_model_io.h */,
+				4FBF51CC1DC02B6200444668 /* model_io.metal */,
+				4F0456BB1DF18B810011E2CA /* model_io_show.metal */,
+				4F67346B1DEFAF3D00443FEA /* model_io_lit_texture.metal */,
+				4F873AE61E0D6126002AF02D /* openexr.metal */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
