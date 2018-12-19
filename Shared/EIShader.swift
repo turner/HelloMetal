@@ -6,7 +6,7 @@
 //  Copyright © 2018 Elastic Image Software. All rights reserved.
 //
 
-import Metal
+import MetalKit
 struct EIShader {
     
     var pipelineState:MTLRenderPipelineState
@@ -15,12 +15,7 @@ struct EIShader {
     init(view:EIView, library: MTLLibrary, vertex:String, fragment:String, textureNames:[String], vertexDescriptor:MTLVertexDescriptor?) {
         
         for i in 0..<textureNames.count {
-            do {
-                let texture = try makeTexture(device: view.device!, name: textureNames[ i ])
-                textures.append(texture)
-            } catch {
-                fatalError("Error: Can not load texture")
-            }
+            textures.append(MTKTextureLoader.newTexture(device: view.device!, name: textureNames[i]))
         }
         
         let pipelineDescriptor =
