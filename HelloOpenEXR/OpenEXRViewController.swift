@@ -8,7 +8,7 @@
 
 import UIKit
 import GLKit
-
+import MetalKit
 class OpenEXRViewController: UIViewController {
 
     var renderer:EIRendererEngine!
@@ -31,11 +31,14 @@ class OpenEXRViewController: UIViewController {
         // hero
         let heroMesh = EIMesh.plane(device: view.device!, xExtent: 200, zExtent: 200, xTesselation: 2, zTesselation: 2)
         
-//        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"alias_wavefront_diagnostic.exr")
-//        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"mandrill.exr")
-//        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"candycane-translucent.exr")
-        let openEXRTexture = EIOpenEXRTexture(device: view.device!, name:"kids_grid_3x3_translucent.exr")
-        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"openEXR_vertex", fragment:"openEXR_fragment", openEXRTexture:openEXRTexture, vertexDescriptor: heroMesh.metalVertexDescriptor)
+        let textureName = "candycane-translucent.exr"
+//        let textureName = "mandrill.exr"
+//        let textureName = "alias_wavefront_diagnostic.exr"
+//        let textureName = "kids_grid_3x3_translucent.exr"
+
+        let openEXRTexture = MTKTextureLoader.newTexture_OpenEXR(device: view.device!, name: textureName)
+        
+        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"openEXR_vertex", fragment:"openEXR_fragment", textures:[openEXRTexture], vertexDescriptor: heroMesh.metalVertexDescriptor)
 
         let hero = EIModel(model:heroMesh, shader:shader, transformer:{
             return view.arcBall.rotationMatrix * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)

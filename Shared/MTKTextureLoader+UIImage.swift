@@ -9,7 +9,7 @@
 import MetalKit
 extension MTKTextureLoader {
 
-    static func newTexture(device: MTLDevice, name:String) -> MTLTexture {
+    static func newTexture_UIImage(device: MTLDevice, name:String) -> MTLTexture {
         
         guard let image = UIImage(named:name) else {
             fatalError("Error: Can not load UIImage named \(name)")

@@ -1,18 +1,16 @@
 //
-//  EIOpenEXRTexture.swift
+//  MTKTextureLoader+OpenEXR.swift
 //  HelloOpenEXR
 //
-//  Created by Douglass Turner on 12/12/18.
+//  Created by Douglass Turner on 12/20/18.
 //  Copyright © 2018 Elastic Image Software. All rights reserved.
 //
 
 import MetalKit
-struct EIOpenEXRTexture {
+extension MTKTextureLoader {
     
-    let texture:MTLTexture
-    
-    init(device: MTLDevice, name:String) {
-        
+    static func newTexture_OpenEXR(device: MTLDevice, name:String) -> MTLTexture {
+
         guard let url = Bundle.main.url(forResource:name, withExtension:nil) else {
             fatalError("Error: Can not find OpenEXR texture named \(name)")
         }
@@ -28,14 +26,10 @@ struct EIOpenEXRTexture {
             fatalError("Error: Can not create OpenEXR texture with file named \(name)")
         }
 
-        texture = t
-
         let region = MTLRegionMake2D(0, 0, wp.pointee, hp.pointee)
-
         let bytesPerRow = wp.pointee * MemoryLayout<CUnsignedShort>.size * 4
+        t.replace(region: region, mipmapLevel: 0, withBytes: theBits, bytesPerRow: bytesPerRow)
 
-        texture.replace(region: region, mipmapLevel: 0, withBytes: theBits, bytesPerRow: bytesPerRow)
-    
+        return t
     }
-
 }
