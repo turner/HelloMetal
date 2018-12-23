@@ -19,7 +19,7 @@ struct EIShader {
         }
 
         let pipelineDescriptor =
-                MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:vertex, fragmentShaderName:fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:vertexDescriptor)
+                MTLRenderPipelineDescriptor.EIInit(library:library, vertexShaderName:vertex, fragmentShaderName:fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:vertexDescriptor)
         do {
             pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch {
@@ -35,7 +35,7 @@ struct EIShader {
         }
 
         let pipelineDescriptor =
-                MTLRenderPipelineDescriptor.EI_Create(library:library, vertexShaderName:vertex, fragmentShaderName:fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:vertexDescriptor)
+                MTLRenderPipelineDescriptor.EIInit(library:library, vertexShaderName:vertex, fragmentShaderName:fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:vertexDescriptor)
         do {
             pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch {

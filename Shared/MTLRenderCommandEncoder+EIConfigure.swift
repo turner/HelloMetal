@@ -1,5 +1,5 @@
 //
-//  MTLRenderCommandEncoder+EI_Configure.swift
+//  MTLRenderCommandEncoder+EIConfigure.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 12/13/18.
@@ -10,7 +10,7 @@ import MetalKit
 
 extension MTLRenderCommandEncoder {
     
-    func EI_Configure(renderPipelineState:MTLRenderPipelineState, model:EIMetalProtocol, textures:[MTLTexture]) {
+    func EIConfigure(renderPipelineState:MTLRenderPipelineState, model:EIMetalProtocol, textures:[MTLTexture]) {
         
         self.setRenderPipelineState(renderPipelineState)
         

@@ -31,10 +31,10 @@ struct EIModel {
     }
 
     public func encode(encoder:MTLRenderCommandEncoder) {
-        encoder.EI_Configure(renderPipelineState: shader.pipelineState, model: model, textures: shader.textures)
+        encoder.EIConfigure(renderPipelineState: shader.pipelineState, model: model, textures: shader.textures)
     }
 
     public func renderPassEncode(encoder:MTLRenderCommandEncoder, textures:[MTLTexture]) {
-        encoder.EI_Configure(renderPipelineState: shader.pipelineState, model: model, textures: textures)
+        encoder.EIConfigure(renderPipelineState: shader.pipelineState, model: model, textures: textures)
     }
 }

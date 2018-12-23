@@ -1,5 +1,5 @@
 //
-//  MTLRenderPassDescriptor+EI_Configure.swift
+//  MTLRenderPassDescriptor+EIConfigure.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 12/13/18.
@@ -9,7 +9,7 @@
 import MetalKit
 extension MTLRenderPassDescriptor {
     
-    public func EI_Configure(clearColor:MTLClearColor, clearDepth: Double) {
+    public func EIConfigure(clearColor:MTLClearColor, clearDepth: Double) {
         
         // color
         colorAttachments[ 0 ] = MTLRenderPassColorAttachmentDescriptor()
