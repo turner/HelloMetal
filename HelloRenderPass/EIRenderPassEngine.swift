@@ -30,7 +30,7 @@ class EIRenderPassEngine : EIRendererEngine {
         }
 
         renderToTextureRenderPassDescriptor = MTLRenderPassDescriptor()
-        renderToTextureRenderPassDescriptor.EI_Configure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
+        renderToTextureRenderPassDescriptor.EIConfigure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
 
     }
 
