@@ -3,7 +3,7 @@
 using namespace metal;
 #import "metal_common_model_io.h"
 
-vertex xyzw_n_st_rgba textureMIOVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba model_io_texture_vertex(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
     
     xyzw_n_st_rgba out;
     
@@ -23,7 +23,7 @@ vertex xyzw_n_st_rgba textureMIOVertexShader(xyz_n_st in [[ stage_in ]], constan
     
 }
 
-fragment float4 textureMIOFragmentShader(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
+fragment float4 model_io_texture_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
     float4 rgba = texas.sample(textureSampler, float2(in.st)).rgba;
     return rgba;
 }

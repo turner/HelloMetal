@@ -34,9 +34,9 @@ class LightViewController: UIViewController {
         let   heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/high-res-head-no-groups.scn", nodeName:"highResHeadIdentity")
 
         // teapot
-//        let heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/teapot.scn",                  nodeName:"teapotIdentity")
+//        let heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/teapot.scn", nodeName:"teapotIdentity")
 
-        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"litTextureMIOVertexShader", fragment:"litTextureMIOFragmentShader", textureNames:["swirl"], vertexDescriptor: heroMesh.metalVertexDescriptor)
+        shader = EIShader(view:view, vertex:"model_io_texture_lit_vertex", fragment:"model_io_texture_lit_fragment", textureNames:["swirl"], vertexDescriptor: heroMesh.metalVertexDescriptor)
 
         let hero = EIModel(model:heroMesh, shader:shader, transformer:{
 
@@ -53,7 +53,7 @@ class LightViewController: UIViewController {
 
         // camera plane
         let cameraPlaneMesh = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
-        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: cameraPlaneMesh.metalVertexDescriptor)
+        shader = EIShader(view:view, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["mobile"], vertexDescriptor: cameraPlaneMesh.metalVertexDescriptor)
 
         let cameraPlane = EIModel(model:cameraPlaneMesh, shader:shader, transformer:{ [unowned self] in
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
