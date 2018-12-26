@@ -15,5 +15,6 @@ protocol EIMetalProtocol {
     func getIndexCount() -> Int
     func getIndexType() -> MTLIndexType
     func getIndexBuffer() -> MTLBuffer
+    func getVertexDescriptor() -> MTLVertexDescriptor?
     mutating func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4)
 }

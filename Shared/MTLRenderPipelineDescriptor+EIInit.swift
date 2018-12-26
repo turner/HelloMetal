@@ -42,7 +42,7 @@ extension MTLRenderPipelineDescriptor {
         
         desc.depthAttachmentPixelFormat = .depth32Float
         
-        if (nil != vertexDescriptor) {
+        if (Optional.none != vertexDescriptor) {
             desc.vertexDescriptor = vertexDescriptor
         }
         
