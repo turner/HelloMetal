@@ -9,37 +9,27 @@
 import MetalKit
 struct EIShader {
     
-    var pipelineState:MTLRenderPipelineState
+    let vertex:String
+    let fragment:String
+    
     var textures: [MTLTexture] = [MTLTexture]()
 
-    init(view:EIView, library: MTLLibrary, vertex:String, fragment:String, textures:[MTLTexture], vertexDescriptor:MTLVertexDescriptor?) {
-
+    init(vertex:String, fragment:String, textures:[MTLTexture]) {
+        
+        self.vertex = vertex
+        self.fragment = fragment
         for i in 0..<textures.count {
             self.textures.append(textures[ i ])
         }
-
-        let pipelineDescriptor =
-                MTLRenderPipelineDescriptor.EIInit(library:library, vertexShaderName:vertex, fragmentShaderName:fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:vertexDescriptor)
-        do {
-            pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch {
-            fatalError("Error: Can not create render pipeline state")
-        }
-
+        
     }
 
-    init(view:EIView, library: MTLLibrary, vertex:String, fragment:String, textureNames:[String], vertexDescriptor:MTLVertexDescriptor?) {
-
+    init(device:MTLDevice, vertex:String, fragment:String, textureNames:[String]) {
+        
+        self.vertex = vertex
+        self.fragment = fragment
         for i in 0..<textureNames.count {
-            textures.append(MTKTextureLoader.newTexture_UIImage(device: view.device!, name: textureNames[i]))
-        }
-
-        let pipelineDescriptor =
-                MTLRenderPipelineDescriptor.EIInit(library:library, vertexShaderName:vertex, fragmentShaderName:fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:vertexDescriptor)
-        do {
-            pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
-        } catch {
-            fatalError("Error: Can not create render pipeline state")
+            textures.append(MTKTextureLoader.newTexture_UIImage(device: device, name: textureNames[i]))
         }
 
     }

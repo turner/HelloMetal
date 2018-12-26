@@ -34,6 +34,10 @@ extension EIQuad : EIMetalProtocol {
         return vertexIndexMetalBuffer
     }
     
+    func getVertexDescriptor() -> MTLVertexDescriptor? {
+        return metalVertexDescriptor
+    }
+    
     public mutating func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4) {
         metallicTransform.update(camera: camera, transformer: {
             transformer()

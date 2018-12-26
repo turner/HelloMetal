@@ -29,6 +29,8 @@ struct EIQuad {
         return .uint16
     }
 
+    let metalVertexDescriptor:MTLVertexDescriptor? = Optional.none
+
     let vertices = [
         Vertex(xyz: GLKVector3(v:(-1, -1,  0)), n: GLKVector3(v:(0, 0, 1)), rgba: GLKVector4(v:(1, 0, 0, 1)), st: GLKVector2(v:(0, 1))),
         Vertex(xyz: GLKVector3(v:( 1, -1,  0)), n: GLKVector3(v:(0, 0, 1)), rgba: GLKVector4(v:(0, 1, 0, 1)), st: GLKVector2(v:(1, 1))),

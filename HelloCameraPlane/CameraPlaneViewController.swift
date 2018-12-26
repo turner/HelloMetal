@@ -30,15 +30,15 @@ class CameraPlaneViewController: UIViewController {
         
         // hero - EIQuad
 //        let hq = EIQuad(device: view.device!)
-//        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"hello_texture_vertex", fragment:"hello_texture_fragment", textureNames:["kids_grid_3x3_translucent"], vertexDescriptor: nil)
-//        let hero = EIModel(model:hq, shader:shader, transformer:{
+//        shader = EIShader(device:view.device!, vertex:"hello_texture_vertex", fragment:"hello_texture_fragment", textureNames:["kids_grid_3x3_translucent"], vertexDescriptor: nil)
+//        let hero = EIModel(view:view, model:hq, shader:shader, transformer:{
 //            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
 //        })
         
         // hero - EIMesh
         let hm = EIMesh.plane(device: view.device!, xExtent: 256, zExtent: 256, xTesselation: 32, zTesselation: 32)
-        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["kids_grid_3x3_translucent"], vertexDescriptor: hm.metalVertexDescriptor)
-        let hero = EIModel(model:hm, shader:shader, transformer:{
+        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["kids_grid_3x3_translucent"])
+        let hero = EIModel(view:view, model:hm, shader:shader, transformer:{
             return view.arcBall.rotationMatrix * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
         
@@ -48,9 +48,9 @@ class CameraPlaneViewController: UIViewController {
 //        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"hello_texture_vertex", fragment:"hello_texture_fragment", textureNames:["mobile"], vertexDescriptor:nil)
         
         let plane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
-        shader = EIShader(view:view, library:view.defaultLibrary, vertex:"textureMIOVertexShader", fragment:"textureMIOFragmentShader", textureNames:["mobile"], vertexDescriptor: plane.metalVertexDescriptor)
+        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["mobile"])
 
-        let cameraPlane = EIModel(model:plane, shader:shader, transformer:{ [unowned self] in
+        let cameraPlane = EIModel(view:view, model:plane, shader:shader, transformer:{ [unowned self] in
 
             // EIQuad
 //            return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far)

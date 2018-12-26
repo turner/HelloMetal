@@ -3,7 +3,7 @@
 using namespace metal;
 #import "metal_common_model_io.h"
 
-vertex xyzw_n_st_rgba showMIOVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba model_io_show_vertex(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
  
     xyzw_n_st_rgba out;
     
@@ -29,7 +29,7 @@ vertex xyzw_n_st_rgba showMIOVertexShader(xyz_n_st in [[ stage_in ]], constant T
 
 }
 
-fragment float4 showMIOFragmentShader(xyzw_n_st_rgba in [[ stage_in ]]) {
+fragment float4 model_io_show_fragment(xyzw_n_st_rgba in [[ stage_in ]]) {
     
     constexpr sampler defaultSampler;
     

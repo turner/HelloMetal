@@ -30,12 +30,11 @@ class EIMesh {
 
     var indexType:MTLIndexType
 
-
     var modelIOMeshMetallic: MDLMesh
     var modelIOMesh:MDLMesh
     var metalMesh: MTKMesh
 
-    var metalVertexDescriptor:MTLVertexDescriptor
+    var metalVertexDescriptor:MTLVertexDescriptor?
 
     private init(device:MTLDevice, mdlMeshProvider:() -> MDLMesh) {
 
@@ -45,7 +44,8 @@ class EIMesh {
         metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
 
         // Model I/O vertex descriptor
-        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
+        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor!)
+        
         (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
         (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
@@ -83,7 +83,7 @@ class EIMesh {
         metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
 
         // Model I/O vertex descriptor
-        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor)
+        let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor!)
         (modelIOVertexDescriptor.attributes[ 0 ] as! MDLVertexAttribute).name = MDLVertexAttributePosition
         (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
