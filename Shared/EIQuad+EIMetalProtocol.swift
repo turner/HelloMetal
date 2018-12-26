@@ -15,7 +15,7 @@ extension EIQuad : EIMetalProtocol {
     }
     
     func getMetallicTransformMetalBuffer() -> MTLBuffer {
-        return metallicTransform.metalBuffer
+        return transform.metalBuffer
     }
     
     func getPrimitiveType() -> MTLPrimitiveType {
@@ -39,7 +39,7 @@ extension EIQuad : EIMetalProtocol {
     }
     
     public mutating func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4) {
-        metallicTransform.update(camera: camera, transformer: {
+        transform.update(camera: camera, transformer: {
             transformer()
         })
         

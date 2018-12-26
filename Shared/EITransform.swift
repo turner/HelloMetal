@@ -22,7 +22,11 @@ struct EITransform {
     var metalBuffer: MTLBuffer
 
     init(device: MTLDevice) {
-        metalBuffer = device.makeBuffer(length: MemoryLayout<Transform>.size, options: [])!
+        guard let mb = device.makeBuffer(length: MemoryLayout<Transform>.size, options: []) else {
+            fatalError("Error: Can not create buffer for EITransform")
+        }
+        
+        metalBuffer = mb
     }
 
     /*
@@ -72,6 +76,5 @@ struct EITransform {
         let bufferPointer = metalBuffer.contents()
         memcpy(bufferPointer, &transform, MemoryLayout<Transform>.size)
 
-        
     }
 }

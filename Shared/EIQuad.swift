@@ -11,7 +11,7 @@ import GLKit
 
 struct EIQuad {
 
-    var metallicTransform: EITransform
+    var transform: EITransform
 
     var vertexMetalBuffer: MTLBuffer
 
@@ -51,7 +51,7 @@ struct EIQuad {
         self.vertexMetalBuffer      = device.makeBuffer(bytes: self.vertices,      length: vertexSize * vertexCount,       options: [])!
         self.vertexIndexMetalBuffer = device.makeBuffer(bytes: self.vertexIndices, length: MemoryLayout<UInt16>.size * self.vertexIndices.count , options: [])!
 
-        self.metallicTransform = EITransform(device: device)
+        self.transform = EITransform(device: device)
 
     }
 }
