@@ -1,5 +1,4 @@
-HelloMetal
-----------
+# HelloMetal
 
 A Suite of Metal Examples written in Swift 4.2. Highlights include:
 - Numerous example Metal shaders
@@ -8,4 +7,5 @@ A Suite of Metal Examples written in Swift 4.2. Highlights include:
 - SceneKit
 - OpenEXR
 - Arcball (Gestural rotation widget based on Quaternions)
+
 
