@@ -8,4 +8,9 @@ A Suite of Metal Examples written in Swift 4.2. Highlights include:
 - OpenEXR
 - Arcball (Gestural rotation widget based on Quaternions)
 
+There are 7 projects each illustrating different aspects of Metal
+
+### Hello
+
+
 
