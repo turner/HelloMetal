@@ -1,7 +1,8 @@
 HelloMetal
 ----------
 
-A Suite of Metal Examples written in Swift 4.2. Highlights include: 
+A Suite of Metal Examples written in Swift 4.2. Highlights include:
+- Numerous example Metal shaders
 - Multi-pass rendering
 - Model I/O
 - SceneKit
