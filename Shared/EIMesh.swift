@@ -41,7 +41,7 @@ class EIMesh {
         transform = EITransform(device:device)
 
         // Metal vertex descriptor
-        metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
+        metalVertexDescriptor = .some( MTLVertexDescriptor.xyz_n_st_vertexDescriptor() )
 
         // Model I/O vertex descriptor
         let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor!)
@@ -50,7 +50,7 @@ class EIMesh {
         (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
 
-        metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
+        metalVertexDescriptor = .some( MTLVertexDescriptor.xyz_n_st_vertexDescriptor() )
         
         modelIOMeshMetallic = mdlMeshProvider()
         modelIOMeshMetallic.vertexDescriptor = modelIOVertexDescriptor
@@ -70,7 +70,7 @@ class EIMesh {
 
         primitiveType = metalMesh.submeshes[ 0 ].primitiveType
 
-        // unused - to shut compiler up
+        // A hack - used to initialize modelIOMesh property to something reasonable.
         modelIOMesh = MDLMesh.newPlane(withDimensions:vector_float2(4, 4), segments:vector_uint2(2, 2), geometryType:.triangles, allocator:nil)
 
     }
@@ -80,7 +80,7 @@ class EIMesh {
         transform = EITransform(device:device)
 
         // Metal vertex descriptor
-        metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
+        metalVertexDescriptor = .some( MTLVertexDescriptor.xyz_n_st_vertexDescriptor() )
 
         // Model I/O vertex descriptor
         let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor!)
@@ -88,7 +88,7 @@ class EIMesh {
         (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
         
-        metalVertexDescriptor = MTLVertexDescriptor.xyz_n_st_vertexDescriptor()
+        metalVertexDescriptor = .some( MTLVertexDescriptor.xyz_n_st_vertexDescriptor() )
 
         guard let scene = SCNScene(named:sceneName) else {
             fatalError("Error: Can not create SCNScene with \(sceneName)")
@@ -106,12 +106,8 @@ class EIMesh {
         modelIOMesh.vertexDescriptor = modelIOVertexDescriptor
         
         
-        
         // To create that cool low-poly look
-//        modelIOMesh.makeVerticesUnique()
         modelIOMesh.addNormals(withAttributeNamed:MDLVertexAttributeNormal, creaseThreshold:1.0)
-
-        
 
         let mdlSubmesh:MDLSubmesh = modelIOMesh.submeshes?[ 0 ] as! MDLSubmesh
 
@@ -119,19 +115,18 @@ class EIMesh {
         indexType = (.uInt32 == mdlSubmesh.indexType) ? .uint32 : .uint16;
 
         let indexBuffer = mdlSubmesh.indexBuffer
-        vertexIndexMetalBuffer = device.makeBuffer(bytes:indexBuffer.map().bytes,
-                length:indexBuffer.length,
-                options:MTLResourceOptions.storageModeShared)!
+        guard let vib = device.makeBuffer(bytes:indexBuffer.map().bytes, length:indexBuffer.length, options:.storageModeShared) else {
+            fatalError("Error: Can not create vertex index buffer")
+        }
+        vertexIndexMetalBuffer = vib
 
         let vertexBuffer = modelIOMesh.vertexBuffers[ 0 ]
-        vertexMetalBuffer = device.makeBuffer(bytes:vertexBuffer.map().bytes,
-                length:vertexBuffer.length,
-                options:MTLResourceOptions.storageModeShared)!
+        guard let vb = device.makeBuffer(bytes:vertexBuffer.map().bytes, length:vertexBuffer.length, options:.storageModeShared) else {
+            fatalError("Error: Can not create vertex buffer")
+        }
+        vertexMetalBuffer = vb
 
-        modelIOMeshMetallic = MDLMesh.newPlane(withDimensions:vector_float2(4, 4),
-                segments:vector_uint2(2, 2),
-                geometryType:.triangles,
-                allocator: MTKMeshBufferAllocator(device:device))
+        modelIOMeshMetallic = MDLMesh.newPlane(withDimensions:vector_float2(4, 4), segments:vector_uint2(2, 2), geometryType:.triangles, allocator: MTKMeshBufferAllocator(device:device))
 
         modelIOMeshMetallic.vertexDescriptor = modelIOVertexDescriptor
 
@@ -145,11 +140,7 @@ class EIMesh {
 
     }
 
-    class func plane(device: MTLDevice,
-                     xExtent:Float,
-                     zExtent:Float,
-                     xTesselation:UInt32,
-                     zTesselation:UInt32) -> EIMesh {
+    class func plane(device: MTLDevice, xExtent:Float, zExtent:Float, xTesselation:UInt32, zTesselation:UInt32) -> EIMesh {
 
         return EIMesh(device:device, mdlMeshProvider:{
             
@@ -159,13 +150,7 @@ class EIMesh {
 
     }
 
-    class func cube(device: MTLDevice,
-                    xExtent:Float,
-                    yExtent:Float,
-                    zExtent:Float,
-                    xTesselation:UInt32,
-                    yTesselation:UInt32,
-                    zTesselation:UInt32) -> EIMesh {
+    class func cube(device: MTLDevice, xExtent:Float, yExtent:Float, zExtent:Float, xTesselation:UInt32, yTesselation:UInt32, zTesselation:UInt32) -> EIMesh {
 
         return EIMesh(device:device, mdlMeshProvider:{
 
@@ -179,12 +164,7 @@ class EIMesh {
 
     }
     
-    class func sphere(device: MTLDevice,
-                      xRadius:Float,
-                      yRadius:Float,
-                      zRadius:Float,
-                      uTesselation:Int,
-                      vTesselation:Int) -> EIMesh {
+    class func sphere(device: MTLDevice, xRadius:Float, yRadius:Float, zRadius:Float, uTesselation:Int, vTesselation:Int) -> EIMesh {
         
         return EIMesh(device:device, mdlMeshProvider:{
             

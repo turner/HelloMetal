@@ -29,7 +29,7 @@ struct EIQuad {
         return .uint16
     }
 
-    let metalVertexDescriptor:MTLVertexDescriptor? = Optional.none
+    let metalVertexDescriptor:MTLVertexDescriptor? = .none
 
     let vertices = [
         Vertex(xyz: GLKVector3(v:(-1, -1,  0)), n: GLKVector3(v:(0, 0, 1)), rgba: GLKVector4(v:(1, 0, 0, 1)), st: GLKVector2(v:(0, 1))),
@@ -45,13 +45,23 @@ struct EIQuad {
             ]
 
     init(device: MTLDevice) {
+        
         let vertexSize = MemoryLayout<Vertex>.size
-        let vertexCount = self.vertices.count
+        let vertexCount = vertices.count
+        
+        guard let vmb = device.makeBuffer(bytes: vertices, length: vertexSize * vertexCount, options: []) else {
+            fatalError("Error: Can not create vertex buffer for EIQuad")
+        }
 
-        self.vertexMetalBuffer      = device.makeBuffer(bytes: self.vertices,      length: vertexSize * vertexCount,       options: [])!
-        self.vertexIndexMetalBuffer = device.makeBuffer(bytes: self.vertexIndices, length: MemoryLayout<UInt16>.size * self.vertexIndices.count , options: [])!
+        vertexMetalBuffer = vmb
+        
+        guard let vimb = device.makeBuffer(bytes:vertexIndices, length: MemoryLayout<UInt16>.size * vertexIndices.count , options: []) else {
+            fatalError("Error: Can not create vertex index buffer for EIQuad")
+        }
+        
+        vertexIndexMetalBuffer = vimb
 
-        self.transform = EITransform(device: device)
+        transform = EITransform(device: device)
 
     }
 }
