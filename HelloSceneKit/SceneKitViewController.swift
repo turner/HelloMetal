@@ -21,12 +21,13 @@ class SceneKitViewController: EIViewController {
         var shader:EIShader
 
         // hero
+        var heroMesh:EIMesh
 
         // hi-res head
-        let   heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/high-res-head-no-groups.scn", nodeName:"highResHeadIdentity")
+//        heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/high-res-head-no-groups.scn", nodeName:"highResHeadIdentity")
 
         // teapot
-//        let heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/teapot.scn",                  nodeName:"teapotIdentity")
+        heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/teapot.scn", nodeName:"teapotIdentity")
 
         shader = EIShader(device:view.device!, vertex:"model_io_show_vertex", fragment:"model_io_show_fragment", textureNames:[])
 
@@ -36,10 +37,10 @@ class SceneKitViewController: EIViewController {
 //            return view.arcBall.rotationMatrix
 
             // scale for head (hi-res)
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(750, 750, 750) * GLKMatrix4MakeTranslation(0.0, 0.075, 0.101)
+//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(750, 750, 750) * GLKMatrix4MakeTranslation(0.0, 0.075, 0.101)
 
             // scale for teapot
-//            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
         })
 
 
