@@ -9,17 +9,9 @@
 import UIKit
 import GLKit
 
-class CameraPlaneViewController: UIViewController {
-    
-    var renderer:EIRendererEngine!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class CameraPlaneViewController: EIViewController {
 
-        eiViewDidLoad(view as! EIView)
-    }
-
-    func eiViewDidLoad(_ view:EIView) {
+    override func eiViewDidLoad(view:EIView) {
 
         renderer = EIRendererEngine(view: view, device: view.device!)
         view.delegate = renderer

@@ -9,17 +9,9 @@
 import UIKit
 import GLKit
 
-class RenderPassViewController: UIViewController {
+class RenderPassViewController: EIViewController {
 
-    var renderer:EIRenderPassEngine!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        eiViewDidLoad(view as! EIView)
-    }
-
-    func eiViewDidLoad(_ view:EIView) {
+    override func eiViewDidLoad(view:EIView) {
 
         var shader:EIShader
         
