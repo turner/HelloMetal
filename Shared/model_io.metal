@@ -12,7 +12,7 @@ vertex xyzw_n_st_rgba model_io_show_vertex(xyz_n_st in [[ stage_in ]], constant 
     float3 normalEyeSpace = normalize(nes.xyz);
     
     // world space normal
-    float3 in_n = normalize(in.n);
+//    float3 in_n = normalize(in.n);
     
     // rgba
     //    out.rgba = float4(in.st.x, in.st.y, 0, 1);

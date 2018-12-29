@@ -9,17 +9,9 @@
 import UIKit
 import GLKit
 
-class Model_IOViewController: UIViewController {
+class Model_IOViewController: EIViewController {
 
-    var renderer:EIRendererEngine!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        eiViewDidLoad(view as! EIView)
-    }
-
-    func eiViewDidLoad(_ view:EIView) {
+    override func eiViewDidLoad(view:EIView) {
 
         renderer = EIRendererEngine(view: view, device: view.device!)
         view.delegate = renderer
