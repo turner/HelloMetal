@@ -13,10 +13,10 @@ each illustrating a different aspect of Metal. Each app is a single view app. A 
 using a finger gesture.
 
 ### Hello
-A texture-mapped quad.
+Render a texture-mapped quad.
 
 ### HellCameraPlane
-A texture-mapped quad rendered atop a background quad aligned with the camera far clipping plane
+Render a texture-mapped quad rendered atop a background quad aligned with the camera far clipping plane
 
 ### HelloRenderPass
 An example of two pass rendering
@@ -30,8 +30,10 @@ Render a variety of Model I/O shapes - cube, sphere, etc.
 Similar to *HelloModel_IO* with a point light source positioned at the eye point
 
 ### HelloSceneKit
+Render a SceneKit asset. Examples include classic Newell Teapot and hi-res head model.
 
 ### HelloOpenEXR
+Render a texture-mapped quad with texture map ingested from OpenEXR format texture.
 
 
 
