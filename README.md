@@ -1,5 +1,4 @@
 # HelloMetal
-
 A Suite of 7 minimal Metal apps written in Swift 4.2. Highlights include:
 - Multi-pass rendering
 - Model I/O
