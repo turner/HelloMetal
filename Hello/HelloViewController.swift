@@ -10,21 +10,12 @@ import UIKit
 import GLKit
 
 class HelloViewController: EIViewController {
-    
-    override func eiViewDidLoad(view: EIView) {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        renderer = EIRendererEngine(view: view, device: view.device!)
-        view.delegate = renderer
-        
-        renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
-        
-        let shader = EIShader(device:view.device!, vertex:"hello_texture_vertex", fragment:"hello_texture_fragment", textureNames:["kids_grid_3x3"])
-        
-        let model = EIModel(view:view, model:EIQuad(device: view.device!), shader:shader, transformer:{
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
-        })
-        
-        renderer.models.append(model)
+        let eiview = view as! EIView
+        scene = EIScene_Hello(view: eiview, renderer:EIRendererEngine(view: eiview, device: eiview.device!))
     }
 
 }

@@ -106,6 +106,13 @@
 		4F1CA3B11DC4374B006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F1CA3B21DC437E6006B6213 /* EIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CA3AE1DC43067006B6213 /* EIView.swift */; };
 		4F2247D221C5864000835ECC /* kids_grid_3x3_translucent.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4F2247D121C5864000835ECC /* kids_grid_3x3_translucent.exr */; };
+		4F2528AA21D7DF8A004E023E /* EIScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2528A921D7DF8A004E023E /* EIScene.swift */; };
+		4F2528AB21D7DF8A004E023E /* EIScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2528A921D7DF8A004E023E /* EIScene.swift */; };
+		4F2528AC21D7DF8A004E023E /* EIScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2528A921D7DF8A004E023E /* EIScene.swift */; };
+		4F2528AD21D7DF8A004E023E /* EIScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2528A921D7DF8A004E023E /* EIScene.swift */; };
+		4F2528AE21D7DF8A004E023E /* EIScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2528A921D7DF8A004E023E /* EIScene.swift */; };
+		4F2528AF21D7DF8A004E023E /* EIScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2528A921D7DF8A004E023E /* EIScene.swift */; };
+		4F2528B021D7DF8A004E023E /* EIScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2528A921D7DF8A004E023E /* EIScene.swift */; };
 		4F39BD8C21CAA03E00C792DD /* MTKTextureLoader+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39BD8B21CAA03E00C792DD /* MTKTextureLoader+UIImage.swift */; };
 		4F39BD8D21CAA03E00C792DD /* MTKTextureLoader+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39BD8B21CAA03E00C792DD /* MTKTextureLoader+UIImage.swift */; };
 		4F39BD8E21CAA03E00C792DD /* MTKTextureLoader+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39BD8B21CAA03E00C792DD /* MTKTextureLoader+UIImage.swift */; };
@@ -177,6 +184,7 @@
 		4F72709E1DC373690039E130 /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
 		4F72709F1DC373690039E130 /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
 		4F7270A11DC373690039E130 /* hello.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F8E1DBA599900B80FE4 /* hello.metal */; };
+		4F72BFB621DA3BF300A36814 /* EIScene_Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F72BFB521DA3BF300A36814 /* EIScene_Hello.swift */; };
 		4F79540821B46B4100E4A25E /* LightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F79540721B46B4100E4A25E /* LightViewController.swift */; };
 		4F80A4991DEB86420082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F80A49A1DEB86550082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
@@ -271,6 +279,7 @@
 		4F1A0B3821C1CEB4007C32A9 /* candycane-translucent.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = "candycane-translucent.exr"; sourceTree = "<group>"; };
 		4F1CA3AE1DC43067006B6213 /* EIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIView.swift; path = Shared/EIView.swift; sourceTree = "<group>"; };
 		4F2247D121C5864000835ECC /* kids_grid_3x3_translucent.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = kids_grid_3x3_translucent.exr; sourceTree = "<group>"; };
+		4F2528A921D7DF8A004E023E /* EIScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIScene.swift; sourceTree = "<group>"; };
 		4F2F1F111DBA50FA00B80FE4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		4F2F1F131DBA50FA00B80FE4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
@@ -307,6 +316,7 @@
 		4F72708A1DC372410039E130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F72708C1DC372410039E130 /* CameraPlane.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CameraPlane.xcassets; sourceTree = "<group>"; };
 		4F7270911DC372410039E130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F72BFB521DA3BF300A36814 /* EIScene_Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIScene_Hello.swift; sourceTree = "<group>"; };
 		4F79540721B46B4100E4A25E /* LightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewController.swift; sourceTree = "<group>"; };
 		4F80A4981DEB86420082EE39 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		4F873AE61E0D6126002AF02D /* model_io_openexr.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = model_io_openexr.metal; path = Shared/model_io_openexr.metal; sourceTree = "<group>"; };
@@ -432,8 +442,9 @@
 		4F2F1F461DBA510800B80FE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
 				4F695D4221D641D700ACB0A9 /* EIViewController.swift */,
+				4F2528A921D7DF8A004E023E /* EIScene.swift */,
+				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
 				4F03D6CC21C7DCB90034BA43 /* EIRenderEngine.swift */,
 				4F03D6CE21C7DCB90034BA43 /* EIShader.swift */,
 				4F03D6D121C7DCB90034BA43 /* EIModel.swift */,
@@ -501,6 +512,7 @@
 		4F7270371DC368780039E130 /* Hello */ = {
 			isa = PBXGroup;
 			children = (
+				4F72BFB521DA3BF300A36814 /* EIScene_Hello.swift */,
 				4F3DFC6221A773820096BDD6 /* HelloViewController.swift */,
 				4F72703C1DC368780039E130 /* Main.storyboard */,
 				4F72703F1DC368780039E130 /* Hello.xcassets */,
@@ -912,6 +924,7 @@
 				4F03D71E21C7DCBA0034BA43 /* MTLRenderPassDescriptor+EIConfigure.swift in Sources */,
 				4F03D6E621C7DCBA0034BA43 /* MTLRenderCommandEncoder+EIConfigure.swift in Sources */,
 				4F03D71721C7DCBA0034BA43 /* EIModel.swift in Sources */,
+				4F2528AF21D7DF8A004E023E /* EIScene.swift in Sources */,
 				4F03D6D821C7DCBA0034BA43 /* MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift in Sources */,
 				4F03D6DF21C7DCBA0034BA43 /* EIMetalProtocol.swift in Sources */,
 				4F6734651DEFABBC00443FEA /* model_io.metal in Sources */,
@@ -942,6 +955,7 @@
 				4F03D6E421C7DCBA0034BA43 /* MTLRenderCommandEncoder+EIConfigure.swift in Sources */,
 				4F03D70021C7DCBA0034BA43 /* EIShader.swift in Sources */,
 				4F03D6EB21C7DCBA0034BA43 /* MTLRenderPipelineDescriptor+EIInit.swift in Sources */,
+				4F2528AD21D7DF8A004E023E /* EIScene.swift in Sources */,
 				4FC28A3E21B16AAF0041947C /* Model_IOViewController.swift in Sources */,
 				4F03D70E21C7DCBA0034BA43 /* EIMesh+EIMetalProtocol.swift in Sources */,
 				4FBF51CE1DC02B9300444668 /* model_io.metal in Sources */,
@@ -972,6 +986,7 @@
 				4F03D6EA21C7DCBA0034BA43 /* MTLRenderPipelineDescriptor+EIInit.swift in Sources */,
 				4F64B3991DC40671005BD8B1 /* EIQuad.swift in Sources */,
 				4F64B39A1DC40671005BD8B1 /* EITransform.swift in Sources */,
+				4F2528AC21D7DF8A004E023E /* EIScene.swift in Sources */,
 				4F03D71B21C7DCBA0034BA43 /* MTLRenderPassDescriptor+EIConfigure.swift in Sources */,
 				4FF465C121A9BAFD00CA57F4 /* RenderPassViewController.swift in Sources */,
 				4F39BD8E21CAA03E00C792DD /* MTKTextureLoader+UIImage.swift in Sources */,
@@ -996,6 +1011,7 @@
 				4F72704D1DC368C80039E130 /* EITransform.swift in Sources */,
 				4F03D6FD21C7DCBA0034BA43 /* EIShader.swift in Sources */,
 				4F03D70421C7DCBA0034BA43 /* MTLSamplerDescriptor+MipMap.swift in Sources */,
+				4F2528AA21D7DF8A004E023E /* EIScene.swift in Sources */,
 				4F39BD8C21CAA03E00C792DD /* MTKTextureLoader+UIImage.swift in Sources */,
 				4F03D6F621C7DCBA0034BA43 /* EIQuad+EIMetalProtocol.swift in Sources */,
 				4F03D71921C7DCBA0034BA43 /* MTLRenderPassDescriptor+EIConfigure.swift in Sources */,
@@ -1003,6 +1019,7 @@
 				4F03D71221C7DCBA0034BA43 /* EIModel.swift in Sources */,
 				4F03D6D321C7DCBA0034BA43 /* MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift in Sources */,
 				4F695D4321D641D700ACB0A9 /* EIViewController.swift in Sources */,
+				4F72BFB621DA3BF300A36814 /* EIScene_Hello.swift in Sources */,
 				4F03D6DA21C7DCBA0034BA43 /* EIMetalProtocol.swift in Sources */,
 				4F72704F1DC368C80039E130 /* hello.metal in Sources */,
 			);
@@ -1030,6 +1047,7 @@
 				4F72709D1DC373680039E130 /* EIMath.swift in Sources */,
 				4F03D6F721C7DCBA0034BA43 /* EIQuad+EIMetalProtocol.swift in Sources */,
 				4F72709E1DC373690039E130 /* EIQuad.swift in Sources */,
+				4F2528AB21D7DF8A004E023E /* EIScene.swift in Sources */,
 				4F72709F1DC373690039E130 /* EITransform.swift in Sources */,
 				4F03D70521C7DCBA0034BA43 /* MTLSamplerDescriptor+MipMap.swift in Sources */,
 				4F03D6D421C7DCBA0034BA43 /* MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift in Sources */,
@@ -1045,6 +1063,7 @@
 			files = (
 				4F39BD9221CAA03E00C792DD /* MTKTextureLoader+UIImage.swift in Sources */,
 				4FBB552721C7F01400FE271C /* EIQuad.swift in Sources */,
+				4F2528B021D7DF8A004E023E /* EIScene.swift in Sources */,
 				4F03D71121C7DCBA0034BA43 /* EIMesh+EIMetalProtocol.swift in Sources */,
 				4F03D71F21C7DCBA0034BA43 /* MTLRenderPassDescriptor+EIConfigure.swift in Sources */,
 				4FDFA7C91E0BF84E005BEDF4 /* AppDelegate.swift in Sources */,
@@ -1096,6 +1115,7 @@
 				4F03D71D21C7DCBA0034BA43 /* MTLRenderPassDescriptor+EIConfigure.swift in Sources */,
 				4F03D6E521C7DCBA0034BA43 /* MTLRenderCommandEncoder+EIConfigure.swift in Sources */,
 				4F03D71621C7DCBA0034BA43 /* EIModel.swift in Sources */,
+				4F2528AE21D7DF8A004E023E /* EIScene.swift in Sources */,
 				4F03D6D721C7DCBA0034BA43 /* MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift in Sources */,
 				4F03D6DE21C7DCBA0034BA43 /* EIMetalProtocol.swift in Sources */,
 				4F67346E1DEFB5B200443FEA /* model_io.metal in Sources */,

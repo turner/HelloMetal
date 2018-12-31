@@ -10,15 +10,10 @@ import UIKit
 
 class EIViewController: UIViewController {
     
-    var renderer:EIRendererEngine!
+    var scene:EIScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        eiViewDidLoad(view: view as! EIView)
     }
 
-    func eiViewDidLoad(view: EIView) {
-        fatalError("Error: eiViewDidLoad(...). Base method call.")
-    }
 }
