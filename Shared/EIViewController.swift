@@ -8,9 +8,9 @@
 
 import UIKit
 
-class EIViewController: UIViewController {
+class EIViewController : UIViewController {
     
-    var scene:EIScene!
+    var scene = EIScene()
     
     override func viewDidLoad() {
         super.viewDidLoad()

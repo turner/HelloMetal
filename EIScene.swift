@@ -8,11 +8,5 @@
 
 import MetalKit
 class EIScene {
-    
     var renderer:EIRendererEngine!
-    
-    init(view:EIView, renderer:EIRendererEngine) {
-        self.renderer = renderer
-        view.delegate = renderer
-    }
 }

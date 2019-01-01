@@ -12,10 +12,12 @@ import GLKit
 class HelloViewController: EIViewController {
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         let eiview = view as! EIView
-        scene = EIScene_Hello(view: eiview, renderer:EIRendererEngine(view: eiview, device: eiview.device!))
+        scene.configure(view: eiview, renderer:EIRendererEngine(view: eiview, device: eiview.device!))
+        
     }
 
 }
