@@ -1,5 +1,5 @@
 //
-//  EIScene+Configuration.swift
+//  EIScene+Configuration_Hello.swift
 //  Hello
 //
 //  Created by Douglass Turner on 1/1/19.
@@ -7,14 +7,14 @@
 //
 import GLKit
 import MetalKit
-extension EIScene : EISceneConfigurationProtocol {
+extension EIScene {
     
     func configure(view: EIView, renderer:EIRendererEngine) {
         
         self.renderer = renderer
         view.delegate = renderer
 
-        renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+        renderer.camera = EICamera(location:GLKVector3Make(0, 0, 1000), target:GLKVector3Make(0, 0, 0), approximateUp:GLKVector3Make(0, 1, 0))
         
         let shader = EIShader(device:view.device!, vertex:"hello_texture_vertex", fragment:"hello_texture_fragment", textureNames:["kids_grid_3x3"])
         

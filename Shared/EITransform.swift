@@ -53,8 +53,10 @@ struct EITransform {
 
         //  M
         transform.modelMatrix = transformer()
+        
         //  V
         transform.viewMatrix = camera.viewTransform
+        
         //  V * M
         transform.modelViewMatrix = transform.viewMatrix * transform.modelMatrix
         
