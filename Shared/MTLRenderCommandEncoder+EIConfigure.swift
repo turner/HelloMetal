@@ -14,9 +14,13 @@ extension MTLRenderCommandEncoder {
         
         self.setRenderPipelineState(renderPipelineState)
         
+        // vertices at buffer 0. In metal vertex shader see: [[buffer(0)]]
         self.setVertexBuffer(model.getVertexMetalBuffer(), offset: 0, index: 0)
+        
+        // transforms at buffer 1. In metal vertex shader see: [[buffer(1)]]
         self.setVertexBuffer(model.getMetallicTransformMetalBuffer(), offset: 0, index: 1)
         
+        // assign texture indices. So: [[texture(0)]], [[texture(1)]], etc.
         for i in 0..<textures.count {
             let texture = textures[ i ]
             self.setFragmentTexture(texture, index: i)
