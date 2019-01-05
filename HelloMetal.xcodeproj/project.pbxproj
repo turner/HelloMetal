@@ -242,6 +242,7 @@
 		4FF465C121A9BAFD00CA57F4 /* RenderPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */; };
 		4FF5B28A21E108C00087E6AC /* EIScene+Configuration_ModelIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5B28921E108C00087E6AC /* EIScene+Configuration_ModelIO.swift */; };
 		4FF5B28C21E10A380087E6AC /* EIScene+Configuration_Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5B28B21E10A380087E6AC /* EIScene+Configuration_Light.swift */; };
+		4FF5B28E21E10BE90087E6AC /* EIScene+Configuration_SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5B28D21E10BE90087E6AC /* EIScene+Configuration_SceneKit.swift */; };
 		4FFA63F81DC377DC002F8E34 /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
 /* End PBXBuildFile section */
 
@@ -349,6 +350,7 @@
 		4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderPassViewController.swift; sourceTree = "<group>"; };
 		4FF5B28921E108C00087E6AC /* EIScene+Configuration_ModelIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIScene+Configuration_ModelIO.swift"; sourceTree = "<group>"; };
 		4FF5B28B21E10A380087E6AC /* EIScene+Configuration_Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIScene+Configuration_Light.swift"; sourceTree = "<group>"; };
+		4FF5B28D21E10BE90087E6AC /* EIScene+Configuration_SceneKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIScene+Configuration_SceneKit.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,6 +492,7 @@
 				4F4E3E271DD6177B005E40AC /* Main.storyboard */,
 				4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */,
 				4F4E3E2F1DD6177B005E40AC /* Info.plist */,
+				4FF5B28D21E10BE90087E6AC /* EIScene+Configuration_SceneKit.swift */,
 			);
 			path = HelloSceneKit;
 			sourceTree = "<group>";
@@ -930,6 +933,7 @@
 				4F4E3E451DD618C2005E40AC /* EITransform.swift in Sources */,
 				4F03D71021C7DCBA0034BA43 /* EIMesh+EIMetalProtocol.swift in Sources */,
 				4F03D70221C7DCBA0034BA43 /* EIShader.swift in Sources */,
+				4FF5B28E21E10BE90087E6AC /* EIScene+Configuration_SceneKit.swift in Sources */,
 				4F03D70921C7DCBA0034BA43 /* MTLSamplerDescriptor+MipMap.swift in Sources */,
 				4F39BD9121CAA03E00C792DD /* MTKTextureLoader+UIImage.swift in Sources */,
 				4F03D6FB21C7DCBA0034BA43 /* EIQuad+EIMetalProtocol.swift in Sources */,
