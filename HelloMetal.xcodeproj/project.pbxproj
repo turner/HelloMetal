@@ -241,6 +241,7 @@
 		4FEE5E2E1DEEE03B00B47AC2 /* EITransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F911DBA599900B80FE4 /* EITransform.swift */; };
 		4FF465C121A9BAFD00CA57F4 /* RenderPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */; };
 		4FF5B28A21E108C00087E6AC /* EIScene+Configuration_ModelIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5B28921E108C00087E6AC /* EIScene+Configuration_ModelIO.swift */; };
+		4FF5B28C21E10A380087E6AC /* EIScene+Configuration_Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5B28B21E10A380087E6AC /* EIScene+Configuration_Light.swift */; };
 		4FFA63F81DC377DC002F8E34 /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
 /* End PBXBuildFile section */
 
@@ -347,6 +348,7 @@
 		4FEE5E1E1DEEDF5500B47AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FF465C021A9BAFD00CA57F4 /* RenderPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderPassViewController.swift; sourceTree = "<group>"; };
 		4FF5B28921E108C00087E6AC /* EIScene+Configuration_ModelIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIScene+Configuration_ModelIO.swift"; sourceTree = "<group>"; };
+		4FF5B28B21E10A380087E6AC /* EIScene+Configuration_Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIScene+Configuration_Light.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,6 +605,7 @@
 		4FEE5E111DEEDF5500B47AC2 /* HelloLight */ = {
 			isa = PBXGroup;
 			children = (
+				4FF5B28B21E10A380087E6AC /* EIScene+Configuration_Light.swift */,
 				4F79540721B46B4100E4A25E /* LightViewController.swift */,
 				4FEE5E161DEEDF5500B47AC2 /* Main.storyboard */,
 				4FEE5E191DEEDF5500B47AC2 /* Light.xcassets */,
@@ -1128,6 +1131,7 @@
 				4F03D6E521C7DCBA0034BA43 /* MTLRenderCommandEncoder+EIConfigure.swift in Sources */,
 				4F03D71621C7DCBA0034BA43 /* EIModel.swift in Sources */,
 				4F2528AE21D7DF8A004E023E /* EIScene.swift in Sources */,
+				4FF5B28C21E10A380087E6AC /* EIScene+Configuration_Light.swift in Sources */,
 				4F03D6D721C7DCBA0034BA43 /* MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift in Sources */,
 				4F03D6DE21C7DCBA0034BA43 /* EIMetalProtocol.swift in Sources */,
 				4F67346E1DEFB5B200443FEA /* model_io.metal in Sources */,

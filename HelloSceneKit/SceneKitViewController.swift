@@ -11,6 +11,15 @@ import GLKit
 
 class SceneKitViewController: EIViewController {
 
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        let eiview = view as! EIView
+        scene.configure(view: eiview, renderer:EIRendererEngine(view: eiview, device: eiview.device!))
+        
+    }
+    
     override func eiViewDidLoad(view:EIView) {
 
         renderer = EIRendererEngine(view: view, device: view.device!)
