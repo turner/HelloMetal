@@ -243,6 +243,7 @@
 		4FF5B28A21E108C00087E6AC /* EIScene+Configuration_ModelIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5B28921E108C00087E6AC /* EIScene+Configuration_ModelIO.swift */; };
 		4FF5B28C21E10A380087E6AC /* EIScene+Configuration_Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5B28B21E10A380087E6AC /* EIScene+Configuration_Light.swift */; };
 		4FF5B28E21E10BE90087E6AC /* EIScene+Configuration_SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5B28D21E10BE90087E6AC /* EIScene+Configuration_SceneKit.swift */; };
+		4FF5B29021E10CB60087E6AC /* EIScene+Configuration_OpenEXR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5B28F21E10CB60087E6AC /* EIScene+Configuration_OpenEXR.swift */; };
 		4FFA63F81DC377DC002F8E34 /* EIQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F1F901DBA599900B80FE4 /* EIQuad.swift */; };
 /* End PBXBuildFile section */
 
@@ -351,6 +352,7 @@
 		4FF5B28921E108C00087E6AC /* EIScene+Configuration_ModelIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIScene+Configuration_ModelIO.swift"; sourceTree = "<group>"; };
 		4FF5B28B21E10A380087E6AC /* EIScene+Configuration_Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIScene+Configuration_Light.swift"; sourceTree = "<group>"; };
 		4FF5B28D21E10BE90087E6AC /* EIScene+Configuration_SceneKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIScene+Configuration_SceneKit.swift"; sourceTree = "<group>"; };
+		4FF5B28F21E10CB60087E6AC /* EIScene+Configuration_OpenEXR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIScene+Configuration_OpenEXR.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,11 +490,11 @@
 		4F4E3E221DD6177B005E40AC /* HelloSceneKit */ = {
 			isa = PBXGroup;
 			children = (
+				4FF5B28D21E10BE90087E6AC /* EIScene+Configuration_SceneKit.swift */,
 				4F683E1621B559C4009AA128 /* SceneKitViewController.swift */,
 				4F4E3E271DD6177B005E40AC /* Main.storyboard */,
 				4F4E3E2A1DD6177B005E40AC /* SceneKit.xcassets */,
 				4F4E3E2F1DD6177B005E40AC /* Info.plist */,
-				4FF5B28D21E10BE90087E6AC /* EIScene+Configuration_SceneKit.swift */,
 			);
 			path = HelloSceneKit;
 			sourceTree = "<group>";
@@ -580,6 +582,7 @@
 		4FDFA7B71E0BF7CE005BEDF4 /* HelloOpenEXR */ = {
 			isa = PBXGroup;
 			children = (
+				4FF5B28F21E10CB60087E6AC /* EIScene+Configuration_OpenEXR.swift */,
 				4F09CAFD21B7FD32002D742F /* OpenEXRViewController.swift */,
 				4FDA0A8321CB96BF00E9ECBD /* MTKTextureLoader+OpenEXR.swift */,
 				4FDFA7EB1E0BFB60005BEDF4 /* pokeOpenEXR.cpp */,
@@ -1081,6 +1084,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F39BD9221CAA03E00C792DD /* MTKTextureLoader+UIImage.swift in Sources */,
+				4FF5B29021E10CB60087E6AC /* EIScene+Configuration_OpenEXR.swift in Sources */,
 				4FBB552721C7F01400FE271C /* EIQuad.swift in Sources */,
 				4F2528B021D7DF8A004E023E /* EIScene.swift in Sources */,
 				4F03D71121C7DCBA0034BA43 /* EIMesh+EIMetalProtocol.swift in Sources */,
