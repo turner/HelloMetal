@@ -8,17 +8,16 @@
 
 import UIKit
 
-class EIViewController: UIViewController {
+class EIViewController : UIViewController {
     
-    var renderer:EIRendererEngine!
+    var scene = EIScene()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        eiViewDidLoad(view: view as! EIView)
+        
+        let eiview = view as! EIView
+        scene.configure(view: eiview, renderer:EIRendererEngine(view: eiview, device: eiview.device!))
+        
     }
 
-    func eiViewDidLoad(view: EIView) {
-        fatalError("Error: eiViewDidLoad(...). Base method call.")
-    }
 }

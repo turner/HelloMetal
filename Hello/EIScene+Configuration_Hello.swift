@@ -1,22 +1,20 @@
 //
-//  HelloViewController.swift
+//  EIScene+Configuration_Hello.swift
 //  Hello
 //
-//  Created by Douglass Turner on 11/22/18.
-//  Copyright © 2018 Elastic Image Software. All rights reserved.
+//  Created by Douglass Turner on 1/1/19.
+//  Copyright © 2019 Elastic Image Software. All rights reserved.
 //
-
-import UIKit
 import GLKit
-
-class HelloViewController: EIViewController {
+import MetalKit
+extension EIScene {
     
-    override func eiViewDidLoad(view: EIView) {
+    func configure(view: EIView, renderer:EIRendererEngine) {
         
-        renderer = EIRendererEngine(view: view, device: view.device!)
+        self.renderer = renderer
         view.delegate = renderer
-        
-        renderer.camera = EICamera(location:GLKVector3(v:(0, 0, 1000)), target:GLKVector3(v:(0, 0, 0)), approximateUp:GLKVector3(v:(0, 1, 0)))
+
+        renderer.camera = EICamera(location:GLKVector3Make(0, 0, 1000), target:GLKVector3Make(0, 0, 0), approximateUp:GLKVector3Make(0, 1, 0))
         
         let shader = EIShader(device:view.device!, vertex:"hello_texture_vertex", fragment:"hello_texture_fragment", textureNames:["kids_grid_3x3"])
         
@@ -25,6 +23,6 @@ class HelloViewController: EIViewController {
         })
         
         renderer.models.append(model)
+        
     }
-
 }
