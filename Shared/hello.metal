@@ -1,9 +1,10 @@
 
 #include <metal_stdlib>
 using namespace metal;
+#import "ei_buffer_indices.h"
 #import "metal_common.h"
 
-vertex InterpolatedVertex show_st_vertex(constant _Vertex_ *vertices [[buffer(0)]], constant _Transforms_ &transforms [[buffer(1)]], uint vertexIndex [[vertex_id]]) {
+vertex InterpolatedVertex show_st_vertex(constant _Vertex_ *vertices [[buffer(_attributes_)]], constant _Transforms_ &transforms [[buffer(_transform_)]], uint vertexIndex [[vertex_id]]) {
     InterpolatedVertex out;
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyz, 1.0);
     out.rgba = vertices[vertexIndex].rgba;
@@ -25,7 +26,7 @@ fragment float4 show_st_fragment(InterpolatedVertex vert [[stage_in]]) {
     //    return float4(.25, .25, .25, 1.0);
 }
 
-vertex InterpolatedVertex helloVertexShader(constant _Vertex_ *vertices [[buffer(0)]], constant _Transforms_ &transforms [[buffer(1)]], uint vertexIndex [[vertex_id]]) {
+vertex InterpolatedVertex helloVertexShader(constant _Vertex_ *vertices [[buffer(_attributes_)]], constant _Transforms_ &transforms [[buffer(_transform_)]], uint vertexIndex [[vertex_id]]) {
     InterpolatedVertex out;
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyz, 1.0);
     out.rgba = vertices[vertexIndex].rgba;
@@ -36,7 +37,7 @@ fragment float4 helloFragmentShader(InterpolatedVertex vert [[stage_in]]) {
     return vert.rgba;
 }
 
-vertex InterpolatedVertex hello_texture_vertex(constant _Vertex_ *vertices [[ buffer(0) ]], constant _Transforms_ &transforms [[ buffer(1) ]], uint vertexIndex [[ vertex_id ]]) {
+vertex InterpolatedVertex hello_texture_vertex(constant _Vertex_ *vertices [[ buffer(_attributes_) ]], constant _Transforms_ &transforms [[ buffer(_transform_) ]], uint vertexIndex [[ vertex_id ]]) {
     InterpolatedVertex out;
     
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyz, 1.0);

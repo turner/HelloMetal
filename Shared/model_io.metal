@@ -1,9 +1,10 @@
 
 #include <metal_stdlib>
 using namespace metal;
+#import "ei_buffer_indices.h"
 #import "metal_model_io_common.h"
 
-vertex xyzw_n_st_rgba model_io_show_vertex(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba model_io_show_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     xyzw_n_st_rgba out;
     
@@ -41,7 +42,7 @@ fragment float4 model_io_show_fragment(xyzw_n_st_rgba in [[ stage_in ]]) {
     
 }
 
-vertex xyzw_n_st_rgba model_io_texture_vertex(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba model_io_texture_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     xyzw_n_st_rgba out;
     
@@ -66,7 +67,7 @@ fragment float4 model_io_texture_fragment(xyzw_n_st_rgba in [[stage_in]], textur
     return rgba;
 }
 
-vertex xyzw_n_st_rgba model_io_texture_lit_vertex(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba model_io_texture_lit_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     
     // light at camera location. Flashlight style.
@@ -110,7 +111,7 @@ fragment float4 model_io_texture_lit_fragment(xyzw_n_st_rgba in [[stage_in]], te
     return rgba;
 }
 
-vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]], constant TransformPackage &transformPackage [[ buffer(1) ]]) {
+vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     xyzw_n_st_rgba out;
     

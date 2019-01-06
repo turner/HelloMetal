@@ -16,28 +16,33 @@ extension MTLVertexDescriptor {
         let vertexDescriptor = MTLVertexDescriptor()
         
         // xyz
-        vertexDescriptor.attributes[0].format = .float3
-        vertexDescriptor.attributes[0].offset = 0
-        vertexDescriptor.attributes[0].bufferIndex = 0
+        vertexDescriptor.attributes[VertexDescriptorAttributesIndex._xyz_.rawValue] =
+            MTLVertexAttributeDescriptor(.float3, 0, VertexBufferIndex._attributes_.rawValue)
         
         // n
-        vertexDescriptor.attributes[1].format = .float3
-        vertexDescriptor.attributes[1].offset = 12
-        vertexDescriptor.attributes[1].bufferIndex = 0
+        vertexDescriptor.attributes[VertexDescriptorAttributesIndex._n_.rawValue] =
+            MTLVertexAttributeDescriptor(.float3, 12, VertexBufferIndex._attributes_.rawValue)
         
         // st
-        vertexDescriptor.attributes[2].format = .half2
-        vertexDescriptor.attributes[2].offset = 24
-        vertexDescriptor.attributes[2].bufferIndex = 0
+        vertexDescriptor.attributes[VertexDescriptorAttributesIndex._st_.rawValue] =
+            MTLVertexAttributeDescriptor(.half2, 24, VertexBufferIndex._attributes_.rawValue)
         
         // Single interleaved buffer.
-        vertexDescriptor.layouts[0].stride = 28
-        vertexDescriptor.layouts[0].stepRate = 1
-        vertexDescriptor.layouts[0].stepFunction = .perVertex
+        vertexDescriptor.layouts[VertexBufferIndex._attributes_.rawValue].stride = 28
+        vertexDescriptor.layouts[VertexBufferIndex._attributes_.rawValue].stepRate = 1
+        vertexDescriptor.layouts[VertexBufferIndex._attributes_.rawValue].stepFunction = .perVertex
         
         return vertexDescriptor
         
     }
+
 }
 
-
+extension MTLVertexAttributeDescriptor {
+    convenience init(_ format:MTLVertexFormat, _ offset: Int, _ bufferIndex: Int) {
+        self.init()
+        self.format = format
+        self.offset = offset
+        self.bufferIndex = bufferIndex
+    }
+}

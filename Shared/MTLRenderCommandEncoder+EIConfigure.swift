@@ -14,11 +14,11 @@ extension MTLRenderCommandEncoder {
         
         self.setRenderPipelineState(renderPipelineState)
         
-        // vertices at buffer 0. In metal vertex shader see: [[buffer(0)]]
-        self.setVertexBuffer(model.getVertexMetalBuffer(), offset: 0, index: 0)
+        // In metal vertex shader see: [[buffer(_attributes_)]]
+        self.setVertexBuffer(model.getVertexMetalBuffer(), offset: 0, index: VertexBufferIndex._attributes_.rawValue)
         
-        // transforms at buffer 1. In metal vertex shader see: [[buffer(1)]]
-        self.setVertexBuffer(model.getMetallicTransformMetalBuffer(), offset: 0, index: 1)
+        // In metal vertex shader see: [[buffer(_transform_)]]
+        self.setVertexBuffer(model.getMetallicTransformMetalBuffer(), offset: 0, index: VertexBufferIndex._transform_.rawValue)
         
         // assign texture indices. So: [[texture(0)]], [[texture(1)]], etc.
         for i in 0..<textures.count {
