@@ -46,10 +46,7 @@ struct EIQuad {
 
     init(device: MTLDevice) {
         
-        let vertexSize = MemoryLayout<Vertex>.size
-        let vertexCount = vertices.count
-        
-        guard let vmb = device.makeBuffer(bytes: vertices, length: vertexSize * vertexCount, options: []) else {
+        guard let vmb = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.size * vertices.count, options: []) else {
             fatalError("Error: Can not create vertex buffer for EIQuad")
         }
 

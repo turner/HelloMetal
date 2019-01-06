@@ -1,10 +1,11 @@
 
 #include <metal_stdlib>
 using namespace metal;
+#import "ei_buffer_indices.h"
 #import "metal_common.h"
 
-vertex InterpolatedVertex renderpass_vertex(constant _Vertex_ *vertices [[buffer(0)]],
-                                                constant _Transforms_ &transforms [[buffer(1)]],
+vertex InterpolatedVertex renderpass_vertex(constant _Vertex_ *vertices [[buffer(_attributes_)]],
+                                                constant _Transforms_ &transforms [[buffer(_transform_)]],
                                                 uint vertexIndex [[vertex_id]]) {
     InterpolatedVertex out;
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyz, 1.0);
