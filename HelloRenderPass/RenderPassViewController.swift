@@ -17,7 +17,7 @@ class RenderPassViewController: UIViewController {
         super.viewDidLoad()
         
         let eiview = view as! EIView
-        scene.configure(view: eiview, renderer:EIRendererEngine(view: eiview, device: eiview.device!))
+        scene.configure(view: eiview, renderer:EIRenderPassEngine(view: eiview, device: eiview.device!))
         
     }
     
