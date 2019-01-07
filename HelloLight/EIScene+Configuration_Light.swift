@@ -21,9 +21,9 @@ extension EIScene {
         
         // hero
         
-        // hi-res head
-        let   heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/high-res-head-no-groups.scn", nodeName:"highResHeadIdentity")
-        
+        // Lee Perry Smith head model
+        let   heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/lee_perry_smith.scn", nodeName:"LeePerrySmith")
+
         // teapot
         //        let heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/teapot.scn", nodeName:"teapotIdentity")
         
@@ -31,12 +31,9 @@ extension EIScene {
         
         let hero = EIModel(view:view, model:heroMesh, shader:shader, transformer:{
             
-            // default
-            //            return view.arcBall.rotationMatrix
-            
-            // scale for head (hi-res)
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(750, 750, 750) * GLKMatrix4MakeTranslation(0.0, 0.075, 0.101)
-            
+            // scale for Lee Perry Smith head model
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(50, 50, 50) * GLKMatrix4MakeTranslation(0, 0, 0)
+
             // scale for teapot
             //            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(250, 250, 250)
         })
