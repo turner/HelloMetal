@@ -17,15 +17,6 @@ struct _Vertex_ {
     float2 st;
 };
 
-// See: EITransform.swift for match: struct Transform
-struct _Transforms_ {
-    float4x4 normalMatrix;
-    float4x4 modelMatrix;
-    float4x4 viewMatrix;
-    float4x4 modelViewMatrix;
-    float4x4 modelViewProjectionMatrix;
-};
-
 
 struct InterpolatedVertex {
     float4 xyzw [[position]]; // required

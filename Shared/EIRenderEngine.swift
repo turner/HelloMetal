@@ -38,7 +38,7 @@ class EIRendererEngine: NSObject, MTKViewDelegate {
         
         commandQueue = cq
         
-        guard let ss = MTLSamplerDescriptor.EI_CreateMipMapSamplerState(device: device) else {
+        guard let ss = MTLSamplerDescriptor.EIMake(device: device) else {
             fatalError("Error: Can not create sampler state ")
         }
         

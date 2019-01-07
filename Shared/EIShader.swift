@@ -29,7 +29,7 @@ struct EIShader {
         self.vertex = vertex
         self.fragment = fragment
         for i in 0..<textureNames.count {
-            textures.append(MTKTextureLoader.newTexture_UIImage(device: device, name: textureNames[i]))
+            textures.append(MTKTextureLoader.EIMakeWithUIImage(device: device, name: textureNames[i]))
         }
 
     }

@@ -1,7 +1,7 @@
 
 #include <metal_stdlib>
 using namespace metal;
-#import "ei_buffer_indices.h"
+#import "ei_shader_share.h"
 #import "metal_model_io_common.h"
 
 vertex xyzw_n_st_rgba openEXR_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {

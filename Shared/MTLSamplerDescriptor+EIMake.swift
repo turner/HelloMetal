@@ -1,5 +1,5 @@
 //
-//  MTLSamplerDescriptor+MipMap.swift
+//  MTLSamplerDescriptor+EIMake.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 12/13/18.
@@ -10,7 +10,7 @@ import MetalKit
 
 extension MTLSamplerDescriptor {
     
-    class func EI_CreateMipMapSamplerState(device:MTLDevice) -> MTLSamplerState? {
+    class func EIMake(device:MTLDevice) -> MTLSamplerState? {
         
         let samplerDescriptor = MTLSamplerDescriptor()
         

@@ -9,7 +9,7 @@
 #ifndef metal_model_io_common_h
 #define metal_model_io_common_h
 
-// See: MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift for association wiht
+// See: MTLVertexDescriptor+EIMake.swift for association with
 // MTLVertexDescriptor
 struct xyz_n_st {
     float3 xyz [[ attribute(_xyz_) ]];
@@ -17,15 +17,7 @@ struct xyz_n_st {
     half2 st   [[ attribute(_st_) ]];
 };
 
-// See: EITransform.swift for match: struct Transform
-struct _Transforms_ {
-    float4x4 normalMatrix;
-    float4x4 modelMatrix;
-    float4x4 viewMatrix;
-    float4x4 modelViewMatrix;
-    float4x4 modelViewProjectionMatrix;
-};
-
+// returned struct from vertex shader
 struct xyzw_n_st_rgba {
     float4 xyzw [[ position ]]; // required
     float3 n;

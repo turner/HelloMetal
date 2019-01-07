@@ -1,7 +1,7 @@
 
 #include <metal_stdlib>
 using namespace metal;
-#import "ei_buffer_indices.h"
+#import "ei_shader_share.h"
 #import "metal_common.h"
 
 vertex InterpolatedVertex renderpass_vertex(constant _Vertex_ *vertices [[buffer(_attributes_)]],
