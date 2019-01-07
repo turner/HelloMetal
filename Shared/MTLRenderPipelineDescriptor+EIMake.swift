@@ -1,5 +1,5 @@
 //
-//  MTLRenderPipelineDescriptor+EIInit.swift
+//  MTLRenderPipelineDescriptor+EIMake.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 12/13/18.
@@ -10,7 +10,7 @@ import MetalKit
 
 extension MTLRenderPipelineDescriptor {
     
-    class func EIInit(library:MTLLibrary, vertexShaderName:String, fragmentShaderName:String, sampleCount:Int, colorPixelFormat:MTLPixelFormat, vertexDescriptor:MTLVertexDescriptor?) -> MTLRenderPipelineDescriptor {
+    class func EIMake(library:MTLLibrary, vertexShaderName:String, fragmentShaderName:String, sampleCount:Int, colorPixelFormat:MTLPixelFormat, vertexDescriptor:MTLVertexDescriptor?) -> MTLRenderPipelineDescriptor {
         
         let desc:MTLRenderPipelineDescriptor = MTLRenderPipelineDescriptor()
         

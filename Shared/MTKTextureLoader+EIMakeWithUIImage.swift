@@ -1,5 +1,5 @@
 //
-//  MTKTextureLoader+UIImage.swift
+//  MTKTextureLoader+EIMakeWithUIImage.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 12/19/18.
@@ -9,7 +9,7 @@
 import MetalKit
 extension MTKTextureLoader {
 
-    static func newTexture_UIImage(device: MTLDevice, name:String) -> MTLTexture {
+    static func EIMakeWithUIImage(device: MTLDevice, name:String) -> MTLTexture {
         
         guard let image = UIImage(named:name) else {
             fatalError("Error: Can not load UIImage named \(name)")

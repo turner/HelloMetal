@@ -9,14 +9,6 @@
 import Metal
 import GLKit
 
-struct Transform {
-    var normalMatrix = GLKMatrix4Identity
-    var modelMatrix = GLKMatrix4Identity
-    var viewMatrix = GLKMatrix4Identity
-    var modelViewMatrix = GLKMatrix4Identity
-    var modelViewProjectionMatrix = GLKMatrix4Identity
-}
-
 struct EITransform {
     var transform = Transform()
     var metalBuffer: MTLBuffer

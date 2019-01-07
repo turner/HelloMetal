@@ -18,7 +18,7 @@ struct EIModel {
     init(view:EIView, model:EIMetalProtocol, shader:EIShader, transformer:@escaping () -> GLKMatrix4) {
         
         let pipelineDescriptor =
-            MTLRenderPipelineDescriptor.EIInit(library:view.defaultLibrary, vertexShaderName:shader.vertex, fragmentShaderName:shader.fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:model.getVertexDescriptor())
+            MTLRenderPipelineDescriptor.EIMake(library:view.defaultLibrary, vertexShaderName:shader.vertex, fragmentShaderName:shader.fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:model.getVertexDescriptor())
         do {
             pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch {
@@ -33,7 +33,7 @@ struct EIModel {
     init(view:EIView, model:EIMetalProtocol, shader:EIShader) {
         
         let pipelineDescriptor =
-            MTLRenderPipelineDescriptor.EIInit(library:view.defaultLibrary, vertexShaderName:shader.vertex, fragmentShaderName:shader.fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:model.getVertexDescriptor())
+            MTLRenderPipelineDescriptor.EIMake(library:view.defaultLibrary, vertexShaderName:shader.vertex, fragmentShaderName:shader.fragment, sampleCount:view.sampleCount, colorPixelFormat:view.colorPixelFormat, vertexDescriptor:model.getVertexDescriptor())
         do {
             pipelineState = try view.device!.makeRenderPipelineState(descriptor:pipelineDescriptor)
         } catch {

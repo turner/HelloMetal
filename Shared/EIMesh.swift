@@ -41,7 +41,7 @@ class EIMesh {
         transform = EITransform(device:device)
 
         // Metal vertex descriptor
-        metalVertexDescriptor = .some( MTLVertexDescriptor.xyz_n_st_vertexDescriptor() )
+        metalVertexDescriptor = .some( MTLVertexDescriptor.EIMake() )
 
         // Model I/O vertex descriptor
         let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor!)
@@ -50,7 +50,7 @@ class EIMesh {
         (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
 
-        metalVertexDescriptor = .some( MTLVertexDescriptor.xyz_n_st_vertexDescriptor() )
+        metalVertexDescriptor = .some( MTLVertexDescriptor.EIMake() )
         
         modelIOMeshMetallic = mdlMeshProvider()
         modelIOMeshMetallic.vertexDescriptor = modelIOVertexDescriptor
@@ -80,7 +80,7 @@ class EIMesh {
         transform = EITransform(device:device)
 
         // Metal vertex descriptor
-        metalVertexDescriptor = .some( MTLVertexDescriptor.xyz_n_st_vertexDescriptor() )
+        metalVertexDescriptor = .some( MTLVertexDescriptor.EIMake() )
 
         // Model I/O vertex descriptor
         let modelIOVertexDescriptor = MTKModelIOVertexDescriptorFromMetal(metalVertexDescriptor!)
@@ -88,7 +88,7 @@ class EIMesh {
         (modelIOVertexDescriptor.attributes[ 1 ] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
         (modelIOVertexDescriptor.attributes[ 2 ] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
         
-        metalVertexDescriptor = .some( MTLVertexDescriptor.xyz_n_st_vertexDescriptor() )
+        metalVertexDescriptor = .some( MTLVertexDescriptor.EIMake() )
 
         guard let scene = SCNScene(named:sceneName) else {
             fatalError("Error: Can not create SCNScene with \(sceneName)")

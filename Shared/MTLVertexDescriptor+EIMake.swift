@@ -1,5 +1,5 @@
 //
-//  MTLVertexDescriptor+xyz_n_st_vertexDescriptor.swift
+//  MTLVertexDescriptor+EIMake.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 12/13/18.
@@ -10,7 +10,7 @@ import MetalKit
 
 extension MTLVertexDescriptor {
     
-    class func xyz_n_st_vertexDescriptor() -> MTLVertexDescriptor {
+    class func EIMake() -> MTLVertexDescriptor {
         
         // Metal vertex descriptor
         let vertexDescriptor = MTLVertexDescriptor()
