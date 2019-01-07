@@ -1,15 +1,15 @@
 //
-//  ei_shader_share.h
+//  ei_common.h
 //  HelloMetal
 //
 //  Created by Douglass Turner on 1/6/19.
 //  Copyright © 2019 Elastic Image Software. All rights reserved.
 //
 
-#ifndef ei_shader_share_h
-#define ei_shader_share_h
+#ifndef ei_common_h
+#define ei_common_h
 
-// See: EIShaderShare.swift for match: struct Transform
+// See: EICommon.swift for match: struct Transform
 struct _Transforms_ {
     float4x4 normalMatrix;
     float4x4 modelMatrix;
@@ -18,13 +18,13 @@ struct _Transforms_ {
     float4x4 modelViewProjectionMatrix;
 };
 
-// See EIShaderShare.swift for matching: enum VertexBufferIndex
+// See EICommon.swift for matching: enum VertexBufferIndex
 enum VertexBufferIndex {
     _attributes_ = 0,
     _transform_ = 1
 };
 
-// See EIShaderShare.swift for matching: enum VertexDescriptorAttributesIndex
+// See EICommon.swift for matching: enum VertexDescriptorAttributesIndex
 enum VertexDescriptorAttributesIndex {
     _xyz_ = 0,
     _n_ = 1,
@@ -32,4 +32,4 @@ enum VertexDescriptorAttributesIndex {
     _tangent_ = 3
 };
 
-#endif /* ei_shader_share_h */
+#endif /* ei_common_h */

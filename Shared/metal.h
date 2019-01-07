@@ -1,13 +1,13 @@
 //
-//  metal_common.h
+//  metal.h
 //  HelloMetal
 //
 //  Created by Douglass Turner on 12/19/18.
 //  Copyright © 2018 Elastic Image Software. All rights reserved.
 //
 
-#ifndef metal_common_h
-#define metal_common_h
+#ifndef metal_h
+#define metal_h
 
 // See: EIMath.swift for match: struct Vertex
 struct _Vertex_ {
@@ -24,4 +24,4 @@ struct InterpolatedVertex {
     float2 st;
 };
 
-#endif /* metal_common_h */
+#endif /* metal_h */

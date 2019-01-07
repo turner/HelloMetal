@@ -1,5 +1,5 @@
 //
-//  EIShaderShare.swift
+//  EICommon.swift
 //  HelloMetal
 //
 //  Created by Douglass Turner on 1/6/19.
@@ -8,7 +8,7 @@
 
 import GLKit
 
-// See ei_shader_share.h for matching struct Transform
+// See ei_common.h for matching struct Transform
 struct Transform {
     var normalMatrix = GLKMatrix4Identity
     var modelMatrix = GLKMatrix4Identity
@@ -17,13 +17,13 @@ struct Transform {
     var modelViewProjectionMatrix = GLKMatrix4Identity
 }
 
-// See ei_shader_share.h for matching enum VertexBufferIndex
+// See ei_common.h for matching enum VertexBufferIndex
 enum VertexBufferIndex: Int {
     case _attributes_ = 0
     case _transform_ = 1
 }
 
-// See ei_shader_share.h for matching enum VertexDescriptorAttributesIndex
+// See ei_common.h for matching enum VertexDescriptorAttributesIndex
 enum VertexDescriptorAttributesIndex: Int {
     case _xyz_ = 0
     case _n_ = 1

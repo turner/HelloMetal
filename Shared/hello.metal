@@ -1,8 +1,8 @@
 
 #include <metal_stdlib>
 using namespace metal;
-#import "ei_shader_share.h"
-#import "metal_common.h"
+#import "ei_common.h"
+#import "metal.h"
 
 vertex InterpolatedVertex show_st_vertex(constant _Vertex_ *vertices [[buffer(_attributes_)]], constant _Transforms_ &transforms [[buffer(_transform_)]], uint vertexIndex [[vertex_id]]) {
     InterpolatedVertex out;
