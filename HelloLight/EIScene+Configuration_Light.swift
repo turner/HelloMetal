@@ -27,7 +27,7 @@ extension EIScene {
         // teapot
         //        let heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/teapot.scn", nodeName:"teapotIdentity")
         
-        shader = EIShader(device:view.device!, vertex:"model_io_texture_lit_vertex", fragment:"model_io_texture_lit_fragment", textureNames:["swirl"])
+        shader = EIShader(device:view.device!, vertex:"model_io_texture_lit_vertex", fragment:"model_io_texture_lit_fragment", textureNames:["lee_perry_smith_albedo"])
         
         let hero = EIModel(view:view, model:heroMesh, shader:shader, transformer:{
             
