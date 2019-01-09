@@ -19,10 +19,12 @@ struct xyz_n_st {
 
 // returned struct from vertex shader
 struct xyzw_n_st_rgba {
+
+    // The [[position]] attribute indicates 'xyzw' is in clip space
     float4 xyzw [[ position ]]; // required
     float3 n;
-    float4 rgba;
     half2  st;
+    float4 rgba;
 };
 
 #endif /* metal_model_io_h */

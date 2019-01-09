@@ -19,7 +19,9 @@ struct _Vertex_ {
 
 
 struct InterpolatedVertex {
-    float4 xyzw [[position]]; // required
+
+    // The [[position]] attribute indicates 'xyzw' is in clip space
+    float4 xyzw [[position]];
     float4 rgba;
     float2 st;
 };
