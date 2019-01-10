@@ -12,6 +12,7 @@ import GLKit
 struct EIQuad {
 
     var vertexMetalBuffer: MTLBuffer
+    
     var vertexIndexMetalBuffer: MTLBuffer
 
     var indexCount: Int {

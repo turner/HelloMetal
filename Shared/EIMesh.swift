@@ -19,16 +19,20 @@ import GLKit
 class EIMesh {
 
     var vertexMetalBuffer:MTLBuffer
-    var vertexIndexMetalBuffer:MTLBuffer
-    var indexCount:Int
-    var primitiveType:MTLPrimitiveType
-    var indexType:MTLIndexType
     
+    var vertexIndexMetalBuffer:MTLBuffer
+    
+    var indexCount:Int
+    
+    var primitiveType:MTLPrimitiveType
+    
+    var indexType:MTLIndexType
+
+    var metalVertexDescriptor:MTLVertexDescriptor?
+
     var modelIOMeshMetallic: MDLMesh
     var modelIOMesh:MDLMesh
     var metalMesh: MTKMesh
-
-    var metalVertexDescriptor:MTLVertexDescriptor?
 
     private init(device:MTLDevice, mdlMeshProvider:() -> MDLMesh) {
 
@@ -96,8 +100,8 @@ class EIMesh {
         modelIOMesh.vertexDescriptor = modelIOVertexDescriptor
         
         
-        // To create that cool low-poly look
-        modelIOMesh.addNormals(withAttributeNamed:MDLVertexAttributeNormal, creaseThreshold:1.0)
+        // To create a faceted look.
+//        modelIOMesh.addNormals(withAttributeNamed:MDLVertexAttributeNormal, creaseThreshold:1.0)
 
         let mdlSubmesh:MDLSubmesh = modelIOMesh.submeshes?[ 0 ] as! MDLSubmesh
 

@@ -452,12 +452,12 @@
 			isa = PBXGroup;
 			children = (
 				4F03D6D121C7DCB90034BA43 /* EIModel.swift */,
-				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
-				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
-				4F2F1F911DBA599900B80FE4 /* EITransform.swift */,
 				4F03D6C921C7DCB90034BA43 /* EIMetalProtocol.swift */,
+				4F2F1F901DBA599900B80FE4 /* EIQuad.swift */,
 				4F03D6CD21C7DCB90034BA43 /* EIQuad+EIMetalProtocol.swift */,
+				4F0C7E591DBE8431005F42C3 /* EIMesh.swift */,
 				4F03D6D021C7DCB90034BA43 /* EIMesh+EIMetalProtocol.swift */,
+				4F2F1F911DBA599900B80FE4 /* EITransform.swift */,
 				4F695D4221D641D700ACB0A9 /* EIViewController.swift */,
 				4F2528A921D7DF8A004E023E /* EIScene.swift */,
 				4F1CA3AE1DC43067006B6213 /* EIView.swift */,
