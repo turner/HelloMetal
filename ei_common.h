@@ -9,7 +9,7 @@
 #ifndef ei_common_h
 #define ei_common_h
 
-// See: EICommon.swift for match: struct Transform
+// See: EITransform.swift for match: struct Transform
 struct _Transforms_ {
     float4x4 normalMatrix;
     float4x4 modelMatrix;

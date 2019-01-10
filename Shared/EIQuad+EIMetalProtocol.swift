@@ -14,10 +14,6 @@ extension EIQuad : EIMetalProtocol {
         return vertexMetalBuffer
     }
     
-    func getMetallicTransformMetalBuffer() -> MTLBuffer {
-        return transform.metalBuffer
-    }
-    
     func getPrimitiveType() -> MTLPrimitiveType {
         return primitiveType
     }
@@ -36,13 +32,6 @@ extension EIQuad : EIMetalProtocol {
     
     func getVertexDescriptor() -> MTLVertexDescriptor? {
         return metalVertexDescriptor
-    }
-    
-    public mutating func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4) {
-        transform.update(camera: camera, transformer: {
-            transformer()
-        })
-        
     }
 
 }

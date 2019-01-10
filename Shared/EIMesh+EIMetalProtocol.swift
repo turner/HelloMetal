@@ -9,13 +9,9 @@
 import Metal
 import GLKit
 extension EIMesh : EIMetalProtocol {
-    
+
     func getVertexMetalBuffer() -> MTLBuffer {
         return vertexMetalBuffer
-    }
-    
-    func getMetallicTransformMetalBuffer() -> MTLBuffer {
-        return transform.metalBuffer
     }
     
     func getPrimitiveType() -> MTLPrimitiveType {
@@ -36,13 +32,6 @@ extension EIMesh : EIMetalProtocol {
     
     func getVertexDescriptor() -> MTLVertexDescriptor? {
         return metalVertexDescriptor
-    }
-
-    public func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4) {
-        transform.update(camera: camera, transformer: {
-            transformer()
-        })
-        
     }
 
 }
