@@ -8,15 +8,6 @@
 
 import GLKit
 
-// See ei_common.h for matching struct Transform
-struct Transform {
-    var normalMatrix = GLKMatrix4Identity
-    var modelMatrix = GLKMatrix4Identity
-    var viewMatrix = GLKMatrix4Identity
-    var modelViewMatrix = GLKMatrix4Identity
-    var modelViewProjectionMatrix = GLKMatrix4Identity
-}
-
 // See ei_common.h for matching enum VertexBufferIndex
 enum VertexBufferIndex: Int {
     case _attributes_ = 0

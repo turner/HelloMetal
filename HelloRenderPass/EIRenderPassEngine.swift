@@ -67,7 +67,7 @@ class EIRenderPassEngine : EIRendererEngine {
 
         super.update(view: view, drawableSize: drawableSize)
 
-        finalPassModel.update(camera: camera, arcball: view.arcBall)
+        finalPassModel.update(camera: camera)
     }
 
     override public func draw(in view: MTKView) {

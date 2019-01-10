@@ -18,18 +18,12 @@ import GLKit
 
 class EIMesh {
 
-    var transform: EITransform
-
     var vertexMetalBuffer:MTLBuffer
-
     var vertexIndexMetalBuffer:MTLBuffer
-
     var indexCount:Int
-
     var primitiveType:MTLPrimitiveType
-
     var indexType:MTLIndexType
-
+    
     var modelIOMeshMetallic: MDLMesh
     var modelIOMesh:MDLMesh
     var metalMesh: MTKMesh
@@ -37,8 +31,6 @@ class EIMesh {
     var metalVertexDescriptor:MTLVertexDescriptor?
 
     private init(device:MTLDevice, mdlMeshProvider:() -> MDLMesh) {
-
-        transform = EITransform(device:device)
 
         // Metal vertex descriptor
         metalVertexDescriptor = .some( MTLVertexDescriptor.EIMake() )
@@ -76,8 +68,6 @@ class EIMesh {
     }
 
     private init(device:MTLDevice, sceneName:String, nodeName:String) {
-
-        transform = EITransform(device:device)
 
         // Metal vertex descriptor
         metalVertexDescriptor = .some( MTLVertexDescriptor.EIMake() )

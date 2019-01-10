@@ -9,17 +9,15 @@
 import Metal
 import GLKit
 
-struct EITransform {
-    var transform = Transform()
-    var metalBuffer: MTLBuffer
+// See ei_common.h for matching struct Transform
 
-    init(device: MTLDevice) {
-        guard let mb = device.makeBuffer(length: MemoryLayout<Transform>.size, options: []) else {
-            fatalError("Error: Can not create buffer for EITransform")
-        }
-        
-        metalBuffer = mb
-    }
+struct EITransform {
+
+    var normalMatrix = GLKMatrix4Identity
+    var modelMatrix = GLKMatrix4Identity
+    var viewMatrix = GLKMatrix4Identity
+    var modelViewMatrix = GLKMatrix4Identity
+    var modelViewProjectionMatrix = GLKMatrix4Identity
 
     /*
         Transform Cheat Sheet
@@ -44,31 +42,28 @@ struct EITransform {
     mutating func update (camera: EICamera, transformer:() -> GLKMatrix4) {
 
         //  M
-        transform.modelMatrix = transformer()
+        modelMatrix = transformer()
         
         //  V
-        transform.viewMatrix = camera.viewTransform
+        viewMatrix = camera.viewTransform
         
         //  V * M
-        transform.modelViewMatrix = transform.viewMatrix * transform.modelMatrix
+        modelViewMatrix = viewMatrix * modelMatrix
         
         //  P * V * M
-        transform.modelViewProjectionMatrix = camera.projectionTransform * transform.modelViewMatrix
+        modelViewProjectionMatrix = camera.projectionTransform * modelViewMatrix
 
         // eye space normal transform is the inverse( transpose( model-view-transform ) )
         // invert then transpose upper 3x3
         var success = false
-        let m3x3 = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3( transform.modelViewMatrix ), &success)
+        let m3x3 = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3( modelViewMatrix ), &success)
         
         // stuff into 4x4 to match metal shader TransformerPackage struct.
-//        transform.normalMatrix = GLKMatrix4Identity
-        transform.normalMatrix = GLKMatrix4Make(m3x3.m00, m3x3.m01, m3x3.m02, 0,
+//        normalMatrix = GLKMatrix4Identity
+        normalMatrix = GLKMatrix4Make(m3x3.m00, m3x3.m01, m3x3.m02, 0,
                                                 m3x3.m10, m3x3.m11, m3x3.m12, 0,
                                                 m3x3.m20, m3x3.m21, m3x3.m22, 0,
                                                        0,        0,        0, 1)
-
-        let bufferPointer = metalBuffer.contents()
-        memcpy(bufferPointer, &transform, MemoryLayout<Transform>.size)
-
+        
     }
 }

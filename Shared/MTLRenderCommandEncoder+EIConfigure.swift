@@ -10,23 +10,23 @@ import MetalKit
 
 extension MTLRenderCommandEncoder {
     
-    func EIConfigure(renderPipelineState:MTLRenderPipelineState, model:EIMetalProtocol, textures:[MTLTexture]) {
+    func EIConfigure(renderPipelineState:MTLRenderPipelineState, model:EIModel, textures:[MTLTexture]) {
         
         setRenderPipelineState(renderPipelineState)
         
         // In metal vertex shader see: [[buffer(_attributes_)]]
-        setVertexBuffer(model.getVertexMetalBuffer(), offset: 0, index: VertexBufferIndex._attributes_.rawValue)
+        setVertexBuffer(model.geometry.getVertexMetalBuffer(), offset: 0, index: VertexBufferIndex._attributes_.rawValue)
         
         // In metal vertex shader see: [[buffer(_transform_)]]
-        setVertexBuffer(model.getMetallicTransformMetalBuffer(), offset: 0, index: VertexBufferIndex._transform_.rawValue)
-        
+        setVertexBytes(&(model.transform), length: MemoryLayout<EITransform>.size, index: VertexBufferIndex._transform_.rawValue)
+
         // assign texture indices. So: [[texture(0)]], [[texture(1)]], etc.
         for i in 0..<textures.count {
             let texture = textures[ i ]
             setFragmentTexture(texture, index: i)
         }
         
-        drawIndexedPrimitives(type: model.getPrimitiveType(), indexCount: model.getIndexCount(), indexType: model.getIndexType(), indexBuffer: model.getIndexBuffer(), indexBufferOffset: 0)
+        drawIndexedPrimitives(type: model.geometry.getPrimitiveType(), indexCount: model.geometry.getIndexCount(), indexType: model.geometry.getIndexType(), indexBuffer: model.geometry.getIndexBuffer(), indexBufferOffset: 0)
     }
     
 }

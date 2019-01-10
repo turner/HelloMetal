@@ -8,9 +8,10 @@
 
 import Metal
 import GLKit
-struct EIModel {
+class EIModel {
     
-    var model:EIMetalProtocol
+    var transform: EITransform
+    var geometry:EIMetalProtocol
     var shader:EIShader
     var transformer:() -> GLKMatrix4
     var pipelineState:MTLRenderPipelineState
@@ -25,7 +26,8 @@ struct EIModel {
             fatalError("Error: Can not create render pipeline state")
         }
 
-        self.model = model
+        self.transform = EITransform()
+        self.geometry = model
         self.shader = shader
         self.transformer = transformer
     }
@@ -40,20 +42,23 @@ struct EIModel {
             fatalError("Error: Can not create render pipeline state")
         }
         
-        self.model = model
+        self.transform = EITransform()
+        self.geometry = model
         self.shader = shader
         self.transformer = { return GLKMatrix4Identity }
     }
 
-    public mutating func update(camera:EICamera, arcball:EIArcball) {
-        model.update(camera: camera, arcBall: arcball, transformer: transformer)
+    public func update(camera:EICamera) {
+        transform.update(camera: camera, transformer: {
+            transformer()
+        })
     }
 
     public func encode(encoder:MTLRenderCommandEncoder) {
-        encoder.EIConfigure(renderPipelineState: pipelineState, model: model, textures: shader.textures)
+        encoder.EIConfigure(renderPipelineState: pipelineState, model: self, textures: shader.textures)
     }
 
     public func renderPassEncode(encoder:MTLRenderCommandEncoder, textures:[MTLTexture]) {
-        encoder.EIConfigure(renderPipelineState: pipelineState, model: model, textures: textures)
+        encoder.EIConfigure(renderPipelineState: pipelineState, model: self, textures: textures)
     }
 }

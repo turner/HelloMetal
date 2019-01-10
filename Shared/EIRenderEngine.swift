@@ -58,8 +58,8 @@ class EIRendererEngine: NSObject, MTKViewDelegate {
     
     func update(view: EIView, drawableSize:CGSize) {
         
-        for var model in models {
-            model.update(camera: camera, arcball: view.arcBall)
+        for model in models {
+            model.update(camera: camera)
         }
         
     }

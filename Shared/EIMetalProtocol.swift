@@ -10,11 +10,9 @@ import MetalKit
 import GLKit
 protocol EIMetalProtocol {
     func getVertexMetalBuffer() -> MTLBuffer
-    func getMetallicTransformMetalBuffer() -> MTLBuffer
     func getPrimitiveType() -> MTLPrimitiveType
     func getIndexCount() -> Int
     func getIndexType() -> MTLIndexType
     func getIndexBuffer() -> MTLBuffer
     func getVertexDescriptor() -> MTLVertexDescriptor?
-    mutating func update(camera:EICamera, arcBall:EIArcball, transformer:() -> GLKMatrix4)
 }

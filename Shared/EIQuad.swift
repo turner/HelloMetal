@@ -11,10 +11,7 @@ import GLKit
 
 struct EIQuad {
 
-    var transform: EITransform
-
     var vertexMetalBuffer: MTLBuffer
-
     var vertexIndexMetalBuffer: MTLBuffer
 
     var indexCount: Int {
@@ -57,8 +54,5 @@ struct EIQuad {
         }
         
         vertexIndexMetalBuffer = vimb
-
-        transform = EITransform(device: device)
-
     }
 }
