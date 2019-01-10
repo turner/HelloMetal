@@ -12,7 +12,7 @@ import GLKit
 //                    +y-axis up
 //                    +x-axis to the right
 
-struct EICamera {
+class EICamera {
 
     var location = GLKVector3Make(0, 0, 0)
     var target = GLKVector3Make(0, 0, 0)
@@ -29,7 +29,7 @@ struct EICamera {
         self.setTransform(location: location, target: target, approximateUp: approximateUp)
     }
 
-    mutating func setTransform (location:GLKVector3, target:GLKVector3, approximateUp:GLKVector3) {
+    func setTransform (location:GLKVector3, target:GLKVector3, approximateUp:GLKVector3) {
 
         self.location = location
         self.target = target
@@ -43,7 +43,7 @@ struct EICamera {
 
     }
 
-    mutating func setProjection (fovYDegrees:Float, aspectRatioWidthOverHeight:Float, near:Float, far:Float) {
+    func setProjection (fovYDegrees:Float, aspectRatioWidthOverHeight:Float, near:Float, far:Float) {
 
         self.fovYDegrees = fovYDegrees;
         self.near = near;
