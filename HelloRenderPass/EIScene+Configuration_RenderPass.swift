@@ -15,26 +15,29 @@ extension EIScene {
         self.renderer = renderer
         view.delegate = renderer
         
+        renderer.camera = EICamera(location:GLKVector3Make(0, 0, 1000), target:GLKVector3Make(0, 0, 0), approximateUp:GLKVector3Make(0, 1, 0))
+        
         var shader:EIShader
         
-        renderer.camera = EICamera(location:GLKVector3Make(0, 0, 1000), target:GLKVector3Make(0, 0, 0), approximateUp:GLKVector3Make(0, 1, 0))
-
         // hero
-        shader = EIShader(device:view.device!, vertex:"hello_texture_vertex", fragment:"hello_texture_fragment", textureNames:["kids_grid_3x3_translucent"])
+        let hm = EIMesh.plane(device: view.device!, xExtent: 256, zExtent: 256, xTesselation: 32, zTesselation: 32)
+        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["kids_grid_3x3"])
         
-        let hero = EIModel(view:view, model:EIQuad(device: view.device!), shader:shader, transformer:{
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
+        let hero = EIModel(view:view, model:hm, shader:shader, transformer:{
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
         
-        // camera plane
-        shader = EIShader(device:view.device!, vertex:"hello_texture_vertex", fragment:"hello_texture_fragment", textureNames:["mobile"])
+        // cameraPlane
+        let plane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
+        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["mobile"])
         
-        let cameraPlane = EIModel(view:view, model:EIQuad(device: view.device!), shader:shader, transformer:{ [unowned self] in
-            return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.35 * self.renderer.camera.far)
+        let cameraPlane = EIModel(view:view, model:plane, shader:shader, transformer:{ [unowned self] in
+            return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
         
         renderer.models.append(cameraPlane)
         renderer.models.append(hero)
-
+        
     }
+    
 }
