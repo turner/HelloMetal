@@ -49,7 +49,7 @@ fragment half4 model_io_texture_openEXR_fragment(xyzw_n_st_rgba in [[ stage_in ]
 }
 
 // :::::::::::::::::::::: texture shader - lit ::::::::::::::::::::::
-vertex xyzw_n_st_rgba model_io_texture_lit_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
+vertex xyzw_n_st_rgba texture_lit_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     
     // light at camera location. Flashlight style.
@@ -87,7 +87,7 @@ vertex xyzw_n_st_rgba model_io_texture_lit_vertex(xyz_n_st in [[ stage_in ]], co
     
 }
 
-fragment float4 model_io_texture_lit_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
+fragment float4 texture_lit_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
     float4 rgba;
     rgba = in.rgba * texas.sample(textureSampler, float2(in.st)).rgba;
     return rgba;
