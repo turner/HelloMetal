@@ -21,7 +21,7 @@ extension EIScene {
         
         // hero
         let cube = EIMesh.cube(device: view.device!, xExtent: 200, yExtent: 100, zExtent: 200, xTesselation: 32, yTesselation: 32, zTesselation: 32)
-        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["mandrill"])
+        shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"texture_fragment", textureNames:["mandrill"])
         
         let hero = EIModel(view:view, model:cube, shader:shader, transformer:{
             return view.arcBall.rotationMatrix
@@ -29,7 +29,7 @@ extension EIScene {
         
         // camera plane
         let plane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
-        shader = EIShader(device: view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["mobile"])
+        shader = EIShader(device: view.device!, vertex:"texture_vertex", fragment:"texture_fragment", textureNames:["mobile"])
         
         let cameraPlane = EIModel(view:view, model:plane, shader:shader, transformer:{ [unowned self] in
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)

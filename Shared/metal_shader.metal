@@ -2,12 +2,12 @@
 #include <metal_stdlib>
 using namespace metal;
 #import "ei_common.h"
-#import "metal_model_io.h"
+#import "metal_shader.h"
 
 // :::::::::::::::::::::: texture shader ::::::::::::::::::::::
 
 // vertex
-vertex xyzw_n_st_rgba model_io_texture_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
+vertex xyzw_n_st_rgba texture_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     xyzw_n_st_rgba out;
     
@@ -28,7 +28,7 @@ vertex xyzw_n_st_rgba model_io_texture_vertex(xyz_n_st in [[ stage_in ]], consta
 }
 
 // fragment
-fragment float4 model_io_texture_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
+fragment float4 texture_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
     float4 rgba = texas.sample(textureSampler, float2(in.st)).rgba;
     return rgba;
 }

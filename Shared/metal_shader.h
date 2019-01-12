@@ -1,13 +1,13 @@
 //
-//  metal_model_io.h
+//  metal_shader.h
 //  HelloMetal
 //
 //  Created by Douglass Turner on 12/19/18.
 //  Copyright © 2018 Elastic Image Software. All rights reserved.
 //
 
-#ifndef metal_model_io_h
-#define metal_model_io_h
+#ifndef metal_shader_h
+#define metal_shader_h
 
 // See: MTLVertexDescriptor+EIMake.swift for association with
 // MTLVertexDescriptor
@@ -27,4 +27,4 @@ struct xyzw_n_st_rgba {
     float4 rgba;
 };
 
-#endif /* metal_model_io_h */
+#endif /* metal_shader_h */

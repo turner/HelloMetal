@@ -23,7 +23,7 @@ extension EIScene {
         let hm = EIMesh.plane(device: view.device!, xExtent: 256, zExtent: 256, xTesselation: 32, zTesselation: 32)
         
         // hero - shader
-        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["kids_grid_3x3_translucent"])
+        shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"texture_fragment", textureNames:["kids_grid_3x3_translucent"])
         
         // hero - model
         let hero = EIModel(view:view, model:hm, shader:shader, transformer:{
@@ -34,7 +34,7 @@ extension EIScene {
         let cpm = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
         
         // cameraPlane - shader
-        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["mobile"])
+        shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"texture_fragment", textureNames:["mobile"])
         
         // cameraPlane - model
         let cameraPlane = EIModel(view:view, model:cpm, shader:shader, transformer:{ [unowned self] in

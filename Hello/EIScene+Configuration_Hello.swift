@@ -22,7 +22,7 @@ extension EIScene {
         let hm = EIMesh.plane(device: view.device!, xExtent: 256, zExtent: 256, xTesselation: 32, zTesselation: 32)
 
         // hero - shader
-        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["kids_grid_3x3"])
+        shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"texture_fragment", textureNames:["kids_grid_3x3"])
 
         // hero - model
         let hero = EIModel(view:view, model:hm, shader:shader, transformer:{
