@@ -4,6 +4,7 @@ using namespace metal;
 #import "ei_common.h"
 #import "metal_model_io.h"
 
+// show shader
 vertex xyzw_n_st_rgba model_io_show_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     xyzw_n_st_rgba out;
@@ -42,6 +43,7 @@ fragment float4 model_io_show_fragment(xyzw_n_st_rgba in [[ stage_in ]]) {
     
 }
 
+// texture shader
 vertex xyzw_n_st_rgba model_io_texture_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     xyzw_n_st_rgba out;
@@ -67,6 +69,15 @@ fragment float4 model_io_texture_fragment(xyzw_n_st_rgba in [[stage_in]], textur
     return rgba;
 }
 
+fragment float4 model_io_texture_overlay_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> underlay [[texture(0)]], texture2d<float> overlay [[texture(1)]], sampler textureSampler [[sampler(0)]]) {
+    
+    float4 _F =  overlay.sample(textureSampler, float2(in.st)).rgba;
+    float4 _B = underlay.sample(textureSampler, float2(in.st)).rgba;
+    return _F + (1.0f - _F.a) * _B;
+    
+}
+
+// lit texture shader
 vertex xyzw_n_st_rgba model_io_texture_lit_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     
@@ -111,6 +122,7 @@ fragment float4 model_io_texture_lit_fragment(xyzw_n_st_rgba in [[stage_in]], te
     return rgba;
 }
 
+// two-sided texture shader
 vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     xyzw_n_st_rgba out;

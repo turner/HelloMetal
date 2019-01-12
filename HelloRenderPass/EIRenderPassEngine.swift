@@ -14,21 +14,23 @@ class EIRenderPassEngine : EIRendererEngine {
     var renderToTextureRenderPassDescriptor: MTLRenderPassDescriptor!
 
     override init(view: EIView, device: MTLDevice) {
-        
-        // no-op pass-through shader. just reproduce the results of the render to texture pass.
-//        let shader = EIShader(device:view.device!, vertex:"renderpass_vertex", fragment:"renderpass_fragment", textureNames:[])
-        
-        // overlay a texture atop the results of the render to texture pass.
-        let shader = EIShader(device:view.device!, vertex:"renderpass_vertex", fragment:"renderpass_overlay_fragment", textureNames:["mobile-overlay"])
 
-        finalPassModel = EIModel(view:view, model:EIQuad(device: view.device!), shader:shader)
+        // no-op pass-through shader. just reproduce the results of the render to texture pass.
+//        let shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:[])
+
+        // Overlay a texture atop the render-to-texture
+        let shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_overlay_fragment", textureNames:["mobile-overlay"])
+
+        
+        
+        let mesh = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
+        finalPassModel = EIModel(view:view, model:mesh, shader:shader)
 
         super.init(view: view, device: device)
-        
-        finalPassModel.transformer = { [unowned self] in
-            return self.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.camera.far)
-        }
 
+        finalPassModel.transformer = { [unowned self] in
+            return self.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
+        }
         renderToTextureRenderPassDescriptor = MTLRenderPassDescriptor()
         renderToTextureRenderPassDescriptor.EIConfigure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
 

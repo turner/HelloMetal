@@ -1,12 +1,9 @@
-
 #include <metal_stdlib>
 using namespace metal;
 #import "ei_common.h"
 #import "metal.h"
 
-vertex InterpolatedVertex renderpass_vertex(constant _Vertex_ *vertices [[buffer(_attributes_)]],
-                                                constant _Transforms_ &transforms [[buffer(_transform_)]],
-                                                uint vertexIndex [[vertex_id]]) {
+vertex InterpolatedVertex renderpass_vertex(constant _Vertex_ *vertices [[buffer(_attributes_)]], constant _Transforms_ &transforms [[buffer(_transform_)]], uint vertexIndex [[vertex_id]]) {
     InterpolatedVertex out;
     out.xyzw = transforms.modelViewProjectionMatrix * float4(vertices[vertexIndex].xyz, 1.0);
     out.rgba = vertices[vertexIndex].rgba;
@@ -16,6 +13,7 @@ vertex InterpolatedVertex renderpass_vertex(constant _Vertex_ *vertices [[buffer
 
 // pass through shader. just reproduce what is in the renderpass_texture
 fragment float4 renderpass_fragment(InterpolatedVertex vert [[ stage_in ]], texture2d<float> renderpass_texture [[ texture(0) ]], sampler textureSampler [[sampler(0)]]) {
+
     return renderpass_texture.sample(textureSampler, vert.st).rgba;
 }
 
