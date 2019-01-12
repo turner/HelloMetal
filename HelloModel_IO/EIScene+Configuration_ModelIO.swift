@@ -35,8 +35,8 @@ extension EIScene {
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
         
-        renderer.models.append(hero)
         renderer.models.append(cameraPlane)
+        renderer.models.append(hero)
 
     }
 }

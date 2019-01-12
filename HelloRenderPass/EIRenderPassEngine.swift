@@ -16,10 +16,10 @@ class EIRenderPassEngine : EIRendererEngine {
     override init(view: EIView, device: MTLDevice) {
 
         // no-op pass-through shader. just reproduce the results of the render to texture pass.
-//        let shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"texture_fragment", textureNames:[])
+        let shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"texture_fragment", textureNames:[])
 
         // Overlay a texture atop the render-to-texture
-        let shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"texture_overlay_fragment", textureNames:["mobile-overlay"])
+//        let shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"texture_overlay_fragment", textureNames:["mobile-overlay"])
 
         
         
