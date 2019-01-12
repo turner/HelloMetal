@@ -185,7 +185,6 @@
 		4F80A49C1DEB86670082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F80A49D1DEB866F0082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F873AE91E0D62CD002AF02D /* alias_wavefront_diagnostic.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */; };
-		4F873AEB1E0D64FA002AF02D /* model_io_openexr.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4F873AE61E0D6126002AF02D /* model_io_openexr.metal */; };
 		4F8FAABE21DB7A6C006D8F85 /* EIScene+Configuration_Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FAABD21DB7A6C006D8F85 /* EIScene+Configuration_Hello.swift */; };
 		4FBB552521C7EF5100FE271C /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4FBCB53121C1BC2600C4DA3A /* mandrill.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FBCB53021C1BC2600C4DA3A /* mandrill.exr */; };
@@ -277,7 +276,6 @@
 		4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
 		4F2F1F8B1DBA599900B80FE4 /* EIArcball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIArcball.swift; path = Shared/EIArcball.swift; sourceTree = "<group>"; };
 		4F2F1F8C1DBA599900B80FE4 /* EICamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EICamera.swift; path = Shared/EICamera.swift; sourceTree = "<group>"; };
-		4F2F1F8D1DBA599900B80FE4 /* renderpass.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = renderpass.metal; path = Shared/renderpass.metal; sourceTree = "<group>"; };
 		4F2F1F8F1DBA599900B80FE4 /* EIMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EIMath.swift; path = Shared/EIMath.swift; sourceTree = "<group>"; };
 		4F2F1F911DBA599900B80FE4 /* EITransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EITransform.swift; path = Shared/EITransform.swift; sourceTree = "<group>"; };
 		4F39BD8B21CAA03E00C792DD /* MTKTextureLoader+EIMakeWithUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MTKTextureLoader+EIMakeWithUIImage.swift"; path = "Shared/MTKTextureLoader+EIMakeWithUIImage.swift"; sourceTree = "<group>"; };
@@ -307,7 +305,6 @@
 		4F72708C1DC372410039E130 /* CameraPlane.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CameraPlane.xcassets; sourceTree = "<group>"; };
 		4F7270911DC372410039E130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F80A4981DEB86420082EE39 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		4F873AE61E0D6126002AF02D /* model_io_openexr.metal */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = sourcecode.metal; name = model_io_openexr.metal; path = Shared/model_io_openexr.metal; sourceTree = "<group>"; };
 		4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = alias_wavefront_diagnostic.exr; sourceTree = "<group>"; };
 		4F8FAABD21DB7A6C006D8F85 /* EIScene+Configuration_Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EIScene+Configuration_Hello.swift"; sourceTree = "<group>"; };
 		4F9C9A7821CA522A00BEAE5D /* metal_model_io.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = metal_model_io.h; path = Shared/metal_model_io.h; sourceTree = "<group>"; };
@@ -457,9 +454,7 @@
 				4F64B37A1DC403D9005BD8B1 /* Textures.xcassets */,
 				4F016A2821E28A600002E455 /* ei_common.h */,
 				4F9C9A7821CA522A00BEAE5D /* metal_model_io.h */,
-				4F2F1F8D1DBA599900B80FE4 /* renderpass.metal */,
 				4FBF51CC1DC02B6200444668 /* model_io.metal */,
-				4F873AE61E0D6126002AF02D /* model_io_openexr.metal */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -1045,6 +1040,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FDFA7D31E0BF84E005BEDF4 /* model_io.metal in Sources */,
 				4F39BD9221CAA03E00C792DD /* MTKTextureLoader+EIMakeWithUIImage.swift in Sources */,
 				4FF5B29021E10CB60087E6AC /* EIScene+Configuration_OpenEXR.swift in Sources */,
 				4F2528B021D7DF8A004E023E /* EIScene.swift in Sources */,
@@ -1069,8 +1065,6 @@
 				4F03D6D921C7DCBA0034BA43 /* MTLVertexDescriptor+EIMake.swift in Sources */,
 				4F03D6EE21C7DCBA0034BA43 /* MTLRenderPipelineDescriptor+EIMake.swift in Sources */,
 				4F03D6E021C7DCBA0034BA43 /* EIMetalProtocol.swift in Sources */,
-				4F873AEB1E0D64FA002AF02D /* model_io_openexr.metal in Sources */,
-				4FDFA7D31E0BF84E005BEDF4 /* model_io.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

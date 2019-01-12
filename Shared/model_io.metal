@@ -4,46 +4,9 @@ using namespace metal;
 #import "ei_common.h"
 #import "metal_model_io.h"
 
-// show shader
-vertex xyzw_n_st_rgba model_io_show_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
-    
-    xyzw_n_st_rgba out;
-    
-    // eye space normal
-    float4 nes = transformPackage.normalMatrix * float4(in.n, 1);
-    float3 normalEyeSpace = normalize(nes.xyz);
-    
-    // world space normal
-//    float3 in_n = normalize(in.n);
-    
-    // rgba
-    //    out.rgba = float4(in.st.x, in.st.y, 0, 1);
-    //    out.rgba = float4(in_n, 1.0);
-    out.rgba = float4((normalEyeSpace.x + 1.0)/2.0, (normalEyeSpace.y + 1.0)/2.0, (normalEyeSpace.z + 1.0)/2.0, 1.0);
-    
-    // xyzw
-    out.xyzw = transformPackage.modelViewProjectionMatrix * float4(in.xyz, 1);
-    
-    // st
-    out.st = in.st;
-    
-    return out;
-    
-}
+// :::::::::::::::::::::: texture shader ::::::::::::::::::::::
 
-fragment float4 model_io_show_fragment(xyzw_n_st_rgba in [[ stage_in ]]) {
-    
-    constexpr sampler defaultSampler;
-    
-    float4 rgba;
-    
-    rgba = in.rgba;
-    
-    return rgba;
-    
-}
-
-// texture shader
+// vertex
 vertex xyzw_n_st_rgba model_io_texture_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     xyzw_n_st_rgba out;
@@ -64,11 +27,13 @@ vertex xyzw_n_st_rgba model_io_texture_vertex(xyz_n_st in [[ stage_in ]], consta
     
 }
 
+// fragment
 fragment float4 model_io_texture_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
     float4 rgba = texas.sample(textureSampler, float2(in.st)).rgba;
     return rgba;
 }
 
+// fragment - overlay
 fragment float4 model_io_texture_overlay_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> underlay [[texture(0)]], texture2d<float> overlay [[texture(1)]], sampler textureSampler [[sampler(0)]]) {
     
     float4 _F =  overlay.sample(textureSampler, float2(in.st)).rgba;
@@ -77,7 +42,13 @@ fragment float4 model_io_texture_overlay_fragment(xyzw_n_st_rgba in [[stage_in]]
     
 }
 
-// lit texture shader
+// fragment - OpenEXR (half)
+fragment half4 model_io_texture_openEXR_fragment(xyzw_n_st_rgba in [[ stage_in ]], texture2d<half> openEXRTexture [[ texture(0) ]], sampler textureSampler [[sampler(0)]]) {
+    half4 rgba = openEXRTexture.sample(textureSampler, float2(in.st)).rgba;
+    return rgba;
+}
+
+// :::::::::::::::::::::: texture shader - lit ::::::::::::::::::::::
 vertex xyzw_n_st_rgba model_io_texture_lit_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     
@@ -122,7 +93,7 @@ fragment float4 model_io_texture_lit_fragment(xyzw_n_st_rgba in [[stage_in]], te
     return rgba;
 }
 
-// two-sided texture shader
+// :::::::::::::::::::::: texture shader - two-sided ::::::::::::::::::::::
 vertex xyzw_n_st_rgba textureTwoSidedMIOVertexShader(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     xyzw_n_st_rgba out;
@@ -156,3 +127,43 @@ fragment float4 textureTwoSidedMIOFragmentShader(xyzw_n_st_rgba in [[stage_in]],
     return rgba;
     
 }
+
+// :::::::::::::::::::::: show shader ::::::::::::::::::::::
+vertex xyzw_n_st_rgba model_io_show_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
+    
+    xyzw_n_st_rgba out;
+    
+    // eye space normal
+    float4 nes = transformPackage.normalMatrix * float4(in.n, 1);
+    float3 normalEyeSpace = normalize(nes.xyz);
+    
+    // world space normal
+    //    float3 in_n = normalize(in.n);
+    
+    // rgba
+    //    out.rgba = float4(in.st.x, in.st.y, 0, 1);
+    //    out.rgba = float4(in_n, 1.0);
+    out.rgba = float4((normalEyeSpace.x + 1.0)/2.0, (normalEyeSpace.y + 1.0)/2.0, (normalEyeSpace.z + 1.0)/2.0, 1.0);
+    
+    // xyzw
+    out.xyzw = transformPackage.modelViewProjectionMatrix * float4(in.xyz, 1);
+    
+    // st
+    out.st = in.st;
+    
+    return out;
+    
+}
+
+fragment float4 model_io_show_fragment(xyzw_n_st_rgba in [[ stage_in ]]) {
+    
+    constexpr sampler defaultSampler;
+    
+    float4 rgba;
+    
+    rgba = in.rgba;
+    
+    return rgba;
+    
+}
+
