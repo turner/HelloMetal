@@ -29,7 +29,7 @@ extension EIScene {
         
         let openEXRTexture = MTKTextureLoader.newTexture_OpenEXR(device: view.device!, name: textureName)
         
-        shader = EIShader(vertex:"texture_vertex", fragment:"model_io_texture_openEXR_fragment", textures:[openEXRTexture])
+        shader = EIShader(vertex:"texture_vertex", fragment:"texture_openEXR_fragment", textures:[openEXRTexture])
         
         let hero = EIModel(view:view, model:heroMesh, shader:shader, transformer:{
             return view.arcBall.rotationMatrix * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
