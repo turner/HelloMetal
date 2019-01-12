@@ -19,22 +19,31 @@ extension EIScene {
         
         var shader:EIShader
         
-        // hero
+        // hero - mesh
         let hm = EIMesh.plane(device: view.device!, xExtent: 256, zExtent: 256, xTesselation: 32, zTesselation: 32)
-        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["kids_grid_3x3"])
         
+        // hero - shader
+        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["kids_grid_3x3_translucent"])
+        
+        // hero - model
         let hero = EIModel(view:view, model:hm, shader:shader, transformer:{
             return view.arcBall.rotationMatrix * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
         
-        // cameraPlane
-        let plane = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
+        // cameraPlane - mesh
+        let cpm = EIMesh.plane(device: view.device!, xExtent: 2, zExtent: 2, xTesselation: 4, zTesselation: 4)
+        
+        // cameraPlane - shader
         shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["mobile"])
         
-        let cameraPlane = EIModel(view:view, model:plane, shader:shader, transformer:{ [unowned self] in
+        // cameraPlane - model
+        let cameraPlane = EIModel(view:view, model:cpm, shader:shader, transformer:{ [unowned self] in
+            // EIMesh.plane
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
         
+        // NOTE: When using translucent textures render opacque objects first (cameraPlane)
+        //       then translucent object (hero with kids_grid_3x3_translucent)
         renderer.models.append(cameraPlane)
         renderer.models.append(hero)
         

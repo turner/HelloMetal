@@ -15,14 +15,21 @@ extension EIScene {
         view.delegate = renderer
 
         renderer.camera = EICamera(location:GLKVector3Make(0, 0, 1000), target:GLKVector3Make(0, 0, 0), approximateUp:GLKVector3Make(0, 1, 0))
-        
-        let shader = EIShader(device:view.device!, vertex:"hello_texture_vertex", fragment:"hello_texture_fragment", textureNames:["kids_grid_3x3"])
-        
-        let model = EIModel(view:view, model:EIQuad(device: view.device!), shader:shader, transformer:{
-            return view.arcBall.rotationMatrix * GLKMatrix4MakeScale(150, 150, 1)
+
+        var shader:EIShader
+
+        // hero - mesh
+        let hm = EIMesh.plane(device: view.device!, xExtent: 256, zExtent: 256, xTesselation: 32, zTesselation: 32)
+
+        // hero - shader
+        shader = EIShader(device:view.device!, vertex:"model_io_texture_vertex", fragment:"model_io_texture_fragment", textureNames:["kids_grid_3x3"])
+
+        // hero - model
+        let hero = EIModel(view:view, model:hm, shader:shader, transformer:{
+            return view.arcBall.rotationMatrix * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
         
-        renderer.models.append(model)
+        renderer.models.append(hero)
         
     }
 }
