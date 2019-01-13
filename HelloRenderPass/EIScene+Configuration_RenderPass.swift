@@ -10,7 +10,8 @@ import GLKit
 import MetalKit
 extension EIScene {
 
-    func configure(view: EIView, renderer:EIRendererEngine) {
+    // EIMesh - SceneKit - lee_perry_smith.scn
+    func /*lee_perry_smith_*/configure(view: EIView, renderer:EIRendererEngine) {
         
         self.renderer = renderer
         view.delegate = renderer
@@ -53,7 +54,8 @@ extension EIScene {
 
     }
     
-    func model_io_configure(view: EIView, renderer:EIRendererEngine) {
+    // EIMesh - Cube
+    func cube_configure(view: EIView, renderer:EIRendererEngine) {
         
         self.renderer = renderer
         view.delegate = renderer
@@ -82,7 +84,8 @@ extension EIScene {
         renderer.models.append(hero)
     }
     
-    func default_configure(view: EIView, renderer:EIRendererEngine) {
+    // EIMesh - Plane
+    func plane_configure(view: EIView, renderer:EIRendererEngine) {
         
         self.renderer = renderer
         view.delegate = renderer
