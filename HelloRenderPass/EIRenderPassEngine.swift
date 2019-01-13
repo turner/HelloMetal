@@ -32,9 +32,8 @@ class EIRenderPassEngine : EIRendererEngine {
             return self.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         }
         
-        renderToTextureRenderPassDescriptor = MTLRenderPassDescriptor()
-        renderToTextureRenderPassDescriptor.EIConfigure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
-
+        renderToTextureRenderPassDescriptor = MTLRenderPassDescriptor.EIMake(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
+        
     }
 
     override func reshape (view:EIView) {
@@ -44,6 +43,9 @@ class EIRenderPassEngine : EIRendererEngine {
         let scaleFactor = UIScreen.main.scale
         let ww = scaleFactor * view.bounds.size.width
         let hh = scaleFactor * view.bounds.size.height
+        
+//        let colorFormat = view.colorPixelFormat
+//        let depthFormat = view.depthStencilPixelFormat
 
         // color - multi-sample texture
         let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.colorPixelFormat, width:Int(ww), height:Int(hh), mipmapped:false)
@@ -58,7 +60,7 @@ class EIRenderPassEngine : EIRendererEngine {
         renderToTextureRenderPassDescriptor.colorAttachments[ 0 ].resolveTexture = view.device!.makeTexture(descriptor:resolveTextureDescriptor)
 
         // depth
-        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.depth32Float, width:Int(ww), height:Int(hh), mipmapped:false)
+        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:view.depthStencilPixelFormat, width:Int(ww), height:Int(hh), mipmapped:false)
         depthTextureDescriptor.mipmapLevelCount = 1;
         depthTextureDescriptor.textureType = .type2DMultisample
         depthTextureDescriptor.sampleCount = view.sampleCount
