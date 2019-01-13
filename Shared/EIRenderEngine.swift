@@ -21,28 +21,12 @@ class EIRendererEngine: NSObject, MTKViewDelegate {
     let view:MTKView
     
     init(view: EIView, device: MTLDevice) {
- 
-        let depthStencilDescriptor = MTLDepthStencilDescriptor()
-        depthStencilDescriptor.depthCompareFunction = .less
-        depthStencilDescriptor.isDepthWriteEnabled = true
         
-        guard let dss = device.makeDepthStencilState(descriptor: depthStencilDescriptor) else {
-            fatalError("Error: Can not create depth stencil state")
-        }
+        depthStencilState = device.EIMakeDepthStencilState()
         
-        depthStencilState = dss
-
-        guard let cq = device.makeCommandQueue() else {
-            fatalError("Error: Can not create command queue")
-        }
-        
-        commandQueue = cq
-        
-        guard let ss = MTLSamplerDescriptor.EIMake(device: device) else {
-            fatalError("Error: Can not create sampler state ")
-        }
-        
-        samplerState = ss
+        commandQueue = device.EIMakeCommandQueue()
+                
+        samplerState = device.EIMakeSamplerState()
         
         self.view = view
     }
