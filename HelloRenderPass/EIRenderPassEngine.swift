@@ -19,7 +19,7 @@ class EIRenderPassEngine : EIRendererEngine {
 //        let shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"texture_fragment", textureNames:[])
 
         // Overlay a texture atop the render-to-texture
-        let shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"model_io_texture_overlay_fragment", textureNames:["mobile-overlay"])
+        let shader = EIShader(device:view.device!, vertex:"texture_vertex", fragment:"texture_overlay_fragment", textureNames:["mobile-overlay"])
 
         
         
@@ -31,6 +31,7 @@ class EIRenderPassEngine : EIRendererEngine {
         finalPassModel.transformer = { [unowned self] in
             return self.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         }
+        
         renderToTextureRenderPassDescriptor = MTLRenderPassDescriptor()
         renderToTextureRenderPassDescriptor.EIConfigure(clearColor: MTLClearColorMake(0.25, 0.25, 0.25, 1), clearDepth: 1)
 
@@ -88,6 +89,7 @@ class EIRenderPassEngine : EIRendererEngine {
         }
 
         // configure encoder
+        pingEncoder.setDepthStencilState(depthStencilState)
         pingEncoder.setFrontFacing(.counterClockwise)
         pingEncoder.setTriangleFillMode(.fill)
         pingEncoder.setCullMode(.none)
@@ -108,6 +110,7 @@ class EIRenderPassEngine : EIRendererEngine {
         }
 
         // configure encoder
+        pongEncoder.setDepthStencilState(depthStencilState)
         pongEncoder.setFrontFacing(.counterClockwise)
         pongEncoder.setTriangleFillMode(.fill)
         pongEncoder.setCullMode(.none)

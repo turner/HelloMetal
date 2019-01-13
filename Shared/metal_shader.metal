@@ -34,7 +34,7 @@ fragment float4 texture_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float
 }
 
 // fragment - overlay
-fragment float4 model_io_texture_overlay_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> underlay [[texture(0)]], texture2d<float> overlay [[texture(1)]], sampler textureSampler [[sampler(0)]]) {
+fragment float4 texture_overlay_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> underlay [[texture(0)]], texture2d<float> overlay [[texture(1)]], sampler textureSampler [[sampler(0)]]) {
     
     float4 _F =  overlay.sample(textureSampler, float2(in.st)).rgba;
     float4 _B = underlay.sample(textureSampler, float2(in.st)).rgba;
@@ -43,13 +43,13 @@ fragment float4 model_io_texture_overlay_fragment(xyzw_n_st_rgba in [[stage_in]]
 }
 
 // fragment - OpenEXR (half)
-fragment half4 model_io_texture_openEXR_fragment(xyzw_n_st_rgba in [[ stage_in ]], texture2d<half> openEXRTexture [[ texture(0) ]], sampler textureSampler [[sampler(0)]]) {
+fragment half4 texture_openEXR_fragment(xyzw_n_st_rgba in [[ stage_in ]], texture2d<half> openEXRTexture [[ texture(0) ]], sampler textureSampler [[sampler(0)]]) {
     half4 rgba = openEXRTexture.sample(textureSampler, float2(in.st)).rgba;
     return rgba;
 }
 
 // :::::::::::::::::::::: texture shader - lit ::::::::::::::::::::::
-vertex xyzw_n_st_rgba model_io_texture_lit_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
+vertex xyzw_n_st_rgba texture_lit_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     
     // light at camera location. Flashlight style.
@@ -87,7 +87,7 @@ vertex xyzw_n_st_rgba model_io_texture_lit_vertex(xyz_n_st in [[ stage_in ]], co
     
 }
 
-fragment float4 model_io_texture_lit_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
+fragment float4 texture_lit_fragment(xyzw_n_st_rgba in [[stage_in]], texture2d<float> texas [[texture(0)]], sampler textureSampler [[sampler(0)]]) {
     float4 rgba;
     rgba = in.rgba * texas.sample(textureSampler, float2(in.st)).rgba;
     return rgba;
@@ -129,7 +129,7 @@ fragment float4 textureTwoSidedMIOFragmentShader(xyzw_n_st_rgba in [[stage_in]],
 }
 
 // :::::::::::::::::::::: show shader ::::::::::::::::::::::
-vertex xyzw_n_st_rgba model_io_show_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
+vertex xyzw_n_st_rgba show_vertex(xyz_n_st in [[ stage_in ]], constant _Transforms_ &transformPackage [[ buffer(_transform_) ]]) {
     
     xyzw_n_st_rgba out;
     
@@ -155,7 +155,7 @@ vertex xyzw_n_st_rgba model_io_show_vertex(xyz_n_st in [[ stage_in ]], constant 
     
 }
 
-fragment float4 model_io_show_fragment(xyzw_n_st_rgba in [[ stage_in ]]) {
+fragment float4 show_fragment(xyzw_n_st_rgba in [[ stage_in ]]) {
     
     constexpr sampler defaultSampler;
     

@@ -27,7 +27,7 @@ extension EIScene {
         // teapot
         //        let heroMesh = EIMesh.sceneMesh(device:view.device!, sceneName:"scenes.scnassets/teapot.scn", nodeName:"teapotIdentity")
         
-        shader = EIShader(device:view.device!, vertex:"model_io_texture_lit_vertex", fragment:"model_io_texture_lit_fragment", textureNames:["lee_perry_smith_albedo"])
+        shader = EIShader(device:view.device!, vertex:"texture_lit_vertex", fragment:"texture_lit_fragment", textureNames:["lee_perry_smith_albedo"])
         
         let hero = EIModel(view:view, model:heroMesh, shader:shader, transformer:{
             
@@ -48,8 +48,8 @@ extension EIScene {
             return self.renderer.camera.createRenderPlaneTransform(distanceFromCamera: 0.75 * self.renderer.camera.far) * GLKMatrix4MakeRotation(GLKMathDegreesToRadians(90), 1, 0, 0)
         })
         
-        renderer.models.append(hero)
         renderer.models.append(cameraPlane)
+        renderer.models.append(hero)
 
     }
 }

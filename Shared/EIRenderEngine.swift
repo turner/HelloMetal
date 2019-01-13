@@ -80,6 +80,7 @@ class EIRendererEngine: NSObject, MTKViewDelegate {
                 fatalError("Error: Can not create command encoder")
             }
             
+            // configure encoder
             encoder.setDepthStencilState(depthStencilState)
             encoder.setFrontFacing(.counterClockwise)
             encoder.setTriangleFillMode(.fill)

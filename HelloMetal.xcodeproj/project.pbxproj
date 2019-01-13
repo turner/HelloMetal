@@ -185,6 +185,9 @@
 		4F80A49C1DEB86670082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F80A49D1DEB866F0082EE39 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80A4981DEB86420082EE39 /* GLKit.framework */; };
 		4F873AE91E0D62CD002AF02D /* alias_wavefront_diagnostic.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4F873AE81E0D62CD002AF02D /* alias_wavefront_diagnostic.exr */; };
+		4F88FE1B21EA6E13005BED2C /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9EB3CD1DD0CB55006025B5 /* scenes.scnassets */; };
+		4F88FE1C21EA6E58005BED2C /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1A00591DC4C2C500DF5156 /* SceneKit.framework */; };
+		4F88FE1D21EA6E66005BED2C /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2F1F151DBA50FA00B80FE4 /* ModelIO.framework */; };
 		4F8FAABE21DB7A6C006D8F85 /* EIScene+Configuration_Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FAABD21DB7A6C006D8F85 /* EIScene+Configuration_Hello.swift */; };
 		4FBB552521C7EF5100FE271C /* EIMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C7E591DBE8431005F42C3 /* EIMesh.swift */; };
 		4FBCB53121C1BC2600C4DA3A /* mandrill.exr in Resources */ = {isa = PBXBuildFile; fileRef = 4FBCB53021C1BC2600C4DA3A /* mandrill.exr */; };
@@ -360,6 +363,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F80A49B1DEB865E0082EE39 /* GLKit.framework in Frameworks */,
+				4F88FE1C21EA6E58005BED2C /* SceneKit.framework in Frameworks */,
+				4F88FE1D21EA6E66005BED2C /* ModelIO.framework in Frameworks */,
 				4F1A005F1DC4C30700DF5156 /* Metal.framework in Frameworks */,
 				4F1A00601DC4C30700DF5156 /* MetalKit.framework in Frameworks */,
 			);
@@ -828,6 +833,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F88FE1B21EA6E13005BED2C /* scenes.scnassets in Resources */,
 				4F64B37E1DC4041A005BD8B1 /* Textures.xcassets in Resources */,
 				4F64B3721DC3FD36005BD8B1 /* RenderPass.xcassets in Resources */,
 				4F64B3701DC3FD36005BD8B1 /* Main.storyboard in Resources */,
