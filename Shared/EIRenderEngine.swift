@@ -47,39 +47,48 @@ class EIRendererEngine: NSObject, MTKViewDelegate {
         }
         
     }
-    
+
+    func renderPass(commandBuffer:MTLCommandBuffer, renderPassDescriptor:MTLRenderPassDescriptor) {
+        
+        guard let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else {
+            fatalError("Error: Can not create command encoder")
+        }
+        
+        // configure encoder
+        encoder.setDepthStencilState(depthStencilState)
+        encoder.setFrontFacing(.counterClockwise)
+        encoder.setTriangleFillMode(.fill)
+        encoder.setCullMode(.none)
+        encoder.setFragmentSamplerState(samplerState, index: 0)
+        
+        for model in models {
+            model.encode(encoder: encoder)
+        }
+        
+        encoder.endEncoding()
+        
+    }
+
     public func draw(in view: MTKView) {
         
         update(view: view as! EIView, drawableSize: view.bounds.size)
-        
-        if let passDescriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable {
-            
-            passDescriptor.colorAttachments[ 0 ].clearColor = MTLClearColorMake(0.5, 0.5, 0.5, 1.0)
-            
-            guard let buffer = commandQueue!.makeCommandBuffer() else {
-                fatalError("Error: Can not create command buffer")
-            }
-            
-            guard let encoder = buffer.makeRenderCommandEncoder(descriptor: passDescriptor) else {
-                fatalError("Error: Can not create command encoder")
-            }
-            
-            // configure encoder
-            encoder.setDepthStencilState(depthStencilState)
-            encoder.setFrontFacing(.counterClockwise)
-            encoder.setTriangleFillMode(.fill)
-            encoder.setCullMode(.none)
-            encoder.setFragmentSamplerState(samplerState, index: 0)
-            
-            for model in models {
-                model.encode(encoder: encoder)
-            }
 
-            encoder.endEncoding()
-            
-            buffer.present(drawable)
-            buffer.commit()
+        guard let passDescriptor = view.currentRenderPassDescriptor else {
+            fatalError("Error: view.currentRenderPassDescriptor is nil")
         }
+ 
+        guard let buffer = commandQueue!.makeCommandBuffer() else {
+            fatalError("Error: Can not create command buffer")
+        }
+
+        renderPass(commandBuffer:buffer, renderPassDescriptor:passDescriptor)
+
+        guard let drawable = view.currentDrawable else {
+            fatalError("Error: view.currentDrawable is nil")
+        }
+        
+        buffer.present(drawable)
+        buffer.commit()
         
     }
     

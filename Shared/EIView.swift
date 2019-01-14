@@ -28,6 +28,11 @@ public class EIView: MTKView {
         
         //
         depthStencilPixelFormat = .depth32Float
+        clearDepth = 1.0
+        
+        // TODO: Figure out how to use half
+//        colorPixelFormat = /* I want to use half */
+        clearColor = MTLClearColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
         
         // we will call MTKView.draw() explicitly
         isPaused = true
