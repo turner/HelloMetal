@@ -83,30 +83,22 @@ class EIRenderPassEngine : EIRendererEngine {
             fatalError("Error: Can not create command buffer")
         }
 
-        
-        // ::::::::::::::::::::::::::::: begin ping pass :::::::::::::::::::::::::::::
-        let pingDescriptor = renderToTextureRenderPassDescriptor!
-        guard let pingEncoder = buffer.makeRenderCommandEncoder(descriptor: pingDescriptor) else {
-            fatalError("Error: Can not create command encoder")
+        // ::::::::::::::::::::::::::::: ping pass begin :::::::::::::::::::::::::::::
+        guard let pingDescriptor = renderToTextureRenderPassDescriptor else {
+            fatalError("Error: renderToTextureRenderPassDescriptor is nil")
         }
 
-        // configure encoder
-        pingEncoder.setDepthStencilState(depthStencilState)
-        pingEncoder.setFrontFacing(.counterClockwise)
-        pingEncoder.setTriangleFillMode(.fill)
-        pingEncoder.setCullMode(.none)
-        pingEncoder.setFragmentSamplerState(samplerState, index: 0)
+        renderPass(commandBuffer:buffer, renderPassDescriptor:pingDescriptor)
+        // ::::::::::::::::::::::::::::: ping pass end :::::::::::::::::::::::::::::
 
-        for model in models {
-            model.encode(encoder: pingEncoder)
-        }
 
-        pingEncoder.endEncoding()
-        // ::::::::::::::::::::::::::::: end ping pass :::::::::::::::::::::::::::::
 
-        
         // ::::::::::::::::::::::::::::: begin pong pass :::::::::::::::::::::::::::::
-        let pongDescriptor = view.currentRenderPassDescriptor!
+
+        guard let pongDescriptor = view.currentRenderPassDescriptor else {
+            fatalError("Error: view.currentRenderPassDescriptor is nil")
+        }
+
         guard let pongEncoder = buffer.makeRenderCommandEncoder(descriptor: pongDescriptor) else {
             fatalError("Error: Can not create command encoder")
         }
@@ -119,7 +111,7 @@ class EIRenderPassEngine : EIRendererEngine {
         pongEncoder.setFragmentSamplerState(samplerState, index: 0)
 
         // texture(0) is the render-to-texture results
-        // texture(1) is a cool effect to show off compositing
+        // texture(1) is an overlay texture to composite over the render-to-texture to demonstrate the 2D nature of this pass
 
         var textures:[MTLTexture] = [ pingDescriptor.colorAttachments[ 0 ].resolveTexture! ]
         textures.append(contentsOf:finalPassModel.shader.textures)
