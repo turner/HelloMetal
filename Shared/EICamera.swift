@@ -87,10 +87,12 @@ class EICamera {
 
     func createRenderPlaneTransform(distanceFromCamera: Float) -> GLKMatrix4 {
 
-        var unused: Bool = true
-        let _A_ = GLKMatrix4Invert(self.viewTransform, &unused);
-        let A = GLKMatrix4MakeWithColumns(GLKMatrix4GetColumn(_A_, 0), GLKMatrix4GetColumn(_A_, 1), GLKMatrix4GetColumn(_A_, 2), GLKMatrix4GetColumn(GLKMatrix4Identity, 3));
-
+        let column_0 = GLKMatrix4GetColumn(self.viewTransform, 0);
+        let column_1 = GLKMatrix4GetColumn(self.viewTransform, 1);
+        let column_2 = GLKMatrix4GetColumn(self.viewTransform, 2);
+        
+        let A = GLKMatrix4Transpose( GLKMatrix4MakeWithColumns(column_0, column_1, column_2, GLKMatrix4GetColumn(GLKMatrix4Identity, 3)) );
+        
         // Translate rotated camera plane to camera origin.
         let B = GLKMatrix4MakeTranslation(self.location.x, self.location.y, self.location.z);
 
